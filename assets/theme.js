@@ -141,37 +141,46 @@ document.documentElement.classList.add('js');
   function initProductForms(root = document) {
     root.querySelectorAll('[data-product-form]:not([data-product-form-bound])').forEach((form) => {
       form.dataset.productFormBound = 'true';
-      const variantSelect = form.querySelector('[name="id"]');
       const submitButton = form.querySelector('[type="submit"]');
       const submitText = form.querySelector('[data-submit-text]');
+      const optionLabel = form.querySelector('[data-option-label]');
+
+      const selectedVariant = () => {
+        const select = form.querySelector('select[name="id"]');
+        if (select) return select.selectedOptions?.[0];
+        const radios = form.querySelectorAll('input[type="radio"][name="id"]');
+        if (radios.length) {
+          return form.querySelector('input[type="radio"][name="id"]:checked') || radios[0];
+        }
+        return form.querySelector('[name="id"]');
+      };
 
       const syncVariant = () => {
-    if (!variantSelect || !submitButton) return;
+        const option = selectedVariant();
+        if (!option || !submitButton) return;
 
-    const option = variantSelect.matches('select')
-      ? variantSelect.selectedOptions?.[0]
-      : variantSelect;
+        const available = option.dataset.available === 'true';
+        submitButton.disabled = !available;
 
-    if (!option) return;
+        if (submitText) {
+          submitText.textContent = available
+            ? submitText.dataset.availableText
+            : submitText.dataset.soldText;
+        }
 
-    const available = option.dataset.available === 'true';
+        if (optionLabel && option.dataset.variantTitle) {
+          optionLabel.textContent = option.dataset.variantTitle;
+        }
 
-    submitButton.disabled = !available;
+        const price = document.querySelector('[data-product-price]');
+        if (price && option.dataset.price) {
+          price.innerHTML = option.dataset.price;
+        }
+      };
 
-    if (submitText) {
-      submitText.textContent = available
-        ? submitText.dataset.availableText
-        : submitText.dataset.soldText;
-    }
-
-    const price = document.querySelector('[data-product-price]');
-
-    if (price && option.dataset.price) {
-      price.innerHTML = option.dataset.price;
-    }
-  };
-
-      variantSelect?.addEventListener('change', syncVariant);
+      form.addEventListener('change', (event) => {
+        if (event.target.name === 'id') syncVariant();
+      });
       syncVariant();
 
       form.addEventListener('submit', async (event) => {

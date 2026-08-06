@@ -92,25 +92,39 @@
                   <div class="rte product-info__description">{{ product.description }}</div>
                 {%- endif -%}
               {%- when 'variant_picker' -%}
-                <div class="product-option">
-                  <label class="quantity-label" for="Variant-{{ section.id }}">
-    {{ product.options_with_values.first.name }}
-  </label>
-                  <select class="filter-sort" id="Variant-{{ section.id }}" name="id">
-                    {%- for variant in product.variants -%}
-                      <option
-                        value="{{ variant.id }}"
-                        data-available="{{ variant.available }}"
-                        data-price="<span>{{ variant.price | money }}</span>{% if variant.compare_at_price > variant.price %}<span class='price--compare'>{{ variant.compare_at_price | money }}</span>{% endif %}"
-                        {% if variant == current_variant %}
-                          selected
-                        {% endif %}
-                      >
-                        {{ variant.title }}
-                      </option>
-                    {%- endfor -%}
-                  </select>
-                </div>
+                {%- if product.has_only_default_variant -%}
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ current_variant.id }}"
+                    data-available="{{ current_variant.available }}"
+                  >
+                {%- else -%}
+                  <fieldset class="product-option product-option--swatches">
+                    <legend class="quantity-label">
+                      {{ product.options_with_values.first.name }}:
+                      <span data-option-label>{{ current_variant.title }}</span>
+                    </legend>
+                    <div class="product-option__values">
+                      {%- for variant in product.variants -%}
+                        <label class="swatch{% unless variant.available %} swatch--soldout{% endunless %}">
+                          <input
+                            type="radio"
+                            name="id"
+                            value="{{ variant.id }}"
+                            data-available="{{ variant.available }}"
+                            data-variant-title="{{ variant.title | escape }}"
+                            data-price="<span>{{ variant.price | money }}</span>{% if variant.compare_at_price > variant.price %}<span class='price--compare'>{{ variant.compare_at_price | money }}</span>{% endif %}"
+                            {% if variant == current_variant %}
+                              checked
+                            {% endif %}
+                          >
+                          <span>{{ variant.title }}</span>
+                        </label>
+                      {%- endfor -%}
+                    </div>
+                  </fieldset>
+                {%- endif -%}
               {%- when 'quantity' -%}
                 <div class="product-option">
                   <div class="quantity-label">Quantity</div>
