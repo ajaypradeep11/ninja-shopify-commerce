@@ -84,6 +84,7 @@
         <img class="hero__slide" src="{{ 'hero-opening-sale-2.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale — Solo Leveling and Demon Slayer merch">
       {%- endif -%}
       <script type="application/json" data-hero-ctas>[{{ cta_json }}]</script>
+      <a class="hero__shop-all" href="{{ routes.all_products_collection_url }}">Shop All</a>
     </div>
     <div class="hero__scrim"></div>
 
@@ -123,10 +124,9 @@
           endif
         -%}
         <nav class="hero__chips" aria-label="Quick shop">
-          <a class="hero__chip" href="{{ chip_tshirt_url }}">👕 Tshirts</a>
-          <a class="hero__chip" href="{{ chip_lamp_url }}">💡 Lamps</a>
-          <a class="hero__chip" href="{{ chip_hoodie_url }}">🧥 Hoodie</a>
-          <a class="hero__chip hero__chip--all" href="{{ routes.all_products_collection_url }}">🛍️ Shop All</a>
+          <a class="hero__chip" href="{{ chip_tshirt_url }}">Tshirts</a>
+          <a class="hero__chip" href="{{ chip_lamp_url }}">Lamps</a>
+          <a class="hero__chip" href="{{ chip_hoodie_url }}">Hoodie</a>
         </nav>
       </div>
     </div>
