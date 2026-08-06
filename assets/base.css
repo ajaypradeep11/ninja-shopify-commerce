@@ -2120,6 +2120,7 @@ h1 {
   .site-header__left, .site-header__right { gap: 2px; }
   .wordmark { gap: 5px; font-size: 19px; }
   .wordmark__logo { width: 40px; height: 40px; }
+  .template-index .main-content { padding-top: var(--notch-space); }
   .hero { height: auto; min-height: 0; background: #0f0f0f; }
   .hero__media { position: relative; inset: auto; aspect-ratio: 3200 / 1344; }
   .hero__scrim { display: none; }
