@@ -58,7 +58,7 @@
           {%- elsif forloop.index == 1 -%}
             <img class="hero__slide is-active" src="{{ 'hero-opening-sale.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale" fetchpriority="high">
           {%- elsif forloop.index == 2 -%}
-            <img class="hero__slide" src="{{ 'hero.jpg' | asset_url }}" width="3200" height="1344" alt="">
+            <img class="hero__slide" src="{{ 'hero-opening-sale-2.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale — Solo Leveling and Demon Slayer merch">
           {%- else -%}
             <div class="hero__slide hero__placeholder"></div>
           {%- endif -%}
@@ -81,7 +81,7 @@
           assign cta_json = '{"label":' | append: first_label_json | append: ',"href":' | append: first_link_json | append: '},{"label":' | append: second_label_json | append: ',"href":' | append: second_link_json | append: '}'
         -%}
         <img class="hero__slide is-active" src="{{ 'hero-opening-sale.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale" fetchpriority="high">
-        <img class="hero__slide" src="{{ 'hero.jpg' | asset_url }}" width="3200" height="1344" alt="">
+        <img class="hero__slide" src="{{ 'hero-opening-sale-2.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale — Solo Leveling and Demon Slayer merch">
       {%- endif -%}
       <script type="application/json" data-hero-ctas>[{{ cta_json }}]</script>
     </div>
