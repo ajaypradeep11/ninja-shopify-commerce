@@ -240,6 +240,18 @@ document.documentElement.classList.add('js');
     });
   }
 
+  function initSortSelects(root = document) {
+    root.querySelectorAll('[data-sort-select]:not([data-sort-bound])').forEach((select) => {
+      select.dataset.sortBound = 'true';
+      select.addEventListener('change', () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('sort_by', select.value);
+        url.searchParams.delete('page');
+        window.location.href = url.toString();
+      });
+    });
+  }
+
   function init(root = document) {
     initMenus(root);
     initHero(root);
@@ -248,6 +260,7 @@ document.documentElement.classList.add('js');
     initQuantities(root);
     initProductForms(root);
     initFilters(root);
+    initSortSelects(root);
   }
 
   document.addEventListener('DOMContentLoaded', () => init());

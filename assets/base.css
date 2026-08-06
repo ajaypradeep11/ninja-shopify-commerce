@@ -1024,6 +1024,79 @@ h1 {
   margin: 10px 0 0;
 }
 
+.catalog-header__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 24px;
+}
+
+.catalog-header__main {
+  min-width: 0;
+}
+
+.catalog-header--row h1 {
+  font-size: clamp(32px, 4vw, 48px);
+}
+
+.catalog-header__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.catalog-header--row .filter-button {
+  width: auto;
+  min-height: 44px;
+  margin-top: 0;
+  padding: 10px 22px;
+}
+
+.sort-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  border-radius: 999px;
+  padding: 10px 20px;
+  background: var(--ink);
+  color: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sort-pill::after {
+  content: "▾";
+  font-size: 10px;
+}
+
+.sort-pill select {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.sort-pill select:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+.sort-pill option {
+  background: var(--surface);
+  color: var(--ink);
+  text-transform: none;
+}
+
 .filter-button {
   display: flex;
   width: 100%;
@@ -2057,6 +2130,9 @@ h1 {
   .product-form__row { grid-template-columns: 1fr; align-items: stretch; }
   .quantity { width: 118px; }
   .cart-item { grid-template-columns: 86px 1fr; }
+  .catalog-header__controls { width: 100%; }
+  .catalog-header__controls .filter-button,
+  .catalog-header__controls .sort-pill { flex: 1; justify-content: center; }
 }
 
 @media (max-width: 420px) {

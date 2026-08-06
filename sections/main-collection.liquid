@@ -1,13 +1,31 @@
 {%- paginate collection.products by section.settings.products_per_page -%}
   <section data-filter-root>
-    <div class="container-wide catalog-header">
-      <h1>{{ collection.title }}</h1>
-      <p class="eyebrow catalog-header__count">{{ collection.products_count }} products</p>
-      {%- if collection.description != blank -%}<div class="rte">{{ collection.description }}</div>{%- endif -%}
+    <div class="container-wide catalog-header catalog-header--row">
+      <div class="catalog-header__bar">
+        <div class="catalog-header__main">
+          <h1>{{ collection.title }}</h1>
+          <p class="eyebrow catalog-header__count">
+            {{ collection.products_count }}
+            {%- if collection.products_count == 1 %} product{% else %} products{% endif %}
+          </p>
+          {%- if collection.description != blank -%}<div class="rte">{{ collection.description }}</div>{%- endif -%}
+        </div>
 
-      <button class="filter-button" type="button" aria-expanded="false" data-filter-open>
-        {% render 'icon', name: 'filter' %} Filter and sort
-      </button>
+        <div class="catalog-header__controls">
+          <button class="filter-button" type="button" aria-expanded="false" data-filter-open>
+            {% render 'icon', name: 'filter' %} Filter
+          </button>
+          <label class="sort-pill">
+            <span>Sort:</span>
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <select data-sort-select aria-label="Sort by">
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name | escape }}</option>
+              {%- endfor -%}
+            </select>
+          </label>
+        </div>
+      </div>
 
       <div class="active-filters">
         {%- for filter in collection.filters -%}
