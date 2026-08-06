@@ -1,0 +1,59 @@
+{%- if cart.item_count == 0 -%}
+  <section class="container-reading empty-state">
+    <h1>Your cart is empty.</h1>
+    <p>Find something worthy of your setup.</p>
+    <a class="button" href="{{ routes.all_products_collection_url }}">Continue shopping</a>
+  </section>
+{%- else -%}
+  <section class="cart-page">
+    <h1>Cart</h1>
+    <div class="selvedge" style="margin-top:24px"></div>
+
+    {%- form 'cart', cart, id: 'CartForm', class: 'cart-layout' -%}
+      <div class="cart-items">
+        {%- for item in cart.items -%}
+          <article class="cart-item">
+            <a class="cart-item__image" href="{{ item.url }}">
+              {%- if item.image != blank -%}
+                {%- assign cart_image_alt = item.image.alt | default: item.product.title -%}
+                {{ item.image | image_url: width: 360 | image_tag: loading: 'lazy', widths: '140, 240, 360', sizes: '110px', alt: cart_image_alt }}
+              {%- endif -%}
+            </a>
+            <div>
+              <div class="cart-item__top">
+                <div>
+                  <a class="cart-item__title" href="{{ item.url }}">{{ item.product.title }}</a>
+                  {%- unless item.product.has_only_default_variant -%}<p class="cart-item__variant">{{ item.variant.title }}</p>{%- endunless -%}
+                  {%- for property in item.properties -%}
+                    {%- unless property.last == blank -%}<p class="cart-item__properties">{{ property.first }}: {{ property.last }}</p>{%- endunless -%}
+                  {%- endfor -%}
+                </div>
+                <strong>{{ item.final_line_price | money }}</strong>
+              </div>
+              <div class="cart-item__bottom">
+                {% render 'quantity-input', name: 'updates[]', value: item.quantity, min: 0 %}
+                <a class="remove-link" href="{{ item.url_to_remove }}" aria-label="Remove {{ item.product.title }}">{% render 'icon', name: 'trash' %}</a>
+              </div>
+            </div>
+          </article>
+        {%- endfor -%}
+        <button class="button button--outline" type="submit" name="update">Update cart</button>
+      </div>
+
+      <aside class="cart-summary">
+        <div class="cart-summary__line"><span>Subtotal</span><span>{{ cart.total_price | money }}</span></div>
+        <p class="cart-summary__note">Taxes and shipping calculated at checkout.</p>
+        <label class="quantity-label" for="CartNote">Order note</label>
+        <textarea class="cart-note" id="CartNote" name="note">{{ cart.note }}</textarea>
+        <button class="button button--full" type="submit" name="checkout">Secure checkout</button>
+        {%- if additional_checkout_buttons -%}<div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>{%- endif -%}
+      </aside>
+    {%- endform -%}
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Cart"
+}
+{% endschema %}

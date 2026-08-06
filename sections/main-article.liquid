@@ -1,0 +1,12 @@
+<article class="container-reading page-section">
+  <p class="eyebrow">{{ article.published_at | date: '%B %d, %Y' }}</p>
+  <h1 class="page-title">{{ article.title }}</h1>
+  {%- if article.image != blank -%}{{ article.image | image_url: width: 1600 | image_tag: loading: 'eager', widths: '600, 900, 1200, 1600', sizes: '(max-width: 812px) 100vw, 780px', alt: article.image.alt }}{%- endif -%}
+  <div class="rte">{{ article.content }}</div>
+</article>
+
+{% schema %}
+{
+  "name": "Article"
+}
+{% endschema %}

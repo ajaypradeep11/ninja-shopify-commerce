@@ -1,0 +1,58 @@
+{%- if section.blocks.size > 0 -%}
+  <section class="reviews-marquee">
+    <div class="container-wide reviews-heading">
+      <a class="ebay-wordmark" href="{{ settings.ebay_url | default: section.settings.link }}" target="_blank" rel="noopener" aria-label="Visit our eBay store">
+        <span style="color:#E53238">e</span><span style="color:#0064D2">b</span><span style="color:#F5AF02">a</span><span style="color:#86B817">y</span>
+      </a>
+      <h2 class="eyebrow">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="marquee">
+      {%- for copy in (1..2) -%}
+        <div class="marquee__group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
+          {%- for block in section.blocks -%}
+            <figure class="review-card" {{ block.shopify_attributes }}>
+              <blockquote>“{{ block.settings.quote }}”</blockquote>
+              <figcaption>
+                <div>{{ block.settings.product }}</div>
+                <div class="review-card__buyer"><span class="verified-dot">✓</span>{{ block.settings.buyer }} · Verified purchase</div>
+              </figcaption>
+            </figure>
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Reviews marquee",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "FEEDBACK FROM EBAY" },
+    { "type": "url", "id": "link", "label": "eBay link" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "It came in great shape, and quality was surprisingly good." },
+        { "type": "text", "id": "product", "label": "Product", "default": "LocalNinja collectible" },
+        { "type": "text", "id": "buyer", "label": "Buyer", "default": "Verified buyer" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Reviews marquee",
+      "blocks": [
+        { "type": "review", "settings": { "quote": "It came in great shape, and quality was surprisingly good.", "product": "Metal Poker Fidget Slider", "buyer": "mtol6071" } },
+        { "type": "review", "settings": { "quote": "Fast shipping", "product": "Modern Warfare II Otaku Lamp", "buyer": "jaman-2577" } },
+        { "type": "review", "settings": { "quote": "Package arrived in perfect condition.", "product": "Itachi Moonlight LED Neon Poster", "buyer": "s5qhy_39" } },
+        { "type": "review", "settings": { "quote": "It looks amazing. Thank you for the prompt delivery.", "product": "Lucoa Anime Lamp Figure", "buyer": "mattheperreir0" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

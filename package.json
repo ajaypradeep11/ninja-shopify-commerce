@@ -1,0 +1,14 @@
+{
+  "name": "localninja-shopify-theme",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "shopify theme dev",
+    "check": "shopify theme check",
+    "push": "shopify theme push --unpublished"
+  },
+  "devDependencies": {
+    "@shopify/cli": "latest"
+  }
+}
+

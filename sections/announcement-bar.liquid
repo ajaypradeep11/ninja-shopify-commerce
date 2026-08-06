@@ -1,0 +1,35 @@
+{%- if section.settings.show_bar and section.settings.text != blank -%}
+  <div class="announcement" role="region" aria-label="Announcement">
+    <div class="marquee marquee--announcement">
+      {%- for copy in (1..2) -%}
+        <div class="marquee__group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
+          {%- for repeat in (1..6) -%}
+            <span>{{ section.settings.text }}</span><span class="marquee__separator" aria-hidden="true">✳</span>
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_bar",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement",
+      "default": "Free shipping above $65 CAD ✳ Ottawa local delivery in 1–2 days* ✳ Secure checkout"
+    }
+  ],
+  "presets": [{ "name": "Announcement bar" }]
+}
+{% endschema %}
+

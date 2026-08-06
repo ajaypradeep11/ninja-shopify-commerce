@@ -1,0 +1,97 @@
+<footer class="site-footer">
+  <div class="container-wide usp-strip">
+    <div class="usp-item">{% render 'icon', name: 'clock' %}<span>{{ section.settings.usp_1 }}</span></div>
+    <div class="usp-item">{% render 'icon', name: 'undo' %}<span>{{ section.settings.usp_2 }}</span></div>
+    <div class="usp-item">{% render 'icon', name: 'sparkles' %}<span>{{ section.settings.usp_3 }}</span></div>
+  </div>
+
+  <div class="footer-band">
+    <div class="container-wide footer-trust">
+      <div>
+        <h2 class="eyebrow">Accepted payment</h2>
+        <ul class="payment-icons" role="list">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag: class: 'payment-icon' }}</li>
+          {%- else -%}
+            <li class="payment-placeholder">Secure payment</li>
+          {%- endfor -%}
+        </ul>
+      </div>
+      <div class="footer-guarantee">
+        <h2 class="eyebrow eyebrow--with-icon">{% render 'icon', name: 'shield' %}100% satisfaction guaranteed</h2>
+        <p>{{ section.settings.returns_text }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-wide footer-links">
+    <div>
+      <h2 class="eyebrow">Shop</h2>
+      <ul role="list"><li><a href="{{ routes.all_products_collection_url }}">All products</a></li></ul>
+    </div>
+    <div>
+      <h2 class="eyebrow">Explore</h2>
+      <ul role="list">
+        {%- for link in section.settings.menu.links -%}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div>
+      <h2 class="eyebrow">Policies</h2>
+      <ul role="list">
+        {%- for policy in shop.policies -%}
+          {%- if policy != blank -%}<li><a href="{{ policy.url }}">{{ policy.title }}</a></li>{%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+
+  <div class="container-wide footer-contact">
+    {%- assign contact_email = settings.contact_email | default: shop.email -%}
+    {%- if contact_email != blank -%}<a href="mailto:{{ contact_email }}">{{ contact_email }}</a>{%- endif -%}
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container-wide">© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Footer menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "usp_1",
+      "label": "First benefit",
+      "default": "Ships in 48 hours"
+    },
+    {
+      "type": "text",
+      "id": "usp_2",
+      "label": "Second benefit",
+      "default": "30-day returns"
+    },
+    {
+      "type": "text",
+      "id": "usp_3",
+      "label": "Third benefit",
+      "default": "16 colors, one remote"
+    },
+    {
+      "type": "textarea",
+      "id": "returns_text",
+      "label": "Guarantee text",
+      "default": "30-day returns — a full refund to your original payment method, no store credit."
+    }
+  ],
+  "presets": [{ "name": "Footer" }]
+}
+{% endschema %}

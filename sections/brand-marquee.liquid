@@ -1,0 +1,50 @@
+{%- if section.blocks.size > 0 -%}
+  <section class="brand-marquee" aria-label="{{ section.settings.heading | escape }}">
+    {%- if section.settings.heading != blank -%}<h2 class="visually-hidden">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="marquee">
+      {%- for copy in (1..2) -%}
+        <div class="marquee__group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
+          {%- for repeat in (1..2) -%}
+            {%- for block in section.blocks -%}
+              <a class="brand-marquee__item" href="{{ block.settings.link | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.logo != blank -%}
+                  {{ block.settings.logo | image_url: width: 600 | image_tag: loading: 'lazy', widths: '200, 400, 600', sizes: '260px', alt: block.settings.name }}
+                {%- else -%}
+                  <span>{{ block.settings.name | default: 'Brand' }}</span>
+                {%- endif -%}
+              </a>
+            {%- endfor -%}
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Brand marquee",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Accessible heading", "default": "Shop by anime" }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "image_picker", "id": "logo", "label": "Logo" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Brand marquee",
+      "blocks": [{ "type": "brand" }, { "type": "brand" }, { "type": "brand" }]
+    }
+  ]
+}
+{% endschema %}
+

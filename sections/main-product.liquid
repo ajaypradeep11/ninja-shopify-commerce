@@ -1,0 +1,183 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_form_id = 'ProductForm-' | append: section.id
+  assign featured_image_alt = product.featured_image.alt | default: product.title
+-%}
+
+<section class="container-wide product-page">
+  <style>
+    body.template-product,
+    body.template-product #MainContent,
+    #shopify-section-{{ section.id }} {
+      background: #fff !important;
+    }
+
+    body.template-product #MainContent,
+    #shopify-section-{{ section.id }} {
+      --surface: #fff;
+      --ink: #111;
+      --subtle: #f5f5f5;
+      color: #111 !important;
+    }
+  </style>
+  <div class="product-layout">
+    <div class="product-gallery" data-gallery>
+      <div class="product-gallery__main">
+        {%- if product.featured_image != blank -%}
+          {{
+            product.featured_image
+            | image_url: width: 1800
+            | image_tag:
+              loading: 'eager',
+              widths: '600, 900, 1200, 1500, 1800',
+              sizes: '(max-width: 767px) 100vw, 55vw',
+              alt: featured_image_alt
+          }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+
+      {%- if product.images.size > 1 -%}
+        <div class="product-gallery__thumbs">
+          {%- for image in product.images -%}
+            <button
+              class="product-gallery__thumb{% if forloop.first %} is-active{% endif %}"
+              type="button"
+              aria-label="View image {{ forloop.index }}"
+              aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+              data-gallery-thumb
+              data-src="{{ image | image_url: width: 1800 }}"
+              data-alt="{{ image.alt | default: product.title | escape }}"
+            >
+              {{
+                image
+                | image_url: width: 240
+                | image_tag: loading: 'lazy', widths: '100, 160, 240', sizes: '20vw', alt: ''
+              }}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="product-info">
+      {%- form 'product', product, id: product_form_id, class: 'product-form', data-product-form: '' -%}
+        {%- for block in section.blocks -%}
+          <div {{ block.shopify_attributes }}>
+            
+            {%- case block.type -%}
+              {%- when 'vendor' -%}
+                {%- if product.vendor != blank -%}
+                  <p class="eyebrow">{{ product.vendor }}</p>
+                {%- endif -%}
+              {%- when 'title' -%}
+                <h1>{{ product.title }}</h1>
+              {%- when 'price' -%}
+                <div class="product-info__price" data-product-price>
+                  <span>{{ current_variant.price | money }}</span>
+                  {%- if current_variant.compare_at_price > current_variant.price -%}
+                    <span class="price--compare">{{ current_variant.compare_at_price | money }}</span>
+                  {%- endif -%}
+                </div>
+                {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+                  <div class="product-info__tax">Taxes included where applicable. Shipping calculated at checkout.</div>
+                {%- endif -%}
+              {%- when 'inventory' -%}
+                <div class="stock-line{% unless current_variant.available %} stock-line--out{% endunless %}">
+                  {%- if current_variant.available -%}In stock{%- else -%}Out of stock{%- endif -%}
+                </div>
+              {%- when 'description' -%}
+                {%- if product.description != blank -%}
+                  <div class="rte product-info__description">{{ product.description }}</div>
+                {%- endif -%}
+              {%- when 'variant_picker' -%}
+                <div class="product-option">
+                  <label class="quantity-label" for="Variant-{{ section.id }}">
+    {{ product.options_with_values.first.name }}
+  </label>
+                  <select class="filter-sort" id="Variant-{{ section.id }}" name="id">
+                    {%- for variant in product.variants -%}
+                      <option
+                        value="{{ variant.id }}"
+                        data-available="{{ variant.available }}"
+                        data-price="<span>{{ variant.price | money }}</span>{% if variant.compare_at_price > variant.price %}<span class='price--compare'>{{ variant.compare_at_price | money }}</span>{% endif %}"
+                        {% if variant == current_variant %}
+                          selected
+                        {% endif %}
+                      >
+                        {{ variant.title }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                </div>
+              {%- when 'quantity' -%}
+                <div class="product-option">
+                  <div class="quantity-label">Quantity</div>
+                  {% render 'quantity-input', name: 'quantity', value: 1, min: 1 %}
+                </div>
+              {%- when 'buy_buttons' -%}
+                <div class="product-form__row">
+                  <button
+                    class="button button--full"
+                    type="submit"
+                    {% unless current_variant.available %}
+                      disabled
+                    {% endunless %}
+                  >
+                    <span data-submit-text data-available-text="Add to cart" data-sold-text="Out of stock">
+                      {%- if current_variant.available %}Add to cart{% else %}Out of stock{% endif -%}
+                    </span>
+                  </button>
+                </div>
+                {%- if block.settings.show_dynamic_checkout -%}{{ form | payment_button }}{%- endif -%}
+              {%- when 'collapsible_tab' -%}
+                <div class="product-accordions">
+                  <details>
+                    <summary>{{ block.settings.heading }}</summary>
+                    <div class="rte product-accordions__content">{{ block.settings.content }}</div>
+                  </details>
+                </div>
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product information",
+  "blocks": [
+    { "type": "vendor", "name": "Vendor", "limit": 1 },
+    { "type": "title", "name": "Title", "limit": 1 },
+    { "type": "price", "name": "Price", "limit": 1 },
+    { "type": "inventory", "name": "Inventory status", "limit": 1 },
+    { "type": "description", "name": "Description", "limit": 1 },
+    { "type": "variant_picker", "name": "Variant picker", "limit": 1 },
+    { "type": "quantity", "name": "Quantity", "limit": 1 },
+    {
+      "type": "buy_buttons",
+      "name": "Buy buttons",
+      "limit": 1,
+      "settings": [
+        { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout button", "default": true }
+      ]
+    },
+    {
+      "type": "collapsible_tab",
+      "name": "Collapsible row",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shipping & returns" },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Ships within 48 hours. Free returns for 30 days.</p>"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

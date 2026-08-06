@@ -1,0 +1,28 @@
+{%- paginate blog.articles by section.settings.posts_per_page -%}
+  <section class="container-wide section-pad">
+    <div class="section-heading"><h1>{{ blog.title }}</h1></div>
+    <div class="article-grid">
+      {%- for article in blog.articles -%}
+        <article class="article-card">
+          <a href="{{ article.url }}">
+            {%- if article.image != blank -%}{{ article.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '360, 600, 1000', sizes: '(max-width: 767px) 100vw, 33vw', alt: article.image.alt }}{%- endif -%}
+            <p class="eyebrow">{{ article.published_at | date: '%B %d, %Y' }}</p>
+            <h2>{{ article.title }}</h2>
+            <p>{{ article.excerpt_or_content | strip_html | truncatewords: 24 }}</p>
+          </a>
+        </article>
+      {%- endfor -%}
+    </div>
+    {% render 'pagination', paginate: paginate %}
+  </section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Blog",
+  "settings": [
+    { "type": "range", "id": "posts_per_page", "min": 3, "max": 18, "step": 3, "label": "Posts per page", "default": 9 }
+  ]
+}
+{% endschema %}
+

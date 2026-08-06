@@ -1,0 +1,27 @@
+{
+  "current": {
+    "wordmark_base": "Local",
+    "wordmark_accent": "Ninja",
+    "color_surface": "#000000",
+    "color_ink": "#F4F3EF",
+    "color_brand": "#FFD84D",
+    "color_highlight": "#E8BE8E",
+    "color_subtle": "#2A2A28",
+    "page_width": 2600,
+    "contact_email": "support@localninja.ca",
+    "ebay_url": "https://www.ebay.ca/usr/local_ninja"
+  },
+  "presets": {
+    "LocalNinja": {
+      "wordmark_base": "Local",
+      "wordmark_accent": "Ninja",
+      "color_surface": "#000000",
+      "color_ink": "#F4F3EF",
+      "color_brand": "#FFD84D",
+      "color_highlight": "#E8BE8E",
+      "color_subtle": "#2A2A28",
+      "page_width": 2600
+    }
+  }
+}
+

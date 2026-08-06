@@ -1,0 +1,132 @@
+<section class="hero-shell">
+  <div class="hero" data-hero>
+    <div class="hero__media">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.settings.image != blank -%}
+            {%- assign slide_class = 'hero__slide' -%}
+            {%- if forloop.first -%}{%- assign slide_class = 'hero__slide is-active' -%}{%- endif -%}
+            {{ block.settings.image | image_url: width: 3200 | image_tag:
+              class: slide_class,
+              loading: 'eager',
+              widths: '750, 1200, 1800, 2400, 3200',
+              sizes: '100vw',
+              alt: block.settings.image.alt
+            }}
+          {%- elsif forloop.index == 1 -%}
+            <img class="hero__slide is-active" src="{{ 'hero-naruto-lamps.jpg' | asset_url }}" width="3200" height="1344" alt="" fetchpriority="high">
+          {%- elsif forloop.index == 2 -%}
+            <img class="hero__slide" src="{{ 'hero.jpg' | asset_url }}" width="3200" height="1344" alt="">
+          {%- else -%}
+            <div class="hero__slide hero__placeholder"></div>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        <img class="hero__slide is-active" src="{{ 'hero-naruto-lamps.jpg' | asset_url }}" width="3200" height="1344" alt="" fetchpriority="high">
+        <img class="hero__slide" src="{{ 'hero.jpg' | asset_url }}" width="3200" height="1344" alt="">
+      {%- endif -%}
+    </div>
+    <div class="hero__scrim"></div>
+
+    <div class="container-wide hero__content">
+      <p class="hero__location">{{ section.settings.location_text }}</p>
+      <div class="hero__copy">
+        {%- if section.settings.label != blank -%}<p class="eyebrow">{{ section.settings.label }}</p>{%- endif -%}
+        <h1>{{ section.settings.heading }}</h1>
+        {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+        <div class="hero__actions">
+          {%- if section.settings.primary_label != blank -%}
+            <a class="button" href="{{ section.settings.primary_link | default: routes.all_products_collection_url }}">{{ section.settings.primary_label }}</a>
+          {%- endif -%}
+          {%- if section.settings.secondary_label != blank -%}
+            <a class="button button--white" href="{{ section.settings.secondary_link | default: routes.all_products_collection_url }}">{{ section.settings.secondary_label }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    {%- assign slide_count = section.blocks.size -%}
+    {%- if slide_count == 0 -%}{%- assign slide_count = 2 -%}{%- endif -%}
+    {%- if slide_count > 1 -%}
+      <div class="hero__dots" aria-label="Choose hero slide">
+        {%- for index in (1..slide_count) -%}
+          <button class="hero__dot{% if index == 1 %} is-active{% endif %}" type="button" aria-label="Show slide {{ index }}" aria-current="{% if index == 1 %}true{% else %}false{% endif %}" data-hero-dot></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LocalNinja hero",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "location_text",
+      "label": "Location text",
+      "default": "📍 OTTAWA · FREE SHIPPING"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "COLLECTIBLE LED LAMPS"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your favorite anime, in a whole new light."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Collectible LED lamps featuring the characters and worlds you love."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Shop anime lamps"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "Shop all"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LocalNinja hero",
+      "blocks": [{ "type": "slide" }, { "type": "slide" }]
+    }
+  ]
+}
+{% endschema %}

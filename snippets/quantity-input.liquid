@@ -1,0 +1,13 @@
+<div class="quantity" data-quantity>
+  <button type="button" aria-label="Decrease quantity" data-quantity-minus>{% render 'icon', name: 'minus' %}</button>
+  <input
+    type="number"
+    name="{{ name | default: 'quantity' }}"
+    value="{{ value | default: 1 }}"
+    min="{{ min | default: 1 }}"
+    {% if max %}max="{{ max }}"{% endif %}
+    step="1"
+    aria-label="Quantity"
+  >
+  <button type="button" aria-label="Increase quantity" data-quantity-plus>{% render 'icon', name: 'plus' %}</button>
+</div>

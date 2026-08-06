@@ -1,0 +1,16 @@
+<section class="customer-page">
+  <h1>Activate your account</h1>
+  <p>Create a password to finish activating your LocalNinja account.</p>
+  {%- form 'activate_customer_password', class: 'form-grid' -%}
+    {%- if form.errors -%}<div class="form-errors">{{ form.errors | default_errors }}</div>{%- endif -%}
+    <div class="field"><label for="ActivatePassword">Password</label><input id="ActivatePassword" type="password" name="customer[password]" autocomplete="new-password" required></div>
+    <div class="field"><label for="ActivateConfirm">Confirm password</label><input id="ActivateConfirm" type="password" name="customer[password_confirmation]" autocomplete="new-password" required></div>
+    <button class="button" type="submit">Activate account</button>
+    <button class="button button--outline" type="submit" name="decline">Decline invitation</button>
+  {%- endform -%}
+</section>
+
+{% schema %}
+{ "name": "Activate account" }
+{% endschema %}
+

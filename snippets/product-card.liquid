@@ -1,0 +1,58 @@
+{%- liquid
+  assign card_product = product
+  assign card_image = card_product.featured_media.preview_image
+  assign hover_image = card_product.media[1].preview_image
+  assign card_alt = card_image.alt | default: card_product.title
+  assign image_loading = 'lazy'
+  if eager
+    assign image_loading = 'eager'
+  endif
+-%}
+
+<a class="product-card" href="{{ card_product.url }}">
+  <div class="product-card__media">
+    {%- if card_image != blank -%}
+      {{ card_image | image_url: width: 1000 | image_tag:
+        class: 'product-card__image',
+        loading: image_loading,
+        widths: '240, 360, 480, 720, 1000',
+        sizes: '(max-width: 767px) 50vw, (max-width: 1199px) 25vw, 17vw',
+        alt: card_alt
+      }}
+      {%- if hover_image != blank -%}
+        {{ hover_image | image_url: width: 1000 | image_tag:
+          class: 'product-card__image product-card__image--hover',
+          loading: 'lazy',
+          widths: '240, 360, 480, 720, 1000',
+          sizes: '(max-width: 767px) 50vw, (max-width: 1199px) 25vw, 17vw',
+          alt: ''
+        }}
+      {%- endif -%}
+    {%- else -%}
+      <div class="product-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
+    {%- endif -%}
+
+    {%- unless card_product.available -%}
+      <span class="product-card__badge">Out of stock</span>
+    {%- endunless -%}
+    {%- if card_product.compare_at_price_max > card_product.price -%}
+      <span class="product-card__badge product-card__badge--sale">Sale</span>
+    {%- endif -%}
+  </div>
+
+  <div class="product-card__info">
+    <h3 class="product-card__title">{{ card_product.title }}</h3>
+    <div class="product-card__price">
+      <span>
+        {%- if card_product.price_varies -%}From {% endif -%}
+        {{ card_product.price | money }}
+      </span>
+      {%- if card_product.compare_at_price_max > card_product.price -%}
+        <span class="price--compare">{{ card_product.compare_at_price_max | money }}</span>
+      {%- endif -%}
+    </div>
+    {%- if show_vendor and card_product.vendor != blank -%}
+      <p class="product-card__vendor">{{ card_product.vendor }}</p>
+    {%- endif -%}
+  </div>
+</a>

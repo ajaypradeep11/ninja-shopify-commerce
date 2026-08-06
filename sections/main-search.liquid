@@ -1,0 +1,49 @@
+{%- paginate search.results by section.settings.results_per_page -%}
+  <section>
+    <div class="container-wide catalog-header">
+      <h1>{% if search.performed %}Results for “{{ search.terms }}”{% else %}Search{% endif %}</h1>
+      {%- if search.performed -%}<p class="eyebrow catalog-header__count">{{ search.results_count }} results</p>{%- endif -%}
+      <form class="search-form" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="visually-hidden" for="MainSearch-{{ section.id }}">Search</label>
+        <input id="MainSearch-{{ section.id }}" type="search" name="q" value="{{ search.terms | escape }}" placeholder="Search products" required>
+        <button type="submit" aria-label="Search">{% render 'icon', name: 'search' %}</button>
+      </form>
+    </div>
+
+    {%- if search.performed -%}
+      <div class="light-island catalog-grid-wrap">
+        <div class="container-wide">
+          {%- if search.results_count == 0 -%}
+            <div class="section-empty"><p>No results found. Try a different search.</p></div>
+          {%- else -%}
+            <div class="product-grid">
+              {%- for item in search.results -%}
+                {%- if item.object_type == 'product' -%}
+                  {% render 'product-card', product: item, show_vendor: section.settings.show_vendor %}
+                {%- else -%}
+                  <a class="search-text-card" href="{{ item.url }}">
+                    <p class="eyebrow">{{ item.object_type }}</p>
+                    <h2>{{ item.title }}</h2>
+                    <p>{{ item.content | strip_html | truncatewords: 22 }}</p>
+                  </a>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+          {% render 'pagination', paginate: paginate %}
+        </div>
+      </div>
+    {%- endif -%}
+  </section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Search results",
+  "settings": [
+    { "type": "range", "id": "results_per_page", "min": 12, "max": 48, "step": 6, "label": "Results per page", "default": 24 },
+    { "type": "checkbox", "id": "show_vendor", "label": "Show product vendor", "default": false }
+  ]
+}
+{% endschema %}
+

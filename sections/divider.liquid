@@ -1,0 +1,21 @@
+<div class="selvedge" aria-hidden="true" style="margin-block: {{ section.settings.margin }}px"></div>
+
+{% schema %}
+{
+  "name": "Ninja divider",
+  "settings": [
+    {
+      "type": "range",
+      "id": "margin",
+      "min": 0,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical spacing",
+      "default": 24
+    }
+  ],
+  "presets": [{ "name": "Ninja divider" }]
+}
+{% endschema %}
+

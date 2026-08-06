@@ -1,0 +1,273 @@
+{%- liquid
+  assign newest_url = routes.all_products_collection_url | append: '?sort_by=created-descending'
+  assign best_selling_url = routes.all_products_collection_url | append: '?sort_by=best-selling'
+-%}
+
+<header class="site-header" data-header>
+    <div class="site-header__inset">
+      <div class="site-header__pill">
+        <div class="container-wide site-header__grid">
+          <div class="site-header__left">
+            <button
+              class="icon-button"
+              type="button"
+              aria-label="Open menu"
+              aria-expanded="false"
+              data-menu-open
+            >
+              {% render 'icon', name: 'menu' %}
+            </button>
+
+            <a class="header-utility-link" href="{{ newest_url }}">
+              New arrivals
+            </a>
+
+            <a class="header-utility-link" href="{{ best_selling_url }}">
+              Best sellers
+            </a>
+          </div>
+
+          <a
+            class="wordmark"
+            href="{{ routes.root_url }}"
+            aria-label="{{ shop.name }} home"
+          >
+            {%- if settings.logo != blank -%}
+              {{
+                settings.logo
+                | image_url: width: 128
+                | image_tag:
+                  class: 'wordmark__logo',
+                  widths: '80, 112, 128',
+                  alt: ''
+              }}
+            {%- else -%}
+              <img
+                class="wordmark__logo"
+                src="{{ 'logo-animated.svg' | asset_url }}"
+                width="64"
+                height="64"
+                alt=""
+              >
+            {%- endif -%}
+
+            <span class="wordmark__text">
+              {{ settings.wordmark_base }}
+              <span class="wordmark__accent">
+                {{ settings.wordmark_accent }}
+              </span>
+
+              <span class="wordmark__star" aria-hidden="true">✦</span>
+            </span>
+          </a>
+
+          <div class="site-header__right">
+            {%- if section.settings.show_search -%}
+              <form
+                class="header-search"
+                action="{{ routes.search_url }}"
+                method="get"
+                role="search"
+              >
+                <label
+                  class="visually-hidden"
+                  for="HeaderSearch-{{ section.id }}"
+                >
+                  Search
+                </label>
+
+                <input
+                  id="HeaderSearch-{{ section.id }}"
+                  type="search"
+                  name="q"
+                  value="{{ search.terms | escape }}"
+                  placeholder="Search"
+                  autocomplete="off"
+                >
+
+                <button type="submit" aria-label="Search">
+                  {% render 'icon', name: 'search' %}
+                </button>
+              </form>
+            {%- endif -%}
+
+            {%- if section.settings.show_account -%}
+              <a
+                class="icon-button"
+                href="{{ routes.account_url }}"
+                aria-label="Account"
+              >
+                {% render 'icon', name: 'user' %}
+              </a>
+            {%- endif -%}
+
+            <a
+              class="icon-button cart-link"
+              href="{{ routes.cart_url }}"
+              aria-label="Cart, {{ cart.item_count }} items"
+            >
+              {% render 'icon', name: 'bag' %}
+
+              <span
+                class="cart-count"
+                data-cart-count
+                {% if cart.item_count == 0 %}hidden{% endif %}
+              >
+                {{ cart.item_count }}
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Drawer is intentionally outside the glass pill. -->
+      <div class="menu-drawer" data-menu-drawer hidden>
+        <button
+          class="menu-drawer__scrim"
+          type="button"
+          aria-label="Close menu"
+          data-menu-close
+        ></button>
+
+        <nav class="menu-drawer__panel" aria-label="Main navigation">
+          <div class="menu-drawer__top">
+            <span class="eyebrow">Menu</span>
+
+            <button
+              class="icon-button"
+              type="button"
+              aria-label="Close menu"
+              data-menu-close
+            >
+              {% render 'icon', name: 'close' %}
+            </button>
+          </div>
+
+          {%- if section.settings.show_search -%}
+            <form
+              class="drawer-search"
+              action="{{ routes.search_url }}"
+              method="get"
+              role="search"
+            >
+              <label
+                class="visually-hidden"
+                for="DrawerSearch-{{ section.id }}"
+              >
+                Search
+              </label>
+
+              <input
+                id="DrawerSearch-{{ section.id }}"
+                type="search"
+                name="q"
+                placeholder="Search products"
+              >
+
+              <button type="submit" aria-label="Search">
+                {% render 'icon', name: 'search' %}
+              </button>
+            </form>
+          {%- endif -%}
+
+          <ul class="menu-drawer__links" role="list">
+            <li>
+              <a href="{{ routes.all_products_collection_url }}">Shop</a>
+            </li>
+
+            <li>
+              <a href="{{ newest_url }}">New arrivals</a>
+            </li>
+
+            <li>
+              <a href="{{ best_selling_url }}">Best sellers</a>
+            </li>
+
+            {%- for link in section.settings.menu.links -%}
+              <li>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+
+                {%- if link.links != blank -%}
+                  <ul class="menu-drawer__subnav" role="list">
+                    {%- for childlink in link.links -%}
+                      <li>
+                        <a href="{{ childlink.url }}">
+                          {{ childlink.title }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+{% stylesheet %}
+    .site-header__pill {
+      background: rgba(40, 38, 35, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.35),
+        inset 0 1px rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+    }
+
+    .menu-drawer {
+    z-index: 999;
+    width: 100vw;
+    height: 100dvh;
+  }
+
+  .menu-drawer__panel {
+    height: 100dvh;
+  }
+
+    .header-search input {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+  {% endstylesheet %}
+  {% style %}
+    #shopify-section-{{ section.id }} {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 0;
+    }
+
+    #shopify-section-{{ section.id }} .site-header {
+      position: relative;
+      top: auto;
+    }
+  {% endstyle %}
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account",
+      "default": true
+    }
+  ],
+  "presets": [{ "name": "Header" }]
+}
+{% endschema %}
+

@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "main": { "type": "main-404", "settings": { "heading": "This page vanished.", "text": "The ninja moved it—or the link is no longer available." } }
+  },
+  "order": ["main"]
+}
+

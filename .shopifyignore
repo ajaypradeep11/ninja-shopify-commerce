@@ -1,0 +1,7 @@
+.git/
+.github/
+.DS_Store
+node_modules/
+package*.json
+README.md
+ebay-template/
