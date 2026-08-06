@@ -153,6 +153,10 @@
                 <div class="product-installments">{{ form | payment_terms }}</div>
               {%- when 'share' -%}
                 {%- assign share_url = shop.url | append: product.url -%}
+                {%- assign pin_media = '' -%}
+                {%- if product.featured_image != blank -%}
+                  {%- assign pin_media = product.featured_image | image_url: width: 1200 | url_encode | prepend: '&media=' -%}
+                {%- endif -%}
                 <div class="share-row">
                   <span class="share-row__label">Share:</span>
                   <a
@@ -175,7 +179,7 @@
                   </a>
                   <a
                     class="share-row__link"
-                    href="https://pinterest.com/pin/create/button/?url={{ share_url | url_encode }}&media={{ product.featured_image | image_url: width: 1200 | url_encode }}&description={{ product.title | url_encode }}"
+                    href="https://pinterest.com/pin/create/button/?url={{ share_url | url_encode }}{{ pin_media }}&description={{ product.title | url_encode }}"
                     target="_blank"
                     rel="noopener"
                     aria-label="Pin on Pinterest"
