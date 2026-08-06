@@ -18,7 +18,9 @@
         },
         "slide_2": {
           "type": "slide",
-          "settings": {}
+          "settings": {
+            "cta_label": "Shop clothing"
+          }
         }
       },
       "block_order": [
