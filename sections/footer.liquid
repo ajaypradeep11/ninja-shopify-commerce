@@ -1,8 +1,14 @@
 <footer class="site-footer">
   <div class="container-wide usp-strip">
-    <div class="usp-item">{% render 'icon', name: 'clock' %}<span>{{ section.settings.usp_1 }}</span></div>
-    <div class="usp-item">{% render 'icon', name: 'undo' %}<span>{{ section.settings.usp_2 }}</span></div>
-    <div class="usp-item">{% render 'icon', name: 'sparkles' %}<span>{{ section.settings.usp_3 }}</span></div>
+    {%- if section.settings.usp_1 != blank -%}
+      <div class="usp-item">{% render 'icon', name: 'clock' %}<span>{{ section.settings.usp_1 }}</span></div>
+    {%- endif -%}
+    {%- if section.settings.usp_2 != blank -%}
+      <div class="usp-item">{% render 'icon', name: 'undo' %}<span>{{ section.settings.usp_2 }}</span></div>
+    {%- endif -%}
+    {%- if section.settings.usp_3 != blank -%}
+      <div class="usp-item">{% render 'icon', name: 'sparkles' %}<span>{{ section.settings.usp_3 }}</span></div>
+    {%- endif -%}
   </div>
 
   <div class="footer-band">
