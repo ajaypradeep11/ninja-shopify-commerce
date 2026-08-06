@@ -150,6 +150,39 @@
                   </button>
                 </div>
                 {%- if block.settings.show_dynamic_checkout -%}{{ form | payment_button }}{%- endif -%}
+                <div class="product-installments">{{ form | payment_terms }}</div>
+              {%- when 'share' -%}
+                {%- assign share_url = shop.url | append: product.url -%}
+                <div class="share-row">
+                  <span class="share-row__label">Share:</span>
+                  <a
+                    class="share-row__link"
+                    href="https://www.facebook.com/sharer/sharer.php?u={{ share_url | url_encode }}"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Share on Facebook"
+                  >
+                    {%- render 'icon', name: 'facebook' -%}
+                  </a>
+                  <a
+                    class="share-row__link"
+                    href="https://x.com/intent/post?url={{ share_url | url_encode }}&text={{ product.title | url_encode }}"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Share on X"
+                  >
+                    {%- render 'icon', name: 'x' -%}
+                  </a>
+                  <a
+                    class="share-row__link"
+                    href="https://pinterest.com/pin/create/button/?url={{ share_url | url_encode }}&media={{ product.featured_image | image_url: width: 1200 | url_encode }}&description={{ product.title | url_encode }}"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Pin on Pinterest"
+                  >
+                    {%- render 'icon', name: 'pinterest' -%}
+                  </a>
+                </div>
               {%- when 'collapsible_tab' -%}
                 <div class="product-accordions">
                   <details>
@@ -184,6 +217,7 @@
         { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show dynamic checkout button", "default": true }
       ]
     },
+    { "type": "share", "name": "Share buttons", "limit": 1 },
     {
       "type": "collapsible_tab",
       "name": "Collapsible row",
