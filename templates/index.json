@@ -1,1 +1,217 @@
-{"sections":{"hero":{"type":"hero-carousel","blocks":{"slide_1":{"type":"slide","settings":{}},"slide_2":{"type":"slide","settings":{}}},"block_order":["slide_1","slide_2"],"custom_css":["&,.hero-shell {background: #fff;}"],"settings":{"location_text":"📍 OTTAWA · FREE SHIPPING","label":"COLLECTIBLE ANIME MERCH","heading":"Your Fandom. Your World.","text":"Discover anime-inspired LED lamps, lightboxes, figurines, cosplay gear, keychains and collectibles made to bring your favourite worlds to life.","primary_label":"Shop anime lamps","primary_link":"","secondary_label":"Shop all","secondary_link":""}},"divider_1":{"type":"divider","custom_css":[".selvedge {height: 52px; margin-block: 0 !important; border-block: 24px solid #fff; background: repeating-linear-gradient(90deg, #e5b92f 0 24px, #fff 24px 36px);}"],"settings":{"margin":24}},"collection_tiles":{"type":"collection-tiles","blocks":{"collection_1":{"type":"collection","settings":{"collection":"","title":""}},"collection_2":{"type":"collection","settings":{"collection":"","title":""}},"collection_3":{"type":"collection","settings":{"collection":"","title":""}},"collection_4":{"type":"collection","settings":{"collection":"","title":""}}},"block_order":["collection_1","collection_2","collection_3","collection_4"],"disabled":true,"settings":{"heading":"Shop by collection"}},"brand_marquee":{"type":"brand-marquee","blocks":{"brand_1":{"type":"brand","settings":{"name":"Naruto","link":""}},"brand_2":{"type":"brand","settings":{"name":"One Piece","link":""}},"brand_3":{"type":"brand","settings":{"name":"Dragon Ball","link":""}}},"block_order":["brand_1","brand_2","brand_3"],"disabled":true,"settings":{"heading":"Shop by anime"}},"products":{"type":"featured-product-rail","custom_css":[".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8;}",".text-link {color: #a16207;}",".section-heading a {font-family: var(--font-display); font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: #d4af2c;}"],"settings":{"heading":"","collection":"","link_label":"Shop all","show_vendor":false,"products_to_show":24}},"reviews":{"type":"reviews-marquee","blocks":{"review_1":{"type":"review","settings":{"quote":"It came in great shape, and quality was surprisingly good.","product":"Metal Poker Fidget Slider King","buyer":"mtol6071"}},"review_2":{"type":"review","settings":{"quote":"Fast shipping","product":"Modern Warfare II Otaku Lamp","buyer":"jaman-2577"}},"review_3":{"type":"review","settings":{"quote":"As described","product":"Modern Warfare II Otaku Lamp","buyer":"nro_doc"}},"review_4":{"type":"review","settings":{"quote":"Package arrived in perfect condition.","product":"Itachi Moonlight LED Neon Poster","buyer":"s5qhy_39"}},"review_5":{"type":"review","settings":{"quote":"It looks amazing. Thank you for the prompt delivery.","product":"Lucoa Anime Lamp Figure","buyer":"mattheperreir0"}}},"block_order":["review_1","review_2","review_3","review_4","review_5"],"custom_css":[".reviews-marquee {padding-top: 30px;}"],"settings":{"heading":"FEEDBACK FROM EBAY","link":""}},"1785866129c28a0cff":{"type":"_blocks","settings":{}}},"order":["hero","divider_1","collection_tiles","brand_marquee","products","reviews","1785866129c28a0cff"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero-carousel",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2"
+      ],
+      "custom_css": [
+        "&,.hero-shell {background: #fff;}"
+      ],
+      "settings": {
+        "location_text": "📍 OTTAWA · FREE SHIPPING",
+        "label": "COLLECTIBLE ANIME MERCH",
+        "heading": "Your Fandom. Your World.",
+        "text": "Discover anime-inspired LED lamps, lightboxes, figurines, cosplay gear, keychains and collectibles made to bring your favourite worlds to life.",
+        "primary_label": "Shop anime lamps",
+        "primary_link": "",
+        "secondary_label": "Shop all",
+        "secondary_link": ""
+      }
+    },
+    "divider_1": {
+      "type": "divider",
+      "custom_css": [
+        ".selvedge {height: 52px; margin-block: 0 !important; border-block: 24px solid #fff; background: repeating-linear-gradient(90deg, #e5b92f 0 24px, #fff 24px 36px);}"
+      ],
+      "settings": {
+        "margin": 24
+      }
+    },
+    "collection_tiles": {
+      "type": "collection-tiles",
+      "blocks": {
+        "collection_1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "collection_2": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "collection_3": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
+        "collection_4": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_1",
+        "collection_2",
+        "collection_3",
+        "collection_4"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Shop by collection"
+      }
+    },
+    "brand_marquee": {
+      "type": "brand-marquee",
+      "blocks": {
+        "brand_1": {
+          "type": "brand",
+          "settings": {
+            "name": "Naruto",
+            "link": ""
+          }
+        },
+        "brand_2": {
+          "type": "brand",
+          "settings": {
+            "name": "One Piece",
+            "link": ""
+          }
+        },
+        "brand_3": {
+          "type": "brand",
+          "settings": {
+            "name": "Dragon Ball",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Shop by anime"
+      }
+    },
+    "products": {
+      "type": "featured-product-rail",
+      "custom_css": [
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8;}",
+        ".text-link {color: #a16207;}",
+        ".section-heading a {font-family: var(--font-display); font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: #d4af2c;}"
+      ],
+      "settings": {
+        "heading": "",
+        "collection": "main-page",
+        "link_label": "Shop all",
+        "show_vendor": false,
+        "products_to_show": 24
+      }
+    },
+    "reviews": {
+      "type": "reviews-marquee",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "quote": "It came in great shape, and quality was surprisingly good.",
+            "product": "Metal Poker Fidget Slider King",
+            "buyer": "mtol6071"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "quote": "Fast shipping",
+            "product": "Modern Warfare II Otaku Lamp",
+            "buyer": "jaman-2577"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "quote": "As described",
+            "product": "Modern Warfare II Otaku Lamp",
+            "buyer": "nro_doc"
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "quote": "Package arrived in perfect condition.",
+            "product": "Itachi Moonlight LED Neon Poster",
+            "buyer": "s5qhy_39"
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "quote": "It looks amazing. Thank you for the prompt delivery.",
+            "product": "Lucoa Anime Lamp Figure",
+            "buyer": "mattheperreir0"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5"
+      ],
+      "custom_css": [
+        ".reviews-marquee {padding-top: 30px;}"
+      ],
+      "settings": {
+        "heading": "FEEDBACK FROM EBAY",
+        "link": ""
+      }
+    },
+    "1785866129c28a0cff": {
+      "type": "_blocks",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "divider_1",
+    "collection_tiles",
+    "brand_marquee",
+    "products",
+    "reviews",
+    "1785866129c28a0cff"
+  ]
+}
