@@ -89,7 +89,12 @@
                 </div>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <div class="rte product-info__description">{{ product.description }}</div>
+                  <div class="product-accordions">
+                    <details open>
+                      <summary>Description</summary>
+                      <div class="rte product-accordions__content">{{ product.description }}</div>
+                    </details>
+                  </div>
                 {%- endif -%}
               {%- when 'variant_picker' -%}
                 {%- if product.has_only_default_variant -%}

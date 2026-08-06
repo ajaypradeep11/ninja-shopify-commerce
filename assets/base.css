@@ -1460,6 +1460,11 @@ h1 {
   color: color-mix(in srgb, var(--ink) 70%, transparent);
 }
 
+.product-form > div:has(> .product-accordions) + div:has(> .product-accordions) .product-accordions {
+  margin-top: 0;
+  border-top: 0;
+}
+
 .shopify-payment-button {
   margin-top: 10px;
 }
