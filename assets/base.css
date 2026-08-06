@@ -662,7 +662,8 @@ h1 {
 }
 
 .hero__chips,
-.hero__shop-all {
+.hero__shop-all,
+.hero__media-label {
   display: none;
 }
 
@@ -2171,17 +2172,17 @@ body.template-cart .site-header__pill {
   }
   .hero__chip {
     display: inline-flex;
-    min-height: 40px;
-    flex: 1 1 auto;
+    min-height: 30px;
+    flex: 0 1 auto;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
     border: 1px solid rgb(255 255 255 / 30%);
     border-radius: 999px;
-    padding: 8px 10px;
+    padding: 5px 14px;
     color: #fff;
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     white-space: nowrap;
@@ -2189,6 +2190,23 @@ body.template-cart .site-header__pill {
     transform: translateY(12px);
     animation: chip-in 0.45s ease forwards;
     transition: background 0.25s, color 0.25s, transform 0.15s;
+  }
+  .hero__copy .eyebrow { display: none; }
+  .hero__media-label {
+    position: absolute;
+    z-index: 3;
+    top: 12px;
+    left: 12px;
+    display: block;
+    margin: 0;
+    border-radius: 999px;
+    padding: 6px 12px;
+    background: rgb(0 0 0 / 72%);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
   }
   .hero__chip:nth-child(2) { animation-delay: 0.1s; }
   .hero__chip:nth-child(3) { animation-delay: 0.2s; }
