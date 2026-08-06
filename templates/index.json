@@ -140,7 +140,7 @@
       "settings": {
         "heading": "",
         "collection": "main-page",
-        "link_label": "",
+        "link_label": "Go to all products",
         "show_vendor": false,
         "products_to_show": 24
       }
