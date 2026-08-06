@@ -79,15 +79,13 @@ document.documentElement.classList.add('js');
       const start = () => {
         if (reducedMotion.matches) return;
         window.clearInterval(timer);
-        timer = window.setInterval(() => select(active + 1), 5000);
+        timer = window.setInterval(() => select(active + 1), 4000);
       };
 
       dots.forEach((dot, index) => dot.addEventListener('click', () => {
         select(index);
         start();
       }));
-      hero.addEventListener('mouseenter', () => window.clearInterval(timer));
-      hero.addEventListener('mouseleave', start);
       start();
     });
   }
