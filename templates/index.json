@@ -133,7 +133,7 @@
     "products": {
       "type": "featured-product-rail",
       "custom_css": [
-        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 16px;}",
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 0;}",
         ".text-link {color: #a16207;}",
         ".section-heading a {font-family: var(--font-display); font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: #d4af2c;}"
       ],
