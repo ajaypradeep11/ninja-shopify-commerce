@@ -14,7 +14,7 @@
               alt: block.settings.image.alt
             }}
           {%- elsif forloop.index == 1 -%}
-            <img class="hero__slide is-active" src="{{ 'hero-naruto-lamps.jpg' | asset_url }}" width="3200" height="1344" alt="" fetchpriority="high">
+            <img class="hero__slide is-active" src="{{ 'hero-opening-sale.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale" fetchpriority="high">
           {%- elsif forloop.index == 2 -%}
             <img class="hero__slide" src="{{ 'hero.jpg' | asset_url }}" width="3200" height="1344" alt="">
           {%- else -%}
@@ -22,7 +22,7 @@
           {%- endif -%}
         {%- endfor -%}
       {%- else -%}
-        <img class="hero__slide is-active" src="{{ 'hero-naruto-lamps.jpg' | asset_url }}" width="3200" height="1344" alt="" fetchpriority="high">
+        <img class="hero__slide is-active" src="{{ 'hero-opening-sale.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale" fetchpriority="high">
         <img class="hero__slide" src="{{ 'hero.jpg' | asset_url }}" width="3200" height="1344" alt="">
       {%- endif -%}
     </div>
