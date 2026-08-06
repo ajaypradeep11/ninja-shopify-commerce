@@ -14,7 +14,9 @@
       "blocks": {
         "slide_1": {
           "type": "slide",
-          "settings": {}
+          "settings": {
+            "cta_label": "Shop clothing"
+          }
         },
         "slide_2": {
           "type": "slide",
