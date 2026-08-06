@@ -54,6 +54,14 @@ document.documentElement.classList.add('js');
       let active = Math.max(0, slides.findIndex((slide) => slide.classList.contains('is-active')));
       let timer;
 
+      const cta = hero.querySelector('[data-hero-cta]');
+      let ctas = [];
+      try {
+        ctas = JSON.parse(hero.querySelector('[data-hero-ctas]')?.textContent || '[]');
+      } catch (error) {
+        ctas = [];
+      }
+
       const select = (index) => {
         active = (index + slides.length) % slides.length;
         slides.forEach((slide, i) => slide.classList.toggle('is-active', i === active));
@@ -61,6 +69,11 @@ document.documentElement.classList.add('js');
           dot.classList.toggle('is-active', i === active);
           dot.setAttribute('aria-current', i === active ? 'true' : 'false');
         });
+        const slideCta = ctas[active];
+        if (cta && slideCta && slideCta.label) {
+          cta.textContent = slideCta.label;
+          cta.setAttribute('href', slideCta.href || cta.getAttribute('href'));
+        }
       };
 
       const start = () => {
