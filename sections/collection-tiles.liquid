@@ -1,16 +1,50 @@
 <section class="container-wide section-pad">
-  {%- if section.settings.heading != blank -%}
-    <div class="section-heading"><h2>{{ section.settings.heading }}</h2></div>
-  {%- endif -%}
+  <div class="section-heading">
+    <h2>{{ section.settings.heading }}</h2>
+    {%- if section.settings.link_label != blank -%}
+      <a class="tiles-link" href="{{ section.settings.link | default: routes.collections_url }}">{{ section.settings.link_label }}</a>
+    {%- endif -%}
+  </div>
   <div class="collection-tiles">
     {%- for block in section.blocks -%}
-      {%- assign tile_collection = block.settings.collection -%}
-      {%- assign tile_image = block.settings.image | default: tile_collection.featured_image -%}
-      <a class="collection-tile{% if tile_image == blank %} collection-tile--text{% endif %}" href="{{ tile_collection.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
-        {%- if tile_image != blank -%}
-          {{ tile_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '320, 480, 700, 900', sizes: '(max-width: 639px) 50vw, 20vw', alt: tile_image.alt }}
-        {%- endif -%}
-        <span class="collection-tile__title">{{ block.settings.title | default: tile_collection.title | default: 'Collection' }}</span>
+      {%- liquid
+        assign tile_collection = block.settings.collection
+        if tile_collection == blank and block.settings.title != blank
+          assign guess = block.settings.title | handleize
+          if collections[guess] != blank
+            assign tile_collection = collections[guess]
+          endif
+        endif
+        assign tile_image = block.settings.image
+        if tile_image == blank
+          assign tile_image = tile_collection.featured_image
+        endif
+        if tile_image == blank and tile_collection.products.size > 0
+          assign tile_image = tile_collection.products.first.featured_image
+        endif
+        assign tile_subtitle = block.settings.subtitle
+        if tile_subtitle == blank and tile_collection != blank and tile_collection.products.size > 0
+          assign min_price = tile_collection.products | map: 'price_min' | sort | first
+          if min_price
+            capture tile_subtitle
+              echo 'From '
+              echo min_price | money
+            endcapture
+          endif
+        endif
+      -%}
+      <a class="collection-tile" href="{{ tile_collection.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
+        <span class="collection-tile__media">
+          {%- if tile_image != blank -%}
+            {{ tile_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '320, 480, 700, 900', sizes: '(max-width: 639px) 66vw, 20vw', alt: tile_image.alt }}
+          {%- endif -%}
+        </span>
+        <span class="collection-tile__footer">
+          <span class="collection-tile__title">{{ block.settings.title | default: tile_collection.title | default: 'Collection' }}</span>
+          {%- if tile_subtitle != blank -%}
+            <span class="collection-tile__subtitle">{{ tile_subtitle }}</span>
+          {%- endif -%}
+        </span>
       </a>
     {%- endfor -%}
   </div>
@@ -24,8 +58,15 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Shop by collection"
-    }
+      "default": "Shop by category"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "View all →"
+    },
+    { "type": "url", "id": "link", "label": "Link" }
   ],
   "blocks": [
     {
@@ -34,11 +75,17 @@
       "settings": [
         { "type": "collection", "id": "collection", "label": "Collection" },
         { "type": "image_picker", "id": "image", "label": "Custom image" },
-        { "type": "text", "id": "title", "label": "Custom title" }
+        { "type": "text", "id": "title", "label": "Custom title" },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "info": "Leave blank to show the collection's lowest price automatically."
+        }
       ]
     }
   ],
-  "max_blocks": 6,
+  "max_blocks": 8,
   "presets": [
     {
       "name": "Collection tiles",
@@ -52,4 +99,3 @@
   ]
 }
 {% endschema %}
-

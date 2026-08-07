@@ -66,28 +66,36 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "title": ""
+            "title": "T-shirts"
           }
         },
         "collection_2": {
           "type": "collection",
           "settings": {
             "collection": "",
-            "title": ""
+            "title": "LED lamps"
           }
         },
         "collection_3": {
           "type": "collection",
           "settings": {
             "collection": "",
-            "title": ""
+            "title": "Hoodies"
           }
         },
         "collection_4": {
           "type": "collection",
           "settings": {
             "collection": "",
-            "title": ""
+            "title": "Beanies"
+          }
+        },
+        "collection_5": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": "Cosplay gear",
+            "subtitle": "Props & accessories"
           }
         }
       },
@@ -95,11 +103,52 @@
         "collection_1",
         "collection_2",
         "collection_3",
-        "collection_4"
+        "collection_4",
+        "collection_5"
       ],
-      "disabled": true,
       "settings": {
-        "heading": "Shop by collection"
+        "heading": "SHOP BY CATEGORY",
+        "link_label": "View all →"
+      }
+    },
+    "best_sellers": {
+      "type": "featured-product-rail",
+      "settings": {
+        "heading": "BEST SELLERS",
+        "collection": "best-sellers",
+        "link_label": "",
+        "show_vendor": false,
+        "products_to_show": 12
+      }
+    },
+    "anime_chips": {
+      "type": "anime-chips",
+      "blocks": {
+        "chip_1": { "type": "chip", "settings": { "name": "Attack on Titan" } },
+        "chip_2": { "type": "chip", "settings": { "name": "Naruto" } },
+        "chip_3": { "type": "chip", "settings": { "name": "Chainsaw Man" } },
+        "chip_4": { "type": "chip", "settings": { "name": "Tokyo Ghoul" } },
+        "chip_5": { "type": "chip", "settings": { "name": "Demon Slayer" } },
+        "chip_6": { "type": "chip", "settings": { "name": "Solo Leveling" } },
+        "chip_7": { "type": "chip", "settings": { "name": "Jujutsu Kaisen" } },
+        "chip_8": { "type": "chip", "settings": { "name": "Hunter x Hunter" } },
+        "chip_9": { "type": "chip", "settings": { "name": "Hololive" } },
+        "chip_10": { "type": "chip", "settings": { "name": "Call of Duty" } }
+      },
+      "block_order": [
+        "chip_1",
+        "chip_2",
+        "chip_3",
+        "chip_4",
+        "chip_5",
+        "chip_6",
+        "chip_7",
+        "chip_8",
+        "chip_9",
+        "chip_10"
+      ],
+      "settings": {
+        "heading": "SHOP BY ANIME"
       }
     },
     "brand_marquee": {
@@ -218,6 +267,8 @@
     "hero",
     "divider_1",
     "collection_tiles",
+    "best_sellers",
+    "anime_chips",
     "brand_marquee",
     "products",
     "reviews",
