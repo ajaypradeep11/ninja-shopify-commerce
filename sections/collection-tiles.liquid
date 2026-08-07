@@ -23,15 +23,6 @@
           assign tile_image = tile_collection.products.first.featured_image
         endif
         assign tile_subtitle = block.settings.subtitle
-        if tile_subtitle == blank and tile_collection != blank and tile_collection.products.size > 0
-          assign min_price = tile_collection.products | map: 'price_min' | sort | first
-          if min_price
-            capture tile_subtitle
-              echo 'From '
-              echo min_price | money
-            endcapture
-          endif
-        endif
       -%}
       <a class="collection-tile" href="{{ tile_collection.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
         <span class="collection-tile__media">

@@ -958,7 +958,7 @@ h1 {
 
 .collection-tile__media {
   display: block;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: color-mix(in srgb, var(--ink) 9%, transparent);
 }
