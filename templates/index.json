@@ -15,19 +15,22 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "cta_label": "Shop clothing"
+            "cta_label": "Shop clothing",
+            "cta_link": ""
           }
         },
         "slide_2": {
           "type": "slide",
           "settings": {
-            "cta_label": "Shop clothing"
+            "cta_label": "Shop clothing",
+            "cta_link": ""
           }
         },
         "slide_3": {
           "type": "slide",
           "settings": {
-            "cta_label": "Shop anime lamps"
+            "cta_label": "Shop anime lamps",
+            "cta_link": ""
           }
         }
       },
@@ -61,36 +64,37 @@
     },
     "collection_tiles": {
       "type": "collection-tiles",
-      "custom_css": [
-        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8;}"
-      ],
       "blocks": {
         "collection_1": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "title": "T-shirts"
+            "collection": "tshirt",
+            "title": "T-shirts",
+            "subtitle": ""
           }
         },
         "collection_2": {
           "type": "collection",
           "settings": {
             "collection": "",
-            "title": "LED lamps"
+            "title": "LED lamps",
+            "subtitle": ""
           }
         },
         "collection_3": {
           "type": "collection",
           "settings": {
             "collection": "",
-            "title": "Hoodies"
+            "title": "Hoodies",
+            "subtitle": ""
           }
         },
         "collection_4": {
           "type": "collection",
           "settings": {
             "collection": "",
-            "title": "Beanies"
+            "title": "Beanies",
+            "subtitle": ""
           }
         },
         "collection_5": {
@@ -109,9 +113,13 @@
         "collection_4",
         "collection_5"
       ],
+      "custom_css": [
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8;}"
+      ],
       "settings": {
         "heading": "SHOP BY CATEGORY",
-        "link_label": "View all →"
+        "link_label": "View all →",
+        "link": ""
       }
     },
     "best_sellers": {
@@ -129,20 +137,77 @@
     },
     "anime_chips": {
       "type": "anime-chips",
-      "custom_css": [
-        ".section-pad {background: #050505 !important; color: #f4f3ef; --surface: #050505; --ink: #f4f3ef;}"
-      ],
       "blocks": {
-        "chip_1": { "type": "chip", "settings": { "name": "Attack on Titan" } },
-        "chip_2": { "type": "chip", "settings": { "name": "Naruto" } },
-        "chip_3": { "type": "chip", "settings": { "name": "Chainsaw Man" } },
-        "chip_4": { "type": "chip", "settings": { "name": "Tokyo Ghoul" } },
-        "chip_5": { "type": "chip", "settings": { "name": "Demon Slayer" } },
-        "chip_6": { "type": "chip", "settings": { "name": "Solo Leveling" } },
-        "chip_7": { "type": "chip", "settings": { "name": "Jujutsu Kaisen" } },
-        "chip_8": { "type": "chip", "settings": { "name": "Hunter x Hunter" } },
-        "chip_9": { "type": "chip", "settings": { "name": "Hololive" } },
-        "chip_10": { "type": "chip", "settings": { "name": "Call of Duty" } }
+        "chip_1": {
+          "type": "chip",
+          "settings": {
+            "name": "Attack on Titan",
+            "link": ""
+          }
+        },
+        "chip_2": {
+          "type": "chip",
+          "settings": {
+            "name": "Naruto",
+            "link": ""
+          }
+        },
+        "chip_3": {
+          "type": "chip",
+          "settings": {
+            "name": "Chainsaw Man",
+            "link": ""
+          }
+        },
+        "chip_4": {
+          "type": "chip",
+          "settings": {
+            "name": "Tokyo Ghoul",
+            "link": ""
+          }
+        },
+        "chip_5": {
+          "type": "chip",
+          "settings": {
+            "name": "Demon Slayer",
+            "link": ""
+          }
+        },
+        "chip_6": {
+          "type": "chip",
+          "settings": {
+            "name": "Solo Leveling",
+            "link": ""
+          }
+        },
+        "chip_7": {
+          "type": "chip",
+          "settings": {
+            "name": "Jujutsu Kaisen",
+            "link": ""
+          }
+        },
+        "chip_8": {
+          "type": "chip",
+          "settings": {
+            "name": "Hunter x Hunter",
+            "link": ""
+          }
+        },
+        "chip_9": {
+          "type": "chip",
+          "settings": {
+            "name": "Hololive",
+            "link": ""
+          }
+        },
+        "chip_10": {
+          "type": "chip",
+          "settings": {
+            "name": "Call of Duty",
+            "link": ""
+          }
+        }
       },
       "block_order": [
         "chip_1",
@@ -155,6 +220,9 @@
         "chip_8",
         "chip_9",
         "chip_10"
+      ],
+      "custom_css": [
+        ".section-pad {background: #050505 !important; color: #f4f3ef; --surface: #050505; --ink: #f4f3ef;}"
       ],
       "settings": {
         "heading": "SHOP BY ANIME"
