@@ -22,7 +22,6 @@
         if tile_image == blank and tile_collection.products.size > 0
           assign tile_image = tile_collection.products.first.featured_image
         endif
-        assign tile_subtitle = block.settings.subtitle
       -%}
       <a class="collection-tile" href="{{ tile_collection.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
         <span class="collection-tile__media">
@@ -32,9 +31,6 @@
         </span>
         <span class="collection-tile__footer">
           <span class="collection-tile__title">{{ block.settings.title | default: tile_collection.title | default: 'Collection' }}</span>
-          {%- if tile_subtitle != blank -%}
-            <span class="collection-tile__subtitle">{{ tile_subtitle }}</span>
-          {%- endif -%}
         </span>
       </a>
     {%- endfor -%}
@@ -66,13 +62,7 @@
       "settings": [
         { "type": "collection", "id": "collection", "label": "Collection" },
         { "type": "image_picker", "id": "image", "label": "Custom image" },
-        { "type": "text", "id": "title", "label": "Custom title" },
-        {
-          "type": "text",
-          "id": "subtitle",
-          "label": "Subtitle",
-          "info": "Leave blank to show the collection's lowest price automatically."
-        }
+        { "type": "text", "id": "title", "label": "Custom title" }
       ]
     }
   ],

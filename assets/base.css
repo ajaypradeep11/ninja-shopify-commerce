@@ -918,21 +918,18 @@ h1 {
 
 .collection-tile {
   display: flex;
-  width: min(62vw, 240px);
+  width: min(74vw, 310px);
   flex: 0 0 auto;
   flex-direction: column;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--ink) 5%, transparent);
   scroll-snap-align: start;
 }
 
 .collection-tile__media {
   display: block;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: color-mix(in srgb, var(--ink) 9%, transparent);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--ink) 7%, transparent);
 }
 
 .collection-tile__media img {
@@ -948,24 +945,14 @@ h1 {
 
 .collection-tile__footer {
   display: block;
-  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
-  padding: 13px 15px 15px;
+  padding: 12px 2px 0;
 }
 
 .collection-tile__title {
   display: block;
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
-}
-
-.collection-tile__subtitle {
-  display: block;
-  margin-top: 4px;
-  color: color-mix(in srgb, var(--ink) 55%, transparent);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
 }
 
 /* Anime chips */
