@@ -59,6 +59,8 @@
             <img class="hero__slide is-active" src="{{ 'hero-opening-sale.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale" fetchpriority="high">
           {%- elsif forloop.index == 2 -%}
             <img class="hero__slide" src="{{ 'hero-opening-sale-2.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale — Solo Leveling and Demon Slayer merch">
+          {%- elsif forloop.index == 3 -%}
+            <img class="hero__slide" src="{{ 'hero-naruto-lamps.jpg' | asset_url }}" width="3200" height="1344" alt="Anime LED lamps">
           {%- else -%}
             <div class="hero__slide hero__placeholder"></div>
           {%- endif -%}

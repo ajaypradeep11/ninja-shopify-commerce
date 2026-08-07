@@ -23,11 +23,18 @@
           "settings": {
             "cta_label": "Shop clothing"
           }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "cta_label": "Shop anime lamps"
+          }
         }
       },
       "block_order": [
         "slide_1",
-        "slide_2"
+        "slide_2",
+        "slide_3"
       ],
       "custom_css": [
         "&,.hero-shell {background: #fff;}"
