@@ -65,6 +65,14 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
+        "collection_xgzX6A": {
+          "type": "collection",
+          "settings": {
+            "collection": "lightbox",
+            "title": "",
+            "subtitle": ""
+          }
+        },
         "collection_1": {
           "type": "collection",
           "settings": {
@@ -76,7 +84,7 @@
         "collection_2": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "lamp",
             "title": "LED lamps",
             "subtitle": ""
           }
@@ -84,7 +92,7 @@
         "collection_3": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "hoodie",
             "title": "Hoodies",
             "subtitle": ""
           }
@@ -92,7 +100,7 @@
         "collection_4": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "hats",
             "title": "Beanies",
             "subtitle": ""
           }
@@ -107,6 +115,7 @@
         }
       },
       "block_order": [
+        "collection_xgzX6A",
         "collection_1",
         "collection_2",
         "collection_3",
@@ -114,7 +123,7 @@
         "collection_5"
       ],
       "custom_css": [
-        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 0;}"
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8;}"
       ],
       "settings": {
         "heading": "SHOP BY CATEGORY",
@@ -271,7 +280,7 @@
       "settings": {
         "heading": "",
         "collection": "main-page",
-        "link_label": "View all →",
+        "link_label": "View all",
         "show_vendor": false,
         "products_to_show": 24
       }
