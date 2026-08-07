@@ -61,6 +61,9 @@
     },
     "collection_tiles": {
       "type": "collection-tiles",
+      "custom_css": [
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8;}"
+      ],
       "blocks": {
         "collection_1": {
           "type": "collection",
@@ -113,6 +116,9 @@
     },
     "best_sellers": {
       "type": "featured-product-rail",
+      "custom_css": [
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8;}"
+      ],
       "settings": {
         "heading": "BEST SELLERS",
         "collection": "best-sellers",
@@ -123,6 +129,9 @@
     },
     "anime_chips": {
       "type": "anime-chips",
+      "custom_css": [
+        ".section-pad {background: #050505 !important; color: #f4f3ef; --surface: #050505; --ink: #f4f3ef;}"
+      ],
       "blocks": {
         "chip_1": { "type": "chip", "settings": { "name": "Attack on Titan" } },
         "chip_2": { "type": "chip", "settings": { "name": "Naruto" } },

@@ -1023,6 +1023,42 @@ h1 {
   color: #000;
 }
 
+.anime-chip--image {
+  flex-direction: column;
+  gap: 9px;
+  border: 0;
+  border-radius: var(--radius-lg);
+  padding: 6px 10px;
+  font-size: 12.5px;
+  text-align: center;
+}
+
+.anime-chip--image:hover {
+  background: none;
+  color: inherit;
+}
+
+.anime-chip__avatar {
+  display: block;
+  width: 78px;
+  height: 78px;
+  overflow: hidden;
+  border: 2px solid color-mix(in srgb, var(--ink) 28%, transparent);
+  border-radius: 50%;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.anime-chip__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.anime-chip--image:hover .anime-chip__avatar {
+  border-color: #ffd84d;
+  transform: scale(1.06);
+}
+
 .brand-marquee {
   overflow: hidden;
   padding-block: 10px 30px;

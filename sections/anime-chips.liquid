@@ -6,17 +6,30 @@
     {%- for block in section.blocks -%}
       {%- liquid
         assign chip_url = block.settings.link
-        if chip_url == blank and block.settings.name != blank
+        assign chip_image = block.settings.image
+        if block.settings.name != blank
           assign guess = block.settings.name | handleize
           if collections[guess] != blank
-            assign chip_url = collections[guess].url
+            if chip_url == blank
+              assign chip_url = collections[guess].url
+            endif
+            if chip_image == blank
+              assign chip_image = collections[guess].featured_image
+            endif
           endif
         endif
       -%}
       {%- if chip_url == blank -%}
         {%- capture chip_url -%}{{ routes.search_url }}?q={{ block.settings.name | url_encode }}{%- endcapture -%}
       {%- endif -%}
-      <a class="anime-chip" href="{{ chip_url }}" {{ block.shopify_attributes }}>{{ block.settings.name }}</a>
+      <a class="anime-chip{% if chip_image != blank %} anime-chip--image{% endif %}" href="{{ chip_url }}" {{ block.shopify_attributes }}>
+        {%- if chip_image != blank -%}
+          <span class="anime-chip__avatar">
+            {{ chip_image | image_url: width: 240 | image_tag: loading: 'lazy', widths: '120, 180, 240', sizes: '80px', alt: block.settings.name }}
+          </span>
+        {%- endif -%}
+        <span>{{ block.settings.name }}</span>
+      </a>
     {%- endfor -%}
   </div>
 </section>
@@ -38,6 +51,12 @@
       "name": "Chip",
       "settings": [
         { "type": "text", "id": "name", "label": "Name", "default": "Naruto" },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Round image",
+          "info": "Leave blank to use the matching collection's image."
+        },
         {
           "type": "url",
           "id": "link",
