@@ -275,7 +275,7 @@
     "products": {
       "type": "featured-product-rail",
       "custom_css": [
-        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 0;}"
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}"
       ],
       "settings": {
         "heading": "",
