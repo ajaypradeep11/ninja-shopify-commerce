@@ -1,6 +1,11 @@
 <section class="container-wide section-pad anime-chips-section">
   {%- if section.settings.heading != blank -%}
-    <div class="section-heading"><h2>{{ section.settings.heading }}</h2></div>
+    <div class="section-heading">
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.link_label != blank -%}
+        <a class="tiles-link" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.link_label }}</a>
+      {%- endif -%}
+    </div>
   {%- endif -%}
   <div class="anime-chips">
     {%- for block in section.blocks -%}
@@ -43,7 +48,14 @@
       "id": "heading",
       "label": "Heading",
       "default": "Shop by anime"
-    }
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "View all →"
+    },
+    { "type": "url", "id": "link", "label": "Link" }
   ],
   "blocks": [
     {
