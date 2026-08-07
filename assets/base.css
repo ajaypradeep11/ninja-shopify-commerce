@@ -729,36 +729,8 @@ h1 {
   margin-bottom: 0;
 }
 
-.rail-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-  font-size: 15px;
-}
-
-.rail-link__text {
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
-}
-
-.rail-link__arrow {
-  display: grid;
-  width: 28px;
-  height: 28px;
-  place-items: center;
-  background: #000;
-  color: #fff;
-  transition: background 0.2s;
-}
-
-.rail-link__arrow svg {
-  width: 14px;
-}
-
-.rail-link:hover .rail-link__arrow {
-  background: #d4af2c;
-  color: #000;
+.section-heading .tiles-link {
+  margin-bottom: 14px;
 }
 
 .section-heading--compact h2 {

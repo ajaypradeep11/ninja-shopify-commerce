@@ -271,7 +271,7 @@
       "settings": {
         "heading": "",
         "collection": "main-page",
-        "link_label": "View all",
+        "link_label": "View all →",
         "show_vendor": false,
         "products_to_show": 24
       }
