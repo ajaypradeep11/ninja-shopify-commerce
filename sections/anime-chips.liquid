@@ -1,13 +1,17 @@
-<section class="container-wide section-pad anime-chips-section">
+<section class="container-wide section-pad anime-chips-section" data-scroll-nav>
   {%- if section.settings.heading != blank -%}
     <div class="section-heading">
       <h2>{{ section.settings.heading }}</h2>
-      {%- if section.settings.link_label != blank -%}
-        <a class="tiles-link" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.link_label }}</a>
-      {%- endif -%}
+      <div class="anime-nav">
+        {%- if section.settings.link_label != blank -%}
+          <a class="tiles-link" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.link_label }}</a>
+        {%- endif -%}
+        <button class="anime-nav__btn anime-nav__btn--prev" type="button" aria-label="Scroll left" data-rail-prev>{% render 'icon', name: 'chevron' %}</button>
+        <button class="anime-nav__btn" type="button" aria-label="Scroll right" data-rail-next>{% render 'icon', name: 'chevron' %}</button>
+      </div>
     </div>
   {%- endif -%}
-  <div class="anime-chips">
+  <div class="anime-chips" data-scroll-rail>
     {%- for block in section.blocks -%}
       {%- liquid
         assign chip_url = block.settings.link

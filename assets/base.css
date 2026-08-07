@@ -962,8 +962,53 @@ h1 {
 
 .anime-chips {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.anime-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.anime-chips .anime-chip {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.anime-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.anime-nav__btn {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--ink) 32%, transparent);
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.anime-nav__btn svg {
+  width: 16px;
+}
+
+.anime-nav__btn--prev svg {
+  transform: rotate(180deg);
+}
+
+.anime-nav__btn:hover {
+  border-color: #ffd84d;
+  background: #ffd84d;
+  color: #000;
 }
 
 .anime-chip {

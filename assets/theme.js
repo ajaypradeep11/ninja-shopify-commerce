@@ -251,6 +251,21 @@ document.documentElement.classList.add('js');
     });
   }
 
+  function initScrollNavs(root = document) {
+    root.querySelectorAll('[data-scroll-nav]:not([data-scroll-nav-bound])').forEach((section) => {
+      section.dataset.scrollNavBound = 'true';
+      const rail = section.querySelector('[data-scroll-rail]');
+      if (!rail) return;
+      const step = () => Math.max(rail.clientWidth * 0.7, 200);
+      section.querySelector('[data-rail-prev]')?.addEventListener('click', () => {
+        rail.scrollBy({ left: -step(), behavior: 'smooth' });
+      });
+      section.querySelector('[data-rail-next]')?.addEventListener('click', () => {
+        rail.scrollBy({ left: step(), behavior: 'smooth' });
+      });
+    });
+  }
+
   function initSortSelects(root = document) {
     root.querySelectorAll('[data-sort-select]:not([data-sort-bound])').forEach((select) => {
       select.dataset.sortBound = 'true';
@@ -272,6 +287,7 @@ document.documentElement.classList.add('js');
     initProductForms(root);
     initFilters(root);
     initSortSelects(root);
+    initScrollNavs(root);
   }
 
   document.addEventListener('DOMContentLoaded', () => init());
