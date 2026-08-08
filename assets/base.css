@@ -257,7 +257,7 @@ h1 {
   position: relative;
   z-index: 60;
   overflow: hidden;
-  padding-block: 7px;
+  padding-block: 9px;
   background: var(--brand);
   color: var(--black);
 }

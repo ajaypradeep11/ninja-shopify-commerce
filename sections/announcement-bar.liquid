@@ -1,10 +1,13 @@
 {%- if section.settings.show_bar and section.settings.text != blank -%}
   <div class="announcement" role="region" aria-label="Announcement">
     <div class="marquee marquee--announcement">
+      {%- assign parts = section.settings.text | split: '✳' -%}
       {%- for copy in (1..2) -%}
         <div class="marquee__group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
           {%- for repeat in (1..6) -%}
-            <span>{{ section.settings.text }}</span><span class="marquee__separator" aria-hidden="true">✳</span>
+            {%- for part in parts -%}
+              <span>{{ part | strip }}</span><span class="marquee__separator" aria-hidden="true">✳</span>
+            {%- endfor -%}
           {%- endfor -%}
         </div>
       {%- endfor -%}
@@ -26,7 +29,7 @@
       "type": "text",
       "id": "text",
       "label": "Announcement",
-      "default": "Free shipping above $65 CAD ✳ Ottawa local delivery in 1–2 days* ✳ Secure checkout"
+      "default": "Free shipping above $85 CAD ✳ Ottawa local delivery in 1–2 days ✳ Secure checkout"
     }
   ],
   "presets": [{ "name": "Announcement bar" }]
