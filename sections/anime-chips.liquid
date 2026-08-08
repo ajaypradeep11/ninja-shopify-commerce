@@ -1,4 +1,5 @@
-<section class="container-wide section-pad anime-chips-section" data-scroll-nav>
+<section class="section-pad anime-chips-section" data-scroll-nav>
+  <div class="container-wide">
   {%- if section.settings.heading != blank -%}
     <div class="section-heading">
       <h2>{{ section.settings.heading }}</h2>
@@ -40,6 +41,7 @@
         <span>{{ block.settings.name }}</span>
       </a>
     {%- endfor -%}
+  </div>
   </div>
 </section>
 
