@@ -1,1 +1,41 @@
-{"type":"header","name":"Header group","sections":{"announcement":{"type":"announcement-bar","custom_css":["@media (max-width: 640px) {.announcement {padding-block: 4px; } .marquee--announcement {font-size: 9px; letter-spacing: 0.05em; } .marquee__separator {margin-inline: 20px; } }"],"settings":{"show_bar":true,"text":"Free shipping above $65 CAD ✳ Ottawa local delivery in 1–2 days* ✳ Secure checkout"}},"header":{"type":"header","custom_css":[".header-utility-link {font-size: 13px;}","@media (max-width: 420px) {.wordmark__text {display: inline !important; } .wordmark {gap: 4px; font-size: 16px; } .wordmark__logo {width: 36px; height: 36px; }}"],"settings":{"menu":"main-menu","show_search":true,"show_account":true}}},"order":["announcement","header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "custom_css": [
+        "@media (max-width: 640px) {.announcement {padding-block: 4px; } .marquee--announcement {font-size: 9px; letter-spacing: 0.05em; } .marquee__separator {margin-inline: 20px; }}"
+      ],
+      "settings": {
+        "show_bar": true,
+        "text": "Free shipping above $65 CAD ✳ Ottawa local delivery in 1–2 days* ✳ Secure checkout"
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [
+        ".header-utility-link {font-size: 13px;}",
+        "@media (max-width: 420px) {.wordmark__text {display: inline !important; } .wordmark {gap: 4px; font-size: 16px; } .wordmark__logo {width: 36px; height: 36px; }}"
+      ],
+      "settings": {
+        "menu": "main-menu",
+        "show_search": true,
+        "show_account": true
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

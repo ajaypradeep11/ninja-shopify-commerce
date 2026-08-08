@@ -1,7 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": { "type": "contact-form", "settings": { "heading": "Contact us" } }
+    "main": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Contact us"
+      }
+    },
+    "anime_chips_yxCMcX": {
+      "type": "anime-chips",
+      "blocks": {
+        "chip_PmDeap": {
+          "type": "chip",
+          "settings": {
+            "name": "Instagram",
+            "link": "https://www.instagram.com"
+          }
+        },
+        "chip_NiQGtW": {
+          "type": "chip",
+          "settings": {
+            "name": "TikTok",
+            "link": "https://www.tiktok.com"
+          }
+        },
+        "chip_eNamgr": {
+          "type": "chip",
+          "settings": {
+            "name": "Latest drops",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "chip_PmDeap",
+        "chip_NiQGtW",
+        "chip_eNamgr"
+      ],
+      "name": "Anime chips",
+      "settings": {
+        "heading": "Let's Connect! Follow us for our latest drops, anime setups, and more on Instagram and TikTok",
+        "link_label": "Follow us",
+        "link": ""
+      }
+    },
+    "footer_akQJPn": {
+      "type": "footer",
+      "name": "Footer",
+      "settings": {
+        "menu": "footer",
+        "usp_1": "Ships in 48 hours",
+        "usp_2": "30-day returns",
+        "usp_3": "16 colors, one remote",
+        "returns_text": "30-day returns — a full refund to your original payment method, no store credit."
+      }
+    }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "anime_chips_yxCMcX",
+    "footer_akQJPn"
+  ]
 }
-
