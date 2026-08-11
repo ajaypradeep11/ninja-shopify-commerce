@@ -72,11 +72,32 @@
             "title": "Keychain"
           }
         },
+        "collection_2": {
+          "type": "collection",
+          "settings": {
+            "collection": "lamp",
+            "title": "LED lamps"
+          }
+        },
         "collection_xgzX6A": {
           "type": "collection",
           "settings": {
             "collection": "lightbox",
             "title": ""
+          }
+        },
+        "collection_4": {
+          "type": "collection",
+          "settings": {
+            "collection": "hats",
+            "title": "Beanies"
+          }
+        },
+        "collection_i4qfAC": {
+          "type": "collection",
+          "settings": {
+            "collection": "cosplay-gear",
+            "title": "Cosplay Gear"
           }
         },
         "collection_1": {
@@ -86,35 +107,22 @@
             "title": "T-shirts"
           }
         },
-        "collection_2": {
-          "type": "collection",
-          "settings": {
-            "collection": "lamp",
-            "title": "LED lamps"
-          }
-        },
         "collection_3": {
           "type": "collection",
           "settings": {
             "collection": "hoodie",
             "title": "Hoodies"
           }
-        },
-        "collection_4": {
-          "type": "collection",
-          "settings": {
-            "collection": "hats",
-            "title": "Beanies"
-          }
         }
       },
       "block_order": [
         "collection_gL7V6m",
-        "collection_xgzX6A",
-        "collection_1",
         "collection_2",
-        "collection_3",
-        "collection_4"
+        "collection_xgzX6A",
+        "collection_4",
+        "collection_i4qfAC",
+        "collection_1",
+        "collection_3"
       ],
       "custom_css": [
         ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8;}"
@@ -143,6 +151,7 @@
       "blocks": {
         "chip_1": {
           "type": "chip",
+          "disabled": true,
           "settings": {
             "name": "Attack on Titan",
             "link": ""
