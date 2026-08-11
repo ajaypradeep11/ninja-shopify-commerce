@@ -72,18 +72,18 @@
             "title": "Keychain"
           }
         },
-        "collection_2": {
-          "type": "collection",
-          "settings": {
-            "collection": "lamp",
-            "title": "LED lamps"
-          }
-        },
         "collection_xgzX6A": {
           "type": "collection",
           "settings": {
             "collection": "lightbox",
             "title": ""
+          }
+        },
+        "collection_1": {
+          "type": "collection",
+          "settings": {
+            "collection": "tshirt",
+            "title": "T-shirts"
           }
         },
         "collection_4": {
@@ -93,18 +93,18 @@
             "title": "Beanies"
           }
         },
+        "collection_2": {
+          "type": "collection",
+          "settings": {
+            "collection": "lamp",
+            "title": "LED lamps"
+          }
+        },
         "collection_i4qfAC": {
           "type": "collection",
           "settings": {
             "collection": "cosplay-gear",
             "title": "Cosplay Gear"
-          }
-        },
-        "collection_1": {
-          "type": "collection",
-          "settings": {
-            "collection": "tshirt",
-            "title": "T-shirts"
           }
         },
         "collection_3": {
@@ -117,11 +117,11 @@
       },
       "block_order": [
         "collection_gL7V6m",
-        "collection_2",
         "collection_xgzX6A",
-        "collection_4",
-        "collection_i4qfAC",
         "collection_1",
+        "collection_4",
+        "collection_2",
+        "collection_i4qfAC",
         "collection_3"
       ],
       "custom_css": [
