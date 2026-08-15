@@ -72,18 +72,18 @@
             "title": "Apparel"
           }
         },
-        "collection_gL7V6m": {
-          "type": "collection",
-          "settings": {
-            "collection": "keychain",
-            "title": "Keychain & Accessories"
-          }
-        },
         "collection_2": {
           "type": "collection",
           "settings": {
             "collection": "lamp",
             "title": "Lamp"
+          }
+        },
+        "collection_gL7V6m": {
+          "type": "collection",
+          "settings": {
+            "collection": "keychain",
+            "title": "Keychain & Accessories"
           }
         },
         "collection_4": {
@@ -103,8 +103,8 @@
       },
       "block_order": [
         "collection_1",
-        "collection_gL7V6m",
         "collection_2",
+        "collection_gL7V6m",
         "collection_4",
         "collection_i4qfAC"
       ],
