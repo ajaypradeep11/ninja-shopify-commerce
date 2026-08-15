@@ -65,6 +65,13 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
+        "collection_1": {
+          "type": "collection",
+          "settings": {
+            "collection": "tshirt",
+            "title": "T-shirts"
+          }
+        },
         "collection_gL7V6m": {
           "type": "collection",
           "settings": {
@@ -77,13 +84,6 @@
           "settings": {
             "collection": "lamp",
             "title": "Lamp"
-          }
-        },
-        "collection_1": {
-          "type": "collection",
-          "settings": {
-            "collection": "tshirt",
-            "title": "T-shirts"
           }
         },
         "collection_4": {
@@ -109,9 +109,9 @@
         }
       },
       "block_order": [
+        "collection_1",
         "collection_gL7V6m",
         "collection_2",
-        "collection_1",
         "collection_4",
         "collection_i4qfAC",
         "collection_3"
