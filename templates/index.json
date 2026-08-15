@@ -69,14 +69,7 @@
           "type": "collection",
           "settings": {
             "collection": "keychain",
-            "title": "Keychain"
-          }
-        },
-        "collection_xgzX6A": {
-          "type": "collection",
-          "settings": {
-            "collection": "lightbox",
-            "title": ""
+            "title": "Keychain & Accessories"
           }
         },
         "collection_1": {
@@ -97,7 +90,7 @@
           "type": "collection",
           "settings": {
             "collection": "lamp",
-            "title": "LED lamps"
+            "title": "Lamp"
           }
         },
         "collection_i4qfAC": {
@@ -117,7 +110,6 @@
       },
       "block_order": [
         "collection_gL7V6m",
-        "collection_xgzX6A",
         "collection_1",
         "collection_4",
         "collection_2",
