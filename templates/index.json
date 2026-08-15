@@ -65,6 +65,13 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
+        "collection_gL7V6m": {
+          "type": "collection",
+          "settings": {
+            "collection": "keychain",
+            "title": "Keychain & Accessories"
+          }
+        },
         "collection_1": {
           "type": "collection",
           "settings": {
@@ -77,13 +84,6 @@
           "settings": {
             "collection": "lamp",
             "title": "Lamp"
-          }
-        },
-        "collection_gL7V6m": {
-          "type": "collection",
-          "settings": {
-            "collection": "keychain",
-            "title": "Keychain & Accessories"
           }
         },
         "collection_4": {
@@ -102,9 +102,9 @@
         }
       },
       "block_order": [
+        "collection_gL7V6m",
         "collection_1",
         "collection_2",
-        "collection_gL7V6m",
         "collection_4",
         "collection_i4qfAC"
       ],
