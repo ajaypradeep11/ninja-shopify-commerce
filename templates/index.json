@@ -65,13 +65,6 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
-        "collection_LhHp7c": {
-          "type": "collection",
-          "settings": {
-            "collection": "figure",
-            "title": "Collectibles"
-          }
-        },
         "collection_gL7V6m": {
           "type": "collection",
           "settings": {
@@ -106,15 +99,22 @@
             "collection": "cosplay-gear",
             "title": "Cosplay Gear"
           }
+        },
+        "collection_LhHp7c": {
+          "type": "collection",
+          "settings": {
+            "collection": "figure",
+            "title": "Collectibles"
+          }
         }
       },
       "block_order": [
-        "collection_LhHp7c",
         "collection_gL7V6m",
         "collection_1",
         "collection_2",
         "collection_4",
-        "collection_i4qfAC"
+        "collection_i4qfAC",
+        "collection_LhHp7c"
       ],
       "custom_css": [
         ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 8px;}"
