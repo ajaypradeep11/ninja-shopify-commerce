@@ -72,6 +72,13 @@
             "title": "Keychain & Accessories"
           }
         },
+        "collection_2": {
+          "type": "collection",
+          "settings": {
+            "collection": "lamp",
+            "title": "Lamp"
+          }
+        },
         "collection_1": {
           "type": "collection",
           "settings": {
@@ -84,13 +91,6 @@
           "settings": {
             "collection": "hats",
             "title": "Beanies"
-          }
-        },
-        "collection_2": {
-          "type": "collection",
-          "settings": {
-            "collection": "lamp",
-            "title": "Lamp"
           }
         },
         "collection_i4qfAC": {
@@ -110,9 +110,9 @@
       },
       "block_order": [
         "collection_gL7V6m",
+        "collection_2",
         "collection_1",
         "collection_4",
-        "collection_2",
         "collection_i4qfAC",
         "collection_3"
       ],
