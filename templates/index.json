@@ -124,7 +124,7 @@
       ],
       "settings": {
         "heading": "BEST SELLERS",
-        "collection": "best-sellers",
+        "collection": "main-page",
         "link_label": "",
         "show_vendor": false,
         "products_to_show": 8
@@ -268,7 +268,7 @@
       ],
       "settings": {
         "heading": "",
-        "collection": "main-page",
+        "collection": "page",
         "link_label": "View all",
         "show_vendor": false,
         "products_to_show": 8
