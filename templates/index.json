@@ -135,7 +135,7 @@
         "collection": "best-sellers",
         "link_label": "",
         "show_vendor": false,
-        "products_to_show": 12
+        "products_to_show": 8
       }
     },
     "anime_chips": {
@@ -279,7 +279,7 @@
         "collection": "main-page",
         "link_label": "View all",
         "show_vendor": false,
-        "products_to_show": 24
+        "products_to_show": 8
       }
     },
     "reviews": {
