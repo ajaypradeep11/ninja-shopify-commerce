@@ -16,14 +16,14 @@
           "type": "slide",
           "settings": {
             "cta_label": "Shop clothing",
-            "cta_link": ""
+            "cta_link": "shopify://collections/tshirt"
           }
         },
         "slide_2": {
           "type": "slide",
           "settings": {
             "cta_label": "Shop clothing",
-            "cta_link": ""
+            "cta_link": "shopify://collections/tshirt"
           }
         },
         "slide_3": {
