@@ -12,7 +12,7 @@
     "main": {
       "type": "main-collection",
       "custom_css": [
-        "@media (min-width: 1024px) {.product-grid {grid-template-columns: repeat(3, minmax(0, 1fr)); }}",
+        "@media (min-width: 1024px) {.product-grid {grid-template-columns: repeat(4, minmax(0, 1fr)); }}",
         "@media (min-width: 1536px) {.product-grid {grid-template-columns: repeat(3, minmax(0, 1fr)); }}"
       ],
       "settings": {
