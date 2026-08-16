@@ -16,14 +16,14 @@
           "type": "slide",
           "settings": {
             "cta_label": "Shop clothing",
-            "cta_link": "shopify://collections/tshirt"
+            "cta_link": ""
           }
         },
         "slide_2": {
           "type": "slide",
           "settings": {
             "cta_label": "Shop clothing",
-            "cta_link": "shopify://collections/tshirt"
+            "cta_link": ""
           }
         },
         "slide_3": {
@@ -50,7 +50,7 @@
         "primary_label": "Shop anime lamps",
         "primary_link": "shopify://collections/lamp",
         "secondary_label": "Shop all",
-        "secondary_link": "shopify://collections"
+        "secondary_link": "shopify://collections/all"
       }
     },
     "divider_1": {
