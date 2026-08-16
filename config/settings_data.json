@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "wordmark_base": "Local",
@@ -9,7 +18,15 @@
     "color_subtle": "#2A2A28",
     "page_width": 2600,
     "contact_email": "support@localninja.ca",
-    "ebay_url": "https://www.ebay.ca/usr/local_ninja"
+    "ebay_url": "https://www.ebay.ca/usr/local_ninja",
+    "content_for_index": [],
+    "blocks": {
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "LocalNinja": {
@@ -24,4 +41,3 @@
     }
   }
 }
-
