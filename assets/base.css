@@ -2390,3 +2390,9 @@ body.template-cart .site-header__pill {
   .marquee { animation-play-state: paused; }
   .wordmark__star { display: none; }
 }
+
+.footer-social { padding-bottom: 28px; }
+.footer-social .social-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0 0; padding: 0; list-style: none; }
+.footer-social .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); color: color-mix(in srgb, var(--ink) 72%, transparent); transition: color .15s ease, border-color .15s ease; }
+.footer-social .social-links a:hover, .footer-social .social-links a:focus-visible { color: var(--brand); border-color: var(--brand); }
+.footer-social .social-links svg { display: block; }
