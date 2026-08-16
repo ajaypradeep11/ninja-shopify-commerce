@@ -175,14 +175,6 @@
               <a href="{{ routes.all_products_collection_url }}">Shop</a>
             </li>
 
-            <li>
-              <a href="{{ newest_url }}">New arrivals</a>
-            </li>
-
-            <li>
-              <a href="{{ best_selling_url }}">Best sellers</a>
-            </li>
-
             {%- for link in section.settings.menu.links -%}
               <li>
                 <a href="{{ link.url }}">{{ link.title }}</a>
