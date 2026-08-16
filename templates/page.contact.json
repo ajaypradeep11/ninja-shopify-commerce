@@ -36,7 +36,7 @@
           "type": "chip",
           "settings": {
             "name": "Latest drops",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         }
       },
