@@ -273,7 +273,7 @@
       "type": "featured-product-rail",
       "custom_css": [
         ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}",
-        ".product-rail {display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 1080px; margin: 0 auto;padding-inline: clamp(16px, 2.1vw, 48px);}",
+        ".product-rail {display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 1080px; margin: 0 auto; padding-inline: clamp(16px, 2.1vw, 48px);}",
         ".product-rail__item {width: auto; min-width: 0;}",
         ".section-heading {max-width: 1080px; margin: 0 auto;}",
         "@media (max-width: 749px) {.product-rail {grid-template-columns: 1fr 1fr; }}",
@@ -284,7 +284,71 @@
         "collection": "page",
         "link_label": "View All",
         "show_vendor": false,
-        "products_to_show": 16
+        "products_to_show": 4
+      }
+    },
+    "divider_ygbVmq": {
+      "type": "divider",
+      "custom_css": [
+        ".selvedge {height: 52px; margin-block: 0 !important; border-block: 24px solid #fff; background: repeating-linear-gradient(90deg, #e5b92f 0 24px, #fff 24px 36px);}"
+      ],
+      "name": "Ninja divider",
+      "settings": {
+        "margin": 24
+      }
+    },
+    "featured_product_rail_mW3KHK": {
+      "type": "featured-product-rail",
+      "custom_css": [
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}"
+      ],
+      "name": "Product rail",
+      "settings": {
+        "heading": "Apparel",
+        "collection": "tshirt",
+        "link_label": "Shop all",
+        "show_vendor": false,
+        "products_to_show": 20
+      }
+    },
+    "featured_product_rail_4eKNJt": {
+      "type": "featured-product-rail",
+      "custom_css": [],
+      "name": "Product rail",
+      "settings": {
+        "heading": "Light & Lamp",
+        "collection": "led-lamps",
+        "link_label": "Shop all",
+        "show_vendor": false,
+        "products_to_show": 20
+      }
+    },
+    "featured_product_rail_pmgiaw": {
+      "type": "featured-product-rail",
+      "custom_css": [
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}"
+      ],
+      "name": "Product rail",
+      "settings": {
+        "heading": "Keychain",
+        "collection": "keychain",
+        "link_label": "Shop all",
+        "show_vendor": false,
+        "products_to_show": 20
+      }
+    },
+    "featured_product_rail_CHdjWJ": {
+      "type": "featured-product-rail",
+      "custom_css": [
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}"
+      ],
+      "name": "Product rail",
+      "settings": {
+        "heading": "Cosplay Gear",
+        "collection": "cosplay-gear",
+        "link_label": "Shop all",
+        "show_vendor": false,
+        "products_to_show": 20
       }
     },
     "reviews": {
@@ -359,6 +423,11 @@
     "anime_chips",
     "brand_marquee",
     "products",
+    "divider_ygbVmq",
+    "featured_product_rail_mW3KHK",
+    "featured_product_rail_4eKNJt",
+    "featured_product_rail_pmgiaw",
+    "featured_product_rail_CHdjWJ",
     "reviews",
     "1785866129c28a0cff"
   ]
