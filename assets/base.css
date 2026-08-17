@@ -2274,7 +2274,7 @@ body.template-cart .site-header__pill {
 /* @media (min-width: 1280px) { .product-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } } */
 
 @media (min-width: 1536px) {
-  .product-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .product-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
 
 @media (max-width: 767px) {
