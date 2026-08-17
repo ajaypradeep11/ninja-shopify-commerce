@@ -276,7 +276,8 @@
         ".product-rail {display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 1080px; margin: 0 auto; padding: 0;}",
         ".product-rail__item {width: auto; min-width: 0;}",
         ".section-heading {max-width: 1080px; margin: 0 auto;}",
-        "@media (max-width: 749px) {.product-rail {grid-template-columns: 1fr 1fr; }}"
+        "@media (max-width: 749px) {.product-rail {grid-template-columns: 1fr 1fr; }}",
+        "@media (min-width: 990px) {.product-rail {grid-template-columns: 1fr 1fr 1fr 1fr; }}"
       ],
       "settings": {
         "heading": "Shop All",
