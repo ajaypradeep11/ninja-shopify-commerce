@@ -2265,13 +2265,13 @@ body.template-cart .site-header__pill {
   .cart-layout { grid-template-columns: 1fr 320px; }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .header-utility-link { display: block; }
   .product-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
   .article-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-@media (min-width: 1280px) { .product-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+/* @media (min-width: 1280px) { .product-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } } */
 
 @media (min-width: 1536px) {
   .product-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
