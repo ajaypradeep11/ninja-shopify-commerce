@@ -2246,7 +2246,7 @@ body.template-cart .site-header__pill {
 @media (min-width: 640px) {
   .header-search { display: block; }
   .wordmark__logo { width: 56px; height: 56px; }
-  .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .usp-strip { grid-template-columns: repeat(3, 1fr); }
   .usp-item { justify-content: flex-start; }
   .footer-trust { grid-template-columns: 1fr 1fr; }
