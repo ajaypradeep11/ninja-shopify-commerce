@@ -2261,7 +2261,7 @@ body.template-cart .site-header__pill {
   .hero { height: 88vh; }
   .product-layout { grid-template-columns: minmax(0, 1fr) minmax(340px, .82fr); align-items: start; }
   .product-info { position: sticky; top: 102px; }
-  .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  /* .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } */
   .cart-layout { grid-template-columns: 1fr 320px; }
 }
 
