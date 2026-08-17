@@ -273,7 +273,7 @@
       "type": "featured-product-rail",
       "custom_css": [
         ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}",
-        ".product-rail {display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 1080px; margin: 0 auto; padding: 0;}",
+        ".product-rail {display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 1080px; margin: 0 auto;padding-inline: clamp(16px, 2.1vw, 48px);}",
         ".product-rail__item {width: auto; min-width: 0;}",
         ".section-heading {max-width: 1080px; margin: 0 auto;}",
         "@media (max-width: 749px) {.product-rail {grid-template-columns: 1fr 1fr; }}",
@@ -284,7 +284,7 @@
         "collection": "page",
         "link_label": "View All",
         "show_vendor": false,
-        "products_to_show": 12
+        "products_to_show": 16
       }
     },
     "reviews": {
