@@ -138,102 +138,6 @@
         "products_to_show": 8
       }
     },
-    "anime_chips": {
-      "type": "anime-chips",
-      "blocks": {
-        "chip_1": {
-          "type": "chip",
-          "disabled": true,
-          "settings": {
-            "name": "Attack on Titan",
-            "link": ""
-          }
-        },
-        "chip_2": {
-          "type": "chip",
-          "settings": {
-            "name": "Naruto",
-            "link": ""
-          }
-        },
-        "chip_3": {
-          "type": "chip",
-          "settings": {
-            "name": "Chainsaw Man",
-            "link": ""
-          }
-        },
-        "chip_4": {
-          "type": "chip",
-          "settings": {
-            "name": "Tokyo Ghoul",
-            "link": ""
-          }
-        },
-        "chip_5": {
-          "type": "chip",
-          "settings": {
-            "name": "Demon Slayer",
-            "link": ""
-          }
-        },
-        "chip_6": {
-          "type": "chip",
-          "settings": {
-            "name": "Solo Leveling",
-            "link": ""
-          }
-        },
-        "chip_7": {
-          "type": "chip",
-          "settings": {
-            "name": "Jujutsu Kaisen",
-            "link": ""
-          }
-        },
-        "chip_8": {
-          "type": "chip",
-          "settings": {
-            "name": "Hunter x Hunter",
-            "link": ""
-          }
-        },
-        "chip_9": {
-          "type": "chip",
-          "settings": {
-            "name": "Hololive",
-            "link": ""
-          }
-        },
-        "chip_10": {
-          "type": "chip",
-          "settings": {
-            "name": "Call of Duty",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "chip_1",
-        "chip_2",
-        "chip_3",
-        "chip_4",
-        "chip_5",
-        "chip_6",
-        "chip_7",
-        "chip_8",
-        "chip_9",
-        "chip_10"
-      ],
-      "custom_css": [
-        ".section-pad {background: #050505 !important; color: #f4f3ef; --surface: #050505; --ink: #f4f3ef;}"
-      ],
-      "settings": {
-        "heading": "SHOP BY ANIME",
-        "link_label": "View all →",
-        "link": ""
-      }
-    },
     "brand_marquee": {
       "type": "brand-marquee",
       "blocks": {
@@ -267,24 +171,6 @@
       "disabled": true,
       "settings": {
         "heading": "Shop by anime"
-      }
-    },
-    "products": {
-      "type": "featured-product-rail",
-      "custom_css": [
-        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}",
-        ".product-rail {display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 1080px; margin: 0 auto; padding-inline: clamp(16px, 2.1vw, 48px);}",
-        ".product-rail__item {width: auto; min-width: 0;}",
-        ".section-heading {max-width: 1080px; margin: 0 auto;}",
-        "@media (max-width: 749px) {.product-rail {grid-template-columns: 1fr 1fr; }}",
-        "@media (min-width: 990px) {.product-rail {grid-template-columns: 1fr 1fr 1fr 1fr; }}"
-      ],
-      "settings": {
-        "heading": "Shop All",
-        "collection": "page",
-        "link_label": "View All",
-        "show_vendor": false,
-        "products_to_show": 4
       }
     },
     "divider_ygbVmq": {
@@ -420,9 +306,7 @@
     "divider_1",
     "collection_tiles",
     "best_sellers",
-    "anime_chips",
     "brand_marquee",
-    "products",
     "divider_ygbVmq",
     "featured_product_rail_mW3KHK",
     "featured_product_rail_4eKNJt",
