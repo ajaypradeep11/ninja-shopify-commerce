@@ -279,7 +279,7 @@
         "@media (max-width: 749px) {.product-rail {grid-template-columns: 1fr 1fr; }}"
       ],
       "settings": {
-        "heading": "New Arrivals",
+        "heading": "Shop All",
         "collection": "page",
         "link_label": "View All",
         "show_vendor": false,
