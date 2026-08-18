@@ -1275,6 +1275,9 @@ h1 {
 }
 
 .filter-drawer__panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   margin-left: auto;
   animation-name: drawer-in-right;
 }
@@ -1285,13 +1288,17 @@ h1 {
 
 .filter-form {
   display: flex;
-  min-height: 100%;
+  min-height: 0;
+  flex: 1;
   flex-direction: column;
 }
 
 .filter-drawer__body {
+  min-height: 0;
   flex: 1;
+  overflow-y: auto;
   padding-block: 18px;
+  overscroll-behavior: contain;
 }
 
 .filter-group {
@@ -1345,10 +1352,12 @@ h1 {
 
 .filter-drawer__actions {
   display: grid;
+  flex: 0 0 auto;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
   padding-top: 18px;
   border-top: 1px solid rgb(244 243 239 / 12%);
+  background: var(--black);
 }
 
 .active-filters {
