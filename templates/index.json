@@ -89,7 +89,7 @@
         "collection_4": {
           "type": "collection",
           "settings": {
-            "collection": "hats",
+            "collection": "beanies",
             "title": "Beanies"
           }
         },
