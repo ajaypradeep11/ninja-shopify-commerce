@@ -108,31 +108,6 @@
           {%- endif -%}
         </div>
 
-        {%- liquid
-          assign chip_tshirt_url = routes.all_products_collection_url
-          if collections['t-shirts'] != blank
-            assign chip_tshirt_url = collections['t-shirts'].url
-          elsif collections['tshirts'] != blank
-            assign chip_tshirt_url = collections['tshirts'].url
-          endif
-          assign chip_lamp_url = routes.all_products_collection_url
-          if collections['anime-lamps'] != blank
-            assign chip_lamp_url = collections['anime-lamps'].url
-          elsif collections['lamps'] != blank
-            assign chip_lamp_url = collections['lamps'].url
-          endif
-          assign chip_hoodie_url = routes.all_products_collection_url
-          if collections['hoodies'] != blank
-            assign chip_hoodie_url = collections['hoodies'].url
-          elsif collections['hoodie'] != blank
-            assign chip_hoodie_url = collections['hoodie'].url
-          endif
-        -%}
-        <nav class="hero__chips" aria-label="Quick shop">
-          <a class="hero__chip" href="{{ chip_tshirt_url }}">Tshirts</a>
-          <a class="hero__chip" href="{{ chip_lamp_url }}">Lamps</a>
-          <a class="hero__chip" href="{{ chip_hoodie_url }}">Hoodie</a>
-        </nav>
       </div>
     </div>
 
