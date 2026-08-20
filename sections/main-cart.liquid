@@ -28,7 +28,7 @@
                     {%- unless property.last == blank -%}<p class="cart-item__properties">{{ property.first }}: {{ property.last }}</p>{%- endunless -%}
                   {%- endfor -%}
                 </div>
-                <strong>{{ item.final_line_price | money }}</strong>
+                <strong>{{ item.final_line_price | money_with_currency }}</strong>
               </div>
               <div class="cart-item__bottom">
                 {% render 'quantity-input', name: 'updates[]', value: item.quantity, min: 0 %}
@@ -41,7 +41,7 @@
       </div>
 
       <aside class="cart-summary">
-        <div class="cart-summary__line"><span>Subtotal</span><span>{{ cart.total_price | money }}</span></div>
+        <div class="cart-summary__line"><span>Subtotal</span><span>{{ cart.total_price | money_with_currency }}</span></div>
         <p class="cart-summary__note">Taxes and shipping calculated at checkout.</p>
         <label class="quantity-label" for="CartNote">Order note</label>
         <textarea class="cart-note" id="CartNote" name="note">{{ cart.note }}</textarea>

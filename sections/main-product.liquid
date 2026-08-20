@@ -75,7 +75,7 @@
                 <h1>{{ product.title }}</h1>
               {%- when 'price' -%}
                 <div class="product-info__price" data-product-price>
-                  <span>{{ current_variant.price | money }}</span>
+                  <span>{{ current_variant.price | money_with_currency }}</span>
                   {%- if current_variant.compare_at_price > current_variant.price -%}
                     <span class="price--compare">{{ current_variant.compare_at_price | money }}</span>
                   {%- endif -%}
@@ -119,7 +119,7 @@
                             value="{{ variant.id }}"
                             data-available="{{ variant.available }}"
                             data-variant-title="{{ variant.title | escape }}"
-                            data-price="<span>{{ variant.price | money }}</span>{% if variant.compare_at_price > variant.price %}<span class='price--compare'>{{ variant.compare_at_price | money }}</span>{% endif %}"
+                            data-price="<span>{{ variant.price | money_with_currency }}</span>{% if variant.compare_at_price > variant.price %}<span class='price--compare'>{{ variant.compare_at_price | money }}</span>{% endif %}"
                             {% if variant == current_variant %}
                               checked
                             {% endif %}

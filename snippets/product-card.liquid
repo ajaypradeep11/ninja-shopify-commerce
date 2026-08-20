@@ -45,7 +45,7 @@
     <div class="product-card__price">
       <span>
         {%- if card_product.price_varies -%}From {% endif -%}
-        {{ card_product.price | money }}
+        {{ card_product.price | money_with_currency }}
       </span>
       {%- if card_product.compare_at_price_max > card_product.price -%}
         <span class="price--compare">{{ card_product.compare_at_price_max | money }}</span>
