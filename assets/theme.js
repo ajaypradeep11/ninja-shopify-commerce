@@ -278,6 +278,68 @@ document.documentElement.classList.add('js');
     });
   }
 
+  function initInstallBanner(root = document) {
+    const banner = root.querySelector('[data-install-banner]:not([data-install-bound])');
+    if (!banner) return;
+    banner.dataset.installBound = 'true';
+
+    const installed = window.matchMedia('(display-mode: standalone)').matches
+      || window.navigator.standalone === true;
+    if (installed) return;
+
+    const store = {
+      get(key) {
+        try { return window.localStorage.getItem(key); } catch (error) { return null; }
+      },
+      set(key, value) {
+        try { window.localStorage.setItem(key, value); } catch (error) { /* private mode */ }
+      }
+    };
+    if (store.get('localninja.install.dismissed')) return;
+
+    const ua = navigator.userAgent;
+    const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const isAndroid = /Android/.test(ua);
+    if (!isIOS && !isAndroid) return;
+
+    const steps = banner.querySelector('[data-install-steps]');
+    if (steps) {
+      steps.textContent = isIOS
+        ? 'Tap Share, then "Add to Home Screen".'
+        : 'Tap the browser menu, then "Install app".';
+    }
+
+    const cta = banner.querySelector('[data-install-cta]');
+    let deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      if (cta) cta.hidden = false;
+      if (steps) steps.textContent = 'One tap to install.';
+    });
+
+    cta?.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      banner.hidden = true;
+      store.set('localninja.install.dismissed', '1');
+    });
+
+    banner.querySelector('[data-install-close]')?.addEventListener('click', () => {
+      banner.hidden = true;
+      store.set('localninja.install.dismissed', '1');
+    });
+
+    window.addEventListener('appinstalled', () => {
+      banner.hidden = true;
+      store.set('localninja.install.dismissed', '1');
+    });
+
+    window.setTimeout(() => { banner.hidden = false; }, 4000);
+  }
+
   function init(root = document) {
     initMenus(root);
     initHero(root);
@@ -288,6 +350,7 @@ document.documentElement.classList.add('js');
     initFilters(root);
     initSortSelects(root);
     initScrollNavs(root);
+    initInstallBanner(root);
   }
 
   document.addEventListener('DOMContentLoaded', () => init());

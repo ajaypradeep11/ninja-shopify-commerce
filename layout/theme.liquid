@@ -12,6 +12,13 @@
       <link rel="icon" type="image/svg+xml" href="{{ 'logo-animated.svg' | asset_url }}">
     {%- endif -%}
 
+    <link rel="manifest" href="{{ 'manifest.json' | asset_url }}" crossorigin="anonymous">
+    <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="{{ shop.name }}">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <title>
       {{ page_title }}
       {%- if current_tags %} – tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -50,6 +57,7 @@
     </main>
 
     {% sections 'footer-group' %}
+    {% render 'install-banner' %}
     <div class="toast" data-toast role="status" aria-live="polite" aria-atomic="true"></div>
   </body>
 </html>

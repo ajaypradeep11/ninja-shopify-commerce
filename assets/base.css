@@ -2384,3 +2384,85 @@ body.template-cart .site-header__pill {
 .footer-social .social-links a { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); color: color-mix(in srgb, var(--ink) 72%, transparent); transition: color .15s ease, border-color .15s ease; }
 .footer-social .social-links a:hover, .footer-social .social-links a:focus-visible { color: var(--brand); border-color: var(--brand); }
 .footer-social .social-links svg { display: block; }
+
+/* Add-to-home-screen banner */
+.install-banner {
+  position: fixed;
+  z-index: 95;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgb(244 243 239 / 16%);
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  background: #0b0b0b;
+  box-shadow: 0 14px 40px rgb(0 0 0 / 45%);
+  color: #f4f3ef;
+  animation: install-banner-in 320ms ease-out;
+}
+
+@keyframes install-banner-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+.install-banner__icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+}
+
+.install-banner__copy {
+  min-width: 0;
+  flex: 1;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.install-banner__copy strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 13px;
+}
+
+.install-banner__copy span {
+  color: rgb(244 243 239 / 66%);
+}
+
+.install-banner__cta {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 9px 16px;
+  background: var(--brand);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.install-banner__close {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  place-items: center;
+  background: transparent;
+  color: rgb(244 243 239 / 60%);
+}
+
+.install-banner__close svg {
+  width: 16px;
+}
+
+@media (min-width: 768px) {
+  .install-banner { display: none; }
+}
