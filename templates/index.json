@@ -12,14 +12,14 @@
     "hero": {
       "type": "hero-carousel",
       "blocks": {
-        "slide_1": {
+        "slide_2": {
           "type": "slide",
           "settings": {
             "cta_label": "Shop clothing",
             "cta_link": "shopify://collections/tshirt"
           }
         },
-        "slide_2": {
+        "slide_1": {
           "type": "slide",
           "settings": {
             "cta_label": "Shop clothing",
@@ -35,8 +35,8 @@
         }
       },
       "block_order": [
-        "slide_1",
         "slide_2",
+        "slide_1",
         "slide_3"
       ],
       "custom_css": [
