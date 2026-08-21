@@ -1469,6 +1469,43 @@ h1 {
   object-fit: cover;
 }
 
+.product-gallery__arrow {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: #111;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.product-gallery__arrow svg {
+  width: 18px;
+}
+
+.product-gallery__arrow--prev {
+  left: 12px;
+}
+
+.product-gallery__arrow--prev svg {
+  transform: rotate(180deg);
+}
+
+.product-gallery__arrow--next {
+  right: 12px;
+}
+
+.product-gallery__arrow:hover {
+  background: #111;
+  color: #fff;
+}
+
 .product-gallery__thumbs {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

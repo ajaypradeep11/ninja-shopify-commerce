@@ -36,6 +36,25 @@
         {%- else -%}
           {{ 'product-1' | placeholder_svg_tag }}
         {%- endif -%}
+
+        {%- if product.images.size > 1 -%}
+          <button
+            class="product-gallery__arrow product-gallery__arrow--prev"
+            type="button"
+            aria-label="Previous image"
+            data-gallery-prev
+          >
+            {%- render 'icon', name: 'chevron' -%}
+          </button>
+          <button
+            class="product-gallery__arrow product-gallery__arrow--next"
+            type="button"
+            aria-label="Next image"
+            data-gallery-next
+          >
+            {%- render 'icon', name: 'chevron' -%}
+          </button>
+        {%- endif -%}
       </div>
 
       {%- if product.images.size > 1 -%}

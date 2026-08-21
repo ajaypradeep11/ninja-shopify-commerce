@@ -110,17 +110,26 @@ document.documentElement.classList.add('js');
       gallery.dataset.galleryBound = 'true';
       const main = gallery.querySelector('.product-gallery__main img');
       if (!main) return;
-      gallery.querySelectorAll('[data-gallery-thumb]').forEach((thumb) => {
+      const thumbs = Array.from(gallery.querySelectorAll('[data-gallery-thumb]'));
+      thumbs.forEach((thumb) => {
         thumb.addEventListener('click', () => {
           main.src = thumb.dataset.src;
           main.srcset = thumb.dataset.srcset || '';
           main.alt = thumb.dataset.alt || '';
-          gallery.querySelectorAll('[data-gallery-thumb]').forEach((button) => {
+          thumbs.forEach((button) => {
             button.classList.toggle('is-active', button === thumb);
             button.setAttribute('aria-current', button === thumb ? 'true' : 'false');
           });
         });
       });
+      const step = (direction) => {
+        if (!thumbs.length) return;
+        const current = thumbs.findIndex((thumb) => thumb.classList.contains('is-active'));
+        const next = (current + direction + thumbs.length) % thumbs.length;
+        thumbs[next].click();
+      };
+      gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => step(-1));
+      gallery.querySelector('[data-gallery-next]')?.addEventListener('click', () => step(1));
     });
   }
 
