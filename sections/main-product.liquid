@@ -73,9 +73,10 @@
                 {%- endif -%}
               {%- when 'title' -%}
                 <h1>{{ product.title }}</h1>
+              
                 <!-- Start of Judge.me code -->
                 <div
-                  style="{{ jm_style }}"
+                  style="margin-top: 12px; {{ jm_style }}"
                   class="jdgm-widget jdgm-preview-badge"
                   data-id="{{ product.id }}"
                   data-auto-install="false"
