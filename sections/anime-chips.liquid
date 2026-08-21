@@ -1,3 +1,4 @@
+{%- assign all_products_sorted = routes.all_products_collection_url | append: '?sort_by=best-selling' -%}
 <section class="section-pad anime-chips-section" data-scroll-nav>
   <div class="container-wide">
   {%- if section.settings.heading != blank -%}
@@ -5,7 +6,7 @@
       <h2>{{ section.settings.heading }}</h2>
       <div class="anime-nav">
         {%- if section.settings.link_label != blank -%}
-          <a class="tiles-link" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.link_label }}</a>
+          <a class="tiles-link" href="{{ section.settings.link | default: all_products_sorted }}">{{ section.settings.link_label }}</a>
         {%- endif -%}
         <button class="anime-nav__btn anime-nav__btn--prev" type="button" aria-label="Scroll left" data-rail-prev>{% render 'icon', name: 'chevron' %}</button>
         <button class="anime-nav__btn" type="button" aria-label="Scroll right" data-rail-next>{% render 'icon', name: 'chevron' %}</button>

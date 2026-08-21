@@ -33,7 +33,7 @@
   <div class="container-wide footer-links">
     <div>
       <h2 class="eyebrow">Shop</h2>
-      <ul role="list"><li><a href="{{ routes.all_products_collection_url }}">All products</a></li></ul>
+      <ul role="list"><li><a href="{{ routes.all_products_collection_url | append: '?sort_by=best-selling' }}">All products</a></li></ul>
     </div>
     <div>
       <h2 class="eyebrow">Explore</h2>

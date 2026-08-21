@@ -1,3 +1,4 @@
+{%- assign all_products_sorted = routes.all_products_collection_url | append: '?sort_by=best-selling' -%}
 {%- if section.blocks.size > 0 -%}
   <section class="brand-marquee" aria-label="{{ section.settings.heading | escape }}">
     {%- if section.settings.heading != blank -%}<h2 class="visually-hidden">{{ section.settings.heading }}</h2>{%- endif -%}
@@ -6,7 +7,7 @@
         <div class="marquee__group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
           {%- for repeat in (1..2) -%}
             {%- for block in section.blocks -%}
-              <a class="brand-marquee__item" href="{{ block.settings.link | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
+              <a class="brand-marquee__item" href="{{ block.settings.link | default: all_products_sorted }}" {{ block.shopify_attributes }}>
                 {%- if block.settings.logo != blank -%}
                   {{ block.settings.logo | image_url: width: 600 | image_tag: loading: 'lazy', widths: '200, 400, 600', sizes: '260px', alt: block.settings.name }}
                 {%- else -%}

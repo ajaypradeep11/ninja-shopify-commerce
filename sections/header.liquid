@@ -172,7 +172,7 @@
 
           <ul class="menu-drawer__links" role="list">
             <li>
-              <a href="{{ routes.all_products_collection_url }}">Shop</a>
+              <a href="{{ routes.all_products_collection_url | append: '?sort_by=best-selling' }}">Shop</a>
             </li>
 
             {%- for link in section.settings.menu.links -%}

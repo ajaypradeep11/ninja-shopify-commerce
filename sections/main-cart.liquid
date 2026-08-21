@@ -2,7 +2,7 @@
   <section class="container-reading empty-state">
     <h1>Your cart is empty.</h1>
     <p>Find something worthy of your setup.</p>
-    <a class="button" href="{{ routes.all_products_collection_url }}">Continue shopping</a>
+    <a class="button" href="{{ routes.all_products_collection_url | append: '?sort_by=best-selling' }}">Continue shopping</a>
   </section>
 {%- else -%}
   <section class="cart-page">

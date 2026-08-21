@@ -2,7 +2,7 @@
   <p class="eyebrow">404</p>
   <h1>{{ section.settings.heading }}</h1>
   <p>{{ section.settings.text }}</p>
-  <a class="button" href="{{ routes.all_products_collection_url }}">Shop all</a>
+  <a class="button" href="{{ routes.all_products_collection_url | append: '?sort_by=best-selling' }}">Shop all</a>
 </section>
 
 {% schema %}

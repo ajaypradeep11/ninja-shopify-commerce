@@ -1,3 +1,4 @@
+{%- assign all_products_sorted = routes.all_products_collection_url | append: '?sort_by=best-selling' -%}
 <section class="hero-shell">
   <div class="hero" data-hero>
     <div class="hero__media">
@@ -30,7 +31,7 @@
               endif
             endif
             if cta_link == blank
-              assign cta_link = routes.all_products_collection_url
+              assign cta_link = all_products_sorted
             endif
             if forloop.first
               assign first_cta_label = cta_label
@@ -68,14 +69,14 @@
       {%- else -%}
         {%- liquid
           assign first_cta_label = 'Shop tshirts'
-          assign first_cta_link = routes.all_products_collection_url
+          assign first_cta_link = all_products_sorted
           if collections['t-shirts'] != blank
             assign first_cta_link = collections['t-shirts'].url
           elsif collections['tshirts'] != blank
             assign first_cta_link = collections['tshirts'].url
           endif
           assign second_label = section.settings.primary_label | default: 'Shop all'
-          assign second_link = section.settings.primary_link | default: routes.all_products_collection_url
+          assign second_link = section.settings.primary_link | default: all_products_sorted
           assign first_link_json = first_cta_link | json
           assign second_label_json = second_label | json
           assign second_link_json = second_link | json
@@ -89,7 +90,7 @@
       {%- if section.settings.label != blank -%}
         <p class="hero__media-label">{{ section.settings.label }}</p>
       {%- endif -%}
-      <a class="hero__shop-all" href="{{ routes.all_products_collection_url }}">Shop All</a>
+      <a class="hero__shop-all" href="{{ routes.all_products_collection_url | append: '?sort_by=best-selling' }}">Shop All</a>
     </div>
     <div class="hero__scrim"></div>
 
@@ -101,10 +102,10 @@
         {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
         <div class="hero__actions">
           {%- if section.settings.primary_label != blank -%}
-            <a class="button" data-hero-cta href="{{ first_cta_link | default: routes.all_products_collection_url }}">{{ first_cta_label | default: section.settings.primary_label }}</a>
+            <a class="button" data-hero-cta href="{{ first_cta_link | default: all_products_sorted }}">{{ first_cta_label | default: section.settings.primary_label }}</a>
           {%- endif -%}
           {%- if section.settings.secondary_label != blank -%}
-            <a class="button button--white" href="{{ section.settings.secondary_link | default: routes.all_products_collection_url }}">{{ section.settings.secondary_label }}</a>
+            <a class="button button--white" href="{{ section.settings.secondary_link | default: all_products_sorted }}">{{ section.settings.secondary_label }}</a>
           {%- endif -%}
         </div>
 
