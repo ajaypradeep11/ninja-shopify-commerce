@@ -73,6 +73,16 @@
                 {%- endif -%}
               {%- when 'title' -%}
                 <h1>{{ product.title }}</h1>
+                <!-- Start of Judge.me code -->
+                <div
+                  style="{{ jm_style }}"
+                  class="jdgm-widget jdgm-preview-badge"
+                  data-id="{{ product.id }}"
+                  data-auto-install="false"
+                >
+                  {{ product.metafields.judgeme.badge }}
+                </div>
+                <!-- End of Judge.me code -->
               {%- when 'price' -%}
                 <div class="product-info__price" data-product-price>
                   <span>{{ current_variant.price | money_with_currency }}</span>
@@ -222,6 +232,7 @@
       ]
     },
     { "type": "share", "name": "Share buttons", "limit": 1 },
+    { "type": "@app" },
     {
       "type": "collapsible_tab",
       "name": "Collapsible row",

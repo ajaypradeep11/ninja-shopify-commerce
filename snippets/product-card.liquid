@@ -42,6 +42,14 @@
 
   <div class="product-card__info">
     <h3 class="product-card__title">{{ card_product.title }}</h3>
+    <div
+      style="{{ jm_style }}"
+      class="jdgm-widget jdgm-preview-badge"
+      data-id="{{ card_product.id }}"
+      data-auto-install="false"
+    >
+      {{ card_product.metafields.judgeme.badge }}
+    </div>
     <div class="product-card__price">
       <span>
         {%- if card_product.price_varies -%}From {% endif -%}
