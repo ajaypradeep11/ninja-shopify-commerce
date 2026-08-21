@@ -108,28 +108,33 @@ document.documentElement.classList.add('js');
   function initGalleries(root = document) {
     root.querySelectorAll('[data-gallery]:not([data-gallery-bound])').forEach((gallery) => {
       gallery.dataset.galleryBound = 'true';
-      const main = gallery.querySelector('.product-gallery__main img');
-      if (!main) return;
+      const track = gallery.querySelector('[data-gallery-track]');
+      if (!track || track.children.length < 2) return;
+      const slides = Array.from(track.children);
       const thumbs = Array.from(gallery.querySelectorAll('[data-gallery-thumb]'));
-      thumbs.forEach((thumb) => {
-        thumb.addEventListener('click', () => {
-          main.src = thumb.dataset.src;
-          main.srcset = thumb.dataset.srcset || '';
-          main.alt = thumb.dataset.alt || '';
-          thumbs.forEach((button) => {
-            button.classList.toggle('is-active', button === thumb);
-            button.setAttribute('aria-current', button === thumb ? 'true' : 'false');
-          });
+      const currentIndex = () => Math.round(track.scrollLeft / track.clientWidth);
+      const setActive = (index) => {
+        thumbs.forEach((button, i) => {
+          button.classList.toggle('is-active', i === index);
+          button.setAttribute('aria-current', i === index ? 'true' : 'false');
         });
-      });
-      const step = (direction) => {
-        if (!thumbs.length) return;
-        const current = thumbs.findIndex((thumb) => thumb.classList.contains('is-active'));
-        const next = (current + direction + thumbs.length) % thumbs.length;
-        thumbs[next].click();
       };
-      gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => step(-1));
-      gallery.querySelector('[data-gallery-next]')?.addEventListener('click', () => step(1));
+      const goTo = (index) => {
+        const target = slides[(index + slides.length) % slides.length];
+        track.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+      };
+      thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => goTo(i)));
+      gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => goTo(currentIndex() - 1));
+      gallery.querySelector('[data-gallery-next]')?.addEventListener('click', () => goTo(currentIndex() + 1));
+      let scrollTimer;
+      track.addEventListener(
+        'scroll',
+        () => {
+          window.clearTimeout(scrollTimer);
+          scrollTimer = window.setTimeout(() => setActive(currentIndex()), 80);
+        },
+        { passive: true }
+      );
     });
   }
 

@@ -1463,7 +1463,26 @@ h1 {
   background: var(--subtle);
 }
 
-.product-gallery__main img {
+.product-gallery__track {
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.product-gallery__track::-webkit-scrollbar {
+  display: none;
+}
+
+.product-gallery__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.product-gallery__slide img,
+.product-gallery__slide svg {
   width: 100%;
   height: 100%;
   object-fit: cover;

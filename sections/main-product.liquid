@@ -1,7 +1,6 @@
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
   assign product_form_id = 'ProductForm-' | append: section.id
-  assign featured_image_alt = product.featured_image.alt | default: product.title
 -%}
 
 <section class="container-wide product-page">
@@ -23,19 +22,33 @@
   <div class="product-layout">
     <div class="product-gallery" data-gallery>
       <div class="product-gallery__main">
-        {%- if product.featured_image != blank -%}
-          {{
-            product.featured_image
-            | image_url: width: 1800
-            | image_tag:
-              loading: 'eager',
-              widths: '600, 900, 1200, 1500, 1800',
-              sizes: '(max-width: 767px) 100vw, 55vw',
-              alt: featured_image_alt
-          }}
-        {%- else -%}
-          {{ 'product-1' | placeholder_svg_tag }}
-        {%- endif -%}
+        <div class="product-gallery__track" data-gallery-track>
+          {%- if product.images.size > 0 -%}
+            {%- for image in product.images -%}
+              <div class="product-gallery__slide">
+                {%- liquid
+                  assign image_alt = image.alt | default: product.title
+                  if forloop.first
+                    assign image_loading = 'eager'
+                  else
+                    assign image_loading = 'lazy'
+                  endif
+                -%}
+                {{
+                  image
+                  | image_url: width: 1800
+                  | image_tag:
+                    loading: image_loading,
+                    widths: '600, 900, 1200, 1500, 1800',
+                    sizes: '(max-width: 767px) 100vw, 55vw',
+                    alt: image_alt
+                }}
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            <div class="product-gallery__slide">{{ 'product-1' | placeholder_svg_tag }}</div>
+          {%- endif -%}
+        </div>
 
         {%- if product.images.size > 1 -%}
           <button
@@ -66,8 +79,6 @@
               aria-label="View image {{ forloop.index }}"
               aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
               data-gallery-thumb
-              data-src="{{ image | image_url: width: 1800 }}"
-              data-alt="{{ image.alt | default: product.title | escape }}"
             >
               {{
                 image
