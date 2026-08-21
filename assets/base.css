@@ -2490,22 +2490,27 @@ body.template-cart .site-header__pill {
 
 .jdgm-widget .jdgm-write-rev-link,
 .jdgm-widget .jdgm-submit-rev,
-.jdgm-widget .jdgm-btn {
-  border: 0;
-  border-radius: 999px;
-  background: var(--brand);
-  color: #000;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.jdgm-widget .jdgm-btn,
+.jdgm-write-rev-link,
+.jdgm-submit-rev {
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: var(--brand) !important;
+  color: #000 !important;
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  text-shadow: none !important;
 }
 
 .jdgm-widget .jdgm-write-rev-link:hover,
-.jdgm-widget .jdgm-submit-rev:hover {
-  background: #ffe27a;
-  color: #000;
+.jdgm-widget .jdgm-submit-rev:hover,
+.jdgm-write-rev-link:hover,
+.jdgm-submit-rev:hover {
+  background: #ffe27a !important;
+  color: #000 !important;
 }
 
 .jdgm-widget .jdgm-rev__author,
@@ -2523,11 +2528,11 @@ body.template-cart .site-header__pill {
 /* Star badge under product titles and on cards */
 .jdgm-prev-badge {
   display: block;
-  margin-top: 6px;
+  margin-top: 14px;
 }
 
 .product-card__info .jdgm-prev-badge {
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .jdgm-prev-badge .jdgm-prev-badge__text {
