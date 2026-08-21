@@ -65,6 +65,13 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
+        "collection_LEjYYf": {
+          "type": "collection",
+          "settings": {
+            "collection": "led-lamps",
+            "title": ""
+          }
+        },
         "collection_gL7V6m": {
           "type": "collection",
           "settings": {
@@ -93,6 +100,13 @@
             "title": "Beanies"
           }
         },
+        "collection_LhHp7c": {
+          "type": "collection",
+          "settings": {
+            "collection": "figure",
+            "title": "Collectibles"
+          }
+        },
         "collection_i4qfAC": {
           "type": "collection",
           "settings": {
@@ -100,21 +114,23 @@
             "title": "Cosplay Gear"
           }
         },
-        "collection_LhHp7c": {
+        "collection_A7jBRN": {
           "type": "collection",
           "settings": {
-            "collection": "figure",
-            "title": "Collectibles"
+            "collection": "hats",
+            "title": ""
           }
         }
       },
       "block_order": [
+        "collection_LEjYYf",
         "collection_gL7V6m",
         "collection_1",
         "collection_2",
         "collection_4",
+        "collection_LhHp7c",
         "collection_i4qfAC",
-        "collection_LhHp7c"
+        "collection_A7jBRN"
       ],
       "custom_css": [
         ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 8px;}",
