@@ -2466,3 +2466,72 @@ body.template-cart .site-header__pill {
 @media (min-width: 768px) {
   .install-banner { display: none; }
 }
+
+/* Judge.me reviews — match theme typography and brand colour */
+.jdgm-widget,
+.jdgm-widget *,
+.jdgm-prev-badge,
+.jdgm-prev-badge * {
+  font-family: var(--font-sans);
+}
+
+.jdgm-widget .jdgm-rev-widg__title,
+.jdgm-widget .jdgm-rev__title,
+.jdgm-widget .jdgm-histogram__average-rating {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.jdgm-widget .jdgm-star,
+.jdgm-prev-badge .jdgm-star {
+  color: var(--brand);
+}
+
+.jdgm-widget .jdgm-write-rev-link,
+.jdgm-widget .jdgm-submit-rev,
+.jdgm-widget .jdgm-btn {
+  border: 0;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.jdgm-widget .jdgm-write-rev-link:hover,
+.jdgm-widget .jdgm-submit-rev:hover {
+  background: #ffe27a;
+  color: #000;
+}
+
+.jdgm-widget .jdgm-rev__author,
+.jdgm-widget .jdgm-rev__buyer-badge {
+  font-weight: 600;
+}
+
+.jdgm-widget .jdgm-rev__timestamp,
+.jdgm-widget .jdgm-rev__prod-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+/* Star badge under product titles and on cards */
+.jdgm-prev-badge {
+  display: block;
+  margin-top: 6px;
+}
+
+.product-card__info .jdgm-prev-badge {
+  margin-top: 4px;
+}
+
+.jdgm-prev-badge .jdgm-prev-badge__text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
