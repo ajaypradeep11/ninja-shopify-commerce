@@ -20,11 +20,19 @@
     <meta name="apple-mobile-web-app-title" content="{{ shop.name }}">
     <meta name="mobile-web-app-capable" content="yes">
 
+    {%- liquid
+      comment
+        Compare title and brand with spacing/case removed so an SEO title written as
+        "… | Local Ninja" is not given a second " – LocalNinja" suffix.
+      endcomment
+      assign title_probe = page_title | downcase | remove: ' '
+      assign brand_probe = shop.name | downcase | remove: ' '
+    -%}
     <title>
       {{ page_title }}
       {%- if current_tags %} – tagged "{{ current_tags | join: ', ' }}"{% endif -%}
       {%- if current_page != 1 %} – Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} – {{ shop.name }}{% endunless -%}
+      {%- unless title_probe contains brand_probe %} – {{ shop.name }}{% endunless -%}
     </title>
 
     {%- if page_description -%}

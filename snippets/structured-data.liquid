@@ -160,11 +160,20 @@
 <script type="application/ld+json">
   {
     "@context": "https://schema.org/",
-    "@type": "Organization",
+    "@type": ["Organization", "OnlineStore"],
     "name": {{ shop.name | json }},
+    "alternateName": ["Local Ninja", "LocalNinja.ca"],
     "url": {{ shop_url | json }},
     "logo": {{ logo_url | json }},
+    "image": {{ logo_url | json }},
     "email": {{ shop.email | json }},
+    "description": "LocalNinja sells anime merch in Canada — LED lamps and lightboxes, figurines, apparel, cosplay gear, keychains and collectibles, shipped from Ottawa.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ottawa",
+      "addressRegion": "ON",
+      "addressCountry": "CA"
+    },
     "areaServed": [
       { "@type": "City", "name": "Ottawa" },
       { "@type": "Country", "name": "Canada" }
@@ -182,6 +191,7 @@
       "@context": "https://schema.org/",
       "@type": "WebSite",
       "name": {{ shop.name | json }},
+      "alternateName": ["Local Ninja", "LocalNinja.ca"],
       "url": {{ shop_url | json }},
       "potentialAction": {
         "@type": "SearchAction",
