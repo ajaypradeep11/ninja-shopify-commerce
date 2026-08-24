@@ -9,7 +9,7 @@
   <div class="container-wide section-heading{% if section.settings.heading == blank %} section-heading--compact{% endif %}">
     <h2>{{ section.settings.heading }}</h2>
     {%- if section.settings.link_label != blank -%}
-      <a class="tiles-link" href="{{ routes.all_products_collection_url | append: '?sort_by=best-selling' }}">{{ section.settings.link_label }}</a>
+      <a class="tiles-link" href="{{ featured_collection.url }}">{{ section.settings.link_label }}</a>
     {%- endif -%}
   </div>
 
