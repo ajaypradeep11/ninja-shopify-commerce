@@ -66,7 +66,11 @@
   </div>
 
   <div class="footer-bottom">
-    <div class="container-wide">© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</div>
+    <div class="container-wide footer-bottom__inner">
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</span>
+
+      {% render 'country-selector', placement: 'footer' %}
+    </div>
   </div>
 </footer>
 

@@ -1,0 +1,71 @@
+{%- comment -%}
+  Country / currency selector.
+
+  Renders nothing until a second Shopify Market exists, so this is safe to ship
+  before the US market is configured in admin.
+
+  Accepts:
+    placement - 'header' | 'drawer' | 'footer' (styling + unique list id)
+{%- endcomment -%}
+
+{%- liquid
+  assign placement = placement | default: 'header'
+-%}
+
+{%- if localization.available_countries.size > 1 -%}
+  <div class="localization localization--{{ placement }}" data-localization>
+    {%- form 'localization' -%}
+      <input
+        type="hidden"
+        name="country_code"
+        value="{{ localization.country.iso_code }}"
+        data-localization-input
+      >
+
+      <button
+        class="localization__button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="CountryList-{{ placement }}"
+        data-localization-button
+      >
+        <span aria-hidden="true">{{ localization.country.currency.iso_code }}</span>
+
+        <span class="visually-hidden">
+          Country and currency. Currently {{ localization.country.name }},
+          {{ localization.country.currency.iso_code }}.
+        </span>
+
+        {% render 'icon', name: 'chevron' %}
+      </button>
+
+      <ul
+        class="localization__list"
+        id="CountryList-{{ placement }}"
+        role="list"
+        data-localization-list
+        hidden
+      >
+        {%- for country in localization.available_countries -%}
+          <li>
+            <button
+              class="localization__option"
+              type="button"
+              value="{{ country.iso_code }}"
+              {% if country.iso_code == localization.country.iso_code %}
+                aria-current="true"
+              {% endif %}
+              data-localization-option
+            >
+              <span class="localization__country">{{ country.name }}</span>
+
+              <span class="localization__code">
+                {{ country.currency.iso_code }}
+              </span>
+            </button>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endform -%}
+  </div>
+{%- endif -%}

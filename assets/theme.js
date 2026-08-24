@@ -5,6 +5,15 @@ document.documentElement.classList.add('js');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let toastTimer;
 
+  const store = {
+    get(key) {
+      try { return window.localStorage.getItem(key); } catch (error) { return null; }
+    },
+    set(key, value) {
+      try { window.localStorage.setItem(key, value); } catch (error) { /* private mode */ }
+    }
+  };
+
   function showToast(message, isError = false) {
     const toast = document.querySelector('[data-toast]');
     if (!toast) return;
@@ -301,14 +310,6 @@ document.documentElement.classList.add('js');
       || window.navigator.standalone === true;
     if (installed) return;
 
-    const store = {
-      get(key) {
-        try { return window.localStorage.getItem(key); } catch (error) { return null; }
-      },
-      set(key, value) {
-        try { window.localStorage.setItem(key, value); } catch (error) { /* private mode */ }
-      }
-    };
     if (store.get('localninja.install.dismissed')) return;
 
     const ua = navigator.userAgent;
@@ -354,6 +355,120 @@ document.documentElement.classList.add('js');
     window.setTimeout(() => { banner.hidden = false; }, 4000);
   }
 
+  function initLocalization(root = document) {
+    root
+      .querySelectorAll('[data-localization]:not([data-localization-bound])')
+      .forEach((wrapper) => {
+        wrapper.dataset.localizationBound = 'true';
+
+        const form = wrapper.querySelector('form');
+        const input = wrapper.querySelector('[data-localization-input]');
+        const button = wrapper.querySelector('[data-localization-button]');
+        const list = wrapper.querySelector('[data-localization-list]');
+        if (!form || !input || !button || !list) return;
+
+        const close = () => {
+          button.setAttribute('aria-expanded', 'false');
+          list.hidden = true;
+        };
+
+        button.addEventListener('click', () => {
+          const isOpen = !list.hidden;
+          button.setAttribute('aria-expanded', String(!isOpen));
+          list.hidden = isOpen;
+        });
+
+        wrapper.querySelectorAll('[data-localization-option]').forEach((option) => {
+          option.addEventListener('click', () => {
+            input.value = option.value;
+            form.submit();
+          });
+        });
+
+        wrapper.addEventListener('keyup', (event) => {
+          if (event.key !== 'Escape') return;
+          close();
+          button.focus();
+        });
+
+        document.addEventListener('click', (event) => {
+          if (!wrapper.contains(event.target)) close();
+        });
+      });
+  }
+
+  function initMarketBanner(root = document) {
+    const banner = root.querySelector('[data-market-banner]:not([data-market-banner-bound])');
+    if (!banner) return;
+    banner.dataset.marketBannerBound = 'true';
+
+    if (store.get('localninja.market.dismissed')) return;
+
+    const shopify = window.Shopify || {};
+    const rootUrl = shopify.routes?.root || '/';
+    const currentCountry = shopify.country;
+    if (!currentCountry) return;
+
+    let currencies = {};
+    const currencyData = document.querySelector('[data-market-currencies]');
+    if (currencyData) {
+      try { currencies = JSON.parse(currencyData.textContent); } catch (error) { return; }
+    }
+
+    const dismiss = () => {
+      banner.hidden = true;
+      store.set('localninja.market.dismissed', '1');
+    };
+
+    const switchTo = (countryCode) => {
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = `${rootUrl}localization`;
+      form.hidden = true;
+
+      [['_method', 'PUT'], ['country_code', countryCode]].forEach(([name, value]) => {
+        const field = document.createElement('input');
+        field.type = 'hidden';
+        field.name = name;
+        field.value = value;
+        form.appendChild(field);
+      });
+
+      document.body.appendChild(form);
+      form.submit();
+    };
+
+    const show = (country) => {
+      const currency = currencies[country.handle];
+      if (!currency) return;
+
+      const title = banner.querySelector('[data-market-banner-title]');
+      const text = banner.querySelector('[data-market-banner-text]');
+      const accept = banner.querySelector('[data-market-banner-accept]');
+
+      if (title) title.textContent = `Shopping from ${country.name}?`;
+      if (text) text.textContent = `See prices in ${currency} and shipping for your address.`;
+      if (accept) {
+        accept.textContent = `Switch to ${currency}`;
+        accept.addEventListener('click', () => switchTo(country.handle));
+      }
+
+      banner.querySelector('[data-market-banner-close]')?.addEventListener('click', dismiss);
+      banner.hidden = false;
+    };
+
+    const query = `country[enabled]=true&country[exclude]=${encodeURIComponent(currentCountry)}`;
+
+    fetch(`${rootUrl}browsing_context_suggestions.json?${query}`)
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        const country = data?.suggestions?.[0]?.parts?.country;
+        if (!country?.handle || country.handle === currentCountry) return;
+        show(country);
+      })
+      .catch(() => { /* suggestions unavailable - leave the banner hidden */ });
+  }
+
   function init(root = document) {
     initMenus(root);
     initHero(root);
@@ -365,6 +480,8 @@ document.documentElement.classList.add('js');
     initSortSelects(root);
     initScrollNavs(root);
     initInstallBanner(root);
+    initLocalization(root);
+    initMarketBanner(root);
   }
 
   document.addEventListener('DOMContentLoaded', () => init());

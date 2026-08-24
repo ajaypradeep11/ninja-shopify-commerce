@@ -2596,3 +2596,201 @@ body.template-cart .site-header__pill {
   font-size: 11px;
   letter-spacing: 0.04em;
 }
+
+/* Country / currency selector -------------------------------------------- */
+
+.localization {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.localization form {
+  margin: 0;
+}
+
+.localization__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: color 160ms ease, background-color 160ms ease;
+}
+
+.localization__button:hover {
+  color: var(--brand);
+}
+
+.localization__button svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 160ms ease;
+}
+
+.localization__button[aria-expanded='true'] svg {
+  transform: rotate(180deg);
+}
+
+.localization__list {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 210px;
+  padding: 6px;
+  border: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
+  border-radius: var(--radius-lg);
+  margin: 0;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  list-style: none;
+}
+
+.localization__option {
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 9px 10px;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink);
+  font-size: 13px;
+  text-align: left;
+  transition: background-color 160ms ease;
+}
+
+.localization__option:hover {
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.localization__option[aria-current='true'] {
+  color: var(--brand);
+}
+
+.localization__code {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  opacity: 0.65;
+}
+
+/* Drawer and footer placements sit inline rather than as an overlay pill. */
+
+.localization--drawer {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.localization--drawer .localization__button {
+  width: 100%;
+  justify-content: space-between;
+  padding-inline: 0;
+}
+
+.localization--drawer .localization__list {
+  position: static;
+  margin-top: 8px;
+  box-shadow: none;
+}
+
+.localization--footer .localization__list {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+
+.footer-bottom__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Market suggestion banner ------------------------------------------------ */
+
+.market-banner {
+  position: fixed;
+  z-index: 96;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgb(244 243 239 / 16%);
+  border-radius: var(--radius-lg);
+  padding: 12px 14px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  background: #0b0b0b;
+  box-shadow: 0 14px 40px rgb(0 0 0 / 45%);
+  color: #f4f3ef;
+  animation: install-banner-in 320ms ease-out;
+}
+
+@media (min-width: 768px) {
+  .market-banner {
+    right: 16px;
+    left: auto;
+    max-width: 420px;
+  }
+}
+
+/* The install prompt is also pinned bottom on small screens - stack them. */
+.market-banner:not([hidden]) ~ .install-banner {
+  bottom: 92px;
+}
+
+.market-banner__copy {
+  min-width: 0;
+  flex: 1;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.market-banner__copy strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 13px;
+}
+
+.market-banner__cta {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 9px 16px;
+  background: var(--brand);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.market-banner__close {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  place-items: center;
+  background: transparent;
+  color: rgb(244 243 239 / 60%);
+}
+
+.market-banner__close svg {
+  width: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .market-banner { animation: none; }
+}

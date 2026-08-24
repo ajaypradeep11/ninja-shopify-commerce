@@ -1,0 +1,48 @@
+{%- comment -%}
+  Suggests a better market when the visitor appears to be browsing from a
+  country we sell to but aren't currently showing. Shopify's automatic
+  geolocation switching is Plus-only, so this asks rather than redirects —
+  which also avoids trapping a Canadian on a US price list.
+
+  Copy is filled in by initMarketBanner() once suggestions come back.
+  Renders nothing until a second market exists.
+{%- endcomment -%}
+
+{%- if localization.available_countries.size > 1 -%}
+  <div class="market-banner" data-market-banner hidden>
+    <p class="market-banner__copy">
+      <strong data-market-banner-title></strong>
+      <span data-market-banner-text></span>
+    </p>
+
+    <button
+      class="market-banner__cta"
+      type="button"
+      data-market-banner-accept
+    >
+      Switch
+    </button>
+
+    <button
+      class="market-banner__close"
+      type="button"
+      aria-label="Stay on the current country"
+      data-market-banner-close
+    >
+      {% render 'icon', name: 'close' %}
+    </button>
+  </div>
+
+  {%- comment -%}
+    The suggestions endpoint returns a country but not its currency, so hand the
+    currency map to JS the same way the hero hands over its CTAs.
+  {%- endcomment -%}
+  <script type="application/json" data-market-currencies>
+    {
+      {%- for country in localization.available_countries -%}
+        {{ country.iso_code | json }}: {{ country.currency.iso_code | json }}
+        {%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    }
+  </script>
+{%- endif -%}

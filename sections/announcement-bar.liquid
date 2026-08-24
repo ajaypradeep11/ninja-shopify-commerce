@@ -1,7 +1,18 @@
-{%- if section.settings.show_bar and section.settings.text != blank -%}
+{%- liquid
+  comment
+    The default copy quotes a CAD threshold, which is wrong for any other market.
+    Fall back to currency-neutral copy once a visitor is outside the shop's own country.
+  endcomment
+  assign bar_text = section.settings.text
+  if section.settings.text_alt != blank and localization.country.iso_code != shop.address.country_code
+    assign bar_text = section.settings.text_alt
+  endif
+-%}
+
+{%- if section.settings.show_bar and bar_text != blank -%}
   <div class="announcement" role="region" aria-label="Announcement">
     <div class="marquee marquee--announcement">
-      {%- assign parts = section.settings.text | split: '✳' -%}
+      {%- assign parts = bar_text | split: '✳' -%}
       {%- for copy in (1..2) -%}
         <div class="marquee__group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
           {%- for repeat in (1..6) -%}
@@ -30,6 +41,13 @@
       "id": "text",
       "label": "Announcement",
       "default": "Free shipping above $85 CAD ✳ Ottawa local delivery in 1–2 days ✳ Secure checkout"
+    },
+    {
+      "type": "text",
+      "id": "text_alt",
+      "label": "Announcement (other markets)",
+      "info": "Shown to visitors outside your shop's country, where a CAD threshold would be wrong. Leave blank to always use the announcement above.",
+      "default": "Fast shipping across Canada and the US ✳ Ships from Ottawa ✳ Secure checkout"
     }
   ],
   "presets": [{ "name": "Announcement bar" }]

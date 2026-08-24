@@ -91,6 +91,8 @@
               </form>
             {%- endif -%}
 
+            {% render 'country-selector', placement: 'header' %}
+
             {%- if section.settings.show_account -%}
               <a
                 class="icon-button"
@@ -193,6 +195,8 @@
               </li>
             {%- endfor -%}
           </ul>
+
+          {% render 'country-selector', placement: 'drawer' %}
         </nav>
       </div>
     </div>
