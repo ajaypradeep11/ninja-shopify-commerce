@@ -2683,6 +2683,28 @@ body.template-cart .site-header__pill {
   opacity: 0.65;
 }
 
+/* Header placement swaps sides at the breakpoint that reveals the header search:
+   on mobile the switch sits left beside the menu button, on wider screens it
+   rejoins the account/cart cluster on the right. Only one renders at a time. */
+
+.localization--header {
+  display: none;
+}
+
+.localization--header-mobile {
+  display: block;
+}
+
+.localization--header-mobile .localization__list {
+  right: auto;
+  left: 0;
+}
+
+@media (min-width: 640px) {
+  .localization--header { display: block; }
+  .localization--header-mobile { display: none; }
+}
+
 /* Drawer and footer placements sit inline rather than as an overlay pill. */
 
 .localization--drawer {

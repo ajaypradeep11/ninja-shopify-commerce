@@ -18,6 +18,12 @@
               {% render 'icon', name: 'menu' %}
             </button>
 
+            {%- comment -%}
+              Mobile places the currency switch on the left, beside the menu button;
+              the right-hand copy takes over from 640px. Only one is ever visible.
+            {%- endcomment -%}
+            {% render 'country-selector', placement: 'header-mobile' %}
+
             <a class="header-utility-link" href="{{ newest_url }}">
               New arrivals
             </a>
