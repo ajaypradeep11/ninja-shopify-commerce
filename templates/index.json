@@ -65,11 +65,11 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
-        "collection_2": {
+        "collection_A8PKza": {
           "type": "collection",
           "settings": {
-            "collection": "lamp",
-            "title": "Desk Lamps"
+            "collection": "sale",
+            "title": "Sale"
           }
         },
         "collection_gL7V6m": {
@@ -88,7 +88,6 @@
         },
         "collection_LEjYYf": {
           "type": "collection",
-          "disabled": true,
           "settings": {
             "collection": "led-lamps",
             "title": ""
@@ -124,7 +123,7 @@
         }
       },
       "block_order": [
-        "collection_2",
+        "collection_A8PKza",
         "collection_gL7V6m",
         "collection_1",
         "collection_LEjYYf",
