@@ -67,6 +67,7 @@
       "blocks": {
         "collection_A8PKza": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "sale",
             "title": "Sale"
