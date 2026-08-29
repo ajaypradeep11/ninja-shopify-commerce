@@ -14,8 +14,16 @@
     "footer": {
       "type": "footer",
       "custom_css": [
-        ".payment-icon {width: auto; height: 28px; stroke: none;}",
-        ".payment-icon * {stroke: none;}"
+        ".payment-icon{width:auto;height:22px;stroke:none}",
+        ".payment-icon *{stroke:none}",
+        ".payment-icons{gap:6px}",
+        ".payment-icons li{border-radius:5px;overflow:hidden}",
+        ".site-footer{margin:24px 16px 16px;border-radius:16px;background:#141317;border:1px solid #2a2a28;overflow:hidden}",
+        ".usp-strip{background:#FFD84D;padding:16px 28px;gap:16px}",
+        ".usp-item{font:600 11px/1.3 \"IBM Plex Mono\",monospace;letter-spacing:.14em;text-transform:uppercase;color:#000}",
+        ".usp-item svg{color:#000}",
+        ".footer-band{border-top:0}",
+        ".footer-trust{}"
       ],
       "settings": {
         "menu": "footer",
