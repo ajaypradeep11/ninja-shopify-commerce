@@ -10,6 +10,7 @@
       <div class="usp-item">{% render 'icon', name: 'sparkles' %}<span>{{ section.settings.usp_3 }}</span></div>
     {%- endif -%}
   </div>
+  <div class="footer-newsletter"><div class="container-wide footer-newsletter__inner"><div class="footer-newsletter__text"><h2 class="eyebrow">{{ section.settings.newsletter_heading }}</h2><p class="footer-newsletter__sub">{{ section.settings.newsletter_text }}</p></div>{%- form 'customer', class: 'footer-newsletter__form' -%}<input type="hidden" name="contact[tags]" value="newsletter">{%- if form.posted_successfully? -%}<p class="footer-newsletter__msg footer-newsletter__msg--ok">Thanks for subscribing!</p>{%- else -%}<div class="footer-newsletter__row"><input type="email" name="contact[email]" id="footer-newsletter-email" class="footer-newsletter__input" value="{{ form.email }}" placeholder="Your email" required autocomplete="email" aria-label="Email address"><button type="submit" class="footer-newsletter__btn">Subscribe</button></div>{%- if form.errors -%}<p class="footer-newsletter__msg footer-newsletter__msg--error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{%- endif -%}{%- endif -%}{%- endform -%}</div></div> %} %} %} }} }} %} }}">
 
   <div class="footer-band">
     <div class="container-wide footer-trust">
