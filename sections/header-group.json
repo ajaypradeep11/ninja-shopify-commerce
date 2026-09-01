@@ -18,7 +18,8 @@
       ],
       "settings": {
         "show_bar": true,
-        "text": "Free shipping above $85 CAD ✳ Ottawa local delivery in 1–2 days ✳ Secure checkout"
+        "text": "Free shipping above $85 CAD ✳ Ottawa local delivery in 1–2 days ✳ Secure checkout",
+        "text_alt": "Free overseas shipping above $125 USD ✳ Ships from Ottawa ✳ Secure checkout"
       }
     },
     "header": {
