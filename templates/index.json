@@ -70,7 +70,7 @@
           "settings": {
             "collection": "halloween",
             "image": "shopify://shop_images/instagram-image_ceaf7dd4-ceb0-4292-833c-e13b4185160d.jpg",
-            "title": ""
+            "title": "{{ block.settings.collection.title }}"
           }
         },
         "collection_gL7V6m": {
