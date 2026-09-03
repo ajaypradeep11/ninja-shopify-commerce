@@ -1796,7 +1796,14 @@ h1 {
 }
 
 /* Cart */
-body.template-cart,
+/* Only the page ground goes white here. The ink overrides have to stay scoped
+   to #MainContent: on body they were inherited by the footer, which sits
+   outside it and sets no colour of its own, leaving #111 text on the #141317
+   footer. Matches how main-product.liquid scopes the same overrides. */
+body.template-cart {
+  background: #fff !important;
+}
+
 body.template-cart #MainContent {
   --surface: #fff;
   --ink: #111;
