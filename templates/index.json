@@ -65,12 +65,12 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
-        "collection_A8PKza": {
+        "collection_LrXJ3U": {
           "type": "collection",
-          "disabled": true,
           "settings": {
-            "collection": "sale",
-            "title": "Sale"
+            "collection": "halloween",
+            "image": "shopify://shop_images/instagram-image_ceaf7dd4-ceb0-4292-833c-e13b4185160d.jpg",
+            "title": ""
           }
         },
         "collection_gL7V6m": {
@@ -124,7 +124,7 @@
         }
       },
       "block_order": [
-        "collection_A8PKza",
+        "collection_LrXJ3U",
         "collection_gL7V6m",
         "collection_1",
         "collection_LEjYYf",
