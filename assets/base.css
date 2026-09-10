@@ -2167,9 +2167,9 @@ body.template-cart .site-header__pill {
 .footer-newsletter { border-bottom: 1px solid var(--footer-border); }
 .footer-newsletter__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 480px) minmax(0, 520px);
   align-items: center;
-  gap: 32px 64px;
+  gap: 32px;
   padding-block: 44px;
 }
 .footer-newsletter__heading {
@@ -2185,7 +2185,7 @@ body.template-cart .site-header__pill {
   color: var(--footer-muted);
   font-size: 14px;
 }
-.footer-newsletter__form { width: 100%; max-width: 520px; margin: 0; justify-self: end; min-width: 0; }
+.footer-newsletter__form { width: 100%; max-width: 520px; margin: 0; justify-self: start; min-width: 0; }
 .footer-newsletter__row { display: flex; gap: 8px; }
 .footer-newsletter__input {
   width: 100%;
