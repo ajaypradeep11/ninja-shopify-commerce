@@ -87,11 +87,11 @@
             "title": "Apparel"
           }
         },
-        "collection_LEjYYf": {
+        "collection_4": {
           "type": "collection",
           "settings": {
-            "collection": "lamp",
-            "title": "Desk Lamps"
+            "collection": "beanies",
+            "title": "Beanies"
           }
         },
         "collection_A7jBRN": {
@@ -101,11 +101,11 @@
             "title": ""
           }
         },
-        "collection_4": {
+        "collection_LEjYYf": {
           "type": "collection",
           "settings": {
-            "collection": "beanies",
-            "title": "Beanies"
+            "collection": "lamp",
+            "title": "Desk Lamps"
           }
         },
         "collection_LhHp7c": {
@@ -127,9 +127,9 @@
         "collection_LrXJ3U",
         "collection_gL7V6m",
         "collection_1",
-        "collection_LEjYYf",
-        "collection_A7jBRN",
         "collection_4",
+        "collection_A7jBRN",
+        "collection_LEjYYf",
         "collection_LhHp7c",
         "collection_i4qfAC"
       ],
