@@ -317,28 +317,6 @@
     },
     "1789101550c66611a1": {
       "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_325fa17_yhH8Fa": {
-          "type": "ai_gen_block_325fa17",
-          "settings": {
-            "badge_text": "Sale",
-            "badge_position": "top_left",
-            "desktop_width_percent": 100,
-            "badge_color": "#ffd84d",
-            "badge_text_color": "#000000",
-            "badge_font": "system_ui_n4",
-            "badge_size": 13,
-            "badge_radius": 0,
-            "badge_offset": 12,
-            "placeholder_color": "#2a2a28",
-            "placeholder_icon_color": "#f4f3ef"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_325fa17_yhH8Fa"
-      ],
       "settings": {}
     },
     "17891016372162dac9": {
