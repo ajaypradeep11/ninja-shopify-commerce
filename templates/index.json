@@ -65,18 +65,11 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
-        "collection_xPhrKW": {
-          "type": "collection",
-          "settings": {
-            "collection": "headwear",
-            "title": "Headwear"
-          }
-        },
         "collection_LrXJ3U": {
           "type": "collection",
           "settings": {
             "collection": "halloween",
-            "image": "shopify://shop_images/instagram-image_ceaf7dd4-ceb0-4292-833c-e13b4185160d.jpg",
+            "image": "shopify://shop_images/instagram-image_ce8766ad-0de3-44d5-97bc-298212d1cf35.jpg",
             "title": "{{ block.settings.collection.title }}"
           }
         },
@@ -84,6 +77,7 @@
           "type": "collection",
           "settings": {
             "collection": "keychain",
+            "image": "shopify://shop_images/instagram-image-7d44f32b-a4cd-4904-bdaa-009e2a1f18bf.jpg",
             "title": "Keychain & Accessories"
           }
         },
@@ -91,13 +85,23 @@
           "type": "collection",
           "settings": {
             "collection": "tshirt",
+            "image": "shopify://shop_images/b2a30921-500f-4804-b07a-613b3d156b49.jpg",
             "title": "Apparel"
+          }
+        },
+        "collection_xPhrKW": {
+          "type": "collection",
+          "settings": {
+            "collection": "headwear",
+            "image": "shopify://shop_images/instagram-image_fca62cba-7b84-4f41-b180-7fa07418c49c.jpg",
+            "title": "Headwear"
           }
         },
         "collection_LEjYYf": {
           "type": "collection",
           "settings": {
             "collection": "lamp",
+            "image": "shopify://shop_images/instagram-image_bdd42014-19a0-4b1d-b4c3-cc497eb46be9.jpg",
             "title": "Desk Lamps"
           }
         },
@@ -117,10 +121,10 @@
         }
       },
       "block_order": [
-        "collection_xPhrKW",
         "collection_LrXJ3U",
         "collection_gL7V6m",
         "collection_1",
+        "collection_xPhrKW",
         "collection_LEjYYf",
         "collection_LhHp7c",
         "collection_i4qfAC"
