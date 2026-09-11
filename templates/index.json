@@ -65,6 +65,13 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
+        "collection_xPhrKW": {
+          "type": "collection",
+          "settings": {
+            "collection": "headwear",
+            "title": "Headwear"
+          }
+        },
         "collection_LrXJ3U": {
           "type": "collection",
           "settings": {
@@ -85,20 +92,6 @@
           "settings": {
             "collection": "tshirt",
             "title": "Apparel"
-          }
-        },
-        "collection_4": {
-          "type": "collection",
-          "settings": {
-            "collection": "beanies",
-            "title": "Beanies"
-          }
-        },
-        "collection_A7jBRN": {
-          "type": "collection",
-          "settings": {
-            "collection": "hats",
-            "title": ""
           }
         },
         "collection_LEjYYf": {
@@ -124,11 +117,10 @@
         }
       },
       "block_order": [
+        "collection_xPhrKW",
         "collection_LrXJ3U",
         "collection_gL7V6m",
         "collection_1",
-        "collection_4",
-        "collection_A7jBRN",
         "collection_LEjYYf",
         "collection_LhHp7c",
         "collection_i4qfAC"
@@ -328,14 +320,14 @@
             "badge_text": "Sale",
             "badge_position": "top_left",
             "desktop_width_percent": 100,
-            "badge_color": "#FFD84D",
+            "badge_color": "#ffd84d",
             "badge_text_color": "#000000",
             "badge_font": "system_ui_n4",
             "badge_size": 13,
             "badge_radius": 0,
             "badge_offset": 12,
-            "placeholder_color": "#2A2A28",
-            "placeholder_icon_color": "#F4F3EF"
+            "placeholder_color": "#2a2a28",
+            "placeholder_icon_color": "#f4f3ef"
           },
           "blocks": {}
         }
@@ -354,7 +346,7 @@
             "badge_text": "Sale",
             "position": "top_left",
             "desktop_width_percent": 100,
-            "badge_color": "#FFD84D",
+            "badge_color": "#ffd84d",
             "badge_text_color": "#000000",
             "badge_font": "system_ui_n4",
             "font_size": 14,
