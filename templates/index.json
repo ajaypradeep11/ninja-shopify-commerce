@@ -318,6 +318,32 @@
     "1785866129c28a0cff": {
       "type": "_blocks",
       "settings": {}
+    },
+    "1789101550c66611a1": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_325fa17_yhH8Fa": {
+          "type": "ai_gen_block_325fa17",
+          "settings": {
+            "badge_text": "Sale",
+            "badge_position": "top_left",
+            "desktop_width_percent": 100,
+            "badge_color": "#FFD84D",
+            "badge_text_color": "#000000",
+            "badge_font": "system_ui_n4",
+            "badge_size": 13,
+            "badge_radius": 0,
+            "badge_offset": 12,
+            "placeholder_color": "#2A2A28",
+            "placeholder_icon_color": "#F4F3EF"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_325fa17_yhH8Fa"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -332,6 +358,7 @@
     "featured_product_rail_pmgiaw",
     "featured_product_rail_CHdjWJ",
     "reviews",
-    "1785866129c28a0cff"
+    "1785866129c28a0cff",
+    "1789101550c66611a1"
   ]
 }
