@@ -344,6 +344,40 @@
         "ai_gen_block_325fa17_yhH8Fa"
       ],
       "settings": {}
+    },
+    "17891016372162dac9": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_1ed2181_PzkajY": {
+          "type": "ai_gen_block_1ed2181",
+          "settings": {
+            "badge_text": "Sale",
+            "position": "top_left",
+            "desktop_width_percent": 100,
+            "badge_color": "#FFD84D",
+            "badge_text_color": "#000000",
+            "badge_font": "system_ui_n4",
+            "font_size": 14,
+            "mobile_font_size": 11,
+            "badge_min_width": 60,
+            "mobile_min_width": 50,
+            "border_radius": 2,
+            "border_width": 2,
+            "letter_spacing": 1,
+            "rotation": -2,
+            "offset_top": 10,
+            "mobile_offset_top": 10,
+            "offset_side": 10,
+            "badge_padding_vertical": 8,
+            "badge_padding_horizontal": 12
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_1ed2181_PzkajY"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -359,6 +393,7 @@
     "featured_product_rail_CHdjWJ",
     "reviews",
     "1785866129c28a0cff",
-    "1789101550c66611a1"
+    "1789101550c66611a1",
+    "17891016372162dac9"
   ]
 }
