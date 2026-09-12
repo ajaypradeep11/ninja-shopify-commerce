@@ -199,16 +199,6 @@
         "heading": "Shop by anime"
       }
     },
-    "divider_ygbVmq": {
-      "type": "divider",
-      "custom_css": [
-        ".selvedge {height: 52px; margin-block: 0 !important; border-block: 24px solid #fff; background: repeating-linear-gradient(90deg, #e5b92f 0 24px, #fff 24px 36px);}"
-      ],
-      "name": "Ninja divider",
-      "settings": {
-        "margin": 24
-      }
-    },
     "featured_product_rail_mW3KHK": {
       "type": "featured-product-rail",
       "custom_css": [
@@ -372,7 +362,6 @@
     "best_sellers",
     "featured_product_rail_HkJagM",
     "brand_marquee",
-    "divider_ygbVmq",
     "featured_product_rail_mW3KHK",
     "featured_product_rail_4eKNJt",
     "featured_product_rail_pmgiaw",
