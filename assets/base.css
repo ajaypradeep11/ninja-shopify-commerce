@@ -1423,6 +1423,12 @@ h1 {
   background: var(--black);
 }
 
+.filter-drawer__actions .button {
+  min-width: 0;
+  padding-inline: 12px;
+  white-space: nowrap;
+}
+
 .active-filters {
   display: flex;
   flex-wrap: wrap;
