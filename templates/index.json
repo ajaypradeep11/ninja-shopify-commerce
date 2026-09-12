@@ -59,7 +59,7 @@
         ".selvedge {height: 52px; margin-block: 0 !important; border-block: 24px solid #fff; background: repeating-linear-gradient(90deg, #e5b92f 0 24px, #fff 24px 36px);}"
       ],
       "settings": {
-        "margin": 24
+        "margin": 12
       }
     },
     "collection_tiles": {
@@ -157,9 +157,9 @@
       "type": "featured-product-rail",
       "name": "Product rail",
       "settings": {
-        "heading": "Opening Sale",
+        "heading": "OPENING SALE!",
         "collection": "sale",
-        "link_label": "Celebrate our launch with up to 30% off fan-favorite anime apparel and lamps! Limited time only.",
+        "link_label": "",
         "show_vendor": false,
         "products_to_show": 20
       }
