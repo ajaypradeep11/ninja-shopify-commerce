@@ -368,6 +368,31 @@ h1 {
   color: var(--brand);
 }
 
+.anime-sale-text {
+  display: inline-block;
+  white-space: nowrap;
+  color: #ff8a3d;
+  background: linear-gradient(110deg, #ffab45, #ff713b, #ff4d4d, #ffab45);
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: anime-sale-gradient 4s ease-in-out infinite alternate;
+}
+
+@keyframes anime-sale-gradient {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anime-sale-text { animation: none; background-position: 50% 50%; }
+}
+
+@media (forced-colors: active) {
+  .anime-sale-text { background: none; -webkit-text-fill-color: currentColor; animation: none; }
+}
+
 .wordmark {
   display: flex;
   align-items: center;

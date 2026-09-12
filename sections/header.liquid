@@ -1,5 +1,6 @@
 {%- liquid
   assign best_selling_url = routes.all_products_collection_url | append: '?sort_by=best-selling'
+  assign anime_sale_url = routes.root_url | append: 'collections/sale'
 -%}
 
 <header class="site-header" data-header>
@@ -29,6 +30,10 @@
 
             <a class="header-utility-link" href="{{ best_selling_url }}">
               Best sellers
+            </a>
+
+            <a class="header-utility-link" href="{{ anime_sale_url }}">
+              <span class="anime-sale-text">Anime Sale</span>
             </a>
           </div>
 
@@ -180,6 +185,10 @@
           <ul class="menu-drawer__links" role="list">
             <li>
               <a href="{{ routes.all_products_collection_url | append: '?sort_by=best-selling' }}">Shop</a>
+            </li>
+
+            <li>
+              <a href="{{ anime_sale_url }}"><span class="anime-sale-text">Anime Sale</span></a>
             </li>
 
             {%- for link in section.settings.menu.links -%}
