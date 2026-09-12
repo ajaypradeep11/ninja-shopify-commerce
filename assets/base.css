@@ -1558,7 +1558,14 @@ h1 {
 .product-gallery__slide svg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .product-gallery__main {
+    aspect-ratio: auto;
+    height: min(800px, max(240px, calc(100svh - var(--notch-space) - 96px)));
+  }
 }
 
 .product-gallery__arrow {

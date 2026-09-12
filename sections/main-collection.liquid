@@ -15,15 +15,6 @@
           <button class="filter-button" type="button" aria-expanded="false" aria-controls="CollectionFilters-{{ section.id }}" aria-haspopup="dialog" data-filter-open>
             {% render 'icon', name: 'filter' %} Filter
           </button>
-          <label class="sort-pill">
-            <span>Sort:</span>
-            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-            <select data-sort-select aria-label="Sort by">
-              {%- for option in collection.sort_options -%}
-                <option value="{{ option.value | escape }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name | escape }}</option>
-              {%- endfor -%}
-            </select>
-          </label>
         </div>
       </div>
 
