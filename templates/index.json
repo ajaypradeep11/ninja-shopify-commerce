@@ -153,6 +153,17 @@
         "products_to_show": 8
       }
     },
+    "featured_product_rail_HkJagM": {
+      "type": "featured-product-rail",
+      "name": "Product rail",
+      "settings": {
+        "heading": "Opening Sale",
+        "collection": "sale",
+        "link_label": "Sale",
+        "show_vendor": false,
+        "products_to_show": 20
+      }
+    },
     "brand_marquee": {
       "type": "brand-marquee",
       "blocks": {
@@ -359,6 +370,7 @@
     "divider_1",
     "collection_tiles",
     "best_sellers",
+    "featured_product_rail_HkJagM",
     "brand_marquee",
     "divider_ygbVmq",
     "featured_product_rail_mW3KHK",
