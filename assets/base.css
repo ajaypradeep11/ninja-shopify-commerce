@@ -1294,6 +1294,10 @@ h1 {
 .filter-option:has(input:disabled) { opacity: .5; }
 .filter-option input { flex-shrink: 0; }
 .collection-results { min-width: 0; }
+.collection-results .product-card__media {
+  width: 92%;
+  margin-inline: auto;
+}
 
 @media (min-width: 1024px) {
   .collection-layout {

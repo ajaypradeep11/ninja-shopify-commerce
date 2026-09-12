@@ -1,5 +1,4 @@
 {%- liquid
-  assign newest_url = routes.all_products_collection_url | append: '?sort_by=created-descending'
   assign best_selling_url = routes.all_products_collection_url | append: '?sort_by=best-selling'
 -%}
 
@@ -24,8 +23,8 @@
             {%- endcomment -%}
             {% render 'country-selector', placement: 'header-mobile' %}
 
-            <a class="header-utility-link" href="{{ newest_url }}">
-              New arrivals
+            <a class="header-utility-link" href="{{ routes.all_products_collection_url }}">
+              Shop
             </a>
 
             <a class="header-utility-link" href="{{ best_selling_url }}">
@@ -272,4 +271,3 @@
   "presets": [{ "name": "Header" }]
 }
 {% endschema %}
-
