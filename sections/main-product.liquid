@@ -34,6 +34,13 @@
                     assign image_loading = 'lazy'
                   endif
                 -%}
+                <a
+                  class="product-gallery__zoom-link"
+                  href="{{ image | image_url: width: 2400 }}"
+                  aria-label="Zoom image {{ forloop.index }}: {{ image_alt | escape }}"
+                  aria-haspopup="dialog"
+                  data-gallery-zoom
+                >
                 {{
                   image
                   | image_url: width: 1800
@@ -43,6 +50,8 @@
                     sizes: '(max-width: 767px) 100vw, 55vw',
                     alt: image_alt
                 }}
+                  <span class="product-gallery__zoom-hint" aria-hidden="true">Zoom image</span>
+                </a>
               </div>
             {%- endfor -%}
           {%- else -%}
@@ -88,6 +97,28 @@
             </button>
           {%- endfor -%}
         </div>
+      {%- endif -%}
+      {%- if product.images.size > 0 -%}
+        <dialog class="image-viewer" aria-label="Product images" data-image-viewer>
+          <div class="image-viewer__layout">
+            <div class="image-viewer__toolbar">
+              <span class="image-viewer__count" aria-live="polite" data-viewer-count></span>
+              <button type="button" class="image-viewer__zoom" aria-pressed="false" data-viewer-zoom>Zoom in</button>
+              <button type="button" class="image-viewer__close" aria-label="Close image viewer" data-viewer-close autofocus>{% render 'icon', name: 'close' %}</button>
+            </div>
+            <div class="image-viewer__stage" data-viewer-stage>
+              <div class="image-viewer__canvas">
+                <img width="2400" height="2400" alt="" draggable="false" data-viewer-image>
+              </div>
+            </div>
+            {%- if product.images.size > 1 -%}
+              <div class="image-viewer__navigation">
+                <button type="button" data-viewer-prev>{% render 'icon', name: 'chevron' %} Previous</button>
+                <button type="button" data-viewer-next>Next {% render 'icon', name: 'chevron' %}</button>
+              </div>
+            {%- endif -%}
+          </div>
+        </dialog>
       {%- endif -%}
     </div>
 

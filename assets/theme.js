@@ -118,7 +118,7 @@ document.documentElement.classList.add('js');
     root.querySelectorAll('[data-gallery]:not([data-gallery-bound])').forEach((gallery) => {
       gallery.dataset.galleryBound = 'true';
       const track = gallery.querySelector('[data-gallery-track]');
-      if (!track || track.children.length < 2) return;
+      if (!track) return;
       const slides = Array.from(track.children);
       const thumbs = Array.from(gallery.querySelectorAll('[data-gallery-thumb]'));
       const currentIndex = () => Math.round(track.scrollLeft / track.clientWidth);
@@ -128,9 +128,9 @@ document.documentElement.classList.add('js');
           button.setAttribute('aria-current', i === index ? 'true' : 'false');
         });
       };
-      const goTo = (index) => {
+      const goTo = (index, behavior = 'smooth') => {
         const target = slides[(index + slides.length) % slides.length];
-        track.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+        track.scrollTo({ left: target.offsetLeft, behavior });
       };
       thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => goTo(i)));
       gallery.querySelector('[data-gallery-prev]')?.addEventListener('click', () => goTo(currentIndex() - 1));
@@ -144,6 +144,79 @@ document.documentElement.classList.add('js');
         },
         { passive: true }
       );
+
+      const viewer = gallery.querySelector('[data-image-viewer]');
+      const links = [...gallery.querySelectorAll('[data-gallery-zoom]')];
+      if (!viewer || !links.length) return;
+      const image = viewer.querySelector('[data-viewer-image]');
+      const stage = viewer.querySelector('[data-viewer-stage]');
+      const zoomButton = viewer.querySelector('[data-viewer-zoom]');
+      let selected = 0;
+
+      const setZoom = (zoomed) => {
+        viewer.classList.toggle('is-zoomed', zoomed);
+        zoomButton.setAttribute('aria-pressed', String(zoomed));
+        zoomButton.textContent = zoomed ? 'Zoom out' : 'Zoom in';
+        stage.scrollTo({
+          left: zoomed ? (stage.scrollWidth - stage.clientWidth) / 2 : 0,
+          top: zoomed ? (stage.scrollHeight - stage.clientHeight) / 2 : 0,
+          behavior: 'instant'
+        });
+      };
+      const showImage = (index) => {
+        selected = (index + links.length) % links.length;
+        const source = links[selected].querySelector('img');
+        image.src = links[selected].href;
+        image.alt = source.alt;
+        viewer.querySelector('[data-viewer-count]').textContent = `Image ${selected + 1} of ${links.length}`;
+        setZoom(false);
+      };
+      links.forEach((link, index) => link.addEventListener('click', (event) => {
+        event.preventDefault();
+        showImage(index);
+        viewer.showModal();
+        document.body.classList.add('image-viewer-open');
+      }));
+      viewer.querySelector('[data-viewer-close]').addEventListener('click', () => viewer.close());
+      viewer.querySelector('[data-viewer-prev]')?.addEventListener('click', () => showImage(selected - 1));
+      viewer.querySelector('[data-viewer-next]')?.addEventListener('click', () => showImage(selected + 1));
+      zoomButton.addEventListener('click', () => setZoom(!viewer.classList.contains('is-zoomed')));
+      image.addEventListener('click', () => {
+        // A drag pans the enlarged image; only a click changes the zoom level.
+        if (!imageDragged) setZoom(!viewer.classList.contains('is-zoomed'));
+      });
+      let imageDragged = false;
+      let pointerStart;
+      image.addEventListener('pointerdown', (event) => {
+        pointerStart = { x: event.clientX, y: event.clientY, left: stage.scrollLeft, top: stage.scrollTop };
+        imageDragged = false;
+        if (viewer.classList.contains('is-zoomed')) image.setPointerCapture(event.pointerId);
+      });
+      image.addEventListener('pointermove', (event) => {
+        if (!pointerStart) return;
+        const dx = event.clientX - pointerStart.x;
+        const dy = event.clientY - pointerStart.y;
+        if (Math.hypot(dx, dy) > 8) imageDragged = true;
+        if (imageDragged && viewer.classList.contains('is-zoomed')) {
+          stage.scrollLeft = pointerStart.left - dx;
+          stage.scrollTop = pointerStart.top - dy;
+        }
+      });
+      image.addEventListener('pointerup', () => { pointerStart = null; });
+      image.addEventListener('pointercancel', () => { pointerStart = null; imageDragged = true; });
+      viewer.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault();
+          showImage(selected + (event.key === 'ArrowRight' ? 1 : -1));
+        }
+      });
+      viewer.addEventListener('close', () => {
+        document.body.classList.remove('image-viewer-open');
+        setZoom(false);
+        goTo(selected, 'instant');
+        setActive(selected);
+        links[selected].focus({ preventScroll: true });
+      });
     });
   }
 
