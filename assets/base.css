@@ -1267,6 +1267,9 @@ h1 {
 }
 
 .filter-drawer {
+  --ink: #f4f3ef;
+  --surface: #000;
+  --subtle: #2a2a28;
   position: fixed;
   z-index: 90;
   inset: 0;
@@ -1280,6 +1283,66 @@ h1 {
   overflow: hidden;
   margin-left: auto;
   animation-name: drawer-in-right;
+}
+
+.filter-drawer__top h2 { margin: 0; font-size: 22px; }
+.filter-drawer .form-grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.filter-drawer .field { min-width: 0; }
+.filter-group summary > span { font-size: 0; }
+.filter-group summary > span::before { content: '+'; font-size: 16px; }
+.filter-group[open] summary > span::before { content: '−'; }
+.filter-option:has(input:disabled) { opacity: .5; }
+.filter-option input { flex-shrink: 0; }
+.collection-results { min-width: 0; }
+
+@media (min-width: 1024px) {
+  .collection-layout {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    align-items: start;
+    gap: 32px;
+  }
+  [data-filter-root] .filter-button { display: none; }
+  .collection-layout .filter-drawer,
+  .collection-layout .filter-drawer[hidden] {
+    --ink: var(--light-ink);
+    --surface: var(--white);
+    --subtle: var(--light-subtle);
+    display: block !important;
+    position: static;
+    z-index: auto;
+    min-width: 0;
+  }
+  .collection-layout .filter-drawer__scrim,
+  .collection-layout .filter-drawer__top [data-filter-close] { display: none; }
+  .collection-layout .filter-drawer__panel {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0 24px 0 0;
+    border-right: 1px solid #dedede;
+    overflow: visible;
+    background: transparent;
+    color: var(--ink);
+    box-shadow: none;
+    animation: none;
+  }
+  .collection-layout .filter-drawer__body { overflow: visible; }
+  .collection-layout .filter-group,
+  .collection-layout .filter-sort,
+  .collection-layout .filter-drawer__actions { border-color: #dedede; }
+  .collection-layout .filter-drawer__actions { background: transparent; }
+  .collection-layout .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1440px) {
+  .collection-layout .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+  [data-filter-root] .catalog-header__controls { flex-wrap: wrap; }
+  [data-filter-root] .sort-pill { min-width: 0; }
+  [data-filter-root] .sort-pill select { min-width: 0; max-width: 100%; }
 }
 
 @keyframes drawer-in-right {

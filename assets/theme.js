@@ -252,24 +252,57 @@ document.documentElement.classList.add('js');
       const openButton = filterRoot.querySelector('[data-filter-open]');
       const closeButtons = filterRoot.querySelectorAll('[data-filter-close]');
       if (!drawer || !openButton) return;
+      const panel = drawer.querySelector('.filter-drawer__panel');
+      const desktop = window.matchMedia('(min-width: 1024px)');
 
       const open = () => {
+        if (desktop.matches) return;
         drawer.hidden = false;
+        panel.setAttribute('role', 'dialog');
+        panel.setAttribute('aria-modal', 'true');
         openButton.setAttribute('aria-expanded', 'true');
         document.body.classList.add('drawer-open');
-        drawer.querySelector('button, input, select')?.focus();
+        panel.querySelector('[data-filter-close]')?.focus();
       };
-      const close = () => {
-        drawer.hidden = true;
+      const close = (restoreFocus = true) => {
+        drawer.hidden = !desktop.matches;
+        panel.setAttribute('role', 'region');
+        panel.removeAttribute('aria-modal');
         openButton.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('drawer-open');
-        openButton.focus();
+        if (restoreFocus && !desktop.matches) openButton.focus();
+      };
+      const syncLayout = () => {
+        const focusInDrawer = drawer.contains(document.activeElement);
+        const focusOnButton = document.activeElement === openButton;
+        close(false);
+        if (desktop.matches && (focusInDrawer || focusOnButton)) panel.focus();
+        else if (!desktop.matches && focusInDrawer) openButton.focus();
       };
 
+      syncLayout();
+      desktop.addEventListener('change', syncLayout);
       openButton.addEventListener('click', open);
-      closeButtons.forEach((button) => button.addEventListener('click', close));
+      closeButtons.forEach((button) => button.addEventListener('click', () => close()));
       filterRoot.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && !drawer.hidden) close();
+        if (desktop.matches || drawer.hidden) return;
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          close();
+        }
+        if (event.key === 'Tab') {
+          const focusable = [...panel.querySelectorAll('a[href], button, input, select, summary, [tabindex="0"]')]
+            .filter((element) => !element.disabled && element.getClientRects().length);
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
+          }
+        }
       });
     });
   }
