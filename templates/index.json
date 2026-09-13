@@ -199,20 +199,6 @@
         "heading": "Shop by anime"
       }
     },
-    "featured_product_rail_pmgiaw": {
-      "type": "featured-product-rail",
-      "custom_css": [
-        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}"
-      ],
-      "name": "Product rail",
-      "settings": {
-        "heading": "Keychains & Accessories",
-        "collection": "keychain",
-        "link_label": "Shop all",
-        "show_vendor": false,
-        "products_to_show": 8
-      }
-    },
     "featured_product_rail_mW3KHK": {
       "type": "featured-product-rail",
       "custom_css": [
@@ -234,6 +220,20 @@
       "settings": {
         "heading": "Light & Lamp",
         "collection": "led-lamps",
+        "link_label": "Shop all",
+        "show_vendor": false,
+        "products_to_show": 8
+      }
+    },
+    "featured_product_rail_pmgiaw": {
+      "type": "featured-product-rail",
+      "custom_css": [
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}"
+      ],
+      "name": "Product rail",
+      "settings": {
+        "heading": "Keychains & Accessories",
+        "collection": "keychain",
         "link_label": "Shop all",
         "show_vendor": false,
         "products_to_show": 8
@@ -353,6 +353,13 @@
         "ai_gen_block_1ed2181_PzkajY"
       ],
       "settings": {}
+    },
+    "divider_gTLNnA": {
+      "type": "divider",
+      "name": "Ninja divider",
+      "settings": {
+        "margin": 24
+      }
     }
   },
   "order": [
@@ -366,6 +373,7 @@
     "featured_product_rail_4eKNJt",
     "featured_product_rail_pmgiaw",
     "featured_product_rail_CHdjWJ",
+    "divider_gTLNnA",
     "reviews",
     "1785866129c28a0cff",
     "1789101550c66611a1",
