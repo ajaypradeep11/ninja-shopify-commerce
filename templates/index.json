@@ -199,6 +199,20 @@
         "heading": "Shop by anime"
       }
     },
+    "featured_product_rail_pmgiaw": {
+      "type": "featured-product-rail",
+      "custom_css": [
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}"
+      ],
+      "name": "Product rail",
+      "settings": {
+        "heading": "Keychains & Accessories",
+        "collection": "keychain",
+        "link_label": "Shop all",
+        "show_vendor": false,
+        "products_to_show": 8
+      }
+    },
     "featured_product_rail_mW3KHK": {
       "type": "featured-product-rail",
       "custom_css": [
@@ -220,20 +234,6 @@
       "settings": {
         "heading": "Light & Lamp",
         "collection": "led-lamps",
-        "link_label": "Shop all",
-        "show_vendor": false,
-        "products_to_show": 8
-      }
-    },
-    "featured_product_rail_pmgiaw": {
-      "type": "featured-product-rail",
-      "custom_css": [
-        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 44px;}"
-      ],
-      "name": "Product rail",
-      "settings": {
-        "heading": "Keychains & Accessories",
-        "collection": "keychain",
         "link_label": "Shop all",
         "show_vendor": false,
         "products_to_show": 8
