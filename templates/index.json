@@ -253,6 +253,13 @@
         "products_to_show": 8
       }
     },
+    "divider_gTLNnA": {
+      "type": "divider",
+      "name": "Ninja divider",
+      "settings": {
+        "margin": 24
+      }
+    },
     "reviews": {
       "type": "reviews-marquee",
       "blocks": {
@@ -354,7 +361,7 @@
       ],
       "settings": {}
     },
-    "divider_gTLNnA": {
+    "divider_PAiKct": {
       "type": "divider",
       "name": "Ninja divider",
       "settings": {
@@ -377,6 +384,7 @@
     "reviews",
     "1785866129c28a0cff",
     "1789101550c66611a1",
-    "17891016372162dac9"
+    "17891016372162dac9",
+    "divider_PAiKct"
   ]
 }
