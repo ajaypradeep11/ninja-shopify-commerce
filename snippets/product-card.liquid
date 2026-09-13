@@ -1,5 +1,9 @@
 {%- liquid
   assign card_product = product
+  assign card_url = card_product.url
+  if request.page_type == 'collection' and collection != blank
+    assign card_url = card_product.url | within: collection
+  endif
   assign card_image = card_product.featured_media.preview_image
   assign hover_image = card_product.media[1].preview_image
   assign card_alt = card_image.alt | default: card_product.title
@@ -9,7 +13,7 @@
   endif
 -%}
 
-<a class="product-card" href="{{ card_product.url }}">
+<a class="product-card" href="{{ card_url }}">
   <div class="product-card__media">
     {%- if card_image != blank -%}
       {{ card_image | image_url: width: 1000 | image_tag:

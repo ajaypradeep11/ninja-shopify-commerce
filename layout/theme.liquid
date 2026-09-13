@@ -63,6 +63,7 @@
     {% sections 'header-group' %}
 
     <main id="MainContent" class="main-content" role="main" tabindex="-1">
+      {% render 'breadcrumbs' %}
       {{ content_for_layout }}
     </main>
 
@@ -72,4 +73,3 @@
     <div class="toast" data-toast role="status" aria-live="polite" aria-atomic="true"></div>
   </body>
 </html>
-

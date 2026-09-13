@@ -1,0 +1,10 @@
+<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+  {%- if position > 1 -%}<span class="breadcrumbs__separator" aria-hidden="true">/</span>{%- endif -%}
+  {%- if current -%}
+    <span itemprop="name" aria-current="page">{{ title | escape }}</span>
+    <meta itemprop="item" content="{{ canonical_url | escape }}">
+  {%- else -%}
+    <a itemprop="item" href="{{ url | escape }}"><span itemprop="name">{{ title | escape }}</span></a>
+  {%- endif -%}
+  <meta itemprop="position" content="{{ position }}">
+</li>

@@ -147,6 +147,16 @@ button {
   margin-inline: auto;
 }
 
+.breadcrumbs { padding-top: 28px; color: inherit; }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 6px 10px; margin: 0; padding: 0; list-style: none; font-size: 12px; line-height: 20px; }
+.breadcrumbs li { display: inline-flex; align-items: baseline; gap: 10px; min-width: 0; max-width: 100%; }
+.breadcrumbs a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.breadcrumbs a:hover { text-decoration-thickness: 2px; }
+.breadcrumbs [itemprop="name"] { overflow-wrap: anywhere; }
+.breadcrumbs__separator { opacity: .5; }
+.breadcrumbs [aria-current="page"] { opacity: .75; }
+.template-product .breadcrumbs { max-width: 1640px; }
+
 .main-content {
   min-height: 50vh;
   padding-top: var(--notch-space);
@@ -791,7 +801,7 @@ h1 {
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: var(--radius-lg);
-  background: var(--subtle);
+  background: #fff;
   transition: box-shadow 200ms ease;
 }
 
@@ -977,6 +987,35 @@ h1 {
   font-family: var(--font-display);
   font-size: 17px;
   font-weight: 700;
+}
+
+.collection-tile--halloween .collection-tile__media {
+  position: relative;
+  isolation: isolate;
+  padding: 3px;
+  background: #211026;
+}
+.collection-tile--halloween .collection-tile__media::before {
+  content: '';
+  position: absolute;
+  inset: -65%;
+  z-index: -1;
+  background: conic-gradient(#ff9b32, #e95616 18%, #291237 35%, #9950cf 50%, #291237 65%, #ff9b32 85%);
+  animation: halloween-border-orbit 6s linear infinite;
+}
+.collection-tile--halloween .collection-tile__media::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: calc(var(--radius-lg) - 3px);
+  box-shadow: inset 0 0 18px rgb(255 135 35 / 24%);
+  pointer-events: none;
+}
+.collection-tile--halloween .collection-tile__media img { display: block; border-radius: calc(var(--radius-lg) - 3px); }
+.collection-tile--halloween:hover .collection-tile__media img { transform: none; }
+@keyframes halloween-border-orbit { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .collection-tile--halloween .collection-tile__media::before { animation: none; }
 }
 
 /* Anime chips */
@@ -1558,7 +1597,7 @@ h1 {
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background: var(--subtle);
+  background: #fff;
 }
 
 .product-gallery__track {
@@ -1652,7 +1691,7 @@ body.image-viewer-open { overflow: hidden; }
 @media (min-width: 768px) {
   .product-gallery__main {
     aspect-ratio: auto;
-    height: min(800px, max(240px, calc(100svh - var(--notch-space) - 96px)));
+    height: min(800px, max(240px, calc(100svh - var(--notch-space) - 144px)));
   }
 }
 
@@ -1706,7 +1745,7 @@ body.image-viewer-open { overflow: hidden; }
   overflow: hidden;
   border: 2px solid transparent;
   padding: 0;
-  background: var(--subtle);
+  background: #fff;
 }
 
 .product-gallery__thumb.is-active {

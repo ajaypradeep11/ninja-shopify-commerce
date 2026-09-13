@@ -25,7 +25,7 @@
           assign tile_image = tile_collection.products.first.featured_image
         endif
       -%}
-      <a class="collection-tile" href="{{ tile_collection.url | default: all_products_sorted }}" {{ block.shopify_attributes }}>
+      <a class="collection-tile{% if tile_collection.handle == 'halloween' %} collection-tile--halloween{% endif %}" href="{{ tile_collection.url | default: all_products_sorted }}" {{ block.shopify_attributes }}>
         <span class="collection-tile__media">
           {%- if tile_image != blank -%}
             {{ tile_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '320, 480, 700, 900', sizes: '(max-width: 639px) 66vw, 20vw', alt: tile_image.alt }}

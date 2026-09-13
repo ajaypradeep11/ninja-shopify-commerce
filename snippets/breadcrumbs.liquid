@@ -1,0 +1,80 @@
+{%- liquid
+  assign page_type = template.name | split: '/' | last
+  assign current_title = page_title
+  assign position = 2
+-%}
+{%- unless page_type == 'index' or page_type == 'password' -%}
+  <nav class="breadcrumbs {% if page_type == 'page' or page_type == 'article' %}container-reading{% else %}container-wide{% endif %}" aria-label="Breadcrumb">
+    <ol role="list" itemscope itemtype="https://schema.org/BreadcrumbList">
+      {% render 'breadcrumb-item', title: 'Home', url: routes.root_url, position: 1 %}
+      {%- case page_type -%}
+        {%- when 'product' -%}
+          {% render 'breadcrumb-item', title: 'Shop', url: routes.all_products_collection_url, position: position %}
+          {%- assign position = position | plus: 1 -%}
+          {%- if collection != blank and collection.handle != 'all' -%}
+            {% render 'breadcrumb-item', title: collection.title, url: collection.url, position: position %}
+            {%- assign position = position | plus: 1 -%}
+          {%- endif -%}
+          {%- assign current_title = product.title -%}
+        {%- when 'collection' -%}
+          {%- if collection.handle != 'all' -%}
+            {% render 'breadcrumb-item', title: 'Shop', url: routes.all_products_collection_url, position: position %}
+            {%- assign position = position | plus: 1 -%}
+            {%- assign current_title = collection.title -%}
+          {%- else -%}
+            {%- assign current_title = 'Shop' -%}
+          {%- endif -%}
+          {%- if current_tags != blank -%}
+            {% render 'breadcrumb-item', title: current_title, url: collection.url, position: position %}
+            {%- assign position = position | plus: 1 -%}
+            {%- assign current_title = current_tags | join: ', ' -%}
+          {%- endif -%}
+        {%- when 'list-collections' -%}
+          {%- assign current_title = 'Collections' -%}
+        {%- when 'article' -%}
+          {% render 'breadcrumb-item', title: blog.title, url: blog.url, position: position %}
+          {%- assign position = position | plus: 1 -%}
+          {%- assign current_title = article.title -%}
+        {%- when 'blog' -%}
+          {%- assign current_title = blog.title -%}
+          {%- if current_tags != blank -%}
+            {% render 'breadcrumb-item', title: blog.title, url: blog.url, position: position %}
+            {%- assign position = position | plus: 1 -%}
+            {%- assign current_title = current_tags | join: ', ' -%}
+          {%- endif -%}
+        {%- when 'page' -%}
+          {%- assign current_title = page.title -%}
+        {%- when 'cart' -%}
+          {%- assign current_title = 'Cart' -%}
+        {%- when 'search' -%}
+          {%- assign current_title = 'Search' -%}
+          {%- if search.performed and search.terms != blank -%}
+            {% render 'breadcrumb-item', title: 'Search', url: routes.search_url, position: position %}
+            {%- assign position = position | plus: 1 -%}
+            {%- assign current_title = search.terms -%}
+          {%- endif -%}
+        {%- when 'account' -%}
+          {%- assign current_title = 'My account' -%}
+        {%- when 'addresses', 'order' -%}
+          {% render 'breadcrumb-item', title: 'My account', url: routes.account_url, position: position %}
+          {%- assign position = position | plus: 1 -%}
+          {%- if page_type == 'order' -%}
+            {%- assign current_title = 'Order ' | append: order.name -%}
+          {%- else -%}
+            {%- assign current_title = 'Addresses' -%}
+          {%- endif -%}
+        {%- when 'login' -%}
+          {%- assign current_title = 'Log in' -%}
+        {%- when 'register' -%}
+          {%- assign current_title = 'Create account' -%}
+        {%- when 'activate_account' -%}
+          {%- assign current_title = 'Activate account' -%}
+        {%- when 'reset_password' -%}
+          {%- assign current_title = 'Reset password' -%}
+        {%- when '404' -%}
+          {%- assign current_title = 'Page not found' -%}
+      {%- endcase -%}
+      {% render 'breadcrumb-item', title: current_title, current: true, position: position %}
+    </ol>
+  </nav>
+{%- endunless -%}
