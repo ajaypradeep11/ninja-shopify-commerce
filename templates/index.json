@@ -148,7 +148,7 @@
       "settings": {
         "heading": "BEST SELLERS",
         "collection": "main-page",
-        "link_label": "",
+        "link_label": "Shop All",
         "show_vendor": false,
         "products_to_show": 8
       }
@@ -161,7 +161,7 @@
         "collection": "sale",
         "link_label": "Shop All",
         "show_vendor": false,
-        "products_to_show": 20
+        "products_to_show": 8
       }
     },
     "brand_marquee": {
@@ -208,9 +208,9 @@
       "settings": {
         "heading": "Apparel",
         "collection": "tshirt",
-        "link_label": "Shop all",
+        "link_label": "Shop All",
         "show_vendor": false,
-        "products_to_show": 20
+        "products_to_show": 8
       }
     },
     "featured_product_rail_4eKNJt": {
@@ -222,7 +222,7 @@
         "collection": "led-lamps",
         "link_label": "Shop all",
         "show_vendor": false,
-        "products_to_show": 20
+        "products_to_show": 8
       }
     },
     "featured_product_rail_pmgiaw": {
@@ -236,7 +236,7 @@
         "collection": "keychain",
         "link_label": "Shop all",
         "show_vendor": false,
-        "products_to_show": 20
+        "products_to_show": 8
       }
     },
     "featured_product_rail_CHdjWJ": {
@@ -250,7 +250,7 @@
         "collection": "cosplay-gear",
         "link_label": "Shop all",
         "show_vendor": false,
-        "products_to_show": 20
+        "products_to_show": 8
       }
     },
     "reviews": {
