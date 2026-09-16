@@ -1491,6 +1491,14 @@ h1 {
   background: var(--black);
 }
 
+.filter-drawer__actions--auto {
+  grid-template-columns: 1fr;
+}
+
+.filter-drawer__actions--auto noscript {
+  display: contents;
+}
+
 .filter-drawer__actions .button {
   min-width: 0;
   padding-inline: 12px;

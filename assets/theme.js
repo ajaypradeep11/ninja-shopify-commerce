@@ -326,7 +326,13 @@ document.documentElement.classList.add('js');
       const closeButtons = filterRoot.querySelectorAll('[data-filter-close]');
       if (!drawer || !openButton) return;
       const panel = drawer.querySelector('.filter-drawer__panel');
+      const form = drawer.querySelector('.filter-form');
       const desktop = window.matchMedia('(min-width: 1024px)');
+
+      form?.addEventListener('change', (event) => {
+        if (!event.target.matches('input, select')) return;
+        form.requestSubmit();
+      });
 
       const open = () => {
         if (desktop.matches) return;
