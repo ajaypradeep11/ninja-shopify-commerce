@@ -1,0 +1,16 @@
+{%- if menu != blank and menu.links != blank -%}
+  {%- for link in menu.links -%}
+    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+  {%- endfor -%}
+{%- elsif group == 'anime' -%}
+  <li><a href="{{ routes.search_url }}?q=Naruto">Naruto</a></li>
+  <li><a href="{{ routes.search_url }}?q=One+Piece">One Piece</a></li>
+  <li><a href="{{ routes.search_url }}?q=Dragon+Ball">Dragon Ball</a></li>
+{%- else -%}
+  <li><a href="{{ collections['tshirt'].url | default: '/collections/tshirt' }}">Apparel</a></li>
+  <li><a href="{{ collections['lamp'].url | default: '/collections/lamp' }}">Desk Lamps</a></li>
+  <li><a href="{{ collections['figure'].url | default: '/collections/figure' }}">Collectibles</a></li>
+  <li><a href="{{ collections['keychain'].url | default: '/collections/keychain' }}">Keychains &amp; Accessories</a></li>
+  <li><a href="{{ collections['headwear'].url | default: '/collections/headwear' }}">Headwear</a></li>
+  <li><a href="{{ collections['cosplay-gear'].url | default: '/collections/cosplay-gear' }}">Cosplay Gear</a></li>
+{%- endif -%}

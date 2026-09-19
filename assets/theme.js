@@ -50,6 +50,12 @@ document.documentElement.classList.add('js');
       closeButtons.forEach((button) => button.addEventListener('click', close));
       header.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && !drawer.hidden) close();
+        if (event.key === 'Escape') header.querySelector('[data-header-shop][open]')?.removeAttribute('open');
+      });
+
+      const shopDropdown = header.querySelector('[data-header-shop]');
+      document.addEventListener('click', (event) => {
+        if (shopDropdown?.open && !shopDropdown.contains(event.target)) shopDropdown.removeAttribute('open');
       });
     });
   }
