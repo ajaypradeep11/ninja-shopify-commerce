@@ -54,6 +54,13 @@ document.documentElement.classList.add('js');
       });
 
       const shopDropdown = header.querySelector('[data-header-shop]');
+      const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+      shopDropdown?.addEventListener('mouseenter', () => {
+        if (supportsHover.matches) shopDropdown.open = true;
+      });
+      shopDropdown?.addEventListener('mouseleave', () => {
+        if (supportsHover.matches) shopDropdown.open = false;
+      });
       document.addEventListener('click', (event) => {
         if (shopDropdown?.open && !shopDropdown.contains(event.target)) shopDropdown.removeAttribute('open');
       });
