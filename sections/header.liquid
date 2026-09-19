@@ -1,6 +1,16 @@
 {%- liquid
   assign best_selling_url = routes.all_products_collection_url | append: '?sort_by=best-selling'
   assign anime_sale_url = routes.root_url | append: 'collections/sale'
+  assign anime_navigation = blank
+  assign category_navigation = blank
+  for navigation_link in section.settings.menu.links
+    assign navigation_title = navigation_link.title | downcase
+    if navigation_title contains 'anime'
+      assign anime_navigation = navigation_link
+    elsif navigation_title contains 'categor'
+      assign category_navigation = navigation_link
+    endif
+  endfor
 -%}
 
 <header class="site-header" data-header>
@@ -30,15 +40,27 @@
               </summary>
               <div class="header-shop__dropdown">
                 <div class="header-shop__group">
-                  <p class="eyebrow">By anime</p>
+                  {%- if anime_navigation != blank -%}
+                    <a class="eyebrow" href="{{ anime_navigation.url }}">{{ anime_navigation.title }}</a>
+                  {%- else -%}
+                    <p class="eyebrow">By anime</p>
+                  {%- endif -%}
                   <ul role="list">
-                    {% render 'header-shop-links', group: 'anime', menu: section.settings.anime_menu %}
+                    {%- for link in anime_navigation.links -%}
+                      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {%- endfor -%}
                   </ul>
                 </div>
                 <div class="header-shop__group">
-                  <p class="eyebrow">By category</p>
+                  {%- if category_navigation != blank -%}
+                    <a class="eyebrow" href="{{ category_navigation.url }}">{{ category_navigation.title }}</a>
+                  {%- else -%}
+                    <p class="eyebrow">By category</p>
+                  {%- endif -%}
                   <ul role="list">
-                    {% render 'header-shop-links', group: 'category', menu: section.settings.category_menu %}
+                    {%- for link in category_navigation.links -%}
+                      <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                    {%- endfor -%}
                   </ul>
                 </div>
                 <a class="header-shop__all" href="{{ routes.all_products_collection_url }}">Shop all →</a>
@@ -201,24 +223,7 @@
 
           <ul class="menu-drawer__links" role="list">
             <li>
-              <details class="menu-drawer__shop" open>
-                <summary>Shop</summary>
-                <div class="menu-drawer__shop-groups">
-                  <div>
-                    <p class="eyebrow">By anime</p>
-                    <ul class="menu-drawer__subnav" role="list">
-                      {% render 'header-shop-links', group: 'anime', menu: section.settings.anime_menu %}
-                    </ul>
-                  </div>
-                  <div>
-                    <p class="eyebrow">By category</p>
-                    <ul class="menu-drawer__subnav" role="list">
-                      {% render 'header-shop-links', group: 'category', menu: section.settings.category_menu %}
-                    </ul>
-                  </div>
-                </div>
-                <a class="menu-drawer__shop-all" href="{{ routes.all_products_collection_url }}">Shop all →</a>
-              </details>
+              <a href="{{ routes.all_products_collection_url }}">Shop</a>
             </li>
 
             <li>
@@ -313,8 +318,8 @@
       content: '';
     }
 
-    .header-shop__group .eyebrow,
-    .menu-drawer__shop .eyebrow {
+    .header-shop__group .eyebrow {
+      display: block;
       margin: 0 0 8px;
       color: rgba(244, 243, 239, 0.58);
     }
@@ -334,8 +339,7 @@
     }
 
     .header-shop__group a:hover,
-    .header-shop__all:hover,
-    .menu-drawer__shop a:hover {
+    .header-shop__all:hover {
       color: var(--brand);
     }
 
@@ -343,37 +347,6 @@
       grid-column: 1 / -1;
       padding-top: 14px;
       border-top: 1px solid rgba(244, 243, 239, 0.12);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .menu-drawer__shop summary {
-      padding-block: 11px;
-      cursor: pointer;
-      font-family: var(--font-display);
-      font-size: 26px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      list-style-position: inside;
-    }
-
-    .menu-drawer__shop-groups {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      padding-top: 8px;
-    }
-
-    .menu-drawer__shop .menu-drawer__subnav {
-      padding-left: 0;
-    }
-
-    .menu-drawer__shop-all {
-      display: inline-block;
-      margin-bottom: 14px;
       font-family: var(--font-mono);
       font-size: 11px;
       font-weight: 700;
@@ -409,18 +382,6 @@
       "id": "menu",
       "label": "Menu",
       "default": "main-menu"
-    },
-    {
-      "type": "link_list",
-      "id": "anime_menu",
-      "label": "Shop by anime menu",
-      "info": "Optional. Defaults to Naruto, One Piece, and Dragon Ball search links."
-    },
-    {
-      "type": "link_list",
-      "id": "category_menu",
-      "label": "Shop by category menu",
-      "info": "Optional. Defaults to the featured store categories."
     },
     {
       "type": "checkbox",
