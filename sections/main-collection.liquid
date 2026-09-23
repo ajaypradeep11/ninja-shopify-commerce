@@ -109,6 +109,20 @@
   </section>
 {%- endpaginate -%}
 
+{% stylesheet %}
+  .catalog-header--row {
+    padding-block: 22px 12px;
+  }
+
+  .catalog-header__main .rte > :first-child {
+    margin-top: 10px;
+  }
+
+  .catalog-header__main .rte > :last-child {
+    margin-bottom: 0;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Collection products",
