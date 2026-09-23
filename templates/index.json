@@ -219,7 +219,7 @@
       "name": "Product rail",
       "settings": {
         "heading": "Light & Lamp",
-        "collection": "led-lamps",
+        "collection": "lamp",
         "link_label": "Shop all",
         "show_vendor": false,
         "products_to_show": 8
