@@ -1,5 +1,16 @@
 {%- assign all_products_sorted = routes.all_products_collection_url | append: '?sort_by=best-selling' -%}
-<section class="hero-shell">
+<section class="hero-shell" data-magic-mode="{{ section.settings.magic_mode }}">
+  {%- unless section.settings.magic_mode == 'off' -%}
+    <div class="magic-atmosphere" aria-hidden="true">
+      <span class="magic-fog magic-fog--one"></span>
+      <span class="magic-fog magic-fog--two"></span>
+      <span class="magic-particle"></span><span class="magic-particle"></span>
+      <span class="magic-particle"></span><span class="magic-particle"></span>
+      <span class="magic-particle"></span><span class="magic-particle"></span>
+      <span class="magic-particle"></span><span class="magic-particle"></span>
+      <span class="magic-particle"></span><span class="magic-particle"></span>
+    </div>
+  {%- endunless -%}
   <div class="hero" data-hero>
     <div class="hero__media">
       {%- liquid
@@ -129,6 +140,17 @@
   "name": "LocalNinja hero",
   "max_blocks": 4,
   "settings": [
+    {
+      "type": "select",
+      "id": "magic_mode",
+      "label": "Seasonal effects",
+      "default": "halloween",
+      "options": [
+        { "value": "off", "label": "Off" },
+        { "value": "magic", "label": "Magic" },
+        { "value": "halloween", "label": "Halloween magic" }
+      ]
+    },
     {
       "type": "text",
       "id": "location_text",

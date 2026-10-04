@@ -24,6 +24,58 @@ document.documentElement.classList.add('js');
     toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 3200);
   }
 
+  function burstMagic(origin) {
+    if (!document.body.classList.contains('magic-mode') || reducedMotion.matches || !origin) return;
+    const rect = origin.getBoundingClientRect();
+    const colors = ['#ffd84d', '#ff8a32', '#a45cff'];
+    for (let index = 0; index < 12; index += 1) {
+      const particle = document.createElement('i');
+      const angle = (Math.PI * 2 * index) / 12 + (Math.random() - 0.5) * 0.35;
+      const distance = 34 + Math.random() * 54;
+      particle.className = 'magic-burst-particle';
+      particle.style.left = `${rect.left + rect.width / 2}px`;
+      particle.style.top = `${rect.top + rect.height / 2}px`;
+      particle.style.background = colors[index % colors.length];
+      particle.style.setProperty('--fx-x', `${Math.cos(angle) * distance}px`);
+      particle.style.setProperty('--fx-y', `${Math.sin(angle) * distance}px`);
+      particle.addEventListener('animationend', () => particle.remove(), { once: true });
+      document.body.appendChild(particle);
+    }
+  }
+
+  function initSeasonalEffects(root = document) {
+    const trigger = root.querySelector?.('[data-magic-mode]');
+    if (!trigger) return;
+    const mode = trigger.dataset.magicMode || 'off';
+    document.body.classList.toggle('magic-mode', mode !== 'off');
+    document.body.classList.toggle('halloween-mode', mode === 'halloween');
+    if (mode === 'off' || reducedMotion.matches || !('IntersectionObserver' in window)) return;
+
+    const revealTargets = document.querySelectorAll([
+      '.section-pad .section-heading',
+      '.collection-tile',
+      '.product-rail__item',
+      '.reviews-heading',
+      '.selvedge',
+      '.site-footer'
+    ].join(','));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+
+    revealTargets.forEach((element, index) => {
+      if (element.classList.contains('fx-reveal')) return;
+      element.classList.add('fx-reveal');
+      element.style.setProperty('--fx-delay', `${Math.min(index % 5, 4) * 65}ms`);
+      observer.observe(element);
+    });
+  }
+
   function initMenus(root = document) {
     root.querySelectorAll('[data-header]:not([data-menu-bound])').forEach((header) => {
       header.dataset.menuBound = 'true';
@@ -86,6 +138,13 @@ document.documentElement.classList.add('js');
 
       const select = (index) => {
         active = (index + slides.length) % slides.length;
+        const media = hero.querySelector('.hero__media');
+        media?.classList.remove('is-switching');
+        if (media && document.body.classList.contains('magic-mode') && !reducedMotion.matches) {
+          void media.offsetWidth;
+          media.classList.add('is-switching');
+          window.setTimeout(() => media.classList.remove('is-switching'), 700);
+        }
         slides.forEach((slide, i) => slide.classList.toggle('is-active', i === active));
         dots.forEach((dot, i) => {
           dot.classList.toggle('is-active', i === active);
@@ -254,7 +313,15 @@ document.documentElement.classList.add('js');
       badge.textContent = count;
       badge.hidden = count === 0;
       const link = badge.closest('a');
-      if (link) link.setAttribute('aria-label', `Cart, ${count} items`);
+      if (link) {
+        link.setAttribute('aria-label', `Cart, ${count} items`);
+        if (document.body.classList.contains('magic-mode') && !reducedMotion.matches) {
+          link.classList.remove('fx-cart-pop');
+          void link.offsetWidth;
+          link.classList.add('fx-cart-pop');
+          window.setTimeout(() => link.classList.remove('fx-cart-pop'), 560);
+        }
+      }
     });
   }
 
@@ -320,6 +387,7 @@ document.documentElement.classList.add('js');
           const cartResponse = await fetch(`${window.Shopify?.routes?.root || '/'}cart.js`, { headers: { Accept: 'application/json' } });
           const cart = await cartResponse.json();
           updateCartCount(cart.item_count || 0);
+          burstMagic(submitButton);
           showToast('Added to cart');
         } catch (error) {
           showToast(error.message || 'Unable to add this item.', true);
@@ -595,6 +663,7 @@ document.documentElement.classList.add('js');
   }
 
   function init(root = document) {
+    initSeasonalEffects(root);
     initMenus(root);
     initHero(root);
     initRails(root);

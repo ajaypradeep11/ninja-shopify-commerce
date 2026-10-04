@@ -30,6 +30,9 @@
           {%- if tile_image != blank -%}
             {{ tile_image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '320, 480, 700, 900', sizes: '(max-width: 639px) 66vw, 20vw', alt: tile_image.alt }}
           {%- endif -%}
+          {%- if tile_collection.handle == 'halloween' -%}
+            <span class="halloween-bats" aria-hidden="true"><i></i><i></i><i></i></span>
+          {%- endif -%}
         </span>
         <span class="collection-tile__footer">
           <span class="collection-tile__title">{{ block.settings.title | default: tile_collection.title | default: 'Collection' }}</span>
