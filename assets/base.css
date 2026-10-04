@@ -3323,6 +3323,26 @@ body.magic-mode {
   .magic-fog { opacity: .42; filter: blur(48px); }
   .magic-particle:nth-of-type(even) { display: none; }
   .magic-mode .fx-reveal { transform: translateY(14px); }
+  .magic-mode .collection-tile.fx-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .collection-tile:hover .collection-tile__media img,
+  .collection-tile--halloween:hover .collection-tile__media img {
+    transform: none;
+  }
+  .halloween-bats { display: none; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .magic-mode .collection-tile.fx-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .collection-tile:hover .collection-tile__media img { transform: none; }
+  .halloween-bats { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
