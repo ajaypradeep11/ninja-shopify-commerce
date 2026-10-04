@@ -286,15 +286,23 @@ h1 {
 }
 
 .marquee--announcement {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  line-height: 16.5px; /* Preserve the original 11px x 1.5 line box and bar height. */
-  letter-spacing: 0.08em;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 17.5px;
+  letter-spacing: 0.045em;
   text-transform: uppercase;
 }
 
 .marquee__separator {
   margin-inline: 34px;
+  font-family: var(--font-sans);
+  font-weight: 400;
+}
+
+.announcement__highlight {
+  color: #6125a8;
+  font-weight: 800;
 }
 
 @keyframes marquee {
@@ -3322,12 +3330,14 @@ body.magic-mode {
 @media (max-width: 767px) {
   .magic-fog { opacity: .42; filter: blur(48px); }
   .magic-particle:nth-of-type(even) { display: none; }
-  .magic-mode .fx-reveal { transform: translateY(14px); }
-  .magic-mode .collection-tile.fx-reveal {
+  .magic-mode .fx-reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
+  .product-card:hover { transform: none; }
+  .product-card:hover .product-card__media { box-shadow: none; }
+  .product-card:hover .product-card__image { transform: none; }
   .collection-tile:hover .collection-tile__media img,
   .collection-tile--halloween:hover .collection-tile__media img {
     transform: none;
@@ -3336,11 +3346,14 @@ body.magic-mode {
 }
 
 @media (hover: none), (pointer: coarse) {
-  .magic-mode .collection-tile.fx-reveal {
+  .magic-mode .fx-reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
+  .product-card:hover { transform: none; }
+  .product-card:hover .product-card__media { box-shadow: none; }
+  .product-card:hover .product-card__image { transform: none; }
   .collection-tile:hover .collection-tile__media img { transform: none; }
   .halloween-bats { display: none; }
 }

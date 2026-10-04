@@ -17,7 +17,16 @@
         <div class="marquee__group" {% if copy == 2 %}aria-hidden="true"{% endif %}>
           {%- for repeat in (1..6) -%}
             {%- for part in parts -%}
-              <span>{{ part | strip }}</span><span class="marquee__separator" aria-hidden="true">✳</span>
+              {%- liquid
+                assign announcement_part = part | strip | escape
+                assign highlighted_65 = '<span class="announcement__highlight">$65 CAD</span>'
+                assign highlighted_85 = '<span class="announcement__highlight">$85 CAD</span>'
+                assign highlighted_ottawa = '<span class="announcement__highlight">Ottawa</span>'
+                assign highlighted_free = '<span class="announcement__highlight">free</span>'
+                assign highlighted_free_capitalized = '<span class="announcement__highlight">Free</span>'
+                assign announcement_part = announcement_part | replace: '$65 CAD', highlighted_65 | replace: '$85 CAD', highlighted_85 | replace: 'Ottawa', highlighted_ottawa | replace: 'Free', highlighted_free_capitalized | replace: 'free', highlighted_free
+              -%}
+              <span>{{ announcement_part }}</span><span class="marquee__separator" aria-hidden="true">✳</span>
             {%- endfor -%}
           {%- endfor -%}
         </div>
@@ -40,7 +49,7 @@
       "type": "text",
       "id": "text",
       "label": "Announcement",
-      "default": "Free shipping above $85 CAD ✳ Ottawa local delivery in 1–2 days ✳ Secure checkout"
+      "default": "Free shipping above $85 CAD ✳ Ottawa local delivery is free ✳ Secure checkout"
     },
     {
       "type": "text",
@@ -53,4 +62,3 @@
   "presets": [{ "name": "Announcement bar" }]
 }
 {% endschema %}
-
