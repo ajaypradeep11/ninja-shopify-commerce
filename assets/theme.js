@@ -138,13 +138,6 @@ document.documentElement.classList.add('js');
 
       const select = (index) => {
         active = (index + slides.length) % slides.length;
-        const media = hero.querySelector('.hero__media');
-        media?.classList.remove('is-switching');
-        if (media && document.body.classList.contains('magic-mode') && !reducedMotion.matches) {
-          void media.offsetWidth;
-          media.classList.add('is-switching');
-          window.setTimeout(() => media.classList.remove('is-switching'), 700);
-        }
         slides.forEach((slide, i) => slide.classList.toggle('is-active', i === active));
         dots.forEach((dot, i) => {
           dot.classList.toggle('is-active', i === active);
