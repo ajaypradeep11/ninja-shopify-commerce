@@ -921,12 +921,9 @@ h1 {
 .product-rail {
   display: flex;
   gap: 16px;
-  overflow-x: hidden;
-  overscroll-behavior-x: contain;
   padding-right: 16px;
   scroll-behavior: smooth;
   scrollbar-width: none;
-  touch-action: pan-y;
 }
 
 .product-rail::-webkit-scrollbar {
@@ -961,13 +958,11 @@ h1 {
 .collection-tiles {
   display: flex;
   gap: 14px;
-  overflow-x: hidden;
-  overscroll-behavior-x: contain;
+  overflow-x: auto;
   padding-bottom: 6px;
   scroll-behavior: smooth;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
-  touch-action: pan-y;
 }
 
 .collection-tiles::-webkit-scrollbar {
@@ -1050,13 +1045,18 @@ h1 {
 .anime-chips {
   display: flex;
   gap: 10px;
-  overflow-x: hidden;
-  overscroll-behavior-x: contain;
   padding-bottom: 4px;
   scroll-behavior: smooth;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
-  touch-action: pan-y;
+}
+
+/* Controlled rails move only through arrows/auto-advance; vertical touch pans the page. */
+[data-scroll-rail] {
+  overflow-x: hidden;
+  overflow-y: clip;
+  overscroll-behavior-x: contain;
+  touch-action: pan-y pinch-zoom;
 }
 
 .anime-chips::-webkit-scrollbar {
