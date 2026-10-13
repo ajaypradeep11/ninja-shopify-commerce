@@ -2866,6 +2866,29 @@ body.template-cart .site-header__pill {
   letter-spacing: 0.04em;
 }
 
+/* Judge.me form fields sit on a white panel, so do not inherit page-white text. */
+.jdgm-widget .jdgm-form :is(input[type="text"], input[type="email"], input[type="url"], textarea),
+.jdgm-form :is(input[type="text"], input[type="email"], input[type="url"], textarea) {
+  border-color: #9b9994 !important;
+  background: #fff !important;
+  caret-color: #17161a !important;
+  color: #17161a !important;
+  -webkit-text-fill-color: #17161a !important;
+}
+
+.jdgm-widget .jdgm-form :is(input, textarea)::placeholder,
+.jdgm-form :is(input, textarea)::placeholder {
+  color: #6f6d68 !important;
+  opacity: 1 !important;
+}
+
+.jdgm-widget .jdgm-form :is(input, textarea):focus,
+.jdgm-form :is(input, textarea):focus {
+  border-color: #6d28d9 !important;
+  box-shadow: 0 0 0 3px rgb(109 40 217 / 14%) !important;
+  outline: 0 !important;
+}
+
 /* Star badge under product titles and on cards */
 .jdgm-prev-badge {
   display: block;
