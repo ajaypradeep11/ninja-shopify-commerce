@@ -44,10 +44,12 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 
 body {
+  overflow-x: clip;
   margin: 0;
   background: var(--surface);
   color: var(--ink);
@@ -761,6 +763,14 @@ h1 {
   margin-bottom: 24px;
 }
 
+.section-heading--rail {
+  flex-wrap: wrap;
+}
+
+.section-heading--rail .anime-nav {
+  margin-left: auto;
+}
+
 .section-heading h1,
 .section-heading h2 {
   margin: 0;
@@ -911,10 +921,12 @@ h1 {
 .product-rail {
   display: flex;
   gap: 16px;
-  overflow-x: auto;
+  overflow-x: hidden;
+  overscroll-behavior-x: contain;
   padding-right: 16px;
   scroll-behavior: smooth;
   scrollbar-width: none;
+  touch-action: pan-y;
 }
 
 .product-rail::-webkit-scrollbar {
@@ -949,10 +961,13 @@ h1 {
 .collection-tiles {
   display: flex;
   gap: 14px;
-  overflow-x: auto;
+  overflow-x: hidden;
+  overscroll-behavior-x: contain;
   padding-bottom: 6px;
+  scroll-behavior: smooth;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
+  touch-action: pan-y;
 }
 
 .collection-tiles::-webkit-scrollbar {
@@ -1035,10 +1050,13 @@ h1 {
 .anime-chips {
   display: flex;
   gap: 10px;
-  overflow-x: auto;
+  overflow-x: hidden;
+  overscroll-behavior-x: contain;
   padding-bottom: 4px;
+  scroll-behavior: smooth;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
+  touch-action: pan-y;
 }
 
 .anime-chips::-webkit-scrollbar {

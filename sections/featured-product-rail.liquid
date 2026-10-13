@@ -5,16 +5,20 @@
   endif
 -%}
 
-<section class="section-pad">
-  <div class="container-wide section-heading{% if section.settings.heading == blank %} section-heading--compact{% endif %}">
+<section class="section-pad" data-scroll-nav>
+  <div class="container-wide section-heading section-heading--rail{% if section.settings.heading == blank %} section-heading--compact{% endif %}">
     <h2>{{ section.settings.heading }}</h2>
-    {%- if section.settings.link_label != blank -%}
-      <a class="tiles-link" href="{{ featured_collection.url }}">{{ section.settings.link_label }}</a>
-    {%- endif -%}
+    <div class="anime-nav">
+      {%- if section.settings.link_label != blank -%}
+        <a class="tiles-link" href="{{ featured_collection.url }}">{{ section.settings.link_label }}</a>
+      {%- endif -%}
+      <button class="anime-nav__btn anime-nav__btn--prev" type="button" aria-label="Previous products" data-rail-prev>{% render 'icon', name: 'chevron' %}</button>
+      <button class="anime-nav__btn" type="button" aria-label="Next products" data-rail-next>{% render 'icon', name: 'chevron' %}</button>
+    </div>
   </div>
 
   {%- if featured_collection.products_count > 0 -%}
-    <div class="product-rail" data-product-rail>
+    <div class="product-rail" data-product-rail data-scroll-rail data-auto-rail>
       {%- for product in featured_collection.products limit: section.settings.products_to_show -%}
         <div class="product-rail__item">{% render 'product-card', product: product, show_vendor: section.settings.show_vendor %}</div>
       {%- endfor -%}
@@ -39,4 +43,3 @@
   "presets": [{ "name": "Product rail" }]
 }
 {% endschema %}
-

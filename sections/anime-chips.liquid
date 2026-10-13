@@ -13,7 +13,7 @@
       </div>
     </div>
   {%- endif -%}
-  <div class="anime-chips" data-scroll-rail>
+  <div class="anime-chips" data-scroll-rail data-auto-rail>
     {%- for block in section.blocks -%}
       {%- liquid
         assign chip_url = block.settings.link

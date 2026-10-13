@@ -1,13 +1,17 @@
 {%- assign all_products_sorted = routes.all_products_collection_url | append: '?sort_by=best-selling' -%}
-<section class="section-pad">
+<section class="section-pad" data-scroll-nav>
   <div class="container-wide">
-  <div class="section-heading">
+  <div class="section-heading section-heading--rail">
     <h2>{{ section.settings.heading }}</h2>
-    {%- if section.settings.link_label != blank -%}
-      <a class="tiles-link" href="{{ section.settings.link | default: all_products_sorted }}">{{ section.settings.link_label }}</a>
-    {%- endif -%}
+    <div class="anime-nav">
+      {%- if section.settings.link_label != blank -%}
+        <a class="tiles-link" href="{{ section.settings.link | default: all_products_sorted }}">{{ section.settings.link_label }}</a>
+      {%- endif -%}
+      <button class="anime-nav__btn anime-nav__btn--prev" type="button" aria-label="Previous categories" data-rail-prev>{% render 'icon', name: 'chevron' %}</button>
+      <button class="anime-nav__btn" type="button" aria-label="Next categories" data-rail-next>{% render 'icon', name: 'chevron' %}</button>
+    </div>
   </div>
-  <div class="collection-tiles">
+  <div class="collection-tiles" data-scroll-rail data-auto-rail>
     {%- for block in section.blocks -%}
       {%- liquid
         assign tile_collection = block.settings.collection

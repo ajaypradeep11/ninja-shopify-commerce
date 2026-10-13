@@ -165,17 +165,28 @@ document.documentElement.classList.add('js');
   }
 
   function initRails(root = document) {
-    root.querySelectorAll('[data-product-rail]:not([data-rail-bound])').forEach((rail) => {
+    root.querySelectorAll('[data-auto-rail]:not([data-rail-bound])').forEach((rail) => {
       rail.dataset.railBound = 'true';
       if (reducedMotion.matches || rail.children.length < 2) return;
-      window.setInterval(() => {
+      let timer;
+      const advance = () => {
         const card = rail.firstElementChild;
         if (!card) return;
         const gap = parseFloat(getComputedStyle(rail).columnGap || '0');
         const step = card.getBoundingClientRect().width + gap;
         const atEnd = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 4;
         rail.scrollTo({ left: atEnd ? 0 : rail.scrollLeft + step, behavior: 'smooth' });
-      }, 5000);
+      };
+      const start = () => {
+        window.clearInterval(timer);
+        timer = window.setInterval(advance, 5000);
+      };
+      const stop = () => window.clearInterval(timer);
+      rail.addEventListener('mouseenter', stop);
+      rail.addEventListener('mouseleave', start);
+      rail.addEventListener('focusin', stop);
+      rail.addEventListener('focusout', start);
+      start();
     });
   }
 
