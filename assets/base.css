@@ -2890,6 +2890,10 @@ body.template-cart .site-header__pill {
   color: #333 !important;
 }
 
+.jdgm-write-review-modal .jdgm-star {
+  color: #ffd84d !important;
+}
+
 .jdgm-write-review-modal .jdgm-write-review-modal__field-input,
 .jdgm-widget .jdgm-form :is(input[type="text"], input[type="email"], input[type="url"], textarea),
 .jdgm-form :is(input[type="text"], input[type="email"], input[type="url"], textarea) {
