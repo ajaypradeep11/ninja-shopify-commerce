@@ -2884,22 +2884,31 @@ body.template-cart .site-header__pill {
   letter-spacing: 0.04em;
 }
 
-/* Judge.me form fields sit on a white panel, so do not inherit page-white text. */
+/* Judge.me forms sit on a white panel, so do not inherit page-white text. */
+.jdgm-write-review-modal,
+.jdgm-write-review-modal .jdgm-write-review-modal__content {
+  color: #333 !important;
+}
+
+.jdgm-write-review-modal .jdgm-write-review-modal__field-input,
 .jdgm-widget .jdgm-form :is(input[type="text"], input[type="email"], input[type="url"], textarea),
 .jdgm-form :is(input[type="text"], input[type="email"], input[type="url"], textarea) {
   border-color: #9b9994 !important;
   background: #fff !important;
-  caret-color: #17161a !important;
-  color: #17161a !important;
-  -webkit-text-fill-color: #17161a !important;
+  caret-color: #333 !important;
+  color: #333 !important;
+  -webkit-text-fill-color: #333 !important;
 }
 
+.jdgm-write-review-modal .jdgm-write-review-modal__field-input::placeholder,
 .jdgm-widget .jdgm-form :is(input, textarea)::placeholder,
 .jdgm-form :is(input, textarea)::placeholder {
   color: #6f6d68 !important;
+  -webkit-text-fill-color: #6f6d68 !important;
   opacity: 1 !important;
 }
 
+.jdgm-write-review-modal .jdgm-write-review-modal__field-input:focus,
 .jdgm-widget .jdgm-form :is(input, textarea):focus,
 .jdgm-form :is(input, textarea):focus {
   border-color: #6d28d9 !important;
