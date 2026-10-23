@@ -24,25 +24,6 @@ document.documentElement.classList.add('js');
     toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 3200);
   }
 
-  function burstMagic(origin) {
-    if (!document.body.classList.contains('magic-mode') || reducedMotion.matches || !origin) return;
-    const rect = origin.getBoundingClientRect();
-    const colors = ['#ffd84d', '#ff8a32', '#a45cff'];
-    for (let index = 0; index < 12; index += 1) {
-      const particle = document.createElement('i');
-      const angle = (Math.PI * 2 * index) / 12 + (Math.random() - 0.5) * 0.35;
-      const distance = 34 + Math.random() * 54;
-      particle.className = 'magic-burst-particle';
-      particle.style.left = `${rect.left + rect.width / 2}px`;
-      particle.style.top = `${rect.top + rect.height / 2}px`;
-      particle.style.background = colors[index % colors.length];
-      particle.style.setProperty('--fx-x', `${Math.cos(angle) * distance}px`);
-      particle.style.setProperty('--fx-y', `${Math.sin(angle) * distance}px`);
-      particle.addEventListener('animationend', () => particle.remove(), { once: true });
-      document.body.appendChild(particle);
-    }
-  }
-
   function initSeasonalEffects(root = document) {
     const trigger = root.querySelector?.('[data-magic-mode]');
     if (!trigger) return;
@@ -391,7 +372,6 @@ document.documentElement.classList.add('js');
           const cartResponse = await fetch(`${window.Shopify?.routes?.root || '/'}cart.js`, { headers: { Accept: 'application/json' } });
           const cart = await cartResponse.json();
           updateCartCount(cart.item_count || 0);
-          burstMagic(submitButton);
           showToast('Added to cart');
         } catch (error) {
           showToast(error.message || 'Unable to add this item.', true);
