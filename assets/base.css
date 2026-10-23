@@ -1060,7 +1060,8 @@ h1 {
 }
 
 @media (max-width: 767px) {
-  .template-index .product-rail[data-scroll-rail] {
+  .template-index .product-rail[data-scroll-rail],
+  .template-index .collection-tiles[data-scroll-rail] {
     overflow-x: auto;
     touch-action: pan-x pan-y pinch-zoom;
     scroll-snap-type: x proximity;
