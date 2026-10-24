@@ -43,6 +43,7 @@
         "&,.hero-shell {background: #fff;}"
       ],
       "settings": {
+        "magic_mode": "halloween",
         "location_text": "📍 OTTAWA · FREE SHIPPING",
         "label": "",
         "heading": "Your Fandom. Your World.",
@@ -146,7 +147,7 @@
         ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 8px !important;}"
       ],
       "settings": {
-        "heading": "BEST-SELLERS",
+        "heading": "Best-Sellers",
         "collection": "main-page",
         "link_label": "Shop All",
         "show_vendor": false,
@@ -157,7 +158,7 @@
       "type": "featured-product-rail",
       "name": "Product rail",
       "settings": {
-        "heading": "OPENING SALE!",
+        "heading": "Sale",
         "collection": "sale",
         "link_label": "Shop All",
         "show_vendor": false,
