@@ -56,11 +56,8 @@
     },
     "divider_1": {
       "type": "divider",
-      "custom_css": [
-        ".selvedge {height: 52px; margin-block: 0 !important; border-block: 24px solid #fff; background: repeating-linear-gradient(90deg, #e5b92f 0 24px, #fff 24px 36px);}"
-      ],
       "settings": {
-        "margin": 12
+        "margin": 24
       }
     },
     "collection_tiles": {

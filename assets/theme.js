@@ -37,7 +37,6 @@ document.documentElement.classList.add('js');
       '.collection-tile',
       '.product-rail__item',
       '.reviews-heading',
-      '.selvedge',
       '.site-footer'
     ].join(','));
 

@@ -26,7 +26,7 @@
                 assign highlighted_free_capitalized = '<span class="announcement__highlight">Free</span>'
                 assign announcement_part = announcement_part | replace: '$65 CAD', highlighted_65 | replace: '$85 CAD', highlighted_85 | replace: 'Ottawa', highlighted_ottawa | replace: 'Free', highlighted_free_capitalized | replace: 'free', highlighted_free
               -%}
-              <span>{{ announcement_part }}</span><span class="marquee__separator" aria-hidden="true">✳</span>
+              <span>{{ announcement_part }}</span><span class="marquee__separator" aria-hidden="true">//</span>
             {%- endfor -%}
           {%- endfor -%}
         </div>

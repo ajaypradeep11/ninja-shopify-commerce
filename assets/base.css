@@ -259,9 +259,14 @@ h1 {
   text-decoration: underline;
 }
 
+.section-divider {
+  display: flow-root;
+  background: #fff;
+}
+
 .selvedge {
-  height: 4px;
-  background: repeating-linear-gradient(90deg, var(--brand) 0 24px, transparent 24px 36px);
+  height: 2px;
+  border-top: 2px dashed #ffd84d;
 }
 
 /* Announcement */
@@ -270,8 +275,29 @@ h1 {
   z-index: 60;
   overflow: hidden;
   padding-block: 9px;
-  background: var(--brand);
-  color: var(--black);
+  border-block: 1px solid rgb(255 216 77 / 45%);
+  background: #0c0d13;
+  color: #ffd84d;
+}
+
+.announcement::before,
+.announcement::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+}
+
+.announcement::before {
+  background: repeating-linear-gradient(0deg, transparent 0 3px, rgb(255 255 255 / 3%) 3px 4px);
+}
+
+.announcement::after {
+  width: 24%;
+  border-bottom: 1px solid #69fff0;
+  background: linear-gradient(110deg, transparent, rgb(105 255 240 / 8%), transparent);
+  transform: translateX(-110%);
+  animation: announcement-signal 9s ease-in-out infinite;
 }
 
 .marquee {
@@ -288,12 +314,23 @@ h1 {
 }
 
 .marquee--announcement {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 17.5px;
-  letter-spacing: 0.045em;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15.5px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.announcement .marquee__separator {
+  color: #c494ff;
+  font-family: var(--font-mono);
+  letter-spacing: -0.15em;
+}
+
+.announcement:hover .marquee,
+.announcement:focus-within .marquee {
+  animation-play-state: paused;
 }
 
 .marquee__separator {
@@ -303,8 +340,19 @@ h1 {
 }
 
 .announcement__highlight {
-  color: #6125a8;
-  font-weight: 800;
+  color: #69fff0;
+  font-weight: 400;
+}
+
+@keyframes announcement-signal {
+  0%, 15% { transform: translateX(-110%); opacity: 0; }
+  25% { opacity: 1; }
+  70%, 100% { transform: translateX(520%); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement .marquee,
+  .announcement::after { animation: none; }
 }
 
 @keyframes marquee {
@@ -3255,28 +3303,6 @@ body.magic-mode {
   text-shadow: 0 0 14px rgb(164 92 255 / 18%);
 }
 
-.magic-mode .selvedge {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(90deg, transparent, rgb(164 92 255 / 70%), var(--magic-gold), rgb(255 138 50 / 70%), transparent) !important;
-  background-size: 180% 100%;
-  animation: magic-divider-flow 6s linear infinite;
-}
-
-.magic-mode .selvedge::after {
-  position: absolute;
-  inset: 50% 0 auto;
-  color: #17161a;
-  content: '✦  ◆  ✦  ◆  ✦';
-  font: 700 10px/1 var(--font-mono);
-  letter-spacing: min(7vw, 90px);
-  text-align: center;
-  white-space: nowrap;
-  transform: translateY(-50%);
-}
-
-@keyframes magic-divider-flow { to { background-position: 180% 0; } }
-
 .magic-mode .footer-newsletter__input:focus {
   border-color: var(--magic-violet);
   box-shadow: 0 0 0 3px rgb(164 92 255 / 16%), 0 0 24px rgb(164 92 255 / 18%);
@@ -3322,7 +3348,6 @@ body.magic-mode {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .magic-mode .selvedge,
   .halloween-bats i,
   .cart-link.fx-cart-pop { animation: none !important; }
   .halloween-bats { display: none; }
