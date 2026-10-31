@@ -363,6 +363,7 @@
       "type": "divider",
       "name": "Ninja divider",
       "settings": {
+        "background_color": "#000000",
         "margin": 24
       }
     }
