@@ -57,6 +57,7 @@
     "divider_1": {
       "type": "divider",
       "settings": {
+        "background_color": "#ffffff",
         "margin": 24
       }
     },
@@ -65,6 +66,7 @@
       "blocks": {
         "collection_LrXJ3U": {
           "type": "collection",
+          "disabled": true,
           "settings": {
             "collection": "halloween",
             "image": "shopify://shop_images/instagram-image_ce8766ad-0de3-44d5-97bc-298212d1cf35.jpg",
@@ -255,6 +257,7 @@
       "type": "divider",
       "name": "Ninja divider",
       "settings": {
+        "background_color": "#ffffff",
         "margin": 24
       }
     },
