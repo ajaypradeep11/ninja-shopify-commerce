@@ -16,6 +16,8 @@
                 assign cta_label = 'Shop keychains'
               elsif forloop.index == 2
                 assign cta_label = 'Shop beanies'
+              elsif forloop.index == 3
+                assign cta_label = 'Shop apparel & figures'
               else
                 assign cta_label = section.settings.primary_label | default: 'Shop all'
               endif
@@ -30,6 +32,8 @@
                 if collections['headwear'] != blank
                   assign cta_link = collections['headwear'].url
                 endif
+              elsif forloop.index == 3
+                assign cta_link = all_products_sorted
               else
                 assign cta_link = section.settings.primary_link
               endif
@@ -65,7 +69,7 @@
           {%- elsif forloop.index == 2 -%}
             <img class="hero__slide" src="{{ 'hero-beanies.webp' | asset_url }}" width="3200" height="1344" alt="Anime character beanies scattered on a white background" loading="lazy" decoding="async">
           {%- elsif forloop.index == 3 -%}
-            <img class="hero__slide" src="{{ 'hero.jpg' | asset_url }}" width="3200" height="1344" alt="Anime collectibles" loading="lazy" decoding="async">
+            <img class="hero__slide" src="{{ 'hero-apparel-figures.webp' | asset_url }}" width="3200" height="1344" alt="Anime apparel and collectible figures on a white background" loading="lazy" decoding="async">
           {%- else -%}
             <div class="hero__slide hero__placeholder"></div>
           {%- endif -%}
@@ -206,7 +210,7 @@
           "type": "text",
           "id": "cta_label",
           "label": "Button label",
-          "info": "Shown on the main hero button while this slide is active. Defaults: slide 1 \"Shop keychains\", slide 2 \"Shop beanies\", later slides use the section's primary button label."
+          "info": "Shown on the main hero button while this slide is active. Defaults: slide 1 \"Shop keychains\", slide 2 \"Shop beanies\", slide 3 \"Shop apparel & figures\", later slides use the section's primary button label."
         },
         {
           "type": "url",

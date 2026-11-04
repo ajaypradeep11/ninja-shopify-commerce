@@ -29,8 +29,8 @@
         "slide_3": {
           "type": "slide",
           "settings": {
-            "cta_label": "Shop anime lamps",
-            "cta_link": ""
+            "cta_label": "Shop apparel & figures",
+            "cta_link": "shopify://collections/all"
           }
         }
       },
