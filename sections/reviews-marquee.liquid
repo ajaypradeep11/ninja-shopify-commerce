@@ -1,9 +1,9 @@
 {%- if section.blocks.size > 0 -%}
   <section class="reviews-marquee">
     <div class="container-wide reviews-heading">
-      <a class="ebay-wordmark" href="{{ settings.ebay_url | default: section.settings.link }}" target="_blank" rel="noopener" aria-label="Visit our eBay store">
+      <span class="ebay-wordmark" role="img" aria-label="eBay">
         <span style="color:#E53238">e</span><span style="color:#0064D2">b</span><span style="color:#F5AF02">a</span><span style="color:#86B817">y</span>
-      </a>
+      </span>
       <h2 class="eyebrow">{{ section.settings.heading }}</h2>
     </div>
     <div class="marquee">
@@ -28,8 +28,7 @@
 {
   "name": "Reviews marquee",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "FEEDBACK FROM EBAY" },
-    { "type": "url", "id": "link", "label": "eBay link" }
+    { "type": "text", "id": "heading", "label": "Heading", "default": "FEEDBACK FROM EBAY" }
   ],
   "blocks": [
     {
