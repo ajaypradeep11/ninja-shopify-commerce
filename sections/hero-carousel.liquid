@@ -13,7 +13,9 @@
             assign cta_label = block.settings.cta_label
             if cta_label == blank
               if forloop.index == 1
-                assign cta_label = 'Shop tshirts'
+                assign cta_label = 'Shop keychains'
+              elsif forloop.index == 2
+                assign cta_label = 'Shop beanies'
               else
                 assign cta_label = section.settings.primary_label | default: 'Shop all'
               endif
@@ -21,10 +23,12 @@
             assign cta_link = block.settings.cta_link
             if cta_link == blank
               if forloop.index == 1
-                if collections['t-shirts'] != blank
-                  assign cta_link = collections['t-shirts'].url
-                elsif collections['tshirts'] != blank
-                  assign cta_link = collections['tshirts'].url
+                if collections['keychain'] != blank
+                  assign cta_link = collections['keychain'].url
+                endif
+              elsif forloop.index == 2
+                if collections['headwear'] != blank
+                  assign cta_link = collections['headwear'].url
                 endif
               else
                 assign cta_link = section.settings.primary_link
@@ -57,9 +61,9 @@
               alt: block.settings.image.alt
             }}
           {%- elsif forloop.index == 1 -%}
-            <img class="hero__slide is-active" src="{{ 'hero-opening-sale-2.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale — Solo Leveling and Demon Slayer merch" fetchpriority="high">
+            <img class="hero__slide is-active" src="{{ 'hero-keychains.webp' | asset_url }}" width="3200" height="1344" alt="Anime character keychains scattered on a white background" fetchpriority="high">
           {%- elsif forloop.index == 2 -%}
-            <img class="hero__slide" src="{{ 'hero-opening-sale.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale" loading="lazy" decoding="async">
+            <img class="hero__slide" src="{{ 'hero-beanies.webp' | asset_url }}" width="3200" height="1344" alt="Anime character beanies scattered on a white background" loading="lazy" decoding="async">
           {%- elsif forloop.index == 3 -%}
             <img class="hero__slide" src="{{ 'hero.jpg' | asset_url }}" width="3200" height="1344" alt="Anime collectibles" loading="lazy" decoding="async">
           {%- else -%}
@@ -68,23 +72,24 @@
         {%- endfor -%}
       {%- else -%}
         {%- liquid
-          assign first_cta_label = 'Shop tshirts'
+          assign first_cta_label = 'Shop keychains'
           assign first_cta_link = all_products_sorted
-          if collections['t-shirts'] != blank
-            assign first_cta_link = collections['t-shirts'].url
-          elsif collections['tshirts'] != blank
-            assign first_cta_link = collections['tshirts'].url
+          if collections['keychain'] != blank
+            assign first_cta_link = collections['keychain'].url
           endif
-          assign second_label = section.settings.primary_label | default: 'Shop all'
-          assign second_link = section.settings.primary_link | default: all_products_sorted
+          assign second_label = 'Shop beanies'
+          assign second_link = all_products_sorted
+          if collections['headwear'] != blank
+            assign second_link = collections['headwear'].url
+          endif
           assign first_link_json = first_cta_link | json
           assign second_label_json = second_label | json
           assign second_link_json = second_link | json
           assign first_label_json = first_cta_label | json
           assign cta_json = '{"label":' | append: first_label_json | append: ',"href":' | append: first_link_json | append: '},{"label":' | append: second_label_json | append: ',"href":' | append: second_link_json | append: '}'
         -%}
-        <img class="hero__slide is-active" src="{{ 'hero-opening-sale-2.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale — Solo Leveling and Demon Slayer merch" fetchpriority="high">
-        <img class="hero__slide" src="{{ 'hero-opening-sale.jpg' | asset_url }}" width="3200" height="1344" alt="Opening sale" loading="lazy" decoding="async">
+        <img class="hero__slide is-active" src="{{ 'hero-keychains.webp' | asset_url }}" width="3200" height="1344" alt="Anime character keychains scattered on a white background" fetchpriority="high">
+        <img class="hero__slide" src="{{ 'hero-beanies.webp' | asset_url }}" width="3200" height="1344" alt="Anime character beanies scattered on a white background" loading="lazy" decoding="async">
       {%- endif -%}
       <script type="application/json" data-hero-ctas>[{{ cta_json }}]</script>
       {%- if section.settings.label != blank -%}
@@ -201,7 +206,7 @@
           "type": "text",
           "id": "cta_label",
           "label": "Button label",
-          "info": "Shown on the main hero button while this slide is active. Defaults: slide 1 \"Shop tshirts\", later slides use the section's primary button label."
+          "info": "Shown on the main hero button while this slide is active. Defaults: slide 1 \"Shop keychains\", slide 2 \"Shop beanies\", later slides use the section's primary button label."
         },
         {
           "type": "url",

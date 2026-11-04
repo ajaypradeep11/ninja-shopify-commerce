@@ -15,15 +15,15 @@
         "slide_2": {
           "type": "slide",
           "settings": {
-            "cta_label": "Shop clothing",
-            "cta_link": "shopify://collections/tshirt"
+            "cta_label": "Shop keychains",
+            "cta_link": "shopify://collections/keychain"
           }
         },
         "slide_1": {
           "type": "slide",
           "settings": {
-            "cta_label": "Shop clothing",
-            "cta_link": "shopify://collections/tshirt"
+            "cta_label": "Shop beanies",
+            "cta_link": "shopify://collections/headwear"
           }
         },
         "slide_3": {
