@@ -1,6 +1,89 @@
+{% doc %}
+  @prompt
+    Create a minimal caption block with editable text defaulting to 'The Saitama keychain that started it all'. Use black text, Sofia Sans to match the theme, a small caption-sized font, and minimal adjustable top and bottom spacing. It should sit immediately below the existing Editorial layout containing the Saitama picture. Do not duplicate or replace the existing image or editorial content.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  {{ block.settings.caption_font | font_face }}
+
+  .ai-caption-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-top: {{ block.settings.space_top }}px;
+    padding-bottom: {{ block.settings.space_bottom }}px;
+    color: #000000;
+    font-family: {{ block.settings.caption_font.family }}, {{ block.settings.caption_font.fallback_families }};
+    font-style: {{ block.settings.caption_font.style }};
+    font-weight: {{ block.settings.caption_font.weight }};
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .ai-caption-{{ ai_gen_id }} p {
+    margin: 0;
+  }
+{% endstyle %}
+
+<div class="ai-caption-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <p>{{ block.settings.caption_text | escape }}</p>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Editorial caption",
+  "settings": [
+    {
+      "type": "text",
+      "id": "caption_text",
+      "label": "Caption",
+      "default": "The Saitama keychain that started it all"
+    },
+    {
+      "type": "font_picker",
+      "id": "caption_font",
+      "label": "Font",
+      "default": "sofia_sans_n4"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "space_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "space_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial caption"
+    }
+  ],
+  "tag": null,
+  "class": "editorial-caption-block"
+}
 {% endschema %}
