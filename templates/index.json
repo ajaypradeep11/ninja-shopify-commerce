@@ -281,27 +281,6 @@
       ],
       "settings": {}
     },
-    "blocks_GN9YHp": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_6cf8d85_tWzVFJ": {
-          "type": "ai_gen_block_6cf8d85",
-          "settings": {
-            "caption_text": "The Saitama keychain that started it all",
-            "caption_font": "sofia_sans_n4",
-            "desktop_width_percent": 100,
-            "space_top": 4,
-            "space_bottom": 4
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_6cf8d85_tWzVFJ"
-      ],
-      "name": "Editorial caption",
-      "settings": {}
-    },
     "divider_RaDeik": {
       "type": "divider",
       "name": "Ninja divider",
@@ -435,7 +414,6 @@
     "featured_product_rail_pmgiaw",
     "featured_product_rail_CHdjWJ",
     "1793847255bcb4310d",
-    "blocks_GN9YHp",
     "divider_RaDeik",
     "reviews",
     "1785866129c28a0cff",
