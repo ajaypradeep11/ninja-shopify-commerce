@@ -267,7 +267,7 @@
         "ai_gen_block_83f4bce_iTBwdk": {
           "type": "ai_gen_block_83f4bce",
           "settings": {
-            "image": "shopify://shop_images/IMG_20200812_214515_2.jpg",
+            "image": "shopify://shop_images/89a413fa-1548-4a42-96a7-7ba27f309fe5.jpg",
             "eyebrow": "WHO WE ARE",
             "heading": "The anime shop that started with one Saitama keychain.",
             "body": "<p>Hi, we’re Ajay and Aleena, owners of Local Ninja.</p><p>Our journey began when we instantly bonded over our favorite shows. The true spark happened when Aleena pulled a Saitama figure keychain right out of her bag, we completely geeked out, and that shared love for anime eventually inspired us to build this store together!</p><p>We launched Local Ninja in July 2026 with the goal of making it easier for fans to find anime products for their rooms, outfits and everyday lives. We carefully select every item, keep our inventory locally in Ottawa and personally prepare each order for shipping.</p><p>Thanks for visiting and supporting our small business :)</p>",
@@ -278,8 +278,8 @@
             "desktop_width_percent": 100,
             "heading_size": 56,
             "background_color": "#000000",
-            "text_color": "#FFFFFF",
-            "accent_color": "#FFD84D"
+            "text_color": "#ffffff",
+            "accent_color": "#ffd84d"
           },
           "blocks": {}
         }
