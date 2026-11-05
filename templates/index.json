@@ -64,13 +64,6 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
-        "collection_3cq4Ur": {
-          "type": "collection",
-          "settings": {
-            "collection": "",
-            "title": ""
-          }
-        },
         "collection_LrXJ3U": {
           "type": "collection",
           "disabled": true,
@@ -128,7 +121,6 @@
         }
       },
       "block_order": [
-        "collection_3cq4Ur",
         "collection_LrXJ3U",
         "collection_gL7V6m",
         "collection_1",
