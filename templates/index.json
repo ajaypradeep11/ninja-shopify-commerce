@@ -64,6 +64,13 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
+        "collection_3cq4Ur": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "title": ""
+          }
+        },
         "collection_LrXJ3U": {
           "type": "collection",
           "disabled": true,
@@ -121,6 +128,7 @@
         }
       },
       "block_order": [
+        "collection_3cq4Ur",
         "collection_LrXJ3U",
         "collection_gL7V6m",
         "collection_1",
@@ -253,11 +261,60 @@
         "products_to_show": 8
       }
     },
-    "divider_gTLNnA": {
+    "1793847255bcb4310d": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_83f4bce_iTBwdk": {
+          "type": "ai_gen_block_83f4bce",
+          "settings": {
+            "image": "shopify://shop_images/IMG_20200812_214515_2.jpg",
+            "eyebrow": "WHO WE ARE",
+            "heading": "The anime shop that started with one Saitama keychain.",
+            "body": "<p>Hi, we’re Ajay and Aleena, owners of Local Ninja.</p><p>Our journey began when we instantly bonded over our favorite shows. The true spark happened when Aleena pulled a Saitama figure keychain right out of her bag, we completely geeked out, and that shared love for anime eventually inspired us to build this store together!</p><p>We launched Local Ninja in July 2026 with the goal of making it easier for fans to find anime products for their rooms, outfits and everyday lives. We carefully select every item, keep our inventory locally in Ottawa and personally prepare each order for shipping.</p><p>Thanks for visiting and supporting our small business :)</p>",
+            "link_label": "Explore the collection",
+            "link_url": "",
+            "image_position": "left",
+            "image_ratio": 50,
+            "desktop_width_percent": 100,
+            "heading_size": 56,
+            "background_color": "#000000",
+            "text_color": "#FFFFFF",
+            "accent_color": "#FFD84D"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_83f4bce_iTBwdk"
+      ],
+      "settings": {}
+    },
+    "blocks_GN9YHp": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_6cf8d85_tWzVFJ": {
+          "type": "ai_gen_block_6cf8d85",
+          "settings": {
+            "caption_text": "The Saitama keychain that started it all",
+            "caption_font": "sofia_sans_n4",
+            "desktop_width_percent": 100,
+            "space_top": 4,
+            "space_bottom": 4
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_6cf8d85_tWzVFJ"
+      ],
+      "name": "Editorial caption",
+      "settings": {}
+    },
+    "divider_RaDeik": {
       "type": "divider",
       "name": "Ninja divider",
       "settings": {
-        "background_color": "#ffffff",
+        "background_color": "#000000",
         "margin": 24
       }
     },
@@ -368,6 +425,10 @@
         "background_color": "#000000",
         "margin": 24
       }
+    },
+    "1793851784b1c321a3": {
+      "type": "_blocks",
+      "settings": {}
     }
   },
   "order": [
@@ -381,11 +442,14 @@
     "featured_product_rail_4eKNJt",
     "featured_product_rail_pmgiaw",
     "featured_product_rail_CHdjWJ",
-    "divider_gTLNnA",
+    "1793847255bcb4310d",
+    "blocks_GN9YHp",
+    "divider_RaDeik",
     "reviews",
     "1785866129c28a0cff",
     "1789101550c66611a1",
     "17891016372162dac9",
-    "divider_PAiKct"
+    "divider_PAiKct",
+    "1793851784b1c321a3"
   ]
 }
