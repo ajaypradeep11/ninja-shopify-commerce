@@ -238,7 +238,7 @@
         "padding_bottom": 60,
         "padding_horizontal": 5,
         "padding_horizontal_mobile": 1.5,
-        "full_width": false,
+        "full_width": true,
         "content_width": 130,
         "border_thickness": 0,
         "lazy": true
