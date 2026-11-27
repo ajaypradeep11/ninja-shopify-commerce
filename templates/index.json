@@ -251,15 +251,15 @@
           "settings": {
             "title": "",
             "show_name": true,
-            "title_custom": false,
-            "title_font": "assistant_n7",
-            "title_size": 18,
-            "title_size_mobile": 16,
-            "title_advanced": false,
+            "title_custom": true,
+            "title_font": "archivo_narrow_n4",
+            "title_size": 13,
+            "title_size_mobile": 12,
+            "title_advanced": true,
             "title_height": 130,
             "title_mt": 28,
             "title_mt_mobile": 20,
-            "title_color": "#121212"
+            "title_color": "#FFFFFF"
           }
         }
       },
@@ -314,7 +314,7 @@
         "popup_title_advanced": false,
         "popup_title_height": 130,
         "popup_text_custom": false,
-        "popup_text_font": "assistant_n4",
+        "popup_text_font": "abril_fatface_n4",
         "popup_text_size": 15,
         "popup_text_size_mobile": 14,
         "popup_text_advanced": false,
