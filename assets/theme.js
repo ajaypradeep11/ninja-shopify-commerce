@@ -38,9 +38,10 @@ document.documentElement.classList.add('js');
 
     const flights = [];
     const edges = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+    const pixelsPerEdge = 10;
     for (const [nx, ny] of edges) {
-      for (let index = 0; index < 5; index++) {
-        const along = (index + 0.25 + Math.random() * 0.5) * 20;
+      for (let index = 0; index < pixelsPerEdge; index++) {
+        const along = (index + 0.25 + Math.random() * 0.5) * 100 / pixelsPerEdge;
         const distance = 17 + Math.random() * 17;
         const drift = (Math.random() - 0.5) * 18;
         const pixel = document.createElement('i');
