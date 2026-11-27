@@ -955,7 +955,7 @@ h1 {
 }
 
 .price {
-  color: var(--black);
+  color: var(--price-ink, var(--black));
   font-weight: 700;
 }
 
@@ -964,12 +964,11 @@ h1 {
 }
 
 .price--compare {
-  color: #666;
+  color: var(--price-ink, #666);
   font-weight: 400;
   text-decoration: line-through;
 }
 
-.product-rail .product-card__price,
 .account-orders .price {
   width: fit-content;
   padding-inline: 4px;

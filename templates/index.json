@@ -379,6 +379,9 @@
     },
     "featured_product_rail_HkJagM": {
       "type": "featured-product-rail",
+      "custom_css": [
+        ".product-rail {--price-ink: #fff; --sale-price-color: #e34436;}"
+      ],
       "name": "Product rail",
       "settings": {
         "heading": "Sale",
@@ -439,7 +442,9 @@
     },
     "featured_product_rail_4eKNJt": {
       "type": "featured-product-rail",
-      "custom_css": [],
+      "custom_css": [
+        ".product-rail {--price-ink: #fff; --sale-price-color: #e34436;}"
+      ],
       "name": "Product rail",
       "settings": {
         "heading": "Light & Lamp",
