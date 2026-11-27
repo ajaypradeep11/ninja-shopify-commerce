@@ -15,7 +15,7 @@
               if forloop.index == 1
                 assign cta_label = 'Shop keychains'
               elsif forloop.index == 2
-                assign cta_label = 'Shop beanies'
+                assign cta_label = 'Shop lamps'
               elsif forloop.index == 3
                 assign cta_label = 'Shop apparel & figures'
               else
@@ -29,8 +29,8 @@
                   assign cta_link = collections['keychain'].url
                 endif
               elsif forloop.index == 2
-                if collections['headwear'] != blank
-                  assign cta_link = collections['headwear'].url
+                if collections['lamp'] != blank
+                  assign cta_link = collections['lamp'].url
                 endif
               elsif forloop.index == 3
                 assign cta_link = all_products_sorted
@@ -67,7 +67,7 @@
           {%- elsif forloop.index == 1 -%}
             <img class="hero__slide is-active" src="{{ 'hero-keychains.webp' | asset_url }}" width="3200" height="1344" alt="Anime character keychains scattered on a white background" fetchpriority="high">
           {%- elsif forloop.index == 2 -%}
-            <img class="hero__slide" src="{{ 'hero-beanies.webp' | asset_url }}" width="3200" height="1344" alt="Anime character beanies scattered on a white background" loading="lazy" decoding="async">
+            <img class="hero__slide" src="{{ 'hero-black-friday-lamps.webp' | asset_url }}" width="3200" height="1344" alt="Black Friday Sale on anime light boxes and night lamps" loading="lazy" decoding="async">
           {%- elsif forloop.index == 3 -%}
             <img class="hero__slide" src="{{ 'hero-apparel-figures.webp' | asset_url }}" width="3200" height="1344" alt="Anime apparel and collectible figures on a white background" loading="lazy" decoding="async">
           {%- else -%}
@@ -81,10 +81,10 @@
           if collections['keychain'] != blank
             assign first_cta_link = collections['keychain'].url
           endif
-          assign second_label = 'Shop beanies'
+          assign second_label = 'Shop lamps'
           assign second_link = all_products_sorted
-          if collections['headwear'] != blank
-            assign second_link = collections['headwear'].url
+          if collections['lamp'] != blank
+            assign second_link = collections['lamp'].url
           endif
           assign first_link_json = first_cta_link | json
           assign second_label_json = second_label | json
@@ -93,7 +93,7 @@
           assign cta_json = '{"label":' | append: first_label_json | append: ',"href":' | append: first_link_json | append: '},{"label":' | append: second_label_json | append: ',"href":' | append: second_link_json | append: '}'
         -%}
         <img class="hero__slide is-active" src="{{ 'hero-keychains.webp' | asset_url }}" width="3200" height="1344" alt="Anime character keychains scattered on a white background" fetchpriority="high">
-        <img class="hero__slide" src="{{ 'hero-beanies.webp' | asset_url }}" width="3200" height="1344" alt="Anime character beanies scattered on a white background" loading="lazy" decoding="async">
+        <img class="hero__slide" src="{{ 'hero-black-friday-lamps.webp' | asset_url }}" width="3200" height="1344" alt="Black Friday Sale on anime light boxes and night lamps" loading="lazy" decoding="async">
       {%- endif -%}
       <script type="application/json" data-hero-ctas>[{{ cta_json }}]</script>
       {%- if section.settings.label != blank -%}
@@ -210,7 +210,7 @@
           "type": "text",
           "id": "cta_label",
           "label": "Button label",
-          "info": "Shown on the main hero button while this slide is active. Defaults: slide 1 \"Shop keychains\", slide 2 \"Shop beanies\", slide 3 \"Shop apparel & figures\", later slides use the section's primary button label."
+          "info": "Shown on the main hero button while this slide is active. Defaults: slide 1 \"Shop keychains\", slide 2 \"Shop lamps\", slide 3 \"Shop apparel & figures\", later slides use the section's primary button label."
         },
         {
           "type": "url",

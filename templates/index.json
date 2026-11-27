@@ -22,8 +22,8 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "cta_label": "Shop beanies",
-            "cta_link": "shopify://collections/headwear"
+            "cta_label": "Shop lamps",
+            "cta_link": "shopify://collections/lamp"
           }
         },
         "slide_3": {
