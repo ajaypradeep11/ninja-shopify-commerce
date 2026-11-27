@@ -153,6 +153,228 @@
         "products_to_show": 8
       }
     },
+    "ss_hangrail_showcase_H3Uppf": {
+      "type": "ss-hangrail-showcase",
+      "blocks": {
+        "caption_fHLFjf": {
+          "type": "caption",
+          "settings": {
+            "caption": "",
+            "caption_secondary": "",
+            "caption_custom": false,
+            "caption_font": "assistant_n4",
+            "caption_size": 13,
+            "caption_size_mobile": 11,
+            "caption_advanced": false,
+            "caption_height": 150,
+            "caption_mb": 28,
+            "caption_mb_mobile": 20,
+            "caption_color": "#121212",
+            "caption_secondary_color": "#555555",
+            "caption_divider_color": "#CCCCCC"
+          }
+        },
+        "product_96qA6A": {
+          "type": "product",
+          "settings": {
+            "product": "turbo-granny-dan-da-dan-gold-sd-art-t-shirt",
+            "image_side": "shopify://shop_images/turbo-granny-side.png",
+            "image_front": "shopify://shop_images/turbo-granny-front.png",
+            "image_back": "shopify://shop_images/turbo-granny-back.png"
+          }
+        },
+        "product_TAQ68R": {
+          "type": "product",
+          "settings": {
+            "product": "shinobu-kocho-demon-slayer-hoodie",
+            "image_side": "shopify://shop_images/shinobu-kocho-side.png",
+            "image_front": "shopify://shop_images/shinobu-kocho-front.png",
+            "image_back": "shopify://shop_images/shinobu-kocho-back.png"
+          }
+        },
+        "product_eUMY3B": {
+          "type": "product",
+          "settings": {
+            "product": "giyu-hoodie-demon-slayer-1",
+            "image_side": "shopify://shop_images/giyu-tomioka-side.png",
+            "image_front": "shopify://shop_images/giyu-tomioka-front.png",
+            "image_back": "shopify://shop_images/giyu-tomioka-back.png"
+          }
+        },
+        "product_pnPbea": {
+          "type": "product",
+          "settings": {
+            "product": "koseki-bijou-hololive-premium-t-shirt",
+            "image_side": "shopify://shop_images/koseki-bijou-side.png",
+            "image_front": "shopify://shop_images/ChatGPT_Image_Nov_26_2026_11_18_48_PM.png",
+            "image_back": "shopify://shop_images/ChatGPT_Image_Nov_26_2026_11_18_58_PM.png"
+          }
+        },
+        "product_DpzckL": {
+          "type": "product",
+          "settings": {
+            "product": "hunter-x-hunter-gon-freecss-killua-tricolor-graphic-crew-neck-short-sleeve-mens-white-t-shirt",
+            "image_side": "shopify://shop_images/ChatGPT_Image_Nov_26_2026_11_12_58_PM.png",
+            "image_front": "shopify://shop_images/ChatGPT_Image_Nov_26_2026_11_12_49_PM.png",
+            "image_back": "shopify://shop_images/ChatGPT_Image_Nov_26_2026_11_13_16_PM.png"
+          }
+        },
+        "product_PWa3c8": {
+          "type": "product",
+          "settings": {
+            "product": "gigi-murin-hololive-hoodie",
+            "image_side": "shopify://shop_images/gigi-murin-side_47342bc4-846b-4860-985e-4ccc247344e3.png",
+            "image_front": "shopify://shop_images/gigi-murin-front.png",
+            "image_back": "shopify://shop_images/gigi-murin-back.png"
+          }
+        },
+        "product_jV3DYy": {
+          "type": "product",
+          "settings": {
+            "product": "igris-solo-leveling-premium-t-shirt",
+            "image_side": "shopify://shop_images/igris-side.png",
+            "image_front": "shopify://shop_images/igris-front.png",
+            "image_back": "shopify://shop_images/igris-back.png"
+          }
+        },
+        "product_9Bf6jp": {
+          "type": "product",
+          "settings": {
+            "product": "okarun-dan-da-dan-black-t-shirt",
+            "image_side": "shopify://shop_images/okarun-side.png",
+            "image_front": "shopify://shop_images/okarun-front.png",
+            "image_back": "shopify://shop_images/okarun-back.png"
+          }
+        },
+        "title_d9VepA": {
+          "type": "title",
+          "settings": {
+            "title": "",
+            "show_name": true,
+            "title_custom": false,
+            "title_font": "assistant_n7",
+            "title_size": 18,
+            "title_size_mobile": 16,
+            "title_advanced": false,
+            "title_height": 130,
+            "title_mt": 28,
+            "title_mt_mobile": 20,
+            "title_color": "#121212"
+          }
+        }
+      },
+      "block_order": [
+        "caption_fHLFjf",
+        "product_96qA6A",
+        "product_TAQ68R",
+        "product_eUMY3B",
+        "product_pnPbea",
+        "product_DpzckL",
+        "product_PWa3c8",
+        "product_jV3DYy",
+        "product_9Bf6jp",
+        "title_d9VepA"
+      ],
+      "name": "SS - Hangrail showcase",
+      "settings": {
+        "garment_height": 420,
+        "garment_height_mobile": 300,
+        "garment_gap": 10,
+        "garment_gap_mobile": 16,
+        "show_rod": true,
+        "rail_finish": "gold",
+        "rod_color": "#BEB80A",
+        "hook_color": "#8C8C8C",
+        "rail_style": "brackets",
+        "hanger_hooks": true,
+        "show_tags": true,
+        "show_tag_status": true,
+        "tag_sale_label": "Sale",
+        "tag_custom": false,
+        "tag_font": "assistant_n4",
+        "tag_size": 12,
+        "tag_size_mobile": 10,
+        "turn_speed": 700,
+        "swing_strength": 70,
+        "drop_in": true,
+        "show_popup": true,
+        "lift_animation": true,
+        "front_label": "Front",
+        "back_label": "Back",
+        "link_label": "View product",
+        "show_quickadd": true,
+        "atc_label": "Add to cart",
+        "soldout_label": "Sold out",
+        "atc_error_label": "Error adding to cart",
+        "cart_app": "auto-detect",
+        "popup_title_custom": false,
+        "popup_title_font": "assistant_n7",
+        "popup_title_size": 28,
+        "popup_title_size_mobile": 22,
+        "popup_title_advanced": false,
+        "popup_title_height": 130,
+        "popup_text_custom": false,
+        "popup_text_font": "assistant_n4",
+        "popup_text_size": 15,
+        "popup_text_size_mobile": 14,
+        "popup_text_advanced": false,
+        "popup_text_height": 150,
+        "atc_button_style": "non_outline",
+        "atc_button_custom": false,
+        "atc_button_font": "assistant_n7",
+        "atc_button_size": 14,
+        "atc_button_size_mobile": 14,
+        "atc_button_advanced": false,
+        "atc_button_height": 100,
+        "atc_button_padding_horizontal": 40,
+        "atc_button_padding_horizontal_mobile": 32,
+        "atc_button_padding_vertical": 20,
+        "atc_button_padding_vertical_mobile": 20,
+        "atc_button_radius": 100,
+        "atc_button_border_thickness": 1,
+        "atc_button_custom_styling": true,
+        "autoplay": true,
+        "autoplay_speed": 4,
+        "show_dots": true,
+        "tag_bg_color": "#FFFFFF",
+        "tag_text_color": "#121212",
+        "tag_status_bg_color": "#121212",
+        "tag_status_text_color": "#FFFFFF",
+        "popup_bg_color": "#FFFFFF",
+        "popup_bg_opacity": 0.9,
+        "popup_title_color": "#121212",
+        "popup_text_color": "#555555",
+        "popup_accent_color": "#121212",
+        "popup_accent_text_color": "#FFFFFF",
+        "popup_border_color": "#E5E5E5",
+        "atc_button_color": "#FFFFFF",
+        "atc_button_hover_color": "#FFFFFF",
+        "atc_button_bg_color": "#2d2d2d",
+        "atc_button_bg_hover_color": "#2d2d2d",
+        "atc_button_border_color": "#1a1a1a",
+        "atc_button_border_hover_color": "#1a1a1a",
+        "atc_button_shadow_color": "#000000",
+        "dot_color": "#CCCCCC",
+        "dot_active_color": "#121212",
+        "background_style": "gradient",
+        "background_color": "#4D4D4D",
+        "background_gradient": "linear-gradient(179deg, rgba(255, 255, 255, 1), rgba(183, 183, 183, 1) 14%, rgba(255, 255, 255, 1) 66%, rgba(2, 2, 2, 1) 100%)",
+        "border_color": "#121212",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "margin_horizontal": 0,
+        "margin_horizontal_mobile": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "width": "page",
+        "content_width": 1200,
+        "border_thickness": 0,
+        "section_radius": 0,
+        "lazy": true
+      }
+    },
     "featured_product_rail_HkJagM": {
       "type": "featured-product-rail",
       "name": "Product rail",
@@ -396,6 +618,7 @@
     "divider_1",
     "collection_tiles",
     "best_sellers",
+    "ss_hangrail_showcase_H3Uppf",
     "featured_product_rail_HkJagM",
     "brand_marquee",
     "featured_product_rail_mW3KHK",
