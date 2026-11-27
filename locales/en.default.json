@@ -15,6 +15,9 @@
     "account": "Account",
     "cart": "Cart"
   },
+  "header": {
+    "sale_link": "Black Friday"
+  },
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
