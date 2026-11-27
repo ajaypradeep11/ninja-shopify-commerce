@@ -888,7 +888,7 @@ h1 {
   box-shadow: 1px 1px 0 #a56805;
 }
 
-.product-card__pixels > i:nth-child(3n) { background: #ffeb76; }
+.product-card__pixels > i:nth-child(3n) { background: #101010; }
 .product-card__pixels > i:nth-child(3n + 1) { background: #ffbd0a; }
 
 @media (prefers-reduced-motion: reduce) {
