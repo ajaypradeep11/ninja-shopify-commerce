@@ -856,12 +856,72 @@ h1 {
 }
 
 .product-card {
+  position: relative;
   display: block;
   transition: transform 200ms ease;
 }
 
 .product-card:hover {
   transform: translateY(-4px);
+}
+
+/* Offset spot colors and halftone corners echo a comic cover's printed frame. */
+.product-card::after,
+.product-card__media::after {
+  position: absolute;
+  z-index: 1;
+  content: "";
+  pointer-events: none;
+  opacity: 0;
+}
+
+.product-card::after {
+  inset: -4px;
+  border: 2px solid #161616;
+  border-radius: calc(var(--radius-lg) + 4px);
+  box-shadow: -2px -2px #e83093, 2px 2px #a8e34b;
+}
+
+.product-card__media::after {
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle, #181818 1px, transparent 1.4px) 0 0 / 5px 5px,
+    linear-gradient(135deg, #ec389a 48%, #b2ee54 52%);
+  clip-path: polygon(0 0, 46px 0, 0 46px, 0 100%, calc(100% - 46px) 100%, 100% calc(100% - 46px), 100% 100%, 0 100%);
+}
+
+.product-card:focus-visible::after,
+.product-card:focus-visible .product-card__media::after {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-card:hover::after,
+  .product-card:hover .product-card__media::after {
+    opacity: 1;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .product-card:hover::after {
+    animation: card-frame-print 430ms ease-out both;
+  }
+
+  .product-card:hover .product-card__media::after {
+    animation: card-ink-reveal 360ms ease-out both;
+  }
+}
+
+@keyframes card-frame-print {
+  0% { clip-path: inset(0 52% 97% 0); }
+  45% { clip-path: inset(0 0 74% 0); }
+  100% { clip-path: inset(-7px); }
+}
+
+@keyframes card-ink-reveal {
+  from { opacity: 0; transform: scale(1.06); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .product-card__media {
@@ -3261,24 +3321,6 @@ body.magic-mode {
   text-shadow: 0 0 24px rgb(164 92 255 / 18%);
 }
 
-.magic-mode .product-card__media::after {
-  position: absolute;
-  z-index: 3;
-  inset: 0;
-  border: 1px solid transparent;
-  border-radius: inherit;
-  background: linear-gradient(120deg, transparent 22%, rgb(255 216 77 / 75%), rgb(164 92 255 / 58%), transparent 78%) border-box;
-  content: '';
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 220ms ease;
-  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-.magic-mode .product-card:hover .product-card__media::after { opacity: 1; }
-
 .halloween-bats {
   position: absolute;
   z-index: 4;
@@ -3368,4 +3410,17 @@ body.magic-mode {
   .cart-link.fx-cart-pop { animation: none !important; }
   .halloween-bats { display: none; }
   .magic-mode .fx-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card,
+  .product-card__image,
+  .product-card__media {
+    transition: none;
+  }
+
+  .product-card:hover,
+  .product-card:hover .product-card__image {
+    transform: none;
+  }
 }
