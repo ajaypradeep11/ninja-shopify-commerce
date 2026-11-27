@@ -32,28 +32,26 @@
 
 <a class="product-card" href="{{ card_url }}">
   <div class="product-card__media">
-    <div class="product-card__image-clip">
-      {%- if card_image != blank -%}
-        {{ card_image | image_url: width: 1000 | image_tag:
-          class: 'product-card__image',
-          loading: image_loading,
+    {%- if card_image != blank -%}
+      {{ card_image | image_url: width: 1000 | image_tag:
+        class: 'product-card__image',
+        loading: image_loading,
+        widths: '240, 360, 480, 720, 1000',
+        sizes: '(max-width: 767px) 50vw, (max-width: 1199px) 25vw, 17vw',
+        alt: card_alt
+      }}
+      {%- if hover_image != blank -%}
+        {{ hover_image | image_url: width: 1000 | image_tag:
+          class: 'product-card__image product-card__image--hover',
+          loading: 'lazy',
           widths: '240, 360, 480, 720, 1000',
           sizes: '(max-width: 767px) 50vw, (max-width: 1199px) 25vw, 17vw',
-          alt: card_alt
+          alt: ''
         }}
-        {%- if hover_image != blank -%}
-          {{ hover_image | image_url: width: 1000 | image_tag:
-            class: 'product-card__image product-card__image--hover',
-            loading: 'lazy',
-            widths: '240, 360, 480, 720, 1000',
-            sizes: '(max-width: 767px) 50vw, (max-width: 1199px) 25vw, 17vw',
-            alt: ''
-          }}
-        {%- endif -%}
-      {%- else -%}
-        <div class="product-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
       {%- endif -%}
-    </div>
+    {%- else -%}
+      <div class="product-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
+    {%- endif -%}
 
     {%- if card_product.available == false -%}
       {% render 'sold-out-badge' %}
