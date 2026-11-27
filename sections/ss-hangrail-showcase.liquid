@@ -720,10 +720,6 @@
       color: {{ popup_title_color }};
     }
 
-    .hrs-popup-compare-{{ section.id }} {
-      color: {{ popup_text_color }};
-    }
-
     .hrs-popup-tabs-{{ section.id }} {
       display: flex;
       justify-content: center;
@@ -1702,6 +1698,7 @@
               assign front_px = garment_height | times: front_ratio | ceil
               assign front_px_mobile = garment_height_mobile | times: front_ratio | ceil
 
+              assign tag_on_sale = false
               if item_product != blank
                 assign item_name = item_product.title
                 assign item_url = item_product.url
@@ -1712,6 +1709,13 @@
                   assign item_compare = first_variant.compare_at_price | money | strip_html
                 endif
                 assign tag_price = item_product.price | money_without_trailing_zeros
+                assign lowest_price_variants = item_product.variants | where: 'price', item_product.price
+                for tag_variant in lowest_price_variants
+                  if tag_variant.compare_at_price > tag_variant.price
+                    assign tag_on_sale = true
+                    break
+                  endif
+                endfor
               else
                 assign item_name = 'Product name'
                 assign item_url = ''
@@ -1724,7 +1728,7 @@
               if item_product != blank and show_tag_status
                 if item_product.available == false
                   assign tag_status = soldout_label
-                elsif item_product.compare_at_price > item_product.price
+                elsif tag_on_sale
                   assign tag_status = tag_sale_label
                 endif
               endif
@@ -1816,7 +1820,7 @@
                   <div class="hrs-tag-{{ section.id }}" aria-hidden="true">
                     <span class="hrs-tag-string-{{ section.id }}"></span>
                     <div class="hrs-tag-card-{{ section.id }}{% if tag_status != blank %} hrs-tag-flip-{{ section.id }}{% endif %}">
-                      <span class="hrs-tag-face-{{ section.id }}">{{ tag_price }}</span>
+                      <span class="hrs-tag-face-{{ section.id }}"><span class="price{% if tag_on_sale %} price--sale{% endif %}">{{ tag_price }}</span></span>
                       {%- if tag_status != blank -%}
                         <span class="hrs-tag-face-{{ section.id }} hrs-tag-back-{{ section.id }}">{{ tag_status }}</span>
                       {%- endif -%}
@@ -1951,8 +1955,8 @@
           <p class="hrs-popup-index-{{ section.id }}" data-hrs-popup-index></p>
           <h2 class="hrs-popup-title-{{ section.id }}" data-hrs-popup-title></h2>
           <p class="hrs-popup-price-{{ section.id }}">
-            <span data-hrs-popup-price></span>
-            <s class="hrs-popup-compare-{{ section.id }}" data-hrs-popup-compare></s>
+            <span class="price" data-hrs-popup-price></span>
+            <s class="price--compare" data-hrs-popup-compare></s>
           </p>
 
           <div class="hrs-popup-tabs-{{ section.id }}" data-hrs-popup-tabs>
@@ -2943,9 +2947,12 @@
     }
 
     function setPrice(price, compare) {
-      if (popupPrice) popupPrice.textContent = decodeMoney(price);
+      var compareText = decodeMoney(compare);
+      if (popupPrice) {
+        popupPrice.textContent = decodeMoney(price);
+        popupPrice.classList.toggle('price--sale', Boolean(compareText));
+      }
       if (popupCompare) {
-        var compareText = decodeMoney(compare);
         popupCompare.textContent = compareText;
         popupCompare.hidden = !compareText;
       }

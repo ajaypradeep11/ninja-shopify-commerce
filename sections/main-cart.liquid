@@ -12,6 +12,10 @@
     {%- form 'cart', cart, id: 'CartForm', class: 'cart-layout' -%}
       <div class="cart-items">
         {%- for item in cart.items -%}
+          {%- assign line_on_sale = false -%}
+          {%- if item.variant.compare_at_price > item.variant.price or item.final_line_price < item.original_line_price -%}
+            {%- assign line_on_sale = true -%}
+          {%- endif -%}
           <article class="cart-item">
             <a class="cart-item__image" href="{{ item.url }}">
               {%- if item.image != blank -%}
@@ -25,7 +29,7 @@
                   <a class="cart-item__title" href="{{ item.url }}">{{ item.product.title }}</a>
                   {% if item.variant.available == false %}
                     {% render 'sold-out-badge' %}
-                  {% elsif item.variant.compare_at_price > item.variant.price or item.final_price < item.original_price %}
+                  {% elsif line_on_sale %}
                     {% render 'sale-badge' %}
                   {% endif %}
                   {%- unless item.product.has_only_default_variant -%}<p class="cart-item__variant">{{ item.variant.title }}</p>{%- endunless -%}
@@ -33,7 +37,7 @@
                     {%- unless property.last == blank -%}<p class="cart-item__properties">{{ property.first }}: {{ property.last }}</p>{%- endunless -%}
                   {%- endfor -%}
                 </div>
-                <strong>{{ item.final_line_price | money_with_currency }}</strong>
+                <strong class="price{% if line_on_sale %} price--sale{% endif %}">{{ item.final_line_price | money_with_currency }}</strong>
               </div>
               <div class="cart-item__bottom">
                 {% render 'quantity-input', name: 'updates[]', value: item.quantity, min: 0 %}
@@ -46,7 +50,7 @@
       </div>
 
       <aside class="cart-summary">
-        <div class="cart-summary__line"><span>Subtotal</span><span>{{ cart.total_price | money_with_currency }}</span></div>
+        <div class="cart-summary__line"><span>Subtotal</span><span class="price">{{ cart.total_price | money_with_currency }}</span></div>
         <p class="cart-summary__note">Taxes and shipping calculated at checkout.</p>
         <label class="quantity-label" for="CartNote">Order note</label>
         <textarea class="cart-note" id="CartNote" name="note">{{ cart.note }}</textarea>

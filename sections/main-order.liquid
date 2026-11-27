@@ -8,23 +8,27 @@
       <thead><tr><th>Product</th><th>SKU</th><th>Price</th><th>Quantity</th><th>Total</th></tr></thead>
       <tbody>
         {%- for line_item in order.line_items -%}
+          {%- assign line_price_class = 'price' -%}
+          {%- if line_item.final_line_price < line_item.original_line_price -%}
+            {%- assign line_price_class = 'price price--sale' -%}
+          {%- endif -%}
           <tr>
             <td>{%- if line_item.url -%}<a class="text-link" href="{{ line_item.url }}">{{ line_item.title }}</a>{%- else -%}{{ line_item.title }}{%- endif -%}</td>
             <td>{{ line_item.sku }}</td>
             <td>
-              {{ line_item.final_price | money }}
+              <span class="{{ line_price_class }}">{{ line_item.final_price | money }}</span>
               {% if line_item.variant.available and line_item.final_price < line_item.original_price %}{% render 'sale-badge' %}{% endif %}
             </td>
             <td>{{ line_item.quantity }}</td>
-            <td>{{ line_item.final_line_price | money }}</td>
+            <td><span class="{{ line_price_class }}">{{ line_item.final_line_price | money }}</span></td>
           </tr>
         {%- endfor -%}
       </tbody>
       <tfoot>
-        <tr><th colspan="4">Subtotal</th><td>{{ order.line_items_subtotal_price | money }}</td></tr>
-        {%- for shipping_method in order.shipping_methods -%}<tr><th colspan="4">Shipping ({{ shipping_method.title }})</th><td>{{ shipping_method.price | money }}</td></tr>{%- endfor -%}
-        {%- for tax_line in order.tax_lines -%}<tr><th colspan="4">Tax ({{ tax_line.title }})</th><td>{{ tax_line.price | money }}</td></tr>{%- endfor -%}
-        <tr><th colspan="4">Total</th><td>{{ order.total_net_amount | money_with_currency }}</td></tr>
+        <tr><th colspan="4">Subtotal</th><td><span class="price">{{ order.line_items_subtotal_price | money }}</span></td></tr>
+        {%- for shipping_method in order.shipping_methods -%}<tr><th colspan="4">Shipping ({{ shipping_method.title }})</th><td><span class="price">{{ shipping_method.price | money }}</span></td></tr>{%- endfor -%}
+        {%- for tax_line in order.tax_lines -%}<tr><th colspan="4">Tax ({{ tax_line.title }})</th><td><span class="price">{{ tax_line.price | money }}</span></td></tr>{%- endfor -%}
+        <tr><th colspan="4">Total</th><td><span class="price">{{ order.total_net_amount | money_with_currency }}</span></td></tr>
       </tfoot>
     </table>
   </div>

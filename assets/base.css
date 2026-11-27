@@ -24,6 +24,7 @@
 
 :root {
   --sold-out-color: #ffd84d;
+  --sale-price-color: #bb271b;
   --font-display: "Sora", Arial, sans-serif;
   --font-sans: "Inter", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
@@ -946,16 +947,34 @@ h1 {
 
 .product-card__price {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 8px;
   margin-top: 4px;
-  color: color-mix(in srgb, var(--ink) 78%, transparent);
   font-size: 14px;
 }
 
+.price {
+  color: var(--black);
+  font-weight: 700;
+}
+
+.price--sale {
+  color: var(--sale-price-color);
+}
+
 .price--compare {
-  opacity: .55;
+  color: #666;
+  font-weight: 400;
   text-decoration: line-through;
+}
+
+.product-rail .product-card__price,
+.account-orders .price {
+  width: fit-content;
+  padding-inline: 4px;
+  border-radius: 2px;
+  background: var(--white);
 }
 
 .product-card__vendor {
@@ -1866,6 +1885,7 @@ body.image-viewer-open { overflow: hidden; }
 
 .product-info__price {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 10px;
   margin-top: 18px;

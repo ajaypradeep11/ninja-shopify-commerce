@@ -71,7 +71,7 @@
       {{ card_product.metafields.judgeme.badge }}
     </div>
     <div class="product-card__price">
-      <span>
+      <span class="price{% if compare_price %} price--sale{% endif %}">
         {%- if card_product.price_varies -%}From {% endif -%}
         {{ card_product.price | money_with_currency }}
       </span>

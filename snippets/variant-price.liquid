@@ -1,4 +1,4 @@
-<span>{{ variant.price | money_with_currency }}</span>
+<span class="price{% if variant.compare_at_price > variant.price %} price--sale{% endif %}">{{ variant.price | money_with_currency }}</span>
 {%- if variant.compare_at_price > variant.price -%}
   <span class="price--compare">{{ variant.compare_at_price | money }}</span>
   {% if variant.available %}{% render 'sale-badge' %}{% endif %}
