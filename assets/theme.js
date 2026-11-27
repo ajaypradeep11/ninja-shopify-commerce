@@ -24,6 +24,50 @@ document.documentElement.classList.add('js');
     toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 3200);
   }
 
+  // Launch from the four photo edges, with no permanent particle nodes on resting cards.
+  const hoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  document.addEventListener('pointerover', (event) => {
+    if (!hoverPointer.matches || reducedMotion.matches || event.pointerType === 'touch') return;
+    const media = event.target.closest('.product-card__media');
+    if (!media || media.contains(event.relatedTarget) || media.querySelector('.product-card__pixels')) return;
+
+    const burst = document.createElement('span');
+    burst.className = 'product-card__pixels';
+    burst.setAttribute('aria-hidden', 'true');
+    media.appendChild(burst);
+
+    const flights = [];
+    const edges = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+    for (const [nx, ny] of edges) {
+      for (let index = 0; index < 5; index++) {
+        const along = (index + 0.25 + Math.random() * 0.5) * 20;
+        const distance = 17 + Math.random() * 17;
+        const drift = (Math.random() - 0.5) * 18;
+        const pixel = document.createElement('i');
+        pixel.style.left = (nx === 0 ? along : 50 + nx * 49) + '%';
+        pixel.style.top = (ny === 0 ? along : 50 + ny * 49) + '%';
+        pixel.style.setProperty('--pixel-size', (4 + Math.floor(Math.random() * 5)) + 'px');
+        burst.appendChild(pixel);
+
+        const x = Math.round(nx * distance + ny * drift);
+        const y = Math.round(ny * distance + nx * drift);
+        const flight = pixel.animate([
+          { opacity: 0, transform: 'translate(-50%, -50%) scale(.5)' },
+          { opacity: 1, offset: 0.15 },
+          { opacity: 1, offset: 0.70 },
+          { opacity: 0, transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(.5)` }
+        ], {
+          delay: Math.random() * 95,
+          duration: 510 + Math.random() * 190,
+          easing: 'ease-out',
+          fill: 'both'
+        });
+        flights.push(flight.finished);
+      }
+    }
+    Promise.allSettled(flights).then(() => burst.remove());
+  });
+
   function initSeasonalEffects(root = document) {
     const trigger = root.querySelector?.('[data-magic-mode]');
     if (!trigger) return;

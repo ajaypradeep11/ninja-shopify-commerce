@@ -859,99 +859,40 @@ h1 {
   display: block;
 }
 
-/* A four-pose arcade sprite plays once in the photo's lower corner. */
-.product-card__media::before,
-.product-card__media::after {
-  position: absolute;
-  z-index: 1;
-  content: "";
-  pointer-events: none;
-  opacity: 0;
-}
-
-.product-card__media::before {
-  inset: 2px;
-  border: 2px solid #161616;
-  border-radius: inherit;
-  box-shadow: -2px -2px #e83093, 2px 2px #a8e34b;
-  background:
-    repeating-linear-gradient(90deg, #181818 0 3px, #b2ee54 3px 7px) left top / 32px 5px,
-    linear-gradient(#ec389a, #ec389a) left 6px top 7px / 14px 3px,
-    repeating-linear-gradient(90deg, #181818 0 2px, #ec389a 2px 6px) right bottom / 27px 4px;
-  background-repeat: no-repeat;
-}
-
-.product-card__media::after {
-  left: 4px;
-  bottom: 4px;
-  width: min(31%, 86px);
-  aspect-ratio: 1;
-  background-size: 200% 200%;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  transform-origin: center bottom;
-}
-
-.product-card:focus-visible .product-card__media::before,
-.product-card:focus-visible .product-card__media::after {
-  opacity: 1;
-}
-
-.product-card:focus-visible .product-card__media::after {
-  background-image: url("ninja-hover-poses.webp");
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .product-card__media:hover::before,
-  .product-card__media:hover::after {
-    opacity: 1;
-  }
-
-  .product-card__media:hover::after {
-    background-image: url("ninja-hover-poses.webp");
-  }
-}
-
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .product-card__media:hover::before {
-    animation: card-frame-print 430ms ease-out both;
-  }
-
-  .product-card__media:hover::after {
-    animation: ninja-poses 2s step-end both, ninja-hop 2s ease-out both;
-  }
-}
-
-@keyframes card-frame-print {
-  0% { clip-path: inset(0 52% 97% 0); }
-  45% { clip-path: inset(0 0 74% 0); }
-  100% { clip-path: inset(-7px); }
-}
-
-@keyframes ninja-poses {
-  0% { background-position: 0 0; }
-  24% { background-position: 100% 0; }
-  45% { background-position: 0 100%; }
-  84%, 100% { background-position: 100% 100%; }
-}
-
-@keyframes ninja-hop {
-  0% { opacity: 0; transform: translateY(45%); }
-  10%, 23% { opacity: 1; transform: none; }
-  34% { transform: translate(4%, -17%) rotate(-5deg); }
-  46% { transform: translateX(6%) scale(1.05, .93); }
-  54%, 83% { transform: translateX(6%); }
-  87% { opacity: 1; transform: translateX(2%); }
-  94% { opacity: .85; transform: translateX(12%); }
-  100% { opacity: 0; transform: translateX(18%); }
-}
-
 .product-card__media {
   position: relative;
   aspect-ratio: 3 / 4;
-  overflow: hidden;
   border-radius: var(--radius-lg);
   background: #fff;
+}
+
+.product-card__image-clip {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.product-card__pixels {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.product-card__pixels > i {
+  position: absolute;
+  width: var(--pixel-size);
+  height: var(--pixel-size);
+  background: #ffd52d;
+  box-shadow: 1px 1px 0 #a56805;
+}
+
+.product-card__pixels > i:nth-child(3n) { background: #ffeb76; }
+.product-card__pixels > i:nth-child(3n + 1) { background: #ffbd0a; }
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card__pixels { display: none; }
 }
 
 .product-card__image,
