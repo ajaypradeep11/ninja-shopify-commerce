@@ -856,17 +856,11 @@ h1 {
 }
 
 .product-card {
-  position: relative;
   display: block;
-  transition: transform 200ms ease;
-}
-
-.product-card:hover {
-  transform: translateY(-4px);
 }
 
 /* Offset spot colors and halftone corners echo a comic cover's printed frame. */
-.product-card::after,
+.product-card__media::before,
 .product-card__media::after {
   position: absolute;
   z-index: 1;
@@ -875,10 +869,10 @@ h1 {
   opacity: 0;
 }
 
-.product-card::after {
-  inset: -4px;
+.product-card__media::before {
+  inset: 2px;
   border: 2px solid #161616;
-  border-radius: calc(var(--radius-lg) + 4px);
+  border-radius: inherit;
   box-shadow: -2px -2px #e83093, 2px 2px #a8e34b;
 }
 
@@ -891,24 +885,24 @@ h1 {
   clip-path: polygon(0 0, 46px 0, 0 46px, 0 100%, calc(100% - 46px) 100%, 100% calc(100% - 46px), 100% 100%, 0 100%);
 }
 
-.product-card:focus-visible::after,
+.product-card:focus-visible .product-card__media::before,
 .product-card:focus-visible .product-card__media::after {
   opacity: 1;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .product-card:hover::after,
-  .product-card:hover .product-card__media::after {
+  .product-card__media:hover::before,
+  .product-card__media:hover::after {
     opacity: 1;
   }
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .product-card:hover::after {
+  .product-card__media:hover::before {
     animation: card-frame-print 430ms ease-out both;
   }
 
-  .product-card:hover .product-card__media::after {
+  .product-card__media:hover::after {
     animation: card-ink-reveal 360ms ease-out both;
   }
 }
@@ -930,11 +924,6 @@ h1 {
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: #fff;
-  transition: box-shadow 200ms ease;
-}
-
-.product-card:hover .product-card__media {
-  box-shadow: 0 12px 30px rgb(0 0 0 / 22%);
 }
 
 .product-card__image,
@@ -951,12 +940,14 @@ h1 {
   opacity: 0;
 }
 
-.product-card:hover .product-card__image {
-  transform: scale(1.05);
-}
+@media (hover: hover) and (pointer: fine) {
+  .product-card__media:hover .product-card__image {
+    transform: scale(1.05);
+  }
 
-.product-card:hover .product-card__image--hover {
-  opacity: 1;
+  .product-card__media:hover .product-card__image--hover {
+    opacity: 1;
+  }
 }
 
 .product-card__placeholder {
@@ -3382,9 +3373,6 @@ body.magic-mode {
     transform: none;
     transition: none;
   }
-  .product-card:hover { transform: none; }
-  .product-card:hover .product-card__media { box-shadow: none; }
-  .product-card:hover .product-card__image { transform: none; }
   .collection-tile:hover .collection-tile__media img,
   .collection-tile--halloween:hover .collection-tile__media img {
     transform: none;
@@ -3398,9 +3386,6 @@ body.magic-mode {
     transform: none;
     transition: none;
   }
-  .product-card:hover { transform: none; }
-  .product-card:hover .product-card__media { box-shadow: none; }
-  .product-card:hover .product-card__image { transform: none; }
   .collection-tile:hover .collection-tile__media img { transform: none; }
   .halloween-bats { display: none; }
 }
@@ -3413,14 +3398,11 @@ body.magic-mode {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .product-card,
-  .product-card__image,
-  .product-card__media {
+  .product-card__image {
     transition: none;
   }
 
-  .product-card:hover,
-  .product-card:hover .product-card__image {
+  .product-card__media:hover .product-card__image {
     transform: none;
   }
 }
