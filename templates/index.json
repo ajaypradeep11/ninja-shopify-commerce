@@ -61,6 +61,189 @@
         "margin": 24
       }
     },
+    "ss_collection_4_iBaDNX": {
+      "type": "ss-collection-4",
+      "blocks": {
+        "collection_ND6ipJ": {
+          "type": "collection",
+          "settings": {
+            "collection": "tshirt",
+            "title": "<h3>Apparel</h3>",
+            "text": "<p>Show off your style with our cool Apparel</p>",
+            "button": "Shop now",
+            "button_url": "shopify://collections/tshirt",
+            "image": "shopify://shop_images/Copy-of-DSC03155.webp",
+            "stars_count": 5
+          }
+        },
+        "collection_pMAqMU": {
+          "type": "collection",
+          "settings": {
+            "collection": "keychain",
+            "title": "",
+            "text": "",
+            "button": "Shop now",
+            "button_url": "",
+            "stars_count": 5
+          }
+        },
+        "collection_RHChGU": {
+          "type": "collection",
+          "settings": {
+            "collection": "hats",
+            "title": "<h3>CAP</h3>",
+            "text": "",
+            "button": "Shop now",
+            "button_url": "",
+            "stars_count": 5
+          }
+        },
+        "collection_Wzeh7V": {
+          "type": "collection",
+          "settings": {
+            "collection": "beanies",
+            "title": "",
+            "text": "",
+            "button": "Shop now",
+            "button_url": "",
+            "stars_count": 5
+          }
+        },
+        "collection_fcWyLE": {
+          "type": "collection",
+          "settings": {
+            "collection": "lamp",
+            "title": "<h3>Lamp</h3>",
+            "text": "",
+            "button": "Shop now",
+            "button_url": "",
+            "stars_count": 5
+          }
+        },
+        "collection_L77VD3": {
+          "type": "collection",
+          "settings": {
+            "collection": "figure",
+            "title": "<h3>Collectibles</h3>",
+            "text": "",
+            "button": "Shop now",
+            "button_url": "",
+            "stars_count": 5
+          }
+        },
+        "collection_N7UFx7": {
+          "type": "collection",
+          "settings": {
+            "collection": "cosplay-gear",
+            "title": "<h3>Cosplay Gear</h3>",
+            "text": "",
+            "button": "Shop now",
+            "button_url": "",
+            "stars_count": 5
+          }
+        }
+      },
+      "block_order": [
+        "collection_ND6ipJ",
+        "collection_pMAqMU",
+        "collection_RHChGU",
+        "collection_Wzeh7V",
+        "collection_fcWyLE",
+        "collection_L77VD3",
+        "collection_N7UFx7"
+      ],
+      "name": "SS - Collection #4",
+      "settings": {
+        "heading": "<h2>Discover by Category</h2>",
+        "heading_custom": false,
+        "heading_font": "josefin_sans_n4",
+        "heading_size": 56,
+        "heading_size_mobile": 24,
+        "heading_height": 150,
+        "heading_align": "left",
+        "heading_align_mobile": "left",
+        "grid_gap": 4,
+        "grid_gap_mobile": 4,
+        "grid_padding_vertical": 0,
+        "grid_padding_horizontal": 0,
+        "grid_radius": 0,
+        "grid_border_thickness": 0,
+        "grid_shadow": false,
+        "grid_mt": 24,
+        "collection_padding_vertical": 32,
+        "collection_padding_vertical_mobile": 32,
+        "collection_padding_horizontal": 24,
+        "collection_padding_horizontal_mobile": 24,
+        "collection_radius": 8,
+        "collection_border_thickness": 0,
+        "collection_ratio": "portrait",
+        "collection_overlay": 0.2,
+        "collection_shadow": false,
+        "title_custom": false,
+        "title_font": "josefin_sans_n4",
+        "title_size": 48,
+        "title_size_mobile": 24,
+        "title_height": 100,
+        "title_align": "left",
+        "title_align_mobile": "left",
+        "title_mb": 16,
+        "title_underline": true,
+        "stars_size": 22,
+        "stars_align": "start",
+        "stars_align_mobile": "start",
+        "stars_mt": 16,
+        "text_custom": false,
+        "text_font": "josefin_sans_n4",
+        "text_size": 18,
+        "text_size_mobile": 16,
+        "text_height": 150,
+        "text_align": "left",
+        "text_align_mobile": "left",
+        "text_mt": 16,
+        "button_custom": false,
+        "button_font": "josefin_sans_n4",
+        "button_size": 16,
+        "button_size_mobile": 14,
+        "button_height": 100,
+        "button_align": "left",
+        "button_align_mobile": "left",
+        "button_padding_vertical": 12,
+        "button_padding_horizontal": 20,
+        "button_radius": 32,
+        "button_border_thickness": 0,
+        "grid_bg_color": "",
+        "grid_border_color": "#000000",
+        "grid_shadow_color": "#000000",
+        "collection_bg_color": "#FFFFFF",
+        "collection_border_color": "#000000",
+        "collection_overlay_color": "#000000",
+        "collection_shadow_color": "#000000",
+        "title_color": "#FFFFFF",
+        "title_underline_color": "#FFFFFF",
+        "text_color": "#FFFFFF",
+        "button_color": "#000000",
+        "button_hover_color": "#FFFFFF",
+        "button_bg_color": "#FFFFFF",
+        "button_bg_hover_color": "#000000",
+        "button_border_color": "#000000",
+        "button_border_hover_color": "#000000",
+        "heading_color": "#303030",
+        "stars_color": "#FFFFFF",
+        "background_color": "#FFFFFF",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 36,
+        "padding_bottom": 60,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": false,
+        "content_width": 130,
+        "border_thickness": 0,
+        "lazy": true
+      }
+    },
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
@@ -618,6 +801,7 @@
   "order": [
     "hero",
     "divider_1",
+    "ss_collection_4_iBaDNX",
     "collection_tiles",
     "best_sellers",
     "ss_hangrail_showcase_H3Uppf",
