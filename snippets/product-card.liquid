@@ -30,7 +30,7 @@
   endif
 -%}
 
-<a class="product-card" href="{{ card_url }}">
+<div class="product-card">
   <div class="product-card__media">
     {%- if card_image != blank -%}
       {{ card_image | image_url: width: 1000 | image_tag:
@@ -58,10 +58,14 @@
     {%- elsif on_sale -%}
       {% render 'sale-badge' %}
     {%- endif -%}
+
+    {%- if card_product.available -%}
+      {% render 'card-quick-add', product: card_product, product_url: card_url %}
+    {%- endif -%}
   </div>
 
   <div class="product-card__info">
-    <h3 class="product-card__title">{{ card_product.title }}</h3>
+    <h3 class="product-card__title"><a class="product-card__link" href="{{ card_url }}">{{ card_product.title | escape }}</a></h3>
     <div
       style="{{ jm_style }}"
       class="jdgm-widget jdgm-preview-badge"
@@ -83,4 +87,4 @@
       <p class="product-card__vendor">{{ card_product.vendor }}</p>
     {%- endif -%}
   </div>
-</a>
+</div>

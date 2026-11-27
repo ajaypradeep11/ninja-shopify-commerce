@@ -857,7 +857,16 @@ h1 {
 }
 
 .product-card {
+  position: relative;
+  isolation: isolate;
   display: block;
+}
+
+.product-card__link::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  content: "";
 }
 
 .product-card__media {
@@ -883,13 +892,68 @@ h1 {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .product-card__media:hover .product-card__image {
+  .product-card:hover .product-card__image {
     transform: scale(1.05);
   }
 
-  .product-card__media:hover .product-card__image--hover {
+  .product-card:hover .product-card__image--hover {
     opacity: 1;
   }
+}
+
+.card-quick-add {
+  position: absolute;
+  z-index: 3;
+  inset-inline-end: 8px;
+  bottom: 8px;
+  max-width: calc(100% - 16px);
+}
+
+.card-quick-add__toggle {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  margin-inline-start: auto;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+  background: #ffd84d;
+  color: #17161a;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
+  cursor: pointer;
+  list-style: none;
+}
+
+.card-quick-add__toggle::-webkit-details-marker { display: none; }
+.card-quick-add__toggle svg { width: 18px; height: 18px; stroke-width: 2.5; }
+.card-quick-add details[open] > summary svg { transform: rotate(45deg); }
+.card-quick-add:has(details[open]) { width: 240px; }
+
+.card-quick-add__options {
+  display: grid;
+  gap: 8px;
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: var(--radius);
+  background: #fff;
+  color: #17161a;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 18%);
+}
+
+.card-quick-add__options label { min-width: 0; font-size: 13px; }
+.card-quick-add__options select { width: 100%; margin-top: 3px; padding: 5px; }
+.card-quick-add__options .button { min-height: 34px; padding: 5px; font-size: 13px; }
+.card-quick-add button:disabled { opacity: .55; cursor: default; }
+
+@media (hover: hover) and (pointer: fine) {
+  .product-card:not(:hover):not(:focus-within) .card-quick-add:not(:has(details[open])) {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (any-pointer: coarse) {
+  .card-quick-add__toggle { width: 44px; height: 44px; }
 }
 
 .product-card__placeholder {
@@ -3372,7 +3436,7 @@ body.magic-mode {
     transition: none;
   }
 
-  .product-card__media:hover .product-card__image {
+  .product-card:hover .product-card__image {
     transform: none;
   }
 }

@@ -150,6 +150,7 @@ document.documentElement.classList.add('js');
       if (reducedMotion.matches || rail.children.length < 2) return;
       let timer;
       const advance = () => {
+        if (rail.querySelector('.card-quick-add details[open]')) return;
         const card = rail.firstElementChild;
         if (!card) return;
         const gap = parseFloat(getComputedStyle(rail).columnGap || '0');
@@ -309,6 +310,26 @@ document.documentElement.classList.add('js');
     });
   }
 
+  let cartCountRequest = 0;
+  async function refreshCartCount() {
+    const request = ++cartCountRequest;
+    const response = await fetch(`${window.Shopify?.routes?.root || '/'}cart.js`, { headers: { Accept: 'application/json' } });
+    if (!response.ok) return;
+    const cart = await response.json();
+    if (request === cartCountRequest) updateCartCount(cart.item_count);
+  }
+
+  function closeCardOptions(details) {
+    if (details.contains(document.activeElement)) details.querySelector('summary').focus();
+    details.open = false;
+  }
+
+  document.addEventListener('click', (event) => {
+    document.querySelectorAll('.card-quick-add details[open]').forEach((details) => {
+      if (!details.contains(event.target)) details.open = false;
+    });
+  });
+
   function initProductForms(root = document) {
     root.querySelectorAll('[data-product-form]:not([data-product-form-bound])').forEach((form) => {
       form.dataset.productFormBound = 'true';
@@ -316,6 +337,15 @@ document.documentElement.classList.add('js');
       const submitText = form.querySelector('[data-submit-text]');
       const optionLabel = form.querySelector('[data-option-label]');
       const stockLine = form.querySelector('[data-stock-line]');
+      const cardOptions = form.querySelector('.card-quick-add__options')?.closest('details');
+      if (cardOptions) {
+        cardOptions.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && cardOptions.open) closeCardOptions(cardOptions);
+        });
+        cardOptions.addEventListener('focusout', (event) => {
+          if (event.relatedTarget && !cardOptions.contains(event.relatedTarget)) cardOptions.open = false;
+        });
+      }
 
       const selectedVariant = () => {
         const select = form.querySelector('select[name="id"]');
@@ -332,7 +362,7 @@ document.documentElement.classList.add('js');
         if (!option) return;
 
         const available = option.dataset.available === 'true';
-        if (submitButton) submitButton.disabled = !available;
+        if (submitButton) submitButton.disabled = !available || form.hasAttribute('aria-busy');
         if (stockLine) {
           stockLine.classList.toggle('stock-line--out', !available);
           stockLine.textContent = available ? stockLine.dataset.inStock : stockLine.dataset.soldOut;
@@ -348,9 +378,9 @@ document.documentElement.classList.add('js');
           optionLabel.textContent = option.dataset.variantTitle;
         }
 
-        const price = document.querySelector('[data-product-price]');
-        if (price && option.dataset.price) {
-          price.innerHTML = option.dataset.price;
+        if (option.dataset.price) {
+          const price = document.querySelector('[data-product-price]');
+          if (price) price.innerHTML = option.dataset.price;
         }
       };
 
@@ -373,10 +403,9 @@ document.documentElement.classList.add('js');
           });
           const result = await response.json();
           if (!response.ok) throw new Error(result.description || 'Unable to add this item.');
-          const cartResponse = await fetch(`${window.Shopify?.routes?.root || '/'}cart.js`, { headers: { Accept: 'application/json' } });
-          const cart = await cartResponse.json();
-          updateCartCount(cart.item_count || 0);
           showToast('Added to cart');
+          if (cardOptions) closeCardOptions(cardOptions);
+          refreshCartCount().catch(() => { /* The item is already in the cart. */ });
         } catch (error) {
           showToast(error.message || 'Unable to add this item.', true);
         } finally {

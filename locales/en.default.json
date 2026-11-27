@@ -21,6 +21,9 @@
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
+      "add_product_to_cart": "Add {{ product }} to cart",
+      "choose_options_for": "Choose options for {{ product }}",
+      "choose_option": "Choose an option",
       "sold_out": "Sold out",
       "in_stock": "In stock",
       "quantity": "Quantity"
