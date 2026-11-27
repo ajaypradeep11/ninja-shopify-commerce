@@ -71,15 +71,6 @@
             "title": ""
           }
         },
-        "collection_LrXJ3U": {
-          "type": "collection",
-          "disabled": true,
-          "settings": {
-            "collection": "halloween",
-            "image": "shopify://shop_images/instagram-image_ce8766ad-0de3-44d5-97bc-298212d1cf35.jpg",
-            "title": "{{ block.settings.collection.title }}"
-          }
-        },
         "collection_gL7V6m": {
           "type": "collection",
           "settings": {
@@ -97,8 +88,15 @@
         "collection_xPhrKW": {
           "type": "collection",
           "settings": {
-            "collection": "headwear",
-            "title": "Headwear"
+            "collection": "hats",
+            "title": "Cap"
+          }
+        },
+        "collection_Ef3MCC": {
+          "type": "collection",
+          "settings": {
+            "collection": "beanies",
+            "title": ""
           }
         },
         "collection_LEjYYf": {
@@ -125,10 +123,10 @@
       },
       "block_order": [
         "collection_YGL4Qx",
-        "collection_LrXJ3U",
         "collection_gL7V6m",
         "collection_1",
         "collection_xPhrKW",
+        "collection_Ef3MCC",
         "collection_LEjYYf",
         "collection_LhHp7c",
         "collection_i4qfAC"
