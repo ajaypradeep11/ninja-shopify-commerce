@@ -24,7 +24,7 @@ document.documentElement.classList.add('js');
     toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 3200);
   }
 
-  // Launch from the four photo edges, with no permanent particle nodes on resting cards.
+  // Draw pixels inward across the four photo edges, with no permanent particle nodes on resting cards.
   const hoverPointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   document.addEventListener('pointerover', (event) => {
     if (!hoverPointer.matches || reducedMotion.matches || event.pointerType === 'touch') return;
@@ -53,10 +53,10 @@ document.documentElement.classList.add('js');
         const x = Math.round(nx * distance + ny * drift);
         const y = Math.round(ny * distance + nx * drift);
         const flight = pixel.animate([
-          { opacity: 0, transform: 'translate(-50%, -50%) scale(.5)' },
+          { opacity: 0, transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(.5)` },
           { opacity: 1, offset: 0.15 },
           { opacity: 1, offset: 0.70 },
-          { opacity: 0, transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(.5)` }
+          { opacity: 0, transform: `translate(calc(-50% - ${nx * distance}px), calc(-50% - ${ny * distance}px)) scale(.5)` }
         ], {
           delay: Math.random() * 95,
           duration: 510 + Math.random() * 190,
