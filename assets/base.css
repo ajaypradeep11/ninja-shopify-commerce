@@ -859,7 +859,7 @@ h1 {
   display: block;
 }
 
-/* Offset spot colors and halftone corners echo a comic cover's printed frame. */
+/* A four-pose arcade sprite plays once in the photo's lower corner. */
 .product-card__media::before,
 .product-card__media::after {
   position: absolute;
@@ -874,15 +874,22 @@ h1 {
   border: 2px solid #161616;
   border-radius: inherit;
   box-shadow: -2px -2px #e83093, 2px 2px #a8e34b;
+  background:
+    repeating-linear-gradient(90deg, #181818 0 3px, #b2ee54 3px 7px) left top / 32px 5px,
+    linear-gradient(#ec389a, #ec389a) left 6px top 7px / 14px 3px,
+    repeating-linear-gradient(90deg, #181818 0 2px, #ec389a 2px 6px) right bottom / 27px 4px;
+  background-repeat: no-repeat;
 }
 
 .product-card__media::after {
-  inset: 0;
-  border-radius: inherit;
-  background:
-    radial-gradient(circle, #181818 1px, transparent 1.4px) 0 0 / 5px 5px,
-    linear-gradient(135deg, #ec389a 48%, #b2ee54 52%);
-  clip-path: polygon(0 0, 46px 0, 0 46px, 0 100%, calc(100% - 46px) 100%, 100% calc(100% - 46px), 100% 100%, 0 100%);
+  left: 4px;
+  bottom: 4px;
+  width: min(31%, 86px);
+  aspect-ratio: 1;
+  background-size: 200% 200%;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transform-origin: center bottom;
 }
 
 .product-card:focus-visible .product-card__media::before,
@@ -890,10 +897,18 @@ h1 {
   opacity: 1;
 }
 
+.product-card:focus-visible .product-card__media::after {
+  background-image: url("ninja-hover-poses.webp");
+}
+
 @media (hover: hover) and (pointer: fine) {
   .product-card__media:hover::before,
   .product-card__media:hover::after {
     opacity: 1;
+  }
+
+  .product-card__media:hover::after {
+    background-image: url("ninja-hover-poses.webp");
   }
 }
 
@@ -903,7 +918,7 @@ h1 {
   }
 
   .product-card__media:hover::after {
-    animation: card-ink-reveal 360ms ease-out both;
+    animation: ninja-poses 2s step-end both, ninja-hop 2s ease-out both;
   }
 }
 
@@ -913,9 +928,22 @@ h1 {
   100% { clip-path: inset(-7px); }
 }
 
-@keyframes card-ink-reveal {
-  from { opacity: 0; transform: scale(1.06); }
-  to { opacity: 1; transform: scale(1); }
+@keyframes ninja-poses {
+  0% { background-position: 0 0; }
+  24% { background-position: 100% 0; }
+  45% { background-position: 0 100%; }
+  84%, 100% { background-position: 100% 100%; }
+}
+
+@keyframes ninja-hop {
+  0% { opacity: 0; transform: translateY(45%); }
+  10%, 23% { opacity: 1; transform: none; }
+  34% { transform: translate(4%, -17%) rotate(-5deg); }
+  46% { transform: translateX(6%) scale(1.05, .93); }
+  54%, 83% { transform: translateX(6%); }
+  87% { opacity: 1; transform: translateX(2%); }
+  94% { opacity: .85; transform: translateX(12%); }
+  100% { opacity: 0; transform: translateX(18%); }
 }
 
 .product-card__media {
