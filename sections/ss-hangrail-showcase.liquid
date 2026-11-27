@@ -1,0 +1,5019 @@
+{% comment %}
+  ---------------------------------------------------------
+  Copyright © 2026 Section Store. All rights reserved.
+  Unauthorized copying, modification, distribution, or use
+  of this code or any portion of it, is strictly prohibited.
+  Violators will be prosecuted to the fullest extent of the law.
+  For inquiries or permissions, contact daniel@section.store
+  ---------------------------------------------------------
+{% endcomment %}
+
+{%- liquid
+  assign padding_horizontal = section.settings.padding_horizontal
+  assign padding_horizontal_mobile = section.settings.padding_horizontal_mobile
+  assign padding_top = section.settings.padding_top
+  assign padding_bottom = section.settings.padding_bottom
+  assign border_color = section.settings.border_color
+  assign border_thickness = section.settings.border_thickness
+  assign margin_top = section.settings.margin_top
+  assign margin_bottom = section.settings.margin_bottom
+  assign margin_horizontal_mobile = section.settings.margin_horizontal_mobile
+  assign margin_horizontal = section.settings.margin_horizontal
+  assign background_color = section.settings.background_color
+  assign background_gradient = section.settings.background_gradient
+  assign width = section.settings.width
+  assign content_width = section.settings.content_width
+  assign section_radius = section.settings.section_radius
+  assign background_style = section.settings.background_style
+  assign lazy = section.settings.lazy
+
+  assign garment_height = section.settings.garment_height
+  assign garment_height_mobile = section.settings.garment_height_mobile
+  assign garment_gap = section.settings.garment_gap
+  assign garment_gap_mobile = section.settings.garment_gap_mobile
+  assign show_rod = section.settings.show_rod
+  assign rail_finish = section.settings.rail_finish
+  assign rail_style = section.settings.rail_style
+  assign hanger_hooks = section.settings.hanger_hooks
+
+  assign show_tags = section.settings.show_tags
+  assign show_tag_status = section.settings.show_tag_status
+  assign tag_sale_label = section.settings.tag_sale_label
+  assign tag_custom = section.settings.tag_custom
+  assign tag_font = section.settings.tag_font
+  assign tag_size = section.settings.tag_size
+  assign tag_size_mobile = section.settings.tag_size_mobile
+
+  assign turn_speed = section.settings.turn_speed
+  assign swing_strength = section.settings.swing_strength
+  assign drop_in = section.settings.drop_in
+
+  assign show_popup = section.settings.show_popup
+  assign lift_animation = section.settings.lift_animation
+  assign front_label = section.settings.front_label
+  assign back_label = section.settings.back_label
+  assign link_label = section.settings.link_label
+  assign show_quickadd = section.settings.show_quickadd
+  assign atc_label = section.settings.atc_label
+  assign soldout_label = section.settings.soldout_label
+  assign atc_error_label = section.settings.atc_error_label
+  assign cart_app = section.settings.cart_app
+  assign atc_button_style = section.settings.atc_button_style
+  assign atc_button_custom = section.settings.atc_button_custom
+  assign atc_button_font = section.settings.atc_button_font
+  assign atc_button_size = section.settings.atc_button_size
+  assign atc_button_size_mobile = section.settings.atc_button_size_mobile
+  assign atc_button_height = section.settings.atc_button_height
+  assign atc_button_padding_horizontal = section.settings.atc_button_padding_horizontal
+  assign atc_button_padding_horizontal_mobile = section.settings.atc_button_padding_horizontal_mobile
+  assign atc_button_padding_vertical = section.settings.atc_button_padding_vertical
+  assign atc_button_padding_vertical_mobile = section.settings.atc_button_padding_vertical_mobile
+  assign atc_button_radius = section.settings.atc_button_radius
+  assign atc_button_border_thickness = section.settings.atc_button_border_thickness
+  assign atc_button_custom_styling = section.settings.atc_button_custom_styling
+
+  assign popup_title_custom = section.settings.popup_title_custom
+  assign popup_title_font = section.settings.popup_title_font
+  assign popup_title_size = section.settings.popup_title_size
+  assign popup_title_size_mobile = section.settings.popup_title_size_mobile
+  assign popup_title_height = section.settings.popup_title_height
+  assign popup_text_custom = section.settings.popup_text_custom
+  assign popup_text_font = section.settings.popup_text_font
+  assign popup_text_size = section.settings.popup_text_size
+  assign popup_text_size_mobile = section.settings.popup_text_size_mobile
+  assign popup_text_height = section.settings.popup_text_height
+
+  assign autoplay = section.settings.autoplay
+  assign autoplay_speed = section.settings.autoplay_speed
+  assign show_dots = section.settings.show_dots
+
+  assign rod_color = section.settings.rod_color
+  assign hook_color = section.settings.hook_color
+  assign tag_bg_color = section.settings.tag_bg_color
+  assign tag_text_color = section.settings.tag_text_color
+  assign tag_status_bg_color = section.settings.tag_status_bg_color
+  assign tag_status_text_color = section.settings.tag_status_text_color
+  assign popup_bg_color = section.settings.popup_bg_color
+  assign popup_bg_opacity = section.settings.popup_bg_opacity
+  assign popup_title_color = section.settings.popup_title_color
+  assign popup_text_color = section.settings.popup_text_color
+  assign popup_accent_color = section.settings.popup_accent_color
+  assign popup_accent_text_color = section.settings.popup_accent_text_color
+  assign popup_border_color = section.settings.popup_border_color
+  assign atc_button_color = section.settings.atc_button_color
+  assign atc_button_hover_color = section.settings.atc_button_hover_color
+  assign atc_button_bg_color = section.settings.atc_button_bg_color
+  assign atc_button_bg_hover_color = section.settings.atc_button_bg_hover_color
+  assign atc_button_border_color = section.settings.atc_button_border_color
+  assign atc_button_border_hover_color = section.settings.atc_button_border_hover_color
+  assign atc_button_shadow_color = section.settings.atc_button_shadow_color
+  assign dot_color = section.settings.dot_color
+  assign dot_active_color = section.settings.dot_active_color
+
+  case rail_finish
+    when 'steel'
+      assign rail_hi = '#D2D2D0'
+      assign rail_light = '#BEBFBC'
+      assign rail_base = '#A6A7A4'
+      assign rail_shade = '#7D7D7B'
+      assign rail_edge = '#5A5A58'
+      assign hook_tone = '#8C8D8A'
+    when 'gold'
+      assign rail_hi = '#FFF6D8'
+      assign rail_light = '#F1D281'
+      assign rail_base = '#D1A643'
+      assign rail_shade = '#A27622'
+      assign rail_edge = '#6A4910'
+      assign hook_tone = '#B38A2E'
+    when 'bronze'
+      assign rail_hi = '#F7DCBC'
+      assign rail_light = '#D7A673'
+      assign rail_base = '#A6723E'
+      assign rail_shade = '#784C24'
+      assign rail_edge = '#4A2D13'
+      assign hook_tone = '#8E5F31'
+    when 'rose_gold'
+      assign rail_hi = '#FFEDE6'
+      assign rail_light = '#EDBDAB'
+      assign rail_base = '#C98D7A'
+      assign rail_shade = '#9E6251'
+      assign rail_edge = '#693C30'
+      assign hook_tone = '#B27765'
+    when 'black'
+      assign rail_hi = '#6A6A6A'
+      assign rail_light = '#444444'
+      assign rail_base = '#2C2C2C'
+      assign rail_shade = '#1D1D1D'
+      assign rail_edge = '#111111'
+      assign hook_tone = '#2C2C2C'
+    when 'white'
+      assign rail_hi = '#FFFFFF'
+      assign rail_light = '#F7F7F7'
+      assign rail_base = '#E6E6E6'
+      assign rail_shade = '#C9C9C9'
+      assign rail_edge = '#A3A3A3'
+      assign hook_tone = '#BDBDBD'
+    when 'wood'
+      assign rail_hi = '#E4C8A0'
+      assign rail_light = '#D9B98B'
+      assign rail_base = '#C69C69'
+      assign rail_shade = '#A27849'
+      assign rail_edge = '#7A5531'
+      assign hook_tone = '#8E9399'
+    when 'custom'
+      assign rail_hi = rod_color | color_lighten: 30
+      assign rail_light = rod_color | color_lighten: 12
+      assign rail_base = rod_color
+      assign rail_shade = rod_color | color_darken: 20
+      assign rail_edge = rod_color | color_darken: 32
+      assign hook_tone = hook_color
+    else
+      assign rail_hi = '#FFFFFF'
+      assign rail_light = '#DDE1E5'
+      assign rail_base = '#B3B8BE'
+      assign rail_shade = '#868B92'
+      assign rail_edge = '#6E737A'
+      assign hook_tone = '#8E9399'
+  endcase
+
+  assign loading_attribute = 'lazy'
+  if section.index <= 1 or lazy == false
+    assign loading_attribute = 'eager'
+  endif
+
+  assign product_count = 0
+  for block in section.blocks
+    if block.type == 'product'
+      assign product_count = product_count | plus: 1
+    endif
+  endfor
+-%}
+
+{%- capture img_class -%}hrs-img-{{ section.id }}{%- endcapture -%}
+{%- capture placeholder_class -%}hrs-placeholder-{{ section.id }}{%- endcapture -%}
+
+{%- style -%}
+  .section-{{ section.id }} {
+    border-top: solid {{ border_color }} {{ border_thickness }}px;
+    border-bottom: solid {{ border_color }} {{ border_thickness }}px;
+    margin-top: {{ margin_top | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ margin_bottom | times: 0.75 | round: 0 }}px;
+    margin-left: {{ margin_horizontal_mobile }}rem;
+    margin-right: {{ margin_horizontal_mobile }}rem;
+    border-radius: {{ section_radius | times: 0.6 | round: 0 }}px;
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }}-settings {
+    margin: 0 auto;
+    padding-top: {{ padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ padding_bottom | times: 0.75 | round: 0 }}px;
+    padding-left: {{ padding_horizontal_mobile }}rem;
+    padding-right: {{ padding_horizontal_mobile }}rem;
+  }
+
+  .hrs-stage-{{ section.id }} {
+    position: relative;
+  }
+
+  .hrs-rod-{{ section.id }} {
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    z-index: 0;
+    display: block !important;
+    width: var(--hrs-section-width, 100vw);
+    height: 6px;
+    border-radius: 6px;
+    background: linear-gradient(180deg, {{ rail_shade }} 0%, {{ rail_light }} 14%, {{ rail_hi }} 30%, {{ rail_light }} 42%, {{ rail_base }} 58%, {{ rail_shade }} 78%, {{ rail_base }} 90%, {{ rail_edge }} 100%);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hrs-rod-end-{{ section.id }} {
+    position: absolute;
+    top: 50%;
+    display: block !important;
+    width: 12px;
+    height: 20px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, {{ rail_shade }} 0%, {{ rail_light }} 22%, {{ rail_hi }} 38%, {{ rail_base }} 55%, {{ rail_shade }} 78%, {{ rail_edge }} 100%);
+    box-shadow: inset 0 1px 0 {{ rail_hi | color_modify: 'alpha', 0.5 }}, inset 0 -1px 0 rgba(0, 0, 0, 0.18), 0 2px 5px rgba(0, 0, 0, 0.22);
+    transform: translateY(-50%);
+  }
+
+  .hrs-rod-end-{{ section.id }}::before,
+  .hrs-rod-end-{{ section.id }}::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, {{ rail_light }} 0%, {{ rail_edge }} 75%);
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.25);
+    transform: translateX(-50%);
+  }
+
+  .hrs-rod-end-{{ section.id }}::before {
+    top: 3px;
+  }
+
+  .hrs-rod-end-{{ section.id }}::after {
+    bottom: 3px;
+  }
+
+  .hrs-rod-end-{{ section.id }}:first-child {
+    left: 8px;
+  }
+
+  .hrs-rod-end-{{ section.id }}:last-child {
+    right: 8px;
+  }
+
+  .hrs-rack-{{ section.id }} {
+    --hrs-h: {{ garment_height_mobile }}px;
+    --hrs-lift: 6.5px;
+    --hrs-rail-r: 3px;
+    --hrs-turn: {{ turn_speed }}ms;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: {{ garment_gap_mobile }}px;
+    margin: 0 -{{ padding_horizontal_mobile }}rem;
+    padding: 14px {{ padding_horizontal_mobile }}rem 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: {{ padding_horizontal_mobile }}rem;
+    scrollbar-width: none;
+  }
+
+  .hrs-rack-{{ section.id }}::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hrs-item-{{ section.id }} {
+    position: relative;
+    flex: 0 0 auto;
+    display: block;
+    width: calc(var(--hrs-h) * var(--hrs-side));
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    scroll-snap-align: start;
+    transform-origin: 50% 0;
+    transition: width var(--hrs-turn) cubic-bezier(0.25, 0.46, 0.45, 0.94), margin var(--hrs-turn) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hrs-item-{{ section.id }}:first-child {
+    margin-inline-start: auto;
+  }
+
+  .hrs-item-{{ section.id }}:last-child {
+    margin-inline-end: auto;
+  }
+
+  .hrs-item-{{ section.id }}.hrs-is-turned {
+    width: calc(var(--hrs-h) * var(--hrs-front));
+  }
+
+  .hrs-item-{{ section.id }}.hrs-is-live {
+    z-index: 2;
+  }
+
+  .hrs-item-{{ section.id }}:focus-visible .hrs-garment-{{ section.id }} {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  .hrs-pre-{{ section.id }} .hrs-item-{{ section.id }} {
+    opacity: 0;
+    animation: hrs-reveal-{{ section.id }} 0s 4s forwards;
+  }
+
+  @keyframes hrs-reveal-{{ section.id }} {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .hrs-swing-{{ section.id }} {
+    position: relative;
+    display: flow-root;
+    transform: rotate(var(--hrs-sw, 0deg));
+    transform-origin: 50% 0;
+    will-change: transform;
+  }
+
+  .hrs-hook-{{ section.id }} {
+    position: absolute;
+    top: calc(var(--hrs-rail-r) * -1 - var(--hrs-h) * 0.006);
+    left: 50%;
+    z-index: 1;
+    width: calc(var(--hrs-h) * 0.05);
+    height: calc(var(--hrs-h) * 0.1);
+    color: {{ hook_tone }};
+    transform: translateX(-50%);
+    overflow: visible;
+  }
+
+  .hrs-garment-{{ section.id }} {
+    position: relative;
+    z-index: 2;
+    height: var(--hrs-h);
+    margin-top: calc(var(--hrs-lift) * -1);
+  }
+
+  .hrs-is-hooked .hrs-garment-{{ section.id }} {
+    margin-top: calc(var(--hrs-h) * 0.084 - var(--hrs-rail-r));
+  }
+
+  .hrs-view-{{ section.id }} {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    transform-origin: 50% 0;
+    pointer-events: none;
+  }
+
+  .hrs-img-{{ section.id }} {
+    display: block;
+    width: auto;
+    max-width: none;
+    height: 100%;
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+  .hrs-view-{{ section.id }} .hrs-placeholder-{{ section.id }} {
+    display: block;
+    flex: none;
+    width: calc(var(--hrs-h) * var(--hrs-side));
+    height: 100%;
+    border-radius: 6px;
+    background-color: #F3F3F3;
+  }
+
+  .hrs-view-front-{{ section.id }} .hrs-placeholder-{{ section.id }} {
+    width: calc(var(--hrs-h) * var(--hrs-front));
+  }
+
+  .hrs-view-front-{{ section.id }} {
+    opacity: 0;
+  }
+
+  .hrs-tag-{{ section.id }} {
+    position: absolute;
+    top: calc(var(--hrs-h) * 0.057 - var(--hrs-lift));
+    left: 50%;
+    z-index: 3;
+    display: block !important;
+    width: 0;
+    height: 0;
+    transform: rotate(calc(-22deg - var(--hrs-sw, 0deg) * 0.7));
+    transform-origin: 0 0;
+    pointer-events: none;
+  }
+
+  .hrs-is-hooked .hrs-tag-{{ section.id }} {
+    top: calc(var(--hrs-h) * 0.059 - var(--hrs-rail-r));
+  }
+
+  .hrs-tag-string-{{ section.id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block !important;
+    width: 1px;
+    height: calc(var(--hrs-h) * 0.08 + 6px);
+    background-color: {{ tag_text_color | color_modify: 'alpha', 0.4 }};
+  }
+
+  .hrs-tag-card-{{ section.id }} {
+    position: absolute;
+    top: calc(var(--hrs-h) * 0.08);
+    left: 0;
+    display: grid;
+    width: max-content;
+    transform: translateX(-50%) rotate(16deg);
+    transform-origin: 50% 0;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.3, 1.4, 0.45, 1);
+  }
+
+  .hrs-is-live .hrs-tag-flip-{{ section.id }} {
+    transform: translateX(-50%) rotate(16deg) rotateY(180deg);
+  }
+
+  .hrs-tag-face-{{ section.id }} {
+    position: relative;
+    grid-area: 1 / 1;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    margin: 0;
+    padding: 9px 6px 4px;
+    border-radius: 3px 3px 5px 5px;
+    background-color: {{ tag_bg_color }};
+    color: {{ tag_text_color }};
+    font-size: {{ tag_size_mobile }}px;
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .hrs-tag-face-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: currentColor;
+    opacity: 0.3;
+    transform: translateX(-50%);
+  }
+
+  .hrs-tag-back-{{ section.id }} {
+    background-color: {{ tag_status_bg_color }};
+    color: {{ tag_status_text_color }};
+    transform: rotateY(180deg);
+  }
+
+  .hrs-dots-{{ section.id }} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .hrs-dots-{{ section.id }}.hrs-is-hidden {
+    display: none;
+  }
+
+  .hrs-dot-{{ section.id }} {
+    position: relative;
+    display: block !important;
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    background-color: {{ dot_color }};
+    cursor: pointer;
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
+
+  .hrs-dot-{{ section.id }}::after {
+    content: '';
+    position: absolute;
+    inset: -8px -4px;
+  }
+
+  .hrs-dot-{{ section.id }}.hrs-is-on {
+    width: 22px;
+    background-color: {{ dot_active_color }};
+  }
+
+  .hrs-footer-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  {% if show_popup %}
+    .hrs-popup-{{ section.id }} {
+      position: fixed;
+      inset: 0;
+      z-index: 2147483000;
+      display: none;
+      box-sizing: border-box;
+      padding: 64px 16px 32px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      color: {{ popup_text_color }};
+      font-size: {{ popup_text_size_mobile }}px;
+      font-weight: 400;
+      line-height: {{ popup_text_height }}%;
+      text-align: center;
+    }
+
+    .hrs-popup-{{ section.id }}.hrs-is-open {
+      display: flex;
+    }
+
+    .hrs-popup-{{ section.id }} [hidden] {
+      display: none !important;
+    }
+
+    .hrs-popup-bg-{{ section.id }} {
+      position: fixed;
+      inset: 0;
+      display: block !important;
+      background-color: {{ popup_bg_color }};
+      background-color: {{ popup_bg_color | color_modify: 'alpha', popup_bg_opacity }};
+      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(24px);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .hrs-popup-bg-{{ section.id }} {
+        background-color: {{ popup_bg_color }};
+      }
+    }
+
+    .hrs-popup-{{ section.id }}.hrs-is-visible .hrs-popup-bg-{{ section.id }} {
+      opacity: 1;
+    }
+
+    .hrs-popup-close-{{ section.id }} {
+      position: fixed;
+      top: 12px;
+      inset-inline-end: 12px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: {{ popup_title_color }};
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .hrs-popup-close-{{ section.id }} svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .hrs-popup-inner-{{ section.id }} {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .hrs-popup-stage-{{ section.id }} {
+      --hrs-ph: min(46vh, 440px);
+      position: relative;
+      flex: 0 0 auto;
+      width: calc(var(--hrs-ph) * var(--hrs-pr, 0.75));
+      max-width: 100%;
+      height: var(--hrs-ph);
+      perspective: 1600px;
+      transform-origin: 50% 0;
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    .hrs-popup-stage-{{ section.id }}.hrs-no-back {
+      cursor: default;
+    }
+
+    .hrs-popup-stage-{{ section.id }}.hrs-is-dragging {
+      cursor: grabbing;
+    }
+
+    .hrs-popup-card-{{ section.id }} {
+      position: absolute;
+      inset: 0;
+      display: block !important;
+      transform-style: preserve-3d;
+    }
+
+    .hrs-popup-face-{{ section.id }} {
+      position: absolute;
+      inset: 0;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .hrs-popup-face-{{ section.id }} img,
+    .hrs-popup-face-{{ section.id }} svg {
+      display: block;
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    .hrs-popup-face-{{ section.id }} .hrs-placeholder-{{ section.id }} {
+      border-radius: 8px;
+      background-color: #F3F3F3;
+    }
+
+    .hrs-popup-back-{{ section.id }} {
+      transform: rotateY(180deg);
+    }
+
+    .hrs-popup-meta-{{ section.id }} {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 420px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .hrs-popup-{{ section.id }}.hrs-is-visible .hrs-popup-close-{{ section.id }},
+    .hrs-popup-{{ section.id }}.hrs-is-visible .hrs-popup-meta-{{ section.id }} {
+      opacity: 1;
+      transition: opacity 0.35s ease 0.2s;
+    }
+
+    .hrs-popup-index-{{ section.id }} {
+      margin: 0 0 6px;
+      font-size: {{ popup_text_size_mobile | times: 0.8 | round: 0 }}px;
+      line-height: {{ popup_text_height }}%;
+    }
+
+    .hrs-popup-title-{{ section.id }} {
+      margin: 0;
+      font-size: {{ popup_title_size_mobile }}px;
+      font-weight: 700;
+      line-height: {{ popup_title_height }}%;
+      color: {{ popup_title_color }};
+      text-transform: unset;
+      word-break: break-word;
+    }
+
+    .hrs-popup-price-{{ section.id }} {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 8px 0 0;
+      color: {{ popup_title_color }};
+    }
+
+    .hrs-popup-compare-{{ section.id }} {
+      color: {{ popup_text_color }};
+    }
+
+    .hrs-popup-tabs-{{ section.id }} {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 14px;
+    }
+
+    .hrs-popup-tab-{{ section.id }} {
+      position: relative;
+      padding: 4px 2px 8px;
+      border: 0;
+      background: none;
+      color: {{ popup_text_color }};
+      font-family: inherit;
+      font-size: {{ popup_text_size_mobile }}px;
+      font-weight: inherit;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .hrs-popup-tab-{{ section.id }}::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      right: 50%;
+      height: 2px;
+      border-radius: 2px;
+      background-color: {{ popup_accent_color }};
+      transition: left 0.25s ease, right 0.25s ease;
+    }
+
+    .hrs-popup-tab-{{ section.id }}.hrs-is-on {
+      color: {{ popup_title_color }};
+    }
+
+    .hrs-popup-tab-{{ section.id }}.hrs-is-on::after {
+      left: 0;
+      right: 0;
+    }
+
+    .hrs-popup-options-{{ section.id }} {
+      margin-top: 18px;
+    }
+
+    .hrs-popup-option-{{ section.id }} + .hrs-popup-option-{{ section.id }} {
+      margin-top: 14px;
+    }
+
+    .hrs-popup-option-name-{{ section.id }} {
+      margin: 0 0 8px;
+      font-size: {{ popup_text_size_mobile | times: 0.85 | round: 0 }}px;
+      line-height: {{ popup_text_height }}%;
+    }
+
+    .hrs-popup-pills-{{ section.id }} {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .hrs-popup-pill-{{ section.id }} {
+      min-width: 44px;
+      height: 40px;
+      padding: 0 14px;
+      border: 1px solid {{ popup_border_color }};
+      border-radius: 40px;
+      background-color: transparent;
+      color: {{ popup_title_color }};
+      font-family: inherit;
+      font-size: {{ popup_text_size_mobile }}px;
+      font-weight: inherit;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hrs-popup-pill-{{ section.id }}[aria-pressed="true"] {
+      border-color: {{ popup_accent_color }};
+      background-color: {{ popup_accent_color }};
+      color: {{ popup_accent_text_color }};
+    }
+
+    .hrs-popup-pill-{{ section.id }}.hrs-is-na {
+      opacity: 0.45;
+      text-decoration: line-through;
+    }
+
+    .hrs-popup-atc-{{ section.id }} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      margin: 18px 0 0;
+      padding: {{ atc_button_padding_vertical_mobile }}px {{ atc_button_padding_horizontal_mobile }}px;
+      font-family: inherit;
+      font-size: {{ atc_button_size_mobile }}px;
+      font-weight: 700;
+      line-height: {{ atc_button_height }}%;
+      color: {{ atc_button_color }};
+      text-align: center;
+      text-transform: unset;
+      text-decoration: none;
+      border: 0px;
+      border-radius: {{ atc_button_radius }}px;
+      background-color: transparent;
+      cursor: pointer;
+      transition: all 0.25s ease 0s;
+      {% if atc_button_custom_styling and atc_button_style != 'link' %}
+        position: relative;
+        overflow: hidden;
+      {% endif %}
+    }
+
+    {% if atc_button_custom_styling and atc_button_style != 'link' %}
+      .hrs-popup-atc-{{ section.id }} {
+        background: linear-gradient(180deg, {{ atc_button_bg_color | color_lighten: 4 }}, {{ atc_button_bg_color | color_darken: 10 }});
+        box-shadow: 0 14px 30px {{ atc_button_shadow_color | color_modify: 'alpha', 0.28 }}, 0 5px 12px {{ atc_button_shadow_color | color_modify: 'alpha', 0.2 }}, inset 0 1px 0 #ffffff26;
+        backdrop-filter: saturate(1.05);
+      }
+
+      .hrs-popup-atc-{{ section.id }}::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.6s ease;
+      }
+
+      .hrs-popup-atc-{{ section.id }}:not(:disabled):hover::before {
+        left: 100%;
+      }
+
+      .hrs-popup-atc-{{ section.id }}:not(:disabled):hover {
+        color: {{ atc_button_hover_color }};
+        background: linear-gradient(180deg, {{ atc_button_bg_hover_color | color_lighten: 4 }}, {{ atc_button_bg_hover_color | color_darken: 10 }});
+        transform: translateY(-2px);
+        box-shadow: 0 18px 36px {{ atc_button_shadow_color | color_modify: 'alpha', 0.34 }}, 0 7px 16px {{ atc_button_shadow_color | color_modify: 'alpha', 0.24 }}, inset 0 1px 0 #ffffff33;
+      }
+
+      .hrs-popup-atc-{{ section.id }}:not(:disabled):active {
+        transform: translateY(1px);
+        filter: brightness(1.00208);
+        box-shadow: 0 4px 8px {{ atc_button_shadow_color | color_modify: 'alpha', 0.3 }}, 0 2px 4px {{ atc_button_shadow_color | color_modify: 'alpha', 0.2 }}, inset 0 1px 0 #ffffff0d, inset 0 -1px 0 {{ atc_button_shadow_color | color_modify: 'alpha', 0.2 }};
+      }
+    {% else %}
+      .hrs-popup-atc-{{ section.id }}:not(:disabled):hover {
+        color: {{ atc_button_hover_color }};
+      }
+    {% endif %}
+
+    .hrs-popup-atc-{{ section.id }} svg {
+      width: 14px !important;
+      height: 14px !important;
+      background: transparent;
+      min-height: auto !important;
+      flex: none;
+    }
+
+    .hrs-popup-atc-{{ section.id }}:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .hrs-popup-spinner-{{ section.id }} {
+      display: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: hrs-spin-{{ section.id }} 0.7s linear infinite;
+    }
+
+    .hrs-popup-atc-{{ section.id }}.hrs-is-busy .hrs-popup-spinner-{{ section.id }} {
+      display: block !important;
+    }
+
+    @keyframes hrs-spin-{{ section.id }} {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hrs-popup-error-{{ section.id }} {
+      margin: 10px 0 0;
+      font-size: {{ popup_text_size_mobile | times: 0.85 | round: 0 }}px;
+      line-height: {{ popup_text_height }}%;
+      color: #D72C0D;
+    }
+
+    .hrs-popup-link-{{ section.id }} {
+      position: relative;
+      display: inline-block;
+      margin-top: 16px;
+      color: {{ popup_title_color }};
+      font-size: {{ popup_text_size_mobile }}px;
+      text-decoration: none;
+    }
+
+    .hrs-popup-link-{{ section.id }}::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      inset-inline-start: 0;
+      width: 0;
+      height: 1px;
+      background-color: currentColor;
+      transition: width 0.25s ease;
+    }
+
+    .hrs-popup-link-{{ section.id }}:focus-visible::after {
+      width: 100%;
+    }
+
+    @media (hover: hover) {
+      .hrs-popup-pill-{{ section.id }}:hover {
+        border-color: {{ popup_accent_color }};
+      }
+
+      .hrs-popup-link-{{ section.id }}:hover::after {
+        width: 100%;
+      }
+    }
+
+    .hrs-fly-{{ section.id }} {
+      position: fixed;
+      z-index: 2147483001;
+      margin: 0;
+      object-fit: contain;
+      pointer-events: none;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.2));
+    }
+  {% endif %}
+
+  @media(min-width: 1024px) {
+    .section-{{ section.id }} {
+      margin-top: {{ margin_top }}px;
+      margin-bottom: {{ margin_bottom }}px;
+      margin-left: {{ margin_horizontal }}rem;
+      margin-right: {{ margin_horizontal }}rem;
+      border-radius: {{ section_radius }}px;
+    }
+
+    .section-{{ section.id }}-settings {
+      padding-top: {{ padding_top }}px;
+      padding-bottom: {{ padding_bottom }}px;
+      padding-left: {{ padding_horizontal }}rem;
+      padding-right: {{ padding_horizontal }}rem;
+    }
+
+    .hrs-rod-{{ section.id }} {
+      height: 8px;
+    }
+
+    .hrs-rod-end-{{ section.id }} {
+      width: 16px;
+      height: 28px;
+      border-radius: 4px;
+    }
+
+    .hrs-rod-end-{{ section.id }}::before,
+    .hrs-rod-end-{{ section.id }}::after {
+      width: 4px;
+      height: 4px;
+    }
+
+    .hrs-rod-end-{{ section.id }}::before {
+      top: 4px;
+    }
+
+    .hrs-rod-end-{{ section.id }}::after {
+      bottom: 4px;
+    }
+
+    .hrs-rod-end-{{ section.id }}:first-child {
+      left: 16px;
+    }
+
+    .hrs-rod-end-{{ section.id }}:last-child {
+      right: 16px;
+    }
+
+    .hrs-rack-{{ section.id }} {
+      --hrs-h: {{ garment_height }}px;
+      --hrs-lift: 8px;
+      --hrs-rail-r: 4px;
+      justify-content: center;
+      gap: {{ garment_gap }}px;
+      margin: 0;
+      padding: 14px 0 8px;
+      overflow: visible;
+      scroll-snap-type: none;
+    }
+
+    .hrs-item-{{ section.id }}:first-child,
+    .hrs-item-{{ section.id }}:last-child {
+      margin-inline: 0;
+    }
+
+    .hrs-item-{{ section.id }}.hrs-can-turn.hrs-is-live {
+      margin-inline: 18px;
+    }
+
+    .hrs-tag-face-{{ section.id }} {
+      min-width: 40px;
+      padding: 10px 8px 5px;
+      font-size: {{ tag_size }}px;
+    }
+
+    .hrs-dots-{{ section.id }} {
+      display: none;
+    }
+
+    .hrs-is-overflowing .hrs-rack-{{ section.id }} {
+      justify-content: flex-start;
+      padding-inline: 12px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x proximity;
+      scroll-padding-inline: 12px;
+    }
+
+    .hrs-is-overflowing .hrs-dots-{{ section.id }} {
+      display: flex;
+    }
+
+    .hrs-is-overflowing .hrs-dots-{{ section.id }}.hrs-is-hidden {
+      display: none;
+    }
+
+    {% if show_popup %}
+      .hrs-popup-{{ section.id }} {
+        padding: 48px 40px;
+        font-size: {{ popup_text_size }}px;
+        text-align: start;
+      }
+
+      .hrs-popup-close-{{ section.id }} {
+        top: 20px;
+        inset-inline-end: 24px;
+      }
+
+      .hrs-popup-inner-{{ section.id }} {
+        flex-direction: row;
+        justify-content: center;
+        gap: clamp(40px, 6vw, 96px);
+      }
+
+      .hrs-popup-stage-{{ section.id }} {
+        --hrs-ph: min(76vh, 680px);
+        max-width: 55vw;
+      }
+
+      .hrs-popup-meta-{{ section.id }} {
+        max-width: 380px;
+      }
+
+      .hrs-popup-index-{{ section.id }} {
+        font-size: {{ popup_text_size | times: 0.8 | round: 0 }}px;
+      }
+
+      .hrs-popup-title-{{ section.id }} {
+        font-size: {{ popup_title_size }}px;
+      }
+
+      .hrs-popup-price-{{ section.id }},
+      .hrs-popup-tabs-{{ section.id }},
+      .hrs-popup-pills-{{ section.id }} {
+        justify-content: flex-start;
+      }
+
+      .hrs-popup-tab-{{ section.id }},
+      .hrs-popup-pill-{{ section.id }},
+      .hrs-popup-link-{{ section.id }} {
+        font-size: {{ popup_text_size }}px;
+      }
+
+      .hrs-popup-atc-{{ section.id }} {
+        padding: {{ atc_button_padding_vertical }}px {{ atc_button_padding_horizontal }}px;
+        font-size: {{ atc_button_size }}px;
+      }
+
+      {% if show_quickadd and atc_button_style != 'link' %}
+        .hrs-popup-{{ section.id }} [data-hrs-popup-buy]:not([hidden]) + .hrs-popup-link-{{ section.id }} {
+          display: block;
+          width: fit-content;
+          margin-inline: auto;
+        }
+      {% endif %}
+
+      .hrs-popup-option-name-{{ section.id }},
+      .hrs-popup-error-{{ section.id }} {
+        font-size: {{ popup_text_size | times: 0.85 | round: 0 }}px;
+      }
+    {% endif %}
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hrs-item-{{ section.id }},
+    .hrs-tag-card-{{ section.id }},
+    .hrs-popup-bg-{{ section.id }},
+    .hrs-popup-meta-{{ section.id }} {
+      transition-duration: 0.01ms !important;
+      transition-delay: 0s !important;
+    }
+
+    .hrs-pre-{{ section.id }} .hrs-item-{{ section.id }} {
+      opacity: 1;
+      animation: none;
+    }
+  }
+{%- endstyle -%}
+
+{% if width == 'custom' %}
+  <style>
+    .section-{{ section.id }}-settings {
+      max-width: {{ content_width }}px;
+    }
+  </style>
+{% elsif width == 'page' %}
+  <style>
+    .section-{{ section.id }}-settings {
+      max-width: clamp(100px, var(--page-content-width, var(--page-width)), 100%);
+    }
+  </style>
+{% endif %}
+
+{% if margin_horizontal_mobile > 0 %}
+  <style>
+    .section-{{ section.id }} {
+      border-left: solid {{ border_color }} {{ border_thickness }}px;
+      border-right: solid {{ border_color }} {{ border_thickness }}px;
+    }
+
+    @media(min-width: 1024px) {
+      .section-{{ section.id }} {
+        border-left: 0px;
+        border-right: 0px;
+      }
+    }
+  </style>
+{% endif %}
+
+{% if margin_horizontal > 0 %}
+  <style>
+    @media(min-width: 1024px) {
+      .section-{{ section.id }} {
+        border-left: solid {{ border_color }} {{ border_thickness }}px;
+        border-right: solid {{ border_color }} {{ border_thickness }}px;
+      }
+    }
+  </style>
+{% endif %}
+
+{% if show_rod and rail_finish == 'steel' %}
+  <style>
+    .hrs-rod-{{ section.id }} {
+      background: linear-gradient(180deg, #8D8D8B 0%, #BBBBB9 7%, #D2D2D0 14%, #ACADAA 21%, #979895 28%, #AFB0AD 34%, #C0C1BE 41%, #B4B4B2 48%, #979795 55%, #7A7B78 62%, #666764 69%, #6D6E6B 76%, #7F7F7D 86%, #747472 93%, #585856 100%);
+    }
+
+    .hrs-rod-end-{{ section.id }} {
+      background: linear-gradient(180deg, #BEBEBC 0%, #B2B3B0 100%);
+      box-shadow: inset 3px 0 0 #B1B2AF, inset 4px 0 0 #CFCFCD, inset 0 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 0 rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.18);
+    }
+
+    .hrs-rod-end-{{ section.id }}::before,
+    .hrs-rod-end-{{ section.id }}::after {
+      background: radial-gradient(circle, #5E5F5C 0 30%, #8A8B88 55%, #ACADAA 100%);
+      box-shadow: 0 0.5px 0 rgba(255, 255, 255, 0.5);
+    }
+  </style>
+{% endif %}
+
+{% if show_rod and rail_finish == 'wood' %}
+  <style>
+    .hrs-rod-{{ section.id }}::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background-image: repeating-linear-gradient(90deg, rgba(110, 70, 34, 0.32) 0 150px, transparent 150px 240px, rgba(110, 70, 34, 0.2) 240px 330px, transparent 330px 470px), repeating-linear-gradient(90deg, transparent 0 70px, rgba(255, 244, 222, 0.35) 70px 260px, transparent 260px 390px), repeating-linear-gradient(90deg, transparent 0 40px, rgba(110, 70, 34, 0.26) 40px 220px, transparent 220px 300px, rgba(110, 70, 34, 0.16) 300px 360px, transparent 360px 430px);
+      background-position: 0 22%, 0 46%, 0 74%;
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+  </style>
+{% endif %}
+
+{% if show_rod and rail_style == 'curved' %}
+  <style>
+    .hrs-rod-curve-{{ section.id }} {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+      overflow: visible;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12)) drop-shadow(0 3px 3px rgba(0, 0, 0, 0.14));
+      pointer-events: none;
+    }
+
+    @media(min-width: 1024px) {
+      .hrs-section-{{ section.id }}:not(.hrs-is-overflowing) .hrs-rod-{{ section.id }} {
+        background: none;
+        box-shadow: none;
+      }
+      {% if rail_finish == 'wood' %}
+        .hrs-section-{{ section.id }}:not(.hrs-is-overflowing) .hrs-rod-{{ section.id }}::before {
+          display: none;
+        }
+      {% endif %}
+
+      .hrs-section-{{ section.id }}:not(.hrs-is-overflowing) .hrs-rod-curve-{{ section.id }} {
+        display: block;
+      }
+
+      .hrs-rack-{{ section.id }} {
+        padding-bottom: calc(8px + var(--hrs-sag, 0px));
+      }
+
+      .hrs-item-{{ section.id }} {
+        translate: 0 var(--hrs-dy, 0px);
+      }
+    }
+  </style>
+{% endif %}
+
+{% if show_tags and tag_custom %}
+  <style>
+    {{ tag_font | font_face: font_display: 'swap' }}
+
+    .hrs-tag-face-{{ section.id }} {
+      font-family: {{ tag_font.family }}, {{ tag_font.fallback_families }};
+      font-weight: {{ tag_font.weight }};
+      font-style: {{ tag_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if show_popup and popup_text_custom %}
+  <style>
+    {{ popup_text_font | font_face: font_display: 'swap' }}
+
+    .hrs-popup-{{ section.id }} {
+      font-family: {{ popup_text_font.family }}, {{ popup_text_font.fallback_families }};
+      font-weight: {{ popup_text_font.weight }};
+      font-style: {{ popup_text_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if show_popup and popup_title_custom %}
+  <style>
+    {{ popup_title_font | font_face: font_display: 'swap' }}
+
+    .hrs-popup-title-{{ section.id }} {
+      font-family: {{ popup_title_font.family }}, {{ popup_title_font.fallback_families }};
+      font-weight: {{ popup_title_font.weight }};
+      font-style: {{ popup_title_font.style }};
+    }
+  </style>
+{% endif %}
+
+{% if show_popup and show_quickadd %}
+  {% if atc_button_custom %}
+    <style>
+      {{ atc_button_font | font_face: font_display: 'swap' }}
+
+      .hrs-popup-atc-{{ section.id }} {
+        font-family: {{ atc_button_font.family }}, {{ atc_button_font.fallback_families }};
+        font-weight: {{ atc_button_font.weight }};
+        font-style: {{ atc_button_font.style }};
+      }
+    </style>
+  {% endif %}
+
+  {% if atc_button_style == 'non_outline' or atc_button_style == 'non_outline_arrow' %}
+    <style>
+      .hrs-popup-atc-{{ section.id }} {
+        background-color: {{ atc_button_bg_color }};
+      }
+
+      .hrs-popup-atc-{{ section.id }}:not(:disabled):hover {
+        background-color: {{ atc_button_bg_hover_color }};
+      }
+    </style>
+  {% elsif atc_button_style == 'outline' or atc_button_style == 'outline_arrow' %}
+    <style>
+      .hrs-popup-atc-{{ section.id }} {
+        background-color: {{ atc_button_bg_color }};
+        border: {{ atc_button_border_thickness }}px solid {{ atc_button_border_color }};
+      }
+
+      .hrs-popup-atc-{{ section.id }}:not(:disabled):hover {
+        background-color: {{ atc_button_bg_hover_color }};
+        border: {{ atc_button_border_thickness }}px solid {{ atc_button_border_hover_color }};
+      }
+    </style>
+  {% elsif atc_button_style == 'link' %}
+    <style>
+      .hrs-popup-atc-{{ section.id }} {
+        width: fit-content;
+        margin-inline: auto;
+        padding: 0px !important;
+      }
+
+      @media(min-width: 1024px) {
+        .hrs-popup-atc-{{ section.id }} {
+          margin-inline: 0;
+        }
+      }
+    </style>
+  {% endif %}
+{% endif %}
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'caption' %}
+      <style>
+        .hrs-caption-{{ block.id }} {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 6px 14px;
+          margin-bottom: {{ block.settings.caption_mb_mobile }}px;
+          text-align: center;
+        }
+
+        .hrs-caption-main-{{ block.id }},
+        .hrs-caption-secondary-{{ block.id }} {
+          margin: 0;
+          font-size: {{ block.settings.caption_size_mobile }}px;
+          font-weight: 400;
+          line-height: {{ block.settings.caption_height }}%;
+          color: {{ block.settings.caption_color }};
+          text-transform: unset;
+          word-break: break-word;
+        }
+
+        .hrs-caption-secondary-{{ block.id }} {
+          color: {{ block.settings.caption_secondary_color }};
+        }
+
+        .hrs-caption-divider-{{ block.id }} {
+          display: block !important;
+          width: 1px;
+          height: {{ block.settings.caption_size_mobile }}px;
+          background-color: {{ block.settings.caption_divider_color }};
+        }
+
+        @media(min-width: 1024px) {
+          .hrs-caption-{{ block.id }} {
+            margin-bottom: {{ block.settings.caption_mb }}px;
+          }
+
+          .hrs-caption-main-{{ block.id }},
+          .hrs-caption-secondary-{{ block.id }} {
+            font-size: {{ block.settings.caption_size }}px;
+          }
+
+          .hrs-caption-divider-{{ block.id }} {
+            height: {{ block.settings.caption_size }}px;
+          }
+        }
+      </style>
+
+      {% if block.settings.caption_custom %}
+        <style>
+          {{ block.settings.caption_font | font_face: font_display: 'swap' }}
+
+          .hrs-caption-main-{{ block.id }},
+          .hrs-caption-secondary-{{ block.id }} {
+            font-family: {{ block.settings.caption_font.family }}, {{ block.settings.caption_font.fallback_families }};
+            font-weight: {{ block.settings.caption_font.weight }};
+            font-style: {{ block.settings.caption_font.style }};
+          }
+        </style>
+      {% endif %}
+    {% when 'title' %}
+      <style>
+        .hrs-title-{{ block.id }} {
+          display: block !important;
+          min-height: calc({{ block.settings.title_size_mobile }}px * {{ block.settings.title_height }} / 100);
+          margin: 0;
+          margin-top: {{ block.settings.title_mt_mobile }}px !important;
+          font-size: {{ block.settings.title_size_mobile }}px;
+          font-weight: 700;
+          line-height: {{ block.settings.title_height }}%;
+          color: {{ block.settings.title_color }};
+          text-align: center;
+          text-transform: unset;
+          word-break: break-word;
+          transition: opacity 0.18s ease;
+        }
+
+        .hrs-title-{{ block.id }}.hrs-is-swapping {
+          opacity: 0;
+        }
+
+        @media(min-width: 1024px) {
+          .hrs-title-{{ block.id }} {
+            min-height: calc({{ block.settings.title_size }}px * {{ block.settings.title_height }} / 100);
+            margin-top: {{ block.settings.title_mt }}px !important;
+            font-size: {{ block.settings.title_size }}px;
+          }
+        }
+      </style>
+
+      {% if block.settings.title_custom %}
+        <style>
+          {{ block.settings.title_font | font_face: font_display: 'swap' }}
+
+          .hrs-title-{{ block.id }} {
+            font-family: {{ block.settings.title_font.family }}, {{ block.settings.title_font.fallback_families }};
+            font-weight: {{ block.settings.title_font.weight }};
+            font-style: {{ block.settings.title_font.style }};
+          }
+        </style>
+      {% endif %}
+    {% when 'button' %}
+      <style>
+        .hrs-button-{{ block.id }} {
+          position: relative;
+          text-decoration: none;
+          margin-top: {{ block.settings.button_mt_mobile }}px !important;
+          width: {% if block.settings.button_full_width_mobile %}100%{% else %}fit-content{% endif %};
+        }
+
+        .hrs-button-inner-{{ block.id }} {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          max-width: {% if block.settings.button_full_width_mobile %}100%{% else %}fit-content{% endif %};
+          gap: 10px;
+          width: 100%;
+          margin: 0;
+          font-size: {{ block.settings.button_size_mobile }}px;
+          font-weight: 700;
+          color: {{ block.settings.button_color }};
+          line-height: {{ block.settings.button_height }}%;
+          text-align: center;
+          text-transform: unset;
+          text-decoration: none;
+          padding: {{ block.settings.button_padding_vertical_mobile }}px {{ block.settings.button_padding_horizontal_mobile }}px;
+          border-radius: {{ block.settings.button_radius }}px;
+          transition: all 0.25s ease 0s;
+          background-color: transparent;
+          border: 0px;
+          cursor: pointer;
+          {% if block.settings.button_custom_styling and block.settings.button_style != "link" %}
+            position: relative;
+            overflow: hidden;
+          {% endif %}
+        }
+
+        {% if block.settings.button_custom_styling and block.settings.button_style != "link" %}
+          .hrs-button-inner-{{ block.id }} {
+            background: linear-gradient(180deg, {{ block.settings.button_bg_color | color_lighten: 4 }}, {{ block.settings.button_bg_color | color_darken: 10 }});
+            box-shadow: 0 14px 30px {{ block.settings.button_shadow_color | color_modify: 'alpha', 0.28 }}, 0 5px 12px {{ block.settings.button_shadow_color | color_modify: 'alpha', 0.2 }}, inset 0 1px 0 #ffffff26;
+            backdrop-filter: saturate(1.05);
+          }
+
+          .hrs-button-inner-{{ block.id }}::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+          }
+
+          .hrs-button-inner-{{ block.id }}:hover::before {
+            left: 100%;
+          }
+
+          .hrs-button-inner-{{ block.id }}:hover {
+            color: {{ block.settings.button_hover_color }};
+            background: linear-gradient(180deg, {{ block.settings.button_bg_hover_color | color_lighten: 4 }}, {{ block.settings.button_bg_hover_color | color_darken: 10 }});
+            transform: translateY(-2px);
+            box-shadow: 0 18px 36px {{ block.settings.button_shadow_color | color_modify: 'alpha', 0.34 }}, 0 7px 16px {{ block.settings.button_shadow_color | color_modify: 'alpha', 0.24 }}, inset 0 1px 0 #ffffff33;
+          }
+
+          .hrs-button-inner-{{ block.id }}:active {
+            transform: translateY(1px);
+            filter: brightness(1.00208);
+            box-shadow: 0 4px 8px {{ block.settings.button_shadow_color | color_modify: 'alpha', 0.3 }}, 0 2px 4px {{ block.settings.button_shadow_color | color_modify: 'alpha', 0.2 }}, inset 0 1px 0 #ffffff0d, inset 0 -1px 0 {{ block.settings.button_shadow_color | color_modify: 'alpha', 0.2 }};
+          }
+        {% else %}
+          .hrs-button-inner-{{ block.id }}:hover {
+            color: {{ block.settings.button_hover_color }};
+          }
+        {% endif %}
+
+        .hrs-button-inner-{{ block.id }} svg {
+          width: 14px !important;
+          height: 14px !important;
+          background: transparent;
+          min-height: auto !important;
+          flex: none;
+        }
+
+        @media(min-width: 1024px) {
+          .hrs-button-{{ block.id }} {
+            margin-top: {{ block.settings.button_mt }}px !important;
+            width: fit-content;
+          }
+
+          .hrs-button-inner-{{ block.id }} {
+            display: flex !important;
+            max-width: fit-content;
+            padding: {{ block.settings.button_padding_vertical }}px {{ block.settings.button_padding_horizontal }}px;
+            font-size: {{ block.settings.button_size }}px;
+          }
+        }
+      </style>
+
+      {% if block.settings.button_custom %}
+        <style>
+          {{ block.settings.button_font | font_face: font_display: 'swap' }}
+
+          .hrs-button-inner-{{ block.id }} {
+            font-family: {{ block.settings.button_font.family }}, {{ block.settings.button_font.fallback_families }};
+            font-weight: {{ block.settings.button_font.weight }};
+            font-style: {{ block.settings.button_font.style }};
+          }
+        </style>
+      {% endif %}
+
+      {% if block.settings.button_style == "non_outline" or block.settings.button_style == "non_outline_arrow" %}
+        <style>
+          .hrs-button-inner-{{ block.id }} {
+            background-color: {{ block.settings.button_bg_color }};
+          }
+
+          .hrs-button-inner-{{ block.id }}:hover {
+            background-color: {{ block.settings.button_bg_hover_color }};
+          }
+        </style>
+      {% elsif block.settings.button_style == "outline" or block.settings.button_style == "outline_arrow" %}
+        <style>
+          .hrs-button-inner-{{ block.id }} {
+            background-color: {{ block.settings.button_bg_color }};
+            border: {{ block.settings.button_border_thickness }}px solid {{ block.settings.button_border_color }};
+          }
+
+          .hrs-button-inner-{{ block.id }}:hover {
+            background-color: {{ block.settings.button_bg_hover_color }};
+            border: {{ block.settings.button_border_thickness }}px solid {{ block.settings.button_border_hover_color }};
+          }
+        </style>
+      {% elsif block.settings.button_style == "link" %}
+        <style>
+          .hrs-button-inner-{{ block.id }} {
+            padding: 0px !important;
+          }
+        </style>
+      {% endif %}
+  {% endcase %}
+{% endfor %}
+
+<div
+  class="section-{{ section.id }} hrs-section-{{ section.id }}{% if drop_in %} hrs-pre-{{ section.id }}{% endif %}"
+  {% if background_style == 'solid' %}
+    style="background-color:{{ background_color }};"
+  {% else %}
+    style="background-image: {{ background_gradient }};"
+  {% endif %}
+>
+  <div class="section-{{ section.id }}-settings">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'caption' -%}
+        {%- if block.settings.caption != blank or block.settings.caption_secondary != blank -%}
+          <div class="hrs-caption-{{ block.id }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.caption != blank -%}
+              <p class="hrs-caption-main-{{ block.id }}">{{ block.settings.caption }}</p>
+            {%- endif -%}
+            {%- if block.settings.caption != blank and block.settings.caption_secondary != blank -%}
+              <span class="hrs-caption-divider-{{ block.id }}" aria-hidden="true"></span>
+            {%- endif -%}
+            {%- if block.settings.caption_secondary != blank -%}
+              <p class="hrs-caption-secondary-{{ block.id }}">{{ block.settings.caption_secondary }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    <div class="hrs-stage-{{ section.id }}">
+      {%- if show_rod -%}
+        <div class="hrs-rod-{{ section.id }}" aria-hidden="true">
+          {%- case rail_style -%}
+            {%- when 'brackets' -%}
+              <span class="hrs-rod-end-{{ section.id }}"></span>
+              <span class="hrs-rod-end-{{ section.id }}"></span>
+            {%- when 'curved' -%}
+              <svg
+                class="hrs-rod-curve-{{ section.id }}"
+                data-hrs-curve
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                focusable="false"
+              >
+                <defs>
+                  <filter id="hrs-soft-{{ section.id }}">
+                    <feGaussianBlur stdDeviation="0.6"/>
+                  </filter>
+                </defs>
+                <path stroke="{{ rail_edge }}" stroke-width="8" data-hrs-offset="0"/>
+                <path stroke="{{ rail_shade }}" stroke-width="7.4" data-hrs-offset="-0.3"/>
+                <g filter="url(#hrs-soft-{{ section.id }})">
+                  <path stroke="{{ rail_base }}" stroke-width="5.6" data-hrs-offset="-0.4"/>
+                  <path stroke="{{ rail_light }}" stroke-width="3.6" data-hrs-offset="-1.2"/>
+                  <path stroke="{{ rail_hi }}" stroke-width="1.2" data-hrs-offset="-1.5"/>
+                </g>
+              </svg>
+          {%- endcase -%}
+        </div>
+      {%- endif -%}
+
+      <div class="hrs-rack-{{ section.id }}" data-hrs-rack>
+        {%- assign item_index = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'product' -%}
+            {%- liquid
+              assign item_index = item_index | plus: 1
+              assign placeholder_index = item_index | minus: 1 | modulo: 4 | plus: 1
+              assign placeholder_name = 'product-apparel-' | append: placeholder_index
+
+              assign item_product = block.settings.product
+              assign side = block.settings.image_side
+              assign front = block.settings.image_front
+              assign back = block.settings.image_back
+
+              if front == blank and item_product != blank
+                assign front = item_product.featured_media.preview_image
+              endif
+
+              assign has_side = false
+              if side != blank
+                assign has_side = true
+              endif
+
+              assign has_front = false
+              if front != blank
+                assign has_front = true
+              endif
+
+              if has_side and has_front
+                assign can_turn = true
+                assign side_ratio = side.aspect_ratio
+                assign front_ratio = front.aspect_ratio
+              elsif has_side
+                assign can_turn = false
+                assign side_ratio = side.aspect_ratio
+                assign front_ratio = side.aspect_ratio
+              elsif has_front
+                assign can_turn = false
+                assign side_ratio = front.aspect_ratio
+                assign front_ratio = front.aspect_ratio
+              else
+                assign can_turn = true
+                assign side_ratio = 0.34
+                assign front_ratio = 0.75
+              endif
+
+              assign side_px = garment_height | times: side_ratio | ceil
+              assign side_px_mobile = garment_height_mobile | times: side_ratio | ceil
+              assign front_px = garment_height | times: front_ratio | ceil
+              assign front_px_mobile = garment_height_mobile | times: front_ratio | ceil
+
+              if item_product != blank
+                assign item_name = item_product.title
+                assign item_url = item_product.url
+                assign first_variant = item_product.selected_or_first_available_variant
+                assign item_price = first_variant.price | money | strip_html
+                assign item_compare = ''
+                if first_variant.compare_at_price > first_variant.price
+                  assign item_compare = first_variant.compare_at_price | money | strip_html
+                endif
+                assign tag_price = item_product.price | money_without_trailing_zeros
+              else
+                assign item_name = 'Product name'
+                assign item_url = ''
+                assign item_price = 4900 | money | strip_html
+                assign item_compare = ''
+                assign tag_price = 4900 | money_without_trailing_zeros
+              endif
+
+              assign tag_status = ''
+              if item_product != blank and show_tag_status
+                if item_product.available == false
+                  assign tag_status = soldout_label
+                elsif item_product.compare_at_price > item_product.price
+                  assign tag_status = tag_sale_label
+                endif
+              endif
+
+              assign item_tag = 'div'
+              if show_popup == false and item_product != blank
+                assign item_tag = 'a'
+              endif
+
+              assign item_hooked = hanger_hooks
+              if has_side == false and has_front == false
+                assign item_hooked = true
+              endif
+
+              assign side_alt = side.alt | default: item_name
+              assign front_alt = front.alt | default: item_name
+              assign back_alt = back.alt | default: item_name
+
+              assign popup_image = front
+              if has_front == false
+                assign popup_image = side
+              endif
+              assign popup_alt = popup_image.alt | default: item_name
+            -%}
+
+            {%- capture sizes_side -%}(min-width: 1024px) {{ side_px }}px, {{ side_px_mobile }}px{%- endcapture -%}
+            {%- capture sizes_front -%}(min-width: 1024px) {{ front_px }}px, {{ front_px_mobile }}px{%- endcapture -%}
+            {%- capture popup_srcset -%}
+              {%- if show_popup and popup_image != blank -%}{{ popup_image | image_url: width: 600 }} 600w, {{ popup_image | image_url: width: 900 }} 900w, {{ popup_image | image_url: width: 1200 }} 1200w, {{ popup_image | image_url: width: 1600 }} 1600w{%- endif -%}
+            {%- endcapture -%}
+            {%- capture back_srcset -%}
+              {%- if show_popup and back != blank -%}{{ back | image_url: width: 600 }} 600w, {{ back | image_url: width: 900 }} 900w, {{ back | image_url: width: 1200 }} 1200w, {{ back | image_url: width: 1600 }} 1600w{%- endif -%}
+            {%- endcapture -%}
+
+            <{{ item_tag }}
+              class="hrs-item-{{ section.id }}{% if can_turn %} hrs-can-turn{% endif %}{% if item_hooked %} hrs-is-hooked{% endif %}"
+              data-hrs-item
+              data-block-id="{{ block.id }}"
+              data-side="{{ side_ratio }}"
+              data-front="{{ front_ratio }}"
+              style="--hrs-side: {{ side_ratio }}; --hrs-front: {{ front_ratio }};"
+              {% if item_tag == 'a' %}
+                href="{{ item_url }}"
+                aria-label="{{ item_name | escape }}"
+              {% elsif show_popup %}
+                role="button"
+                tabindex="0"
+                aria-label="{{ item_name | escape }}"
+              {% endif %}
+              {{ block.shopify_attributes }}
+            >
+              <div class="hrs-swing-{{ section.id }}" data-hrs-swing>
+                {%- if item_hooked -%}
+                  <svg
+                    class="hrs-hook-{{ section.id }}"
+                    viewBox="0 0 20 40"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M5.6 7.6C5.6 4.2 7.6 1.6 10.2 1.6C12.7 1.6 14.6 3.6 14.6 6.1C14.6 9.7 10 11.1 10 15.1V40" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {%- endif -%}
+
+                <div class="hrs-garment-{{ section.id }}" data-hrs-garment>
+                  <div class="hrs-view-{{ section.id }} hrs-view-side-{{ section.id }}" data-hrs-view="side">
+                    {%- if has_side -%}
+                      {{ side | image_url: width: 900 | image_tag: class: img_class, loading: loading_attribute, widths: '150, 300, 450, 600, 900', sizes: sizes_side, alt: side_alt }}
+                    {%- elsif has_front -%}
+                      {{ front | image_url: width: 1200 | image_tag: class: img_class, loading: loading_attribute, widths: '300, 450, 600, 900, 1200', sizes: sizes_front, alt: front_alt }}
+                    {%- else -%}
+                      {{ placeholder_name | placeholder_svg_tag: placeholder_class }}
+                    {%- endif -%}
+                  </div>
+
+                  {%- if can_turn -%}
+                    <div class="hrs-view-{{ section.id }} hrs-view-front-{{ section.id }}" data-hrs-view="front">
+                      {%- if has_front -%}
+                        {{ front | image_url: width: 1200 | image_tag: class: img_class, loading: loading_attribute, widths: '300, 450, 600, 900, 1200', sizes: sizes_front, alt: front_alt }}
+                      {%- else -%}
+                        {{ placeholder_name | placeholder_svg_tag: placeholder_class }}
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+
+                {%- if show_tags -%}
+                  <div class="hrs-tag-{{ section.id }}" aria-hidden="true">
+                    <span class="hrs-tag-string-{{ section.id }}"></span>
+                    <div class="hrs-tag-card-{{ section.id }}{% if tag_status != blank %} hrs-tag-flip-{{ section.id }}{% endif %}">
+                      <span class="hrs-tag-face-{{ section.id }}">{{ tag_price }}</span>
+                      {%- if tag_status != blank -%}
+                        <span class="hrs-tag-face-{{ section.id }} hrs-tag-back-{{ section.id }}">{{ tag_status }}</span>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+              </div>
+
+              <script type="application/json" data-hrs-json>
+                {
+                  "name": {{ item_name | json }},
+                  "url": {{ item_url | json }},
+                  "price": {{ item_price | json }},
+                  "compare": {{ item_compare | json }},
+                  "front": {% if show_popup and popup_image != blank %}{
+                    "src": {{ popup_image | image_url: width: 1200 | json }},
+                    "srcset": {{ popup_srcset | json }},
+                    "ratio": {{ popup_image.aspect_ratio }},
+                    "alt": {{ popup_alt | json }}
+                  }{% else %}null{% endif %},
+                  "back": {% if show_popup and back != blank %}{
+                    "src": {{ back | image_url: width: 1200 | json }},
+                    "srcset": {{ back_srcset | json }},
+                    "ratio": {{ back.aspect_ratio }},
+                    "alt": {{ back_alt | json }}
+                  }{% else %}null{% endif %},
+                  "options": [
+                    {%- if show_popup and show_quickadd and item_product != blank and item_product.has_only_default_variant == false -%}
+                      {%- for option in item_product.options_with_values -%}
+                        {"name": {{ option.name | json }}, "values": [
+                          {%- for value in option.values -%}
+                            {%- capture value_name -%}{{ value }}{%- endcapture -%}
+                            {{ value_name | json }}{%- unless forloop.last -%},{%- endunless -%}
+                          {%- endfor -%}
+                        ]}{%- unless forloop.last -%},{%- endunless -%}
+                      {%- endfor -%}
+                    {%- endif -%}
+                  ],
+                  "variants": [
+                    {%- if show_popup and show_quickadd and item_product != blank -%}
+                      {%- for variant in item_product.variants limit: 250 -%}
+                        {"id": {{ variant.id }}, "available": {{ variant.available | json }}, "price": {{ variant.price | money | strip_html | json }}, "compare": {% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | strip_html | json }}{% else %}""{% endif %}, "options": {{ variant.options | json }}}{%- unless forloop.last -%},{%- endunless -%}
+                      {%- endfor -%}
+                    {%- endif -%}
+                  ]
+                }
+              </script>
+            </{{ item_tag }}>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- if show_dots and product_count > 1 -%}
+      <div class="hrs-dots-{{ section.id }}" data-hrs-dots>
+        {%- for dot_index in (1..product_count) -%}
+          <button
+            type="button"
+            class="hrs-dot-{{ section.id }}{% if forloop.first %} hrs-is-on{% endif %}"
+            data-hrs-dot
+            aria-label="{{ dot_index }} / {{ product_count }}"
+            aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+          ></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="hrs-footer-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'title' -%}
+            {%- if block.settings.title != blank or block.settings.show_name -%}
+              <p
+                class="hrs-title-{{ block.id }}"
+                data-hrs-title
+                data-swap="{{ block.settings.show_name }}"
+                {{ block.shopify_attributes }}
+              >{{ block.settings.title | escape }}</p>
+            {%- endif -%}
+          {%- when 'button' -%}
+            {% if block.settings.button != blank %}
+              <{% if block.settings.url != blank %}a href="{{ block.settings.url }}"{% if block.settings.open_in_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}{% else %}div{% endif %} class="hrs-button-{{ block.id }}" {{ block.shopify_attributes }}>
+                <p class="hrs-button-inner-{{ block.id }}">
+                  {{ block.settings.button }}
+                  {% if block.settings.button_style == "non_outline_arrow" or block.settings.button_style == "outline_arrow" %}
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <path d="M3.75 9H14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9 3.75L14.25 9L9 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  {% endif %}
+                </p>
+              </{% if block.settings.url != blank %}a{% else %}div{% endif %}>
+            {% endif %}
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- if show_popup -%}
+    <div
+      class="hrs-popup-{{ section.id }}"
+      data-hrs-popup
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+    >
+      <div class="hrs-popup-bg-{{ section.id }}" data-hrs-popup-bg></div>
+
+      <button type="button" class="hrs-popup-close-{{ section.id }}" data-hrs-popup-close aria-label="Close">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M4 4L16 16M16 4L4 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="hrs-popup-inner-{{ section.id }}" data-hrs-popup-inner>
+        <div class="hrs-popup-stage-{{ section.id }}" data-hrs-popup-stage>
+          <div class="hrs-popup-card-{{ section.id }}" data-hrs-popup-card>
+            <div class="hrs-popup-face-{{ section.id }}" data-hrs-popup-front></div>
+            <div class="hrs-popup-face-{{ section.id }} hrs-popup-back-{{ section.id }}" data-hrs-popup-back></div>
+          </div>
+        </div>
+
+        <div class="hrs-popup-meta-{{ section.id }}">
+          <p class="hrs-popup-index-{{ section.id }}" data-hrs-popup-index></p>
+          <h2 class="hrs-popup-title-{{ section.id }}" data-hrs-popup-title></h2>
+          <p class="hrs-popup-price-{{ section.id }}">
+            <span data-hrs-popup-price></span>
+            <s class="hrs-popup-compare-{{ section.id }}" data-hrs-popup-compare></s>
+          </p>
+
+          <div class="hrs-popup-tabs-{{ section.id }}" data-hrs-popup-tabs>
+            <button type="button" class="hrs-popup-tab-{{ section.id }} hrs-is-on" data-hrs-face="front" aria-pressed="true">{{ front_label }}</button>
+            <button type="button" class="hrs-popup-tab-{{ section.id }}" data-hrs-face="back" aria-pressed="false">{{ back_label }}</button>
+          </div>
+
+          {%- if show_quickadd -%}
+            <div data-hrs-popup-buy>
+              <div class="hrs-popup-options-{{ section.id }}" data-hrs-popup-options></div>
+              <button type="button" class="hrs-popup-atc-{{ section.id }}" data-hrs-popup-atc data-cart-app="{{ cart_app }}">
+                <span class="hrs-popup-spinner-{{ section.id }}" aria-hidden="true"></span>
+                <span data-hrs-popup-atc-label>{{ atc_label }}</span>
+                {%- if atc_button_style == 'non_outline_arrow' or atc_button_style == 'outline_arrow' -%}
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 18 18"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M3.75 9H14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 3.75L14.25 9L9 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {%- endif -%}
+              </button>
+              <p class="hrs-popup-error-{{ section.id }}" data-hrs-popup-error role="status" aria-live="polite"></p>
+            </div>
+          {%- endif -%}
+
+          {%- if link_label != blank -%}
+            <a class="hrs-popup-link-{{ section.id }}" data-hrs-popup-link href="#">{{ link_label }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  function initHrs_{{ section.id | replace: '-', '_' }}() {
+    var section = document.querySelector('.hrs-section-{{ section.id }}');
+    if (!section || section._hrs) return;
+
+    var preClass = 'hrs-pre-{{ section.id }}';
+    var rack = section.querySelector('[data-hrs-rack]');
+    var items = rack ? Array.prototype.slice.call(rack.querySelectorAll('[data-hrs-item]')) : [];
+    if (!items.length) {
+      section.classList.remove(preClass);
+      return;
+    }
+
+    var settings = {
+      swing: {{ swing_strength | divided_by: 100.0 }},
+      dropIn: {{ drop_in | json }},
+      popup: {{ show_popup | json }},
+      lift: {{ lift_animation | json }},
+      autoplay: {{ autoplay | json }},
+      autoplayMs: {{ autoplay_speed | times: 1000 }},
+      turnMs: {{ turn_speed }},
+      addLabel: {{ atc_label | json }},
+      soldOutLabel: {{ soldout_label | json }},
+      errorLabel: {{ atc_error_label | json }}
+    };
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var desktopMq = window.matchMedia('(min-width: 1024px)');
+    var canAnimate = typeof Element !== 'undefined' && !!Element.prototype.animate;
+    var isRtl = window.getComputedStyle(rack).direction === 'rtl';
+    var seen = window.hrsSeen = window.hrsSeen || {};
+    var firstRun = !seen['{{ section.id }}'];
+    seen['{{ section.id }}'] = true;
+
+    var dead = false;
+    var cleanups = [];
+    var timers = [];
+
+    function on(target, type, handler, options) {
+      target.addEventListener(type, handler, options || false);
+      cleanups.push(function () {
+        target.removeEventListener(type, handler, options || false);
+      });
+    }
+
+    function later(fn, ms) {
+      var id = setTimeout(function () {
+        timers.splice(timers.indexOf(id), 1);
+        if (!dead) fn();
+      }, ms);
+      timers.push(id);
+      return id;
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function inView(rect) {
+      return rect.width > 0 && rect.bottom > 0 && rect.top < window.innerHeight && rect.right > 0 && rect.left < window.innerWidth;
+    }
+
+    var states = items.map(function (el, index) {
+      var data = {};
+      var json = el.querySelector('[data-hrs-json]');
+      if (json) {
+        try {
+          data = JSON.parse(json.textContent);
+        } catch (error) {
+          data = {};
+        }
+      }
+      return {
+        el: el,
+        index: index,
+        blockId: el.getAttribute('data-block-id'),
+        swing: el.querySelector('[data-hrs-swing]'),
+        garment: el.querySelector('[data-hrs-garment]'),
+        side: parseFloat(el.getAttribute('data-side')) || 0.34,
+        front: parseFloat(el.getAttribute('data-front')) || 0.75,
+        sideView: el.querySelector('[data-hrs-view="side"]'),
+        frontView: el.querySelector('[data-hrs-view="front"]'),
+        canTurn: !!el.querySelector('[data-hrs-view="front"]'),
+        data: data,
+        progress: 0,
+        target: 0,
+        angle: 0,
+        velocity: 0
+      };
+    });
+
+    var titleEl = section.querySelector('[data-hrs-title]');
+    var titleSwap = !!titleEl && titleEl.getAttribute('data-swap') === 'true';
+    var titleDefault = titleEl ? titleEl.innerHTML : '';
+    var titleKey = -1;
+    var titleTimer = null;
+
+    function setTitle(state) {
+      if (!titleSwap) return;
+      var key = state ? state.index : -1;
+      if (key === titleKey) return;
+      titleKey = key;
+      titleEl.classList.add('hrs-is-swapping');
+      clearTimeout(titleTimer);
+      titleTimer = setTimeout(function () {
+        if (state) titleEl.textContent = state.data.name || '';
+        else titleEl.innerHTML = titleDefault;
+        titleEl.classList.remove('hrs-is-swapping');
+      }, 180);
+    }
+
+    var swingOn = settings.swing > 0 && !reduceMotion;
+    var swingFrame = 0;
+    var swingLast = 0;
+
+    function push(state, velocity) {
+      if (!swingOn || !state || dead) return;
+      state.velocity += velocity * settings.swing;
+      if (!swingFrame) {
+        swingLast = 0;
+        swingFrame = requestAnimationFrame(swingStep);
+      }
+    }
+
+    function swingStep(time) {
+      swingFrame = 0;
+      if (dead) return;
+      var dt = swingLast ? Math.min(0.05, (time - swingLast) / 1000) : 1 / 60;
+      swingLast = time;
+      var moving = false;
+      states.forEach(function (state) {
+        if (Math.abs(state.angle) < 0.03 && Math.abs(state.velocity) < 0.08) {
+          if (state.angle || state.velocity) {
+            state.angle = 0;
+            state.velocity = 0;
+            state.swing.style.removeProperty('--hrs-sw');
+          }
+          return;
+        }
+        var step = dt / 2;
+        for (var i = 0; i < 2; i++) {
+          state.velocity += (-26 * state.angle - 2.3 * state.velocity) * step;
+          state.angle += state.velocity * step;
+        }
+        if (Math.abs(state.angle) > 11) {
+          state.angle = state.angle > 0 ? 11 : -11;
+          state.velocity *= -0.35;
+        }
+        state.swing.style.setProperty('--hrs-sw', state.angle.toFixed(2) + 'deg');
+        moving = true;
+      });
+      if (moving) swingFrame = requestAnimationFrame(swingStep);
+      else swingLast = 0;
+    }
+
+    function nudgeNeighbours(state, strength, skip) {
+      var direction = isRtl ? -1 : 1;
+      if (states[state.index - 1] !== skip) push(states[state.index - 1], strength * direction);
+      if (states[state.index + 1] !== skip) push(states[state.index + 1], -strength * direction);
+    }
+
+    var sectionVisible = !('IntersectionObserver' in window);
+    var lastScrollY = window.pageYOffset;
+    var lastScrollTime = 0;
+
+    on(window, 'scroll', function () {
+      if (!swingOn || !sectionVisible) return;
+      var now = performance.now();
+      if (now - lastScrollTime < 100) return;
+      var y = window.pageYOffset;
+      var elapsed = now - lastScrollTime;
+      var delta = y - lastScrollY;
+      lastScrollY = y;
+      lastScrollTime = now;
+      if (elapsed > 400 || !delta) return;
+      var gust = clamp(delta / elapsed * 8, -14, 14);
+      states.forEach(function (state) {
+        push(state, gust * (state.index % 2 ? 1 : -0.85));
+      });
+    }, { passive: true });
+
+    var lastRackX = 0;
+    var lastRackTime = 0;
+
+    on(rack, 'scroll', function () {
+      if (!swingOn || desktopMq.matches) return;
+      var now = performance.now();
+      if (now - lastRackTime < 70) return;
+      var x = rack.scrollLeft;
+      var elapsed = now - lastRackTime;
+      var delta = x - lastRackX;
+      lastRackX = x;
+      lastRackTime = now;
+      if (elapsed > 300 || !delta || Math.abs(delta) > 600) return;
+      var drag = clamp(delta / elapsed * 12, -24, 24);
+      states.forEach(function (state) {
+        push(state, -drag);
+      });
+    }, { passive: true });
+
+    var turned = null;
+    var popupState = null;
+    var prefetched = {};
+
+    function popupSizes(ratio) {
+      var height = desktopMq.matches ? Math.min(window.innerHeight * 0.76, 680) : Math.min(window.innerHeight * 0.46, 440);
+      return Math.ceil(height * (ratio || 0.75)) + 'px';
+    }
+
+    function makeImage(image) {
+      var img = document.createElement('img');
+      img.alt = image.alt || '';
+      img.decoding = 'async';
+      img.draggable = false;
+      img.sizes = popupSizes(image.ratio);
+      img.srcset = image.srcset;
+      img.src = image.src;
+      return img;
+    }
+
+    function prefetch(state) {
+      if (!settings.popup) return;
+      [state.data.front, state.data.back].forEach(function (image) {
+        if (!image || prefetched[image.src]) return;
+        prefetched[image.src] = true;
+        makeImage(image);
+      });
+    }
+
+    var turnFrame = 0;
+    var turnLast = 0;
+
+    function turnStep(time) {
+      turnFrame = 0;
+      if (dead) return;
+      var dt = turnLast ? Math.min(64, time - turnLast) : 0;
+      turnLast = time;
+      var ease = 1 - Math.exp(-dt / (settings.turnMs * 0.3));
+      var busy = false;
+      states.forEach(function (state) {
+        if (state.progress === state.target) return;
+        var delta = state.target - state.progress;
+        state.progress = Math.abs(delta) > 0.02 && !reduceMotion ? state.progress + delta * ease : state.target;
+        busy = true;
+        var eased = state.progress * state.progress * (3 - 2 * state.progress);
+        state.el.classList.toggle('hrs-is-live', eased > 0.02);
+        if (!state.frontView) return;
+        state.sideView.style.opacity = clamp((0.56 - eased) / 0.12, 0, 1);
+        state.frontView.style.opacity = clamp((eased - 0.44) / 0.12, 0, 1);
+        state.sideView.style.transform = eased > 0 ? 'perspective(900px) rotateY(' + (Math.min(1, eased * 2) * -84).toFixed(2) + 'deg)' : 'none';
+        state.frontView.style.transform = eased < 1 ? 'scale(' + (0.92 + 0.08 * eased).toFixed(4) + ')' : 'none';
+        if (state.progress === state.target) {
+          state.sideView.style.removeProperty('will-change');
+          state.frontView.style.removeProperty('will-change');
+        }
+      });
+      if (busy) turnFrame = requestAnimationFrame(turnStep);
+      else turnLast = 0;
+    }
+
+    function setTurnTarget(state, target) {
+      state.target = target;
+      if (state.frontView) {
+        state.sideView.style.willChange = 'opacity, transform';
+        state.frontView.style.willChange = 'opacity, transform';
+      }
+      if (!turnFrame) turnFrame = requestAnimationFrame(turnStep);
+    }
+
+    function turn(state) {
+      if (turned === state) return;
+      var previous = turned;
+      if (previous) {
+        previous.el.classList.remove('hrs-is-turned');
+        setTurnTarget(previous, 0);
+      }
+      turned = state;
+      if (state) {
+        state.el.classList.add('hrs-is-turned');
+        setTurnTarget(state, 1);
+        later(function () {
+          if (turned === state) prefetch(state);
+        }, 120);
+        nudgeNeighbours(state, 26);
+      }
+      if (previous) nudgeNeighbours(previous, -12, state);
+      bendFor(settings.turnMs + 80);
+      setTitle(state);
+    }
+
+    if (fineHover) {
+      var mouseX = null;
+      var mouseTime = 0;
+
+      on(rack, 'mousemove', function (event) {
+        if (popupState) return;
+        var x = event.clientX;
+        var y = event.clientY;
+        var now = performance.now();
+
+        if (swingOn && mouseX !== null && now - mouseTime < 100) {
+          var speed = (x - mouseX) / Math.max(1, now - mouseTime);
+          states.forEach(function (state) {
+            if (state === turned) return;
+            var rect = state.garment.getBoundingClientRect();
+            if (y < rect.top || y > rect.bottom) return;
+            var center = rect.left + rect.width / 2;
+            if ((mouseX - center) * (x - center) < 0) push(state, clamp(-speed * 24, -50, 50));
+          });
+        }
+        mouseX = x;
+        mouseTime = now;
+
+        if (turned) {
+          var current = turned.el.getBoundingClientRect();
+          if (x >= current.left - 20 && x <= current.right + 20 && y >= current.top - 10 && y <= current.bottom + 40) return;
+        }
+
+        var best = null;
+        var bestDistance = Infinity;
+        states.forEach(function (state) {
+          var rect = state.el.getBoundingClientRect();
+          if (y < rect.top - 10 || y > rect.bottom + 40 || x < rect.left - 2 || x > rect.right + 2) return;
+          var distance = Math.abs(x - (rect.left + rect.width / 2));
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            best = state;
+          }
+        });
+        turn(best);
+      });
+
+      on(rack, 'mouseleave', function () {
+        mouseX = null;
+        if (!popupState) turn(null);
+      });
+    }
+
+    var pointerType = '';
+
+    on(rack, 'pointerdown', function (event) {
+      pointerType = event.pointerType || '';
+    }, true);
+
+    function isTouch() {
+      return pointerType ? pointerType !== 'mouse' : !fineHover;
+    }
+
+    function isScrolling() {
+      return !desktopMq.matches || section.classList.contains('hrs-is-overflowing');
+    }
+
+    function rackEdge() {
+      var rect = rack.getBoundingClientRect();
+      var style = window.getComputedStyle(rack);
+      return isRtl ? rect.right - parseFloat(style.paddingRight) : rect.left + parseFloat(style.paddingLeft);
+    }
+
+    function itemOffset(state) {
+      var rect = state.el.getBoundingClientRect();
+      return isRtl ? rect.right - rackEdge() : rect.left - rackEdge();
+    }
+
+    function scrollToItem(index) {
+      var state = states[index];
+      if (!state) return;
+      rack.scrollBy({ left: itemOffset(state), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    function isFullyVisible(state) {
+      var rect = state.el.getBoundingClientRect();
+      var box = rack.getBoundingClientRect();
+      return rect.left >= box.left - 1 && rect.right <= box.right + 1;
+    }
+
+    var holdUntil = 0;
+
+    function holdAutoplay(ms) {
+      holdUntil = Date.now() + (ms || 5000);
+    }
+
+    states.forEach(function (state) {
+      on(state.el, 'click', function (event) {
+        if (isTouch() && turned !== state && state.canTurn && event.detail !== 0) {
+          event.preventDefault();
+          holdAutoplay(6000);
+          turn(state);
+          if (isScrolling()) {
+            later(function () {
+              if (turned === state && !isFullyVisible(state)) scrollToItem(state.index);
+            }, settings.turnMs);
+          }
+          return;
+        }
+        if (!settings.popup || !popup) return;
+        event.preventDefault();
+        openPopup(state);
+      });
+
+      on(state.el, 'keydown', function (event) {
+        if (!settings.popup || !popup) return;
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openPopup(state);
+        }
+      });
+
+      on(state.el, 'focus', function () {
+        if (!isTouch() && !popupState) turn(state);
+      });
+
+      on(state.el, 'blur', function () {
+        if (turned === state && !popupState && !state.el.matches(':hover')) turn(null);
+      });
+    });
+
+    on(document, 'pointerdown', function (event) {
+      if (!turned || popupState || event.pointerType === 'mouse') return;
+      var item = event.target.closest ? event.target.closest('[data-hrs-item]') : null;
+      if (!item || items.indexOf(item) === -1) turn(null);
+    }, true);
+
+    var dotsWrap = section.querySelector('[data-hrs-dots]');
+    var dots = Array.prototype.slice.call(section.querySelectorAll('[data-hrs-dot]'));
+    var dotFrame = 0;
+
+    function atEnd() {
+      return Math.abs(rack.scrollLeft) + rack.clientWidth >= rack.scrollWidth - 4;
+    }
+
+    function nearestIndex() {
+      if (Math.abs(rack.scrollLeft) > 4 && atEnd()) return states.length - 1;
+      var best = 0;
+      var bestDistance = Infinity;
+      states.forEach(function (state) {
+        var distance = Math.abs(itemOffset(state));
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = state.index;
+        }
+      });
+      return best;
+    }
+
+    function updateDots() {
+      dotFrame = 0;
+      if (!dots.length || !isScrolling()) return;
+      var active = nearestIndex();
+      dots.forEach(function (dot, index) {
+        dot.classList.toggle('hrs-is-on', index === active);
+        dot.setAttribute('aria-current', index === active ? 'true' : 'false');
+      });
+    }
+
+    on(rack, 'scroll', function () {
+      if (!dotFrame) dotFrame = requestAnimationFrame(updateDots);
+    }, { passive: true });
+
+    on(rack, 'touchstart', function () {
+      holdAutoplay(6000);
+    }, { passive: true });
+
+    dots.forEach(function (dot, index) {
+      on(dot, 'click', function () {
+        holdAutoplay(8000);
+        if (turned) turn(null);
+        scrollToItem(index);
+      });
+    });
+
+    function autoplayTick() {
+      if (desktopMq.matches || !sectionVisible || document.hidden || popupState || Date.now() < holdUntil) return;
+      if (rack.scrollWidth <= rack.clientWidth + 4) return;
+      if (turned) {
+        turn(null);
+        return;
+      }
+      if (atEnd()) scrollToItem(0);
+      else scrollToItem(Math.min(states.length - 1, nearestIndex() + 1));
+    }
+
+    var autoplayTimer = settings.autoplay && !reduceMotion ? setInterval(autoplayTick, settings.autoplayMs) : null;
+
+    var layoutFrame = 0;
+    var curve = section.querySelector('[data-hrs-curve]');
+    var curveWidth = 0;
+    var bent = false;
+    var bendUntil = 0;
+    var bendFrame = 0;
+
+    function bend() {
+      var active = !!curve && desktopMq.matches && !section.classList.contains('hrs-is-overflowing');
+      if (!active) {
+        if (bent) {
+          bent = false;
+          curveWidth = 0;
+          rack.style.removeProperty('--hrs-sag');
+          states.forEach(function (state) {
+            state.el.style.removeProperty('--hrs-dy');
+          });
+        }
+        return;
+      }
+      bent = true;
+      var width = section.clientWidth;
+      var half = width / 2;
+      var sag = Math.round(width * 0.035);
+      var center = rack.parentNode.clientWidth / 2 - rack.offsetLeft;
+      var centers = states.map(function (state) {
+        return state.el.offsetLeft + state.el.offsetWidth / 2 - center;
+      });
+      states.forEach(function (state, index) {
+        var ratio = centers[index] / half;
+        state.el.style.setProperty('--hrs-dy', Math.max(0, sag * (1 - ratio * ratio)).toFixed(2) + 'px');
+      });
+      if (width === curveWidth) return;
+      curveWidth = width;
+      rack.style.setProperty('--hrs-sag', sag + 'px');
+      curve.setAttribute('viewBox', '0 0 ' + width + ' ' + (sag + 8));
+      curve.style.width = width + 'px';
+      curve.style.height = sag + 8 + 'px';
+      Array.prototype.forEach.call(curve.querySelectorAll('path'), function (path) {
+        var y = 4 + parseFloat(path.getAttribute('data-hrs-offset'));
+        path.setAttribute('d', 'M0 ' + y + 'Q' + half + ' ' + (y + sag * 2) + ' ' + width + ' ' + y);
+      });
+    }
+
+    function bendStep() {
+      bendFrame = 0;
+      if (dead) return;
+      bend();
+      if (bent && performance.now() < bendUntil) bendFrame = requestAnimationFrame(bendStep);
+    }
+
+    function bendFor(ms) {
+      if (!curve) return;
+      bendUntil = Math.max(bendUntil, performance.now() + ms);
+      if (!bendFrame) bendFrame = requestAnimationFrame(bendStep);
+    }
+
+    function fitWholeGarments(avail, height, gap, sum) {
+      if (!sum || height * sum + gap * (states.length - 1) <= avail + 1) return 0;
+      var sides = states.map(function (state) { return state.side; }).sort(function (a, b) { return a - b; });
+      var ratio = sides[Math.floor(sides.length / 2)];
+      var count = (avail + gap) / (height * ratio + gap);
+      var best = 0;
+      var bestChange = Infinity;
+      [Math.floor(count), Math.ceil(count)].forEach(function (whole) {
+        if (whole < 1) return;
+        var fitted = (avail - gap * (whole - 1)) / (whole * ratio);
+        var change = fitted / height - 1;
+        if (change > 0.12 || change < -0.25 || Math.abs(change) >= bestChange) return;
+        bestChange = Math.abs(change);
+        best = fitted;
+      });
+      return best;
+    }
+
+    function layout() {
+      layoutFrame = 0;
+      if (dead || !section.clientWidth) return;
+      section.style.setProperty('--hrs-section-width', section.clientWidth + 'px');
+      rack.style.removeProperty('--hrs-h');
+      var overflowing = false;
+      var style = window.getComputedStyle(rack);
+      var height = parseFloat(style.getPropertyValue('--hrs-h')) || 300;
+      var gap = parseFloat(style.columnGap) || 0;
+      var sum = 0;
+      var widest = 0;
+      states.forEach(function (state) {
+        sum += state.side;
+        widest = Math.max(widest, state.front - state.side);
+      });
+      if (desktopMq.matches) {
+        var spare = rack.clientWidth - gap * (states.length - 1) - 44;
+        if (sum + widest > 0 && height * (sum + widest) > spare) {
+          var fit = spare / (sum + widest);
+          var floor = Math.min(height, 200);
+          overflowing = fit < floor;
+          if (overflowing) {
+            var whole = fitWholeGarments(rack.clientWidth - 24, floor, gap, sum);
+            rack.style.setProperty('--hrs-h', (whole ? Math.floor(whole * 10) / 10 : floor) + 'px');
+          } else {
+            rack.style.setProperty('--hrs-h', fit.toFixed(1) + 'px');
+          }
+        }
+      } else {
+        var fitted = fitWholeGarments(rack.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight), height, gap, sum);
+        if (fitted) rack.style.setProperty('--hrs-h', (Math.floor(fitted * 10) / 10) + 'px');
+      }
+      section.classList.toggle('hrs-is-overflowing', overflowing);
+      bend();
+      bendFor(settings.turnMs + 80);
+      if (dotsWrap) dotsWrap.classList.toggle('hrs-is-hidden', rack.scrollWidth <= rack.clientWidth + 4);
+      updateDots();
+    }
+
+    function queueLayout() {
+      if (!layoutFrame) layoutFrame = requestAnimationFrame(layout);
+    }
+
+    on(window, 'resize', queueLayout);
+
+    var lastWidth = 0;
+    var resizeObserver = null;
+    if ('ResizeObserver' in window) {
+      resizeObserver = new ResizeObserver(function (entries) {
+        var width = entries[0].contentRect.width;
+        if (Math.abs(width - lastWidth) < 1) return;
+        lastWidth = width;
+        queueLayout();
+      });
+      resizeObserver.observe(section);
+    }
+    on(desktopMq, 'change', function () {
+      turn(null);
+      queueLayout();
+    });
+    layout();
+
+    var dropped = !(settings.dropIn && firstRun) || reduceMotion || !canAnimate || !('IntersectionObserver' in window);
+    if (dropped) section.classList.remove(preClass);
+
+    var trimCache = window.hrsTrim = window.hrsTrim || {};
+    var trimsPending = 0;
+    var trimWaiters = [];
+
+    function firstOpaqueRow(probe) {
+      var w = probe.naturalWidth;
+      var h = probe.naturalHeight;
+      var canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      var context = canvas.getContext('2d', { willReadFrequently: true });
+      context.drawImage(probe, 0, 0, w, h);
+      var rows = Math.ceil(h * 0.4);
+      var pixels = context.getImageData(0, 0, w, rows).data;
+      for (var y = 0; y < rows; y++) {
+        for (var i = y * w * 4 + 3; i < (y + 1) * w * 4; i += 4) {
+          if (pixels[i] > 16) return y / h;
+        }
+      }
+      return 0;
+    }
+
+    function trimImage(img, done) {
+      var src = img.currentSrc || img.src;
+      if (!src) {
+        done();
+        return;
+      }
+      var key = src.split('?')[0];
+      var apply = function (fraction) {
+        if (fraction > 0.004) img.style.transform = 'translateY(-' + (fraction * 100).toFixed(2) + '%)';
+        done();
+      };
+      var cached = trimCache[key];
+      if (typeof cached === 'number') {
+        apply(cached);
+        return;
+      }
+      if (cached) {
+        cached.push(apply);
+        return;
+      }
+      var waiting = trimCache[key] = [apply];
+      var settle = function (fraction) {
+        trimCache[key] = fraction;
+        waiting.forEach(function (fn) { fn(fraction); });
+      };
+      var probe = new Image();
+      probe.crossOrigin = 'anonymous';
+      probe.onload = function () {
+        var fraction = 0;
+        try {
+          fraction = firstOpaqueRow(probe);
+        } catch (error) {
+          fraction = 0;
+        }
+        settle(fraction);
+      };
+      probe.onerror = function () {
+        settle(0);
+      };
+      try {
+        var url = new URL(src, window.location.href);
+        url.searchParams.set('width', '100');
+        url.searchParams.delete('height');
+        probe.src = url.toString();
+      } catch (error) {
+        settle(0);
+      }
+    }
+
+    Array.prototype.forEach.call(rack.querySelectorAll('img.hrs-img-{{ section.id }}'), function (img) {
+      trimsPending += 1;
+      trimImage(img, function () {
+        trimsPending -= 1;
+        if (!trimsPending) trimWaiters.splice(0).forEach(function (fn) { fn(); });
+      });
+    });
+
+    function whenImagesReady(callback) {
+      var pending = 0;
+      var done = false;
+      function finish() {
+        if (done) return;
+        done = true;
+        callback();
+      }
+      function settle() {
+        pending -= 1;
+        if (pending <= 0) finish();
+      }
+      if (trimsPending) {
+        pending += 1;
+        trimWaiters.push(settle);
+      }
+      states.forEach(function (state) {
+        var img = state.el.querySelector('[data-hrs-view="side"] img');
+        if (!img || (img.complete && img.naturalWidth)) return;
+        pending += 1;
+        img.addEventListener('load', settle, { once: true });
+        img.addEventListener('error', settle, { once: true });
+      });
+      if (!pending) finish();
+      else later(finish, 1200);
+    }
+
+    function dropIn() {
+      if (dropped) return;
+      dropped = true;
+      var count = 0;
+      states.forEach(function (state) {
+        if (!inView(state.el.getBoundingClientRect())) return;
+        var delay = 120 + count * 80;
+        var direction = count % 2 ? -1 : 1;
+        count += 1;
+        state.el.animate([
+          { transform: 'translateY(-72px) rotate(' + direction * 6 + 'deg)', opacity: 0 },
+          { transform: 'translateY(6px) rotate(' + direction * -1.5 + 'deg)', opacity: 1, offset: 0.7 },
+          { transform: 'none', opacity: 1 }
+        ], { duration: 620, delay: delay, easing: 'cubic-bezier(0.2, 0.8, 0.3, 1)', fill: 'backwards' });
+        later(function () {
+          push(state, direction * 30);
+        }, delay + 540);
+      });
+      section.classList.remove(preClass);
+    }
+
+    var observer = null;
+    if ('IntersectionObserver' in window) {
+      var dropQueued = false;
+      var frontsDecoded = false;
+      observer = new IntersectionObserver(function (entries) {
+        var entry = entries[entries.length - 1];
+        sectionVisible = entry.isIntersecting;
+        if (entry.isIntersecting && !frontsDecoded) {
+          frontsDecoded = true;
+          states.forEach(function (state) {
+            var img = state.el.querySelector('[data-hrs-view="front"] img');
+            if (img && img.decode) img.decode().catch(function () {});
+          });
+        }
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.2 && !dropped && !dropQueued) {
+          dropQueued = true;
+          whenImagesReady(dropIn);
+        }
+      }, { threshold: [0, 0.2] });
+      observer.observe(rack);
+    }
+
+    var popup = section.querySelector('[data-hrs-popup]');
+    if (popup) document.body.appendChild(popup);
+
+    function part(selector) {
+      return popup ? popup.querySelector(selector) : null;
+    }
+
+    var popupBg = part('[data-hrs-popup-bg]');
+    var popupInner = part('[data-hrs-popup-inner]');
+    var stage = part('[data-hrs-popup-stage]');
+    var card = part('[data-hrs-popup-card]');
+    var faceFront = part('[data-hrs-popup-front]');
+    var faceBack = part('[data-hrs-popup-back]');
+    var popupIndex = part('[data-hrs-popup-index]');
+    var popupTitle = part('[data-hrs-popup-title]');
+    var popupPrice = part('[data-hrs-popup-price]');
+    var popupCompare = part('[data-hrs-popup-compare]');
+    var popupTabs = part('[data-hrs-popup-tabs]');
+    var popupLink = part('[data-hrs-popup-link]');
+    var closeButton = part('[data-hrs-popup-close]');
+    var buyWrap = part('[data-hrs-popup-buy]');
+    var optionsWrap = part('[data-hrs-popup-options]');
+    var atcButton = part('[data-hrs-popup-atc]');
+    var atcLabel = part('[data-hrs-popup-atc-label]');
+    var errorEl = part('[data-hrs-popup-error]');
+    var tabButtons = popup ? Array.prototype.slice.call(popup.querySelectorAll('[data-hrs-face]')) : [];
+
+    var closing = false;
+    var afterClose = null;
+    var flight = null;
+    var lastFocus = null;
+    var bodyOverflow = '';
+    var hasBack = false;
+    var angle = 0;
+    var angleTarget = 0;
+    var angleFrame = 0;
+    var angleLast = 0;
+    var dragging = false;
+    var dragMoved = false;
+    var suppressClick = false;
+    var dragStartX = 0;
+    var dragStartAngle = 0;
+
+    function pad(number) {
+      return number < 10 ? '0' + number : '' + number;
+    }
+
+    function applyAngle() {
+      if (card) card.style.transform = 'rotateY(' + angle.toFixed(2) + 'deg)';
+    }
+
+    function setTab(front) {
+      tabButtons.forEach(function (button) {
+        var active = (button.getAttribute('data-hrs-face') === 'front') === front;
+        button.classList.toggle('hrs-is-on', active);
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+    }
+
+    function normalise(value) {
+      return Math.abs(Math.round(value / 180)) % 2 === 1 ? 180 : 0;
+    }
+
+    function angleStep(time) {
+      angleFrame = 0;
+      if (dead) return;
+      var dt = angleLast ? Math.min(64, time - angleLast) : 16;
+      angleLast = time;
+      var delta = angleTarget - angle;
+      if (Math.abs(delta) < 0.3) {
+        angle = angleTarget = normalise(angleTarget);
+        angleLast = 0;
+        applyAngle();
+        return;
+      }
+      angle += delta * (1 - Math.exp(-dt / (settings.turnMs * 0.2)));
+      applyAngle();
+      angleFrame = requestAnimationFrame(angleStep);
+    }
+
+    function goToAngle(target) {
+      angleTarget = target;
+      setTab(normalise(target) === 0);
+      if (reduceMotion) {
+        angle = angleTarget = normalise(target);
+        applyAngle();
+        return;
+      }
+      if (!angleFrame) angleFrame = requestAnimationFrame(angleStep);
+    }
+
+    function stopAngle() {
+      if (angleFrame) cancelAnimationFrame(angleFrame);
+      angleFrame = 0;
+      angleLast = 0;
+    }
+
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false;
+      stage.classList.remove('hrs-is-dragging');
+      if (dragMoved) {
+        suppressClick = true;
+        later(function () {
+          suppressClick = false;
+        }, 0);
+      }
+      goToAngle(Math.round(angle / 180) * 180);
+    }
+
+    if (stage) {
+      on(stage, 'pointerdown', function (event) {
+        if (!popupState || closing || !hasBack) return;
+        dragging = true;
+        dragMoved = false;
+        dragStartX = event.clientX;
+        dragStartAngle = angle;
+        stopAngle();
+        try {
+          stage.setPointerCapture(event.pointerId);
+        } catch (error) {}
+        stage.classList.add('hrs-is-dragging');
+        event.preventDefault();
+      });
+
+      on(stage, 'pointermove', function (event) {
+        if (!dragging) return;
+        if (!dragMoved && Math.abs(event.clientX - dragStartX) > 4) dragMoved = true;
+        angle = clamp(dragStartAngle + (event.clientX - dragStartX) * 0.5, -260, 260);
+        angleTarget = angle;
+        applyAngle();
+      });
+
+      on(stage, 'pointerup', endDrag);
+      on(stage, 'pointercancel', endDrag);
+      on(stage, 'lostpointercapture', endDrag);
+    }
+
+    function fillFront(state) {
+      faceFront.innerHTML = '';
+      if (state.data.front) {
+        faceFront.appendChild(makeImage(state.data.front));
+        return;
+      }
+      var view = state.el.querySelector('[data-hrs-view="front"]') || state.el.querySelector('[data-hrs-view="side"]');
+      if (view) faceFront.innerHTML = view.innerHTML;
+    }
+
+    function fly(from, reverse, done) {
+      var to = stage.getBoundingClientRect();
+      var scale = from.height / (to.height || 1);
+      var dx = from.left + from.width / 2 - (to.left + to.width / 2);
+      var dy = from.top - to.top;
+      var arc = Math.min(80, Math.abs(dy) * 0.2 + 30);
+      var start = 'translate(' + dx.toFixed(1) + 'px, ' + dy.toFixed(1) + 'px) scale(' + scale.toFixed(4) + ')';
+      var middle = 'translate(' + (dx * 0.45).toFixed(1) + 'px, ' + (dy * 0.45 - arc).toFixed(1) + 'px) scale(' + ((scale + 1) / 2).toFixed(4) + ') rotate(' + (dx > 0 ? -2 : 2) + 'deg)';
+      var end = 'translate(0px, 0px) scale(1)';
+      var frames = reverse
+        ? [{ transform: end }, { transform: middle, offset: 0.5 }, { transform: start }]
+        : [{ transform: start }, { transform: middle, offset: 0.5 }, { transform: end }];
+      var animation = stage.animate(frames, {
+        duration: reverse ? 520 : 640,
+        easing: reverse ? 'cubic-bezier(0.4, 0, 0.5, 1)' : 'cubic-bezier(0.2, 0.85, 0.3, 1)',
+        fill: 'both'
+      });
+      if (done) animation.onfinish = done;
+      return animation;
+    }
+
+    function decodeMoney(text) {
+      var el = document.createElement('textarea');
+      el.innerHTML = text || '';
+      return el.value;
+    }
+
+    function setPrice(price, compare) {
+      if (popupPrice) popupPrice.textContent = decodeMoney(price);
+      if (popupCompare) {
+        var compareText = decodeMoney(compare);
+        popupCompare.textContent = compareText;
+        popupCompare.hidden = !compareText;
+      }
+    }
+
+    var buyData = null;
+    var selected = [];
+    var currentVariant = null;
+    var busy = false;
+
+    function findVariant(selection) {
+      if (!buyData) return null;
+      for (var i = 0; i < buyData.variants.length; i++) {
+        var variant = buyData.variants[i];
+        var match = true;
+        for (var j = 0; j < selection.length; j++) {
+          if (variant.options[j] !== selection[j]) {
+            match = false;
+            break;
+          }
+        }
+        if (match) return variant;
+      }
+      return null;
+    }
+
+    function updateBuy() {
+      if (!buyData || !atcButton) return;
+      currentVariant = findVariant(selected);
+      Array.prototype.forEach.call(optionsWrap.querySelectorAll('[data-option]'), function (pill) {
+        var optionIndex = +pill.getAttribute('data-option');
+        var value = pill.getAttribute('data-value');
+        var test = selected.slice();
+        test[optionIndex] = value;
+        var variant = findVariant(test);
+        pill.setAttribute('aria-pressed', selected[optionIndex] === value ? 'true' : 'false');
+        pill.classList.toggle('hrs-is-na', !variant || !variant.available);
+      });
+      var available = !!(currentVariant && currentVariant.available);
+      atcButton.disabled = !available || busy;
+      atcLabel.textContent = available ? settings.addLabel : settings.soldOutLabel;
+      if (currentVariant) setPrice(currentVariant.price, currentVariant.compare);
+    }
+
+    function setupBuy(data) {
+      if (!buyWrap) return;
+      buyData = data.variants && data.variants.length ? data : null;
+      buyWrap.hidden = !buyData;
+      optionsWrap.innerHTML = '';
+      if (errorEl) errorEl.textContent = '';
+      if (!buyData) return;
+
+      var start = null;
+      for (var i = 0; i < buyData.variants.length; i++) {
+        if (buyData.variants[i].available) {
+          start = buyData.variants[i];
+          break;
+        }
+      }
+      selected = (start || buyData.variants[0]).options.slice();
+
+      (buyData.options || []).forEach(function (option, optionIndex) {
+        var group = document.createElement('div');
+        group.className = 'hrs-popup-option-{{ section.id }}';
+        group.setAttribute('role', 'group');
+        group.setAttribute('aria-label', option.name);
+
+        var name = document.createElement('p');
+        name.className = 'hrs-popup-option-name-{{ section.id }}';
+        name.textContent = option.name;
+
+        var pills = document.createElement('div');
+        pills.className = 'hrs-popup-pills-{{ section.id }}';
+
+        option.values.forEach(function (value) {
+          var pill = document.createElement('button');
+          pill.type = 'button';
+          pill.className = 'hrs-popup-pill-{{ section.id }}';
+          pill.textContent = value;
+          pill.setAttribute('data-option', optionIndex);
+          pill.setAttribute('data-value', value);
+          pill.addEventListener('click', function () {
+            selected[optionIndex] = value;
+            if (errorEl) errorEl.textContent = '';
+            updateBuy();
+          });
+          pills.appendChild(pill);
+        });
+
+        group.appendChild(name);
+        group.appendChild(pills);
+        optionsWrap.appendChild(group);
+      });
+
+      updateBuy();
+    }
+
+    function openPopup(state) {
+      if (!popup || popupState || closing) return;
+      var data = state.data;
+      popupState = state;
+      lastFocus = document.activeElement;
+      turn(state);
+      holdAutoplay(4000);
+
+      hasBack = !!data.back;
+      fillFront(state);
+      faceBack.innerHTML = '';
+      if (data.back) faceBack.appendChild(makeImage(data.back));
+      stage.style.setProperty('--hrs-pr', data.front ? data.front.ratio : state.front);
+      stage.classList.toggle('hrs-no-back', !hasBack);
+      if (popupTabs) popupTabs.hidden = !hasBack;
+      stopAngle();
+      angle = angleTarget = 0;
+      applyAngle();
+      setTab(true);
+
+      if (popupIndex) popupIndex.textContent = pad(state.index + 1) + ' / ' + pad(states.length);
+      if (popupTitle) popupTitle.textContent = data.name || '';
+      popup.setAttribute('aria-label', data.name || '');
+      setPrice(data.price, data.compare);
+      if (popupLink) {
+        popupLink.hidden = !data.url;
+        popupLink.setAttribute('href', data.url || '#');
+      }
+      setupBuy(data);
+
+      bodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      popup.classList.add('hrs-is-open');
+      popup.setAttribute('aria-hidden', 'false');
+      popup.scrollTop = 0;
+
+      var from = state.garment.getBoundingClientRect();
+      if (settings.lift && canAnimate && !reduceMotion && inView(from)) {
+        state.el.style.visibility = 'hidden';
+        flight = fly(from, false);
+      } else if (canAnimate && !reduceMotion) {
+        flight = stage.animate([
+          { transform: 'scale(0.92)', opacity: 0 },
+          { transform: 'none', opacity: 1 }
+        ], { duration: 380, easing: 'cubic-bezier(0.2, 0.9, 0.3, 1)' });
+      }
+
+      requestAnimationFrame(function () {
+        if (popupState === state && !closing) popup.classList.add('hrs-is-visible');
+      });
+
+      if (closeButton) {
+        try {
+          closeButton.focus({ preventScroll: true });
+        } catch (error) {
+          closeButton.focus();
+        }
+      }
+    }
+
+    function closePopup(quick) {
+      if (!popupState || closing) return;
+      closing = true;
+      var state = popupState;
+      stopAngle();
+      dragging = false;
+      stage.classList.remove('hrs-is-dragging');
+      popup.classList.remove('hrs-is-visible');
+      popup.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = bodyOverflow;
+
+      function finish() {
+        if (flight) {
+          flight.cancel();
+          flight = null;
+        }
+        popup.classList.remove('hrs-is-open');
+        faceFront.innerHTML = '';
+        faceBack.innerHTML = '';
+        state.el.style.visibility = '';
+        popupState = null;
+        closing = false;
+        if (!(fineHover && state.el.matches(':hover'))) turn(null);
+        if (afterClose) {
+          var queued = afterClose;
+          afterClose = null;
+          queued();
+        }
+      }
+
+      var target = state.garment.getBoundingClientRect();
+      if (!quick && state.el.style.visibility === 'hidden' && canAnimate && !reduceMotion && inView(target)) {
+        if (flight) flight.cancel();
+        flight = fly(target, true, function () {
+          if (dead) return;
+          state.el.style.visibility = '';
+          push(state, (Math.random() > 0.5 ? 1 : -1) * 36);
+          finish();
+        });
+      } else {
+        state.el.style.visibility = '';
+        if (flight) flight.cancel();
+        flight = null;
+        if (!quick && canAnimate && !reduceMotion) {
+          flight = stage.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 260, easing: 'ease', fill: 'forwards' });
+        }
+        later(finish, quick ? 0 : 280);
+      }
+
+      if (lastFocus && lastFocus.focus && document.contains(lastFocus)) {
+        try {
+          lastFocus.focus({ preventScroll: true });
+        } catch (error) {}
+      }
+    }
+
+    if (popup) {
+      on(popup, 'click', function (event) {
+        if (suppressClick) {
+          suppressClick = false;
+          return;
+        }
+        if (event.target === popup || event.target === popupBg || event.target === popupInner) closePopup();
+      });
+
+      if (closeButton) {
+        on(closeButton, 'click', function (event) {
+          event.preventDefault();
+          closePopup();
+        });
+      }
+
+      tabButtons.forEach(function (button) {
+        on(button, 'click', function () {
+          goToAngle(button.getAttribute('data-hrs-face') === 'front' ? 0 : 180);
+        });
+      });
+
+      on(document, 'keydown', function (event) {
+        if (!popupState || closing) return;
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closePopup();
+          return;
+        }
+        if (event.key !== 'Tab') return;
+        var focusable = Array.prototype.filter.call(popup.querySelectorAll('button, a[href]'), function (el) {
+          return !el.disabled && el.getClientRects().length > 0;
+        });
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (!popup.contains(document.activeElement)) {
+          event.preventDefault();
+          first.focus();
+        } else if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+    }
+
+    function flyToCart() {
+      if (reduceMotion || !canAnimate || !faceFront) return;
+      var image = faceFront.querySelector('img, svg');
+      if (!image) return;
+      var from = image.getBoundingClientRect();
+      if (!from.width) return;
+      var target = document.querySelector('#cart-icon-bubble, [data-cart-icon], .header__icon--cart, a[href$="/cart"]');
+      var to = target ? target.getBoundingClientRect() : null;
+      if (!to || !to.width) to = { left: window.innerWidth - 48, top: 18, width: 24, height: 24 };
+      var ghost = image.cloneNode(true);
+      ghost.setAttribute('class', 'hrs-fly-{{ section.id }}');
+      ghost.style.left = from.left + 'px';
+      ghost.style.top = from.top + 'px';
+      ghost.style.width = from.width + 'px';
+      ghost.style.height = from.height + 'px';
+      document.body.appendChild(ghost);
+      var dx = to.left + to.width / 2 - (from.left + from.width / 2);
+      var dy = to.top + to.height / 2 - (from.top + from.height / 2);
+      var animation = ghost.animate([
+        { transform: 'translate(0, 0) scale(0.9)', opacity: 1 },
+        { transform: 'translate(' + dx * 0.5 + 'px, ' + (dy * 0.5 - 60) + 'px) scale(0.35) rotate(-8deg)', opacity: 1, offset: 0.6 },
+        { transform: 'translate(' + dx + 'px, ' + dy + 'px) scale(0.05) rotate(-14deg)', opacity: 0.2 }
+      ], { duration: 800, easing: 'cubic-bezier(0.5, 0, 0.3, 1)' });
+      animation.onfinish = function () {
+        if (ghost.parentNode) ghost.parentNode.removeChild(ghost);
+      };
+    }
+
+    function openCart(data, variantId, cartApp) {
+      var themeSchemaName = (window.Shopify && window.Shopify.theme && window.Shopify.theme.schema_name || '').toLowerCase();
+      var isCartApp = function (name) { return cartApp === name || cartApp === 'auto-detect'; };
+
+      if (isCartApp('upcart') && window.upcartOpenCart) {
+        window.upcartOpenCart();
+        window.upcartRefreshCart();
+        return;
+      }
+
+      if (isCartApp('amp-cart') && window.SLIDECART_OPEN) {
+        window.SLIDECART_UPDATE();
+        window.SLIDECART_OPEN();
+        return;
+      }
+
+      if (isCartApp('kaching-cart') && window.kachingCartApi) {
+        window.kachingCartApi.openCart({ refetchCart: true });
+        return;
+      }
+
+      var drawerEl = document.querySelector('cart-drawer, cart-notification');
+      if (drawerEl && ['prestige', 'symmetry'].indexOf(themeSchemaName) === -1) {
+        if (typeof drawerEl.renderContents === 'function') {
+          var items = data.items || [];
+          items.forEach(function (item) {
+            item.sections = data.sections;
+            drawerEl.renderContents(item);
+          });
+          drawerEl.classList.remove('is-empty');
+        } else if (data.sections) {
+          var parser = new DOMParser();
+          Object.keys(data.sections).forEach(function (id) {
+            var src = parser.parseFromString(data.sections[id], 'text/html').getElementById(id);
+            var dest = document.getElementById(id);
+            if (src && dest) dest.innerHTML = src.innerHTML;
+          });
+        }
+        if (typeof drawerEl.open === 'function') drawerEl.open();
+        else if (typeof drawerEl.show === 'function') drawerEl.show();
+        return;
+      }
+
+      var modernHorizonDrawer = document.querySelector('theme-drawer#cart-drawer');
+      if (modernHorizonDrawer) {
+        var shopRoot = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+        var cartUpdatePromise = fetch(shopRoot.replace(/\/?$/, '/') + 'cart.js')
+          .then(function (response) {
+            if (!response.ok) throw new Error('Unable to refresh the cart.');
+            return response.json();
+          })
+          .then(function (cart) {
+            return {
+              cart: { totalQuantity: cart.item_count },
+              detail: {
+                didError: false,
+                itemCount: 1,
+                items: cart.items,
+                source: 'ss-hangrail-showcase',
+                sections: data.sections
+              }
+            };
+          });
+
+        var cartUpdateEvent = new Event('shopify:cart:lines-update', { bubbles: true });
+        cartUpdateEvent.action = 'add';
+        cartUpdateEvent.context = 'product';
+        cartUpdateEvent.lines = [{ merchandiseId: String(variantId), quantity: 1 }];
+        cartUpdateEvent.promise = cartUpdatePromise;
+        modernHorizonDrawer.dispatchEvent(cartUpdateEvent);
+
+        cartUpdatePromise.then(function () {
+          if (modernHorizonDrawer.hasAttribute('open')) return;
+          if (window.Shopify && window.Shopify.actions && typeof window.Shopify.actions.openCart === 'function') {
+            return window.Shopify.actions.openCart().catch(function () {
+              if (typeof modernHorizonDrawer.open === 'function') modernHorizonDrawer.open();
+              else window.location.href = '/cart';
+            });
+          }
+          if (typeof modernHorizonDrawer.open === 'function') modernHorizonDrawer.open();
+          else window.location.href = '/cart';
+        }).catch(function () {
+          window.location.href = '/cart';
+        });
+        return;
+      }
+
+      if (document.querySelector('cart-drawer-component')) {
+        var cartUpdateEvent2 = new Event('cart:update', { bubbles: true });
+        cartUpdateEvent2.detail = { data: { itemCount: 1, source: 'ss-hangrail-showcase' } };
+        document.dispatchEvent(cartUpdateEvent2);
+
+        setTimeout(function () {
+          var cartDrawerComponent = document.querySelector('cart-drawer-component');
+          if (cartDrawerComponent) cartDrawerComponent.open();
+        }, 100);
+        return;
+      }
+
+      if (themeSchemaName === 'impulse') {
+        if (!window.theme || !window.theme.settings || window.theme.settings.cartType !== 'page') {
+          document.dispatchEvent(new CustomEvent('ajaxProduct:added'));
+          return;
+        }
+      }
+
+      if (themeSchemaName === 'prestige') {
+        if (!window.themeVariables || !window.themeVariables.settings || window.themeVariables.settings.cartType !== 'page') {
+          document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+          var cartDrawer = document.querySelector('cart-drawer');
+          if (cartDrawer) cartDrawer.show();
+          else document.dispatchEvent(new CustomEvent('product:added', { detail: {} }));
+          return;
+        }
+      }
+
+      if (themeSchemaName === 'symmetry') {
+        var afterAddToCart = (window.theme && window.theme.settings && (window.theme.settings.afterAddToCart || window.theme.settings.after_add_to_cart)) || '';
+        if (afterAddToCart === 'drawer') {
+          document.dispatchEvent(new CustomEvent('theme:cartchanged', { bubbles: true, cancelable: false, detail: { openDrawer: true } }));
+          document.dispatchEvent(new CustomEvent('on:cart:change'));
+          document.dispatchEvent(new CustomEvent('dispatch:cart-drawer:refresh'));
+          document.dispatchEvent(new CustomEvent('dispatch:cart-drawer:open'));
+          return;
+        } else if (afterAddToCart === 'notification') {
+          document.documentElement.dispatchEvent(new CustomEvent('theme:cartchanged', { bubbles: true, cancelable: false }));
+          var notifTemplate = document.getElementById('AddedNotification');
+          if (notifTemplate) {
+            var items2 = data.items || [];
+            items2.forEach(function (item) {
+              var notification = notifTemplate.content.firstElementChild.cloneNode(true);
+              notification.dataset.productTitle = item.product_title;
+              var notificationContainer = document.querySelector('.pageheader--sticky') || document.querySelector('body');
+              notificationContainer.appendChild(notification);
+            });
+          }
+          return;
+        }
+      }
+
+      window.location.href = (window.theme && window.theme.routes && window.theme.routes.cartPage) || '/cart';
+    }
+
+    function addToCart(variantId) {
+      if (busy || !variantId) return;
+      busy = true;
+      var addedState = popupState;
+      atcButton.disabled = true;
+      atcButton.classList.add('hrs-is-busy');
+      if (errorEl) errorEl.textContent = '';
+
+      var cartApp = atcButton.getAttribute('data-cart-app') || 'auto-detect';
+      var root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+      var cartEl = document.querySelector('cart-drawer, cart-notification');
+      var sections;
+      if (cartEl && typeof cartEl.getSectionsToRender === 'function') {
+        sections = cartEl.getSectionsToRender().map(function (s) { return s.id; });
+      } else {
+        sections = ['cart-notification', 'cart-drawer', 'cart-icon-bubble'];
+      }
+      document.querySelectorAll('cart-items-component').forEach(function (item) {
+        if (item instanceof HTMLElement && item.dataset.sectionId) sections.push(item.dataset.sectionId);
+      });
+
+      fetch(root + 'cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+        body: JSON.stringify({ items: [{ id: parseInt(variantId, 10), quantity: 1 }], sections: sections })
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (dead) return;
+          var current = popupState === addedState;
+          if (data.status) {
+            if (current && errorEl) errorEl.textContent = data.description || data.message || settings.errorLabel;
+            return;
+          }
+          var showCart = function () {
+            if (popupState && popupState !== addedState) {
+              afterClose = showCart;
+              return;
+            }
+            afterClose = null;
+            closePopup(true);
+            openCart(data, variantId, cartApp);
+          };
+          if (!current) {
+            showCart();
+            return;
+          }
+          atcLabel.textContent = '✓';
+          flyToCart();
+          later(showCart, 520);
+        })
+        .catch(function () {
+          if (dead) return;
+          if (popupState === addedState && errorEl) errorEl.textContent = settings.errorLabel;
+        })
+        .finally(function () {
+          busy = false;
+          if (dead) return;
+          atcButton.classList.remove('hrs-is-busy');
+          later(updateBuy, popupState === addedState ? 900 : 0);
+        });
+    }
+
+    if (atcButton) {
+      on(atcButton, 'click', function (event) {
+        event.preventDefault();
+        if (currentVariant && currentVariant.available) addToCart(currentVariant.id);
+      });
+    }
+
+    function select(blockId) {
+      var state = states.filter(function (s) { return s.blockId === blockId; })[0];
+      if (!state) return;
+      if (isScrolling()) {
+        holdAutoplay(10000);
+        scrollToItem(state.index);
+        later(function () {
+          if (turned === state && !isFullyVisible(state)) scrollToItem(state.index);
+        }, settings.turnMs);
+      }
+      turn(state);
+    }
+
+    function deselect() {
+      turn(null);
+    }
+
+    function destroy() {
+      dead = true;
+      if (popupState) document.body.style.overflow = bodyOverflow;
+      cleanups.forEach(function (cleanup) { cleanup(); });
+      timers.forEach(function (id) { clearTimeout(id); });
+      clearTimeout(titleTimer);
+      if (autoplayTimer) clearInterval(autoplayTimer);
+      if (swingFrame) cancelAnimationFrame(swingFrame);
+      if (angleFrame) cancelAnimationFrame(angleFrame);
+      if (layoutFrame) cancelAnimationFrame(layoutFrame);
+      if (turnFrame) cancelAnimationFrame(turnFrame);
+      if (bendFrame) cancelAnimationFrame(bendFrame);
+      if (dotFrame) cancelAnimationFrame(dotFrame);
+      if (flight) flight.cancel();
+      if (observer) observer.disconnect();
+      if (resizeObserver) resizeObserver.disconnect();
+      if (popup && popup.parentNode) popup.parentNode.removeChild(popup);
+      section._hrs = null;
+    }
+
+    section._hrs = { select: select, deselect: deselect, destroy: destroy };
+  }
+
+  if (document.readyState !== 'loading') {
+    initHrs_{{ section.id | replace: '-', '_' }}();
+  } else {
+    document.addEventListener('DOMContentLoaded', initHrs_{{ section.id | replace: '-', '_' }});
+  }
+
+  if (window.Shopify && Shopify.designMode && !window.hrsEditor_{{ section.id | replace: '-', '_' }}) {
+    window.hrsEditor_{{ section.id | replace: '-', '_' }} = true;
+
+    document.addEventListener('shopify:section:load', function (event) {
+      if (event.detail.sectionId === '{{ section.id }}') initHrs_{{ section.id | replace: '-', '_' }}();
+    });
+
+    document.addEventListener('shopify:section:unload', function (event) {
+      if (event.detail.sectionId !== '{{ section.id }}') return;
+      var section = document.querySelector('.hrs-section-{{ section.id }}');
+      if (section && section._hrs) section._hrs.destroy();
+    });
+
+    document.addEventListener('shopify:block:select', function (event) {
+      if (event.detail.sectionId !== '{{ section.id }}') return;
+      var section = document.querySelector('.hrs-section-{{ section.id }}');
+      if (section && section._hrs) section._hrs.select(event.detail.blockId);
+    });
+
+    document.addEventListener('shopify:block:deselect', function (event) {
+      if (event.detail.sectionId !== '{{ section.id }}') return;
+      var section = document.querySelector('.hrs-section-{{ section.id }}');
+      if (section && section._hrs) section._hrs.deselect();
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "SS - Hangrail showcase",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "⚠️ Save to display section correctly"
+    },
+    {
+      "type": "header",
+      "content": "Rack"
+    },
+    {
+      "type": "range",
+      "id": "garment_height",
+      "min": 200,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "label": "Product height",
+      "info": "Products shrink to fit the page. If there are too many, the rack scrolls sideways.",
+      "default": 420
+    },
+    {
+      "type": "range",
+      "id": "garment_height_mobile",
+      "min": 160,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Product height - mobile",
+      "info": "Adjusts slightly so whole products fit the screen width.",
+      "default": 300
+    },
+    {
+      "type": "range",
+      "id": "garment_gap",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Spacing",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "garment_gap_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Spacing - mobile",
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rod",
+      "label": "Show rail",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "rail_finish",
+      "label": "Rail finish",
+      "info": "Hanger hooks use the same finish.",
+      "default": "silver",
+      "options": [
+        {
+          "label": "Silver",
+          "value": "silver"
+        },
+        {
+          "label": "Stainless steel",
+          "value": "steel"
+        },
+        {
+          "label": "Gold",
+          "value": "gold"
+        },
+        {
+          "label": "Bronze",
+          "value": "bronze"
+        },
+        {
+          "label": "Rose gold",
+          "value": "rose_gold"
+        },
+        {
+          "label": "Matte black",
+          "value": "black"
+        },
+        {
+          "label": "Matte white",
+          "value": "white"
+        },
+        {
+          "label": "Wood",
+          "value": "wood"
+        },
+        {
+          "label": "Custom color",
+          "value": "custom"
+        }
+      ],
+      "visible_if": "{{ section.settings.show_rod or section.settings.hanger_hooks }}"
+    },
+    {
+      "type": "color",
+      "id": "rod_color",
+      "label": "Rail color",
+      "default": "#C8C8C8",
+      "visible_if": "{{ section.settings.show_rod and section.settings.rail_finish == 'custom' }}"
+    },
+    {
+      "type": "color",
+      "id": "hook_color",
+      "label": "Hanger hook color",
+      "default": "#8C8C8C",
+      "visible_if": "{{ section.settings.hanger_hooks and section.settings.rail_finish == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "rail_style",
+      "label": "Rail style",
+      "info": "Curved shows on desktop when all products fit in one row.",
+      "default": "brackets",
+      "options": [
+        {
+          "label": "Wall brackets",
+          "value": "brackets"
+        },
+        {
+          "label": "Bar only",
+          "value": "none"
+        },
+        {
+          "label": "Curved",
+          "value": "curved"
+        }
+      ],
+      "visible_if": "{{ section.settings.show_rod }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "hanger_hooks",
+      "label": "Show hanger hooks",
+      "info": "Turn on if your images don't include a hanger. Products without images always show one.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Price tags"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show price tags",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tag_status",
+      "label": "Flip to sale or sold out label",
+      "info": "The tag flips when a product turns to the front.",
+      "default": true,
+      "visible_if": "{{ section.settings.show_tags }}"
+    },
+    {
+      "type": "text",
+      "id": "tag_sale_label",
+      "label": "Sale label",
+      "default": "Sale",
+      "visible_if": "{{ section.settings.show_tags and section.settings.show_tag_status }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "tag_custom",
+      "label": "Use custom font",
+      "default": false,
+      "visible_if": "{{ section.settings.show_tags }}"
+    },
+    {
+      "type": "font_picker",
+      "id": "tag_font",
+      "label": "Font family",
+      "default": "assistant_n4",
+      "visible_if": "{{ section.settings.show_tags and section.settings.tag_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "tag_size",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 11,
+      "visible_if": "{{ section.settings.show_tags }}"
+    },
+    {
+      "type": "range",
+      "id": "tag_size_mobile",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size - mobile",
+      "default": 10,
+      "visible_if": "{{ section.settings.show_tags }}"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "turn_speed",
+      "min": 200,
+      "max": 1500,
+      "step": 50,
+      "unit": "ms",
+      "label": "Turn speed",
+      "info": "🐇 ———●——— 🐢",
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "swing_strength",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Swing strength",
+      "info": "How much products sway on scroll and hover. Set to 0 to turn off.",
+      "default": 70
+    },
+    {
+      "type": "checkbox",
+      "id": "drop_in",
+      "label": "Drop in on scroll",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Product popup"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_popup",
+      "label": "Open popup on click",
+      "info": "When off, clicking a product opens its page.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "lift_animation",
+      "label": "Lift product into popup",
+      "default": true,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "text",
+      "id": "front_label",
+      "label": "Front tab label",
+      "default": "Front",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "text",
+      "id": "back_label",
+      "label": "Back tab label",
+      "default": "Back",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Product link label",
+      "info": "Leave blank to hide the link.",
+      "default": "View product",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quickadd",
+      "label": "Show add to cart",
+      "default": true,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "text",
+      "id": "atc_label",
+      "label": "Add to cart label",
+      "default": "Add to cart",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "text",
+      "id": "soldout_label",
+      "label": "Sold out label",
+      "info": "Used on price tags and the add to cart button.",
+      "default": "Sold out"
+    },
+    {
+      "type": "text",
+      "id": "atc_error_label",
+      "label": "Error message",
+      "info": "Shown if adding fails and the store gives no reason.",
+      "default": "Error adding to cart",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "select",
+      "id": "cart_app",
+      "label": "Cart app",
+      "default": "auto-detect",
+      "options": [
+        {
+          "label": "Auto-detect",
+          "value": "auto-detect"
+        },
+        {
+          "label": "Upcart Cart Drawer",
+          "value": "upcart"
+        },
+        {
+          "label": "AMP Drawer",
+          "value": "amp-cart"
+        },
+        {
+          "label": "Kaching Cart",
+          "value": "kaching-cart"
+        },
+        {
+          "label": "None",
+          "value": "none"
+        }
+      ],
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "header",
+      "content": "Popup title",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "popup_title_custom",
+      "label": "Use custom font",
+      "default": false,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "font_picker",
+      "id": "popup_title_font",
+      "label": "Font family",
+      "default": "assistant_n7",
+      "visible_if": "{{ section.settings.show_popup and section.settings.popup_title_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "popup_title_size",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 28,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "range",
+      "id": "popup_title_size_mobile",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size - mobile",
+      "default": 22,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "popup_title_advanced",
+      "label": "Show advanced settings",
+      "default": false,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "range",
+      "id": "popup_title_height",
+      "min": 80,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "label": "Line height",
+      "default": 130,
+      "visible_if": "{{ section.settings.show_popup and section.settings.popup_title_advanced }}"
+    },
+    {
+      "type": "header",
+      "content": "Popup text",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "popup_text_custom",
+      "label": "Use custom font",
+      "default": false,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "font_picker",
+      "id": "popup_text_font",
+      "label": "Font family",
+      "default": "assistant_n4",
+      "visible_if": "{{ section.settings.show_popup and section.settings.popup_text_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "popup_text_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 15,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "range",
+      "id": "popup_text_size_mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size - mobile",
+      "default": 14,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "popup_text_advanced",
+      "label": "Show advanced settings",
+      "default": false,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "range",
+      "id": "popup_text_height",
+      "min": 80,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "label": "Line height",
+      "default": 150,
+      "visible_if": "{{ section.settings.show_popup and section.settings.popup_text_advanced }}"
+    },
+    {
+      "type": "header",
+      "content": "Add to cart button",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "select",
+      "id": "atc_button_style",
+      "label": "Style",
+      "default": "non_outline",
+      "options": [
+        { "label": "Link", "value": "link" },
+        { "label": "Non-outline", "value": "non_outline" },
+        { "label": "Non-outline & arrow", "value": "non_outline_arrow" },
+        { "label": "Outline", "value": "outline" },
+        { "label": "Outline & arrow", "value": "outline_arrow" }
+      ],
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "atc_button_custom",
+      "label": "Use custom font",
+      "default": false,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "font_picker",
+      "id": "atc_button_font",
+      "label": "Font family",
+      "default": "assistant_n7",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_custom }}"
+    },
+    {
+      "type": "range",
+      "id": "atc_button_size",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "range",
+      "id": "atc_button_size_mobile",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size - mobile",
+      "default": 14,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "atc_button_advanced",
+      "label": "Show advanced settings",
+      "default": false,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "range",
+      "id": "atc_button_height",
+      "min": 80,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "label": "Line height",
+      "default": 100,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_advanced }}"
+    },
+    {
+      "type": "range",
+      "id": "atc_button_padding_horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding horizontal",
+      "default": 40,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_advanced and section.settings.atc_button_style != 'link' }}"
+    },
+    {
+      "type": "range",
+      "id": "atc_button_padding_horizontal_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding horizontal - mobile",
+      "default": 32,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_advanced and section.settings.atc_button_style != 'link' }}"
+    },
+    {
+      "type": "range",
+      "id": "atc_button_padding_vertical",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding vertical",
+      "default": 20,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_advanced and section.settings.atc_button_style != 'link' }}"
+    },
+    {
+      "type": "range",
+      "id": "atc_button_padding_vertical_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding vertical - mobile",
+      "default": 20,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_advanced and section.settings.atc_button_style != 'link' }}"
+    },
+    {
+      "type": "range",
+      "id": "atc_button_radius",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Roundness",
+      "default": 100,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_style != 'link' }}"
+    },
+    {
+      "type": "range",
+      "id": "atc_button_border_thickness",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Border thickness",
+      "default": 1,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_style == 'outline' or section.settings.atc_button_style == 'outline_arrow' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "atc_button_custom_styling",
+      "label": "Use custom styling",
+      "default": true,
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_style != 'link' }}"
+    },
+    {
+      "type": "header",
+      "content": "Mobile slider"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Change slides every",
+      "default": 4,
+      "visible_if": "{{ section.settings.autoplay }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show dots",
+      "info": "Also shown on desktop when the rack scrolls.",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Price tag colors",
+      "visible_if": "{{ section.settings.show_tags }}"
+    },
+    {
+      "type": "color",
+      "id": "tag_bg_color",
+      "label": "Background",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.show_tags }}"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Text",
+      "default": "#121212",
+      "visible_if": "{{ section.settings.show_tags }}"
+    },
+    {
+      "type": "color",
+      "id": "tag_status_bg_color",
+      "label": "Sale and sold out background",
+      "default": "#121212",
+      "visible_if": "{{ section.settings.show_tags and section.settings.show_tag_status }}"
+    },
+    {
+      "type": "color",
+      "id": "tag_status_text_color",
+      "label": "Sale and sold out text",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.show_tags and section.settings.show_tag_status }}"
+    },
+    {
+      "type": "header",
+      "content": "Popup colors",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "color",
+      "id": "popup_bg_color",
+      "label": "Background",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "range",
+      "id": "popup_bg_opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "label": "Background opacity",
+      "default": 0.9,
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "color",
+      "id": "popup_title_color",
+      "label": "Title",
+      "default": "#121212",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "color",
+      "id": "popup_text_color",
+      "label": "Text",
+      "default": "#555555",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "color",
+      "id": "popup_accent_color",
+      "label": "Accent",
+      "info": "Selected option and active tab.",
+      "default": "#121212",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "color",
+      "id": "popup_accent_text_color",
+      "label": "Accent text",
+      "info": "Text on the selected option.",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "color",
+      "id": "popup_border_color",
+      "label": "Border",
+      "default": "#E5E5E5",
+      "visible_if": "{{ section.settings.show_popup }}"
+    },
+    {
+      "type": "header",
+      "content": "Add to cart button colors",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "color",
+      "id": "atc_button_color",
+      "label": "Text",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "color",
+      "id": "atc_button_hover_color",
+      "label": "Text hover",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd }}"
+    },
+    {
+      "type": "color",
+      "id": "atc_button_bg_color",
+      "label": "Background",
+      "default": "#2d2d2d",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_style != 'link' }}"
+    },
+    {
+      "type": "color",
+      "id": "atc_button_bg_hover_color",
+      "label": "Background hover",
+      "default": "#2d2d2d",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_style != 'link' }}"
+    },
+    {
+      "type": "color",
+      "id": "atc_button_border_color",
+      "label": "Border",
+      "default": "#1a1a1a",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_style == 'outline' or section.settings.atc_button_style == 'outline_arrow' }}"
+    },
+    {
+      "type": "color",
+      "id": "atc_button_border_hover_color",
+      "label": "Border hover",
+      "default": "#1a1a1a",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_style == 'outline' or section.settings.atc_button_style == 'outline_arrow' }}"
+    },
+    {
+      "type": "color",
+      "id": "atc_button_shadow_color",
+      "label": "Shadow",
+      "default": "#000000",
+      "visible_if": "{{ section.settings.show_popup and section.settings.show_quickadd and section.settings.atc_button_style != 'link' and section.settings.atc_button_custom_styling }}"
+    },
+    {
+      "type": "header",
+      "content": "Slider colors",
+      "visible_if": "{{ section.settings.show_dots }}"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Dots",
+      "default": "#CCCCCC",
+      "visible_if": "{{ section.settings.show_dots }}"
+    },
+    {
+      "type": "color",
+      "id": "dot_active_color",
+      "label": "Active dot",
+      "default": "#121212",
+      "visible_if": "{{ section.settings.show_dots }}"
+    },
+    {
+      "type": "header",
+      "content": "Section colors"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background style",
+      "default": "solid",
+      "options": [
+        {
+          "label": "Solid",
+          "value": "solid"
+        },
+        {
+          "label": "Gradient",
+          "value": "gradient"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#FFFFFF",
+      "visible_if": "{{ section.settings.background_style == 'solid' }}"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Gradient",
+      "default": "linear-gradient(180deg, #FFFFFF 0%, #F2F2F2 100%)",
+      "visible_if": "{{ section.settings.background_style == 'gradient' }}"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Section margin (outside)"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_horizontal",
+      "min": 0,
+      "max": 30,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Sides",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_horizontal_mobile",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Sides - mobile",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section padding (inside)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "min": 0,
+      "max": 30,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Sides",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 15,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Sides - mobile",
+      "default": 1.5
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width",
+      "default": "page",
+      "options": [
+        {
+          "label": "Page",
+          "value": "page"
+        },
+        {
+          "label": "Full",
+          "value": "full"
+        },
+        {
+          "label": "Custom",
+          "value": "custom"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 800,
+      "max": 2000,
+      "step": 100,
+      "unit": "px",
+      "label": "Content width",
+      "default": 1200,
+      "visible_if": "{{ section.settings.width == 'custom' }}"
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Border thickness",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "section_radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Roundness",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "lazy",
+      "label": "Lazy load",
+      "info": "Lazy load images for speed optimisation",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "caption",
+      "name": "Caption",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Text",
+          "default": "NEW SEASON"
+        },
+        {
+          "type": "text",
+          "id": "caption_secondary",
+          "label": "Secondary text",
+          "info": "Shown after a divider in a lighter color.",
+          "default": "EVERYDAY ESSENTIALS"
+        },
+        {
+          "type": "checkbox",
+          "id": "caption_custom",
+          "label": "Use custom font",
+          "default": false
+        },
+        {
+          "type": "font_picker",
+          "id": "caption_font",
+          "label": "Font family",
+          "default": "assistant_n4",
+          "visible_if": "{{ block.settings.caption_custom }}"
+        },
+        {
+          "type": "range",
+          "id": "caption_size",
+          "min": 0,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "default": 13
+        },
+        {
+          "type": "range",
+          "id": "caption_size_mobile",
+          "min": 0,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size - mobile",
+          "default": 11
+        },
+        {
+          "type": "checkbox",
+          "id": "caption_advanced",
+          "label": "Show advanced settings",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "caption_height",
+          "min": 80,
+          "max": 200,
+          "step": 5,
+          "unit": "%",
+          "label": "Line height",
+          "default": 150,
+          "visible_if": "{{ block.settings.caption_advanced }}"
+        },
+        {
+          "type": "range",
+          "id": "caption_mb",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Margin bottom",
+          "default": 28,
+          "visible_if": "{{ block.settings.caption_advanced }}"
+        },
+        {
+          "type": "range",
+          "id": "caption_mb_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Margin bottom - mobile",
+          "default": 20,
+          "visible_if": "{{ block.settings.caption_advanced }}"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "caption_color",
+          "label": "Text",
+          "default": "#121212"
+        },
+        {
+          "type": "color",
+          "id": "caption_secondary_color",
+          "label": "Secondary text",
+          "default": "#555555"
+        },
+        {
+          "type": "color",
+          "id": "caption_divider_color",
+          "label": "Divider",
+          "default": "#CCCCCC"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_side",
+          "label": "Side view",
+          "info": "Shown on the rail. A transparent PNG or WebP works best."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_front",
+          "label": "Front view",
+          "info": "Shown on hover and in the popup. Uses the product image if empty."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_back",
+          "label": "Back view",
+          "info": "Adds a Back tab to the popup."
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Pick a piece to take a closer look"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_name",
+          "label": "Show product name on hover",
+          "info": "Swaps the title for the name of the product being hovered or tapped.",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "title_custom",
+          "label": "Use custom font",
+          "default": false
+        },
+        {
+          "type": "font_picker",
+          "id": "title_font",
+          "label": "Font family",
+          "default": "assistant_n7",
+          "visible_if": "{{ block.settings.title_custom }}"
+        },
+        {
+          "type": "range",
+          "id": "title_size",
+          "min": 0,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "default": 18
+        },
+        {
+          "type": "range",
+          "id": "title_size_mobile",
+          "min": 0,
+          "max": 60,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size - mobile",
+          "default": 16
+        },
+        {
+          "type": "checkbox",
+          "id": "title_advanced",
+          "label": "Show advanced settings",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "title_height",
+          "min": 80,
+          "max": 200,
+          "step": 5,
+          "unit": "%",
+          "label": "Line height",
+          "default": 130,
+          "visible_if": "{{ block.settings.title_advanced }}"
+        },
+        {
+          "type": "range",
+          "id": "title_mt",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Margin top",
+          "default": 28,
+          "visible_if": "{{ block.settings.title_advanced }}"
+        },
+        {
+          "type": "range",
+          "id": "title_mt_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Margin top - mobile",
+          "default": 20,
+          "visible_if": "{{ block.settings.title_advanced }}"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Text",
+          "default": "#121212"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button",
+          "label": "Button label",
+          "default": "Shop now"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_tab",
+          "label": "Open link in new tab",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Style",
+          "default": "non_outline",
+          "options": [
+            { "label": "Link", "value": "link" },
+            { "label": "Non-outline", "value": "non_outline" },
+            { "label": "Non-outline & arrow", "value": "non_outline_arrow" },
+            { "label": "Outline", "value": "outline" },
+            { "label": "Outline & arrow", "value": "outline_arrow" }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "button_custom",
+          "label": "Use custom font",
+          "default": false
+        },
+        {
+          "type": "font_picker",
+          "id": "button_font",
+          "label": "Font family",
+          "default": "assistant_n7",
+          "visible_if": "{{ block.settings.button_custom }}"
+        },
+        {
+          "type": "range",
+          "id": "button_size",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "button_size_mobile",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "label": "Font size - mobile",
+          "default": 14
+        },
+        {
+          "type": "checkbox",
+          "id": "button_advanced",
+          "label": "Show advanced settings",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "button_height",
+          "min": 80,
+          "max": 200,
+          "step": 5,
+          "unit": "%",
+          "label": "Line height",
+          "default": 100,
+          "visible_if": "{{ block.settings.button_advanced }}"
+        },
+        {
+          "type": "range",
+          "id": "button_padding_horizontal",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Padding horizontal",
+          "default": 40,
+          "visible_if": "{{ block.settings.button_style != 'link' and block.settings.button_advanced }}"
+        },
+        {
+          "type": "range",
+          "id": "button_padding_horizontal_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Padding horizontal - mobile",
+          "default": 32,
+          "visible_if": "{{ block.settings.button_style != 'link' and block.settings.button_advanced }}"
+        },
+        {
+          "type": "range",
+          "id": "button_padding_vertical",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Padding vertical",
+          "default": 20,
+          "visible_if": "{{ block.settings.button_style != 'link' and block.settings.button_advanced }}"
+        },
+        {
+          "type": "range",
+          "id": "button_padding_vertical_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Padding vertical - mobile",
+          "default": 20,
+          "visible_if": "{{ block.settings.button_style != 'link' and block.settings.button_advanced }}"
+        },
+        {
+          "type": "range",
+          "id": "button_radius",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Roundness",
+          "default": 100,
+          "visible_if": "{{ block.settings.button_style != 'link' }}"
+        },
+        {
+          "type": "range",
+          "id": "button_border_thickness",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "label": "Border thickness",
+          "default": 1,
+          "visible_if": "{{ block.settings.button_style == 'outline' or block.settings.button_style == 'outline_arrow' }}"
+        },
+        {
+          "type": "range",
+          "id": "button_mt",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Margin top",
+          "default": 30,
+          "visible_if": "{{ block.settings.button_advanced }}"
+        },
+        {
+          "type": "range",
+          "id": "button_mt_mobile",
+          "min": 0,
+          "max": 100,
+          "step": 2,
+          "unit": "px",
+          "label": "Margin top - mobile",
+          "default": 24,
+          "visible_if": "{{ block.settings.button_advanced }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_custom_styling",
+          "label": "Use custom styling",
+          "default": true,
+          "visible_if": "{{ block.settings.button_style != 'link' }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_full_width_mobile",
+          "label": "Full width on mobile",
+          "default": false,
+          "visible_if": "{{ block.settings.button_style != 'link' }}"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "label": "Text",
+          "id": "button_color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "label": "Text hover",
+          "id": "button_hover_color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "label": "Background",
+          "id": "button_bg_color",
+          "default": "#2d2d2d",
+          "visible_if": "{{ block.settings.button_style != 'link' }}"
+        },
+        {
+          "type": "color",
+          "label": "Background hover",
+          "id": "button_bg_hover_color",
+          "default": "#2d2d2d",
+          "visible_if": "{{ block.settings.button_style != 'link' }}"
+        },
+        {
+          "type": "color",
+          "label": "Border",
+          "id": "button_border_color",
+          "default": "#1a1a1a",
+          "visible_if": "{{ block.settings.button_style == 'outline' or block.settings.button_style == 'outline_arrow' }}"
+        },
+        {
+          "type": "color",
+          "label": "Border hover",
+          "id": "button_border_hover_color",
+          "default": "#1a1a1a",
+          "visible_if": "{{ block.settings.button_style == 'outline' or block.settings.button_style == 'outline_arrow' }}"
+        },
+        {
+          "type": "color",
+          "label": "Shadow",
+          "id": "button_shadow_color",
+          "default": "#000000",
+          "visible_if": "{{ block.settings.button_style != 'link' and block.settings.button_custom_styling }}"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SS - Hangrail showcase",
+      "blocks": [
+        { "type": "caption" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "title" },
+        { "type": "button" }
+      ]
+    }
+  ]
+}
+{% endschema %}
