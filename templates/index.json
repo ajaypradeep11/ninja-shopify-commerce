@@ -35,8 +35,8 @@
         }
       },
       "block_order": [
-        "slide_2",
         "slide_1",
+        "slide_2",
         "slide_3"
       ],
       "custom_css": [
