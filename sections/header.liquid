@@ -157,15 +157,11 @@
               href="{{ routes.cart_url }}"
               aria-label="Cart, {{ cart.item_count }} items"
             >
-              {% render 'icon', name: 'bag' %}
-
-              <span
-                class="cart-count"
-                data-cart-count
-                {% if cart.item_count == 0 %}hidden{% endif %}
-              >
-                {{ cart.item_count }}
+              <span class="cart-link__icon" aria-hidden="true">
+                {% render 'icon', name: 'bag' %}
+                <span class="cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span>
               </span>
+              <span>{{ 'general.cart' | t }}</span>
             </a>
           </div>
         </div>

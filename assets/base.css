@@ -549,10 +549,22 @@ h1 {
   transform: translateY(-50%);
 }
 
+.cart-link {
+  width: auto;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.cart-link__icon {
+  position: relative;
+  display: inline-flex;
+}
+
 .cart-count {
   position: absolute;
-  top: -2px;
-  right: -2px;
+  top: -7px;
+  right: -5px;
   display: grid;
   min-width: 18px;
   height: 18px;
@@ -945,6 +957,39 @@ h1 {
 .card-quick-add__options .button { min-height: 34px; padding: 5px; font-size: 13px; }
 .card-quick-add button:disabled { opacity: .55; cursor: default; }
 
+.card-quick-add:has(.card-quick-add__sizes):has(details[open]) {
+  max-height: calc(100% - 16px);
+  overflow-y: auto;
+}
+
+.card-quick-add__sizes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+  min-width: 0;
+  margin: 3px 0 0;
+  padding: 3px;
+  border: 0;
+}
+
+.card-quick-add__size {
+  min-width: 36px;
+  min-height: 36px;
+  max-width: 100%;
+  padding: 4px 8px;
+  border-radius: var(--radius);
+  background: #ffd84d;
+  color: #17161a;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+  font-size: 14px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.card-quick-add__size small { display: block; font-weight: 400; }
+.card-quick-add__size:focus-visible { outline-color: #17161a; outline-offset: 1px; }
+
 @media (hover: hover) and (pointer: fine) {
   .product-card:not(:hover):not(:focus-within) .card-quick-add:not(:has(details[open])) {
     opacity: 0;
@@ -954,6 +999,7 @@ h1 {
 
 @media (any-pointer: coarse) {
   .card-quick-add__toggle { width: 44px; height: 44px; }
+  .card-quick-add__size { min-width: 44px; min-height: 44px; }
 }
 
 .product-card__placeholder {

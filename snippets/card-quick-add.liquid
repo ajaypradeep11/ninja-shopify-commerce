@@ -15,22 +15,36 @@
         {% render 'icon', name: 'plus' %}
       </button>
     {%- else -%}
+      {%- assign option_label = product.options | join: ' / ' -%}
+      {%- assign option_names = option_label | downcase | split: ' / ' -%}
       <details>
         <summary class="card-quick-add__toggle" aria-label="{{ 'products.product.choose_options_for' | t: product: product.title | escape }}">
           {% render 'icon', name: 'plus' %}
         </summary>
-        <div class="card-quick-add__options">
-          <label>
-            {{ product.options | join: ' / ' | escape }}
-            <select name="id" required>
-              <option value="" selected disabled>{{ 'products.product.choose_option' | t }}</option>
-              {%- for variant in variants -%}
-                <option value="{{ variant.id }}" data-available="true">{{ variant.title | escape }} · {{ variant.price | money_with_currency | strip_html }}</option>
-              {%- endfor -%}
-            </select>
-          </label>
-          <button type="submit" class="button">{{ 'products.product.add_to_cart' | t }}</button>
-        </div>
+        {%- if option_names contains 'size' or option_names contains 'sizes' -%}
+          <fieldset class="card-quick-add__sizes">
+            <legend class="visually-hidden">{{ option_label | escape }} · {{ 'products.product.add_to_cart' | t }}</legend>
+            {%- for variant in variants -%}
+              <button type="submit" name="id" value="{{ variant.id }}" class="card-quick-add__size">
+                {{- variant.title | escape -}}
+                {%- if product.price_varies %} <small>{{ variant.price | money_with_currency | strip_html }}</small>{% endif -%}
+              </button>
+            {%- endfor -%}
+          </fieldset>
+        {%- else -%}
+          <div class="card-quick-add__options">
+            <label>
+              {{ option_label | escape }}
+              <select name="id" required>
+                <option value="" selected disabled>{{ 'products.product.choose_option' | t }}</option>
+                {%- for variant in variants -%}
+                  <option value="{{ variant.id }}" data-available="true">{{ variant.title | escape }} · {{ variant.price | money_with_currency | strip_html }}</option>
+                {%- endfor -%}
+              </select>
+            </label>
+            <button type="submit" class="button">{{ 'products.product.add_to_cart' | t }}</button>
+          </div>
+        {%- endif -%}
       </details>
     {%- endif -%}
   </form>

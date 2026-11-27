@@ -337,7 +337,8 @@ document.documentElement.classList.add('js');
       const submitText = form.querySelector('[data-submit-text]');
       const optionLabel = form.querySelector('[data-option-label]');
       const stockLine = form.querySelector('[data-stock-line]');
-      const cardOptions = form.querySelector('.card-quick-add__options')?.closest('details');
+      const cardOptions = form.querySelector('.card-quick-add details');
+      const sizeButtons = form.querySelector('.card-quick-add__sizes');
       if (cardOptions) {
         cardOptions.addEventListener('keydown', (event) => {
           if (event.key === 'Escape' && cardOptions.open) closeCardOptions(cardOptions);
@@ -354,7 +355,7 @@ document.documentElement.classList.add('js');
         if (radios.length) {
           return form.querySelector('input[type="radio"][name="id"]:checked') || radios[0];
         }
-        return form.querySelector('[name="id"]');
+        return form.querySelector('input[name="id"]');
       };
 
       const syncVariant = () => {
@@ -391,15 +392,22 @@ document.documentElement.classList.add('js');
 
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
-        if (!submitButton || submitButton.disabled) return;
-        submitButton.disabled = true;
+        if (!submitButton || submitButton.disabled || form.hasAttribute('aria-busy')) return;
+        const data = new FormData(form);
+        if (sizeButtons) {
+          const size = event.submitter;
+          if (size?.name !== 'id') return;
+          data.set('id', size.value);
+        }
+        const controls = sizeButtons || submitButton;
+        controls.disabled = true;
         form.setAttribute('aria-busy', 'true');
 
         try {
           const response = await fetch(`${window.Shopify?.routes?.root || '/'}cart/add.js`, {
             method: 'POST',
             headers: { Accept: 'application/json' },
-            body: new FormData(form)
+            body: data
           });
           const result = await response.json();
           if (!response.ok) throw new Error(result.description || 'Unable to add this item.');
@@ -410,6 +418,7 @@ document.documentElement.classList.add('js');
           showToast(error.message || 'Unable to add this item.', true);
         } finally {
           form.removeAttribute('aria-busy');
+          controls.disabled = false;
           syncVariant();
         }
       });
