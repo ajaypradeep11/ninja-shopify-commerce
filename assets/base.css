@@ -968,8 +968,9 @@ h1 {
 }
 
 .product-rail {
+  --product-rail-gap: 16px;
   display: flex;
-  gap: 16px;
+  gap: var(--product-rail-gap);
   padding-right: 16px;
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -982,6 +983,12 @@ h1 {
 .product-rail__item {
   width: max(208px, calc((100vw - 96px) / 5));
   flex: 0 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .template-index .product-rail__item {
+    width: calc((100% - 5 * var(--product-rail-gap)) / 6);
+  }
 }
 
 .light-island {
