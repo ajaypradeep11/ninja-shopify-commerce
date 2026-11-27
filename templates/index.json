@@ -132,7 +132,7 @@
         "collection_i4qfAC"
       ],
       "custom_css": [
-        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 8px;}",
+        ".section-pad {background: #fff !important; color: #17161a; --surface: #fff; --ink: #17161a; --subtle: #f2efe8; padding-top: 8px; padding-bottom: 16px;}",
         ".collection-tile {width: min(42vw, 210px);}",
         ".collection-tile__media {aspect-ratio: 4 / 5;}"
       ],
@@ -245,9 +245,9 @@
             "title_size": 25,
             "title_size_mobile": 12,
             "title_advanced": true,
-            "title_height": 130,
-            "title_mt": 28,
-            "title_mt_mobile": 20,
+            "title_height": 120,
+            "title_mt": 10,
+            "title_mt_mobile": 10,
             "title_color": "#000000"
           }
         }
@@ -347,7 +347,7 @@
         "dot_active_color": "#121212",
         "background_style": "gradient",
         "background_color": "#4d4d4d",
-        "background_gradient": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1) 15%, rgba(255, 255, 255, 1) 40%, rgba(183, 183, 183, 1) 82%, rgba(255, 255, 255, 1) 100%, rgba(255, 255, 255, 1) 100%, rgba(255, 255, 255, 1) 100%)",
+        "background_gradient": "linear-gradient(180deg, rgba(255, 254, 254, 1) 1%, rgba(255, 255, 255, 1) 40%, rgba(225, 224, 224, 1) 76%, rgba(217, 217, 217, 1) 85%, rgba(255, 255, 255, 1) 94%, rgba(255, 255, 255, 1) 100%, rgba(255, 255, 255, 1) 100%)",
         "border_color": "#121212",
         "margin_top": 0,
         "margin_bottom": 0,
