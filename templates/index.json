@@ -64,6 +64,13 @@
     "collection_tiles": {
       "type": "collection-tiles",
       "blocks": {
+        "collection_YGL4Qx": {
+          "type": "collection",
+          "settings": {
+            "collection": "sale",
+            "title": ""
+          }
+        },
         "collection_LrXJ3U": {
           "type": "collection",
           "disabled": true,
@@ -77,7 +84,6 @@
           "type": "collection",
           "settings": {
             "collection": "keychain",
-            "image": "shopify://shop_images/instagram-image-7d44f32b-a4cd-4904-bdaa-009e2a1f18bf.jpg",
             "title": "Keychain & Accessories"
           }
         },
@@ -85,7 +91,6 @@
           "type": "collection",
           "settings": {
             "collection": "tshirt",
-            "image": "shopify://shop_images/b2a30921-500f-4804-b07a-613b3d156b49.jpg",
             "title": "Apparel"
           }
         },
@@ -93,7 +98,6 @@
           "type": "collection",
           "settings": {
             "collection": "headwear",
-            "image": "shopify://shop_images/instagram-image_50ec00bc-e0f7-4e54-bc6a-856c9f4bc185.jpg",
             "title": "Headwear"
           }
         },
@@ -101,7 +105,6 @@
           "type": "collection",
           "settings": {
             "collection": "lamp",
-            "image": "shopify://shop_images/instagram-image_bdd42014-19a0-4b1d-b4c3-cc497eb46be9.jpg",
             "title": "Desk Lamps"
           }
         },
@@ -121,6 +124,7 @@
         }
       },
       "block_order": [
+        "collection_YGL4Qx",
         "collection_LrXJ3U",
         "collection_gL7V6m",
         "collection_1",
@@ -171,7 +175,7 @@
             "caption_mb_mobile": 20,
             "caption_color": "#121212",
             "caption_secondary_color": "#555555",
-            "caption_divider_color": "#CCCCCC"
+            "caption_divider_color": "#cccccc"
           }
         },
         "product_96qA6A": {
@@ -259,7 +263,7 @@
             "title_height": 130,
             "title_mt": 28,
             "title_mt_mobile": 20,
-            "title_color": "#FFFFFF"
+            "title_color": "#ffffff"
           }
         }
       },
@@ -283,8 +287,8 @@
         "garment_gap_mobile": 16,
         "show_rod": true,
         "rail_finish": "gold",
-        "rod_color": "#BEB80A",
-        "hook_color": "#8C8C8C",
+        "rod_color": "#beb80a",
+        "hook_color": "#8c8c8c",
         "rail_style": "brackets",
         "hanger_hooks": true,
         "show_tags": true,
@@ -336,28 +340,28 @@
         "autoplay": true,
         "autoplay_speed": 4,
         "show_dots": true,
-        "tag_bg_color": "#FFFFFF",
+        "tag_bg_color": "#ffffff",
         "tag_text_color": "#121212",
         "tag_status_bg_color": "#121212",
-        "tag_status_text_color": "#FFFFFF",
-        "popup_bg_color": "#FFFFFF",
+        "tag_status_text_color": "#ffffff",
+        "popup_bg_color": "#ffffff",
         "popup_bg_opacity": 0.9,
         "popup_title_color": "#121212",
         "popup_text_color": "#555555",
         "popup_accent_color": "#121212",
-        "popup_accent_text_color": "#FFFFFF",
-        "popup_border_color": "#E5E5E5",
-        "atc_button_color": "#FFFFFF",
-        "atc_button_hover_color": "#FFFFFF",
+        "popup_accent_text_color": "#ffffff",
+        "popup_border_color": "#e5e5e5",
+        "atc_button_color": "#ffffff",
+        "atc_button_hover_color": "#ffffff",
         "atc_button_bg_color": "#2d2d2d",
         "atc_button_bg_hover_color": "#2d2d2d",
         "atc_button_border_color": "#1a1a1a",
         "atc_button_border_hover_color": "#1a1a1a",
         "atc_button_shadow_color": "#000000",
-        "dot_color": "#CCCCCC",
+        "dot_color": "#cccccc",
         "dot_active_color": "#121212",
         "background_style": "gradient",
-        "background_color": "#4D4D4D",
+        "background_color": "#4d4d4d",
         "background_gradient": "linear-gradient(179deg, rgba(255, 255, 255, 1), rgba(183, 183, 183, 1) 14%, rgba(255, 255, 255, 1) 66%, rgba(2, 2, 2, 1) 100%)",
         "border_color": "#121212",
         "margin_top": 0,
