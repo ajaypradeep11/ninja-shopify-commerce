@@ -11,7 +11,10 @@
           <tr>
             <td>{%- if line_item.url -%}<a class="text-link" href="{{ line_item.url }}">{{ line_item.title }}</a>{%- else -%}{{ line_item.title }}{%- endif -%}</td>
             <td>{{ line_item.sku }}</td>
-            <td>{{ line_item.final_price | money }}</td>
+            <td>
+              {{ line_item.final_price | money }}
+              {% if line_item.final_price < line_item.original_price %}{% render 'sale-badge' %}{% endif %}
+            </td>
             <td>{{ line_item.quantity }}</td>
             <td>{{ line_item.final_line_price | money }}</td>
           </tr>

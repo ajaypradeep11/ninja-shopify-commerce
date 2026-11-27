@@ -147,10 +147,7 @@
                 <!-- End of Judge.me code -->
               {%- when 'price' -%}
                 <div class="product-info__price" data-product-price>
-                  <span>{{ current_variant.price | money_with_currency }}</span>
-                  {%- if current_variant.compare_at_price > current_variant.price -%}
-                    <span class="price--compare">{{ current_variant.compare_at_price | money }}</span>
-                  {%- endif -%}
+                  {% render 'variant-price', variant: current_variant %}
                 </div>
                 {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
                   <div class="product-info__tax">Taxes included where applicable. Shipping calculated at checkout.</div>
@@ -184,6 +181,7 @@
                     </legend>
                     <div class="product-option__values">
                       {%- for variant in product.variants -%}
+                        {%- capture variant_price_markup -%}{% render 'variant-price', variant: variant %}{%- endcapture -%}
                         <label class="swatch{% unless variant.available %} swatch--soldout{% endunless %}">
                           <input
                             type="radio"
@@ -191,7 +189,7 @@
                             value="{{ variant.id }}"
                             data-available="{{ variant.available }}"
                             data-variant-title="{{ variant.title | escape }}"
-                            data-price="<span>{{ variant.price | money_with_currency }}</span>{% if variant.compare_at_price > variant.price %}<span class='price--compare'>{{ variant.compare_at_price | money }}</span>{% endif %}"
+                            data-price="{{ variant_price_markup | strip | escape }}"
                             {% if variant == current_variant %}
                               checked
                             {% endif %}

@@ -1,5 +1,18 @@
 {%- liquid
   assign card_product = product
+  assign on_sale = false
+  assign compare_price = nil
+  if card_product.compare_at_price_max > card_product.price
+    for variant in card_product.variants
+      if variant.compare_at_price > variant.price
+        assign on_sale = true
+        if variant.price == card_product.price
+          assign compare_price = variant.compare_at_price
+          break
+        endif
+      endif
+    endfor
+  endif
   assign card_url = card_product.url
   if request.page_type == 'collection' and collection != blank
     assign card_url = card_product.url | within: collection
@@ -39,8 +52,8 @@
     {%- unless card_product.available -%}
       <span class="product-card__badge">Out of stock</span>
     {%- endunless -%}
-    {%- if card_product.compare_at_price_max > card_product.price -%}
-      <span class="product-card__badge product-card__badge--sale">Sale</span>
+    {%- if on_sale -%}
+      {% render 'sale-badge' %}
     {%- endif -%}
   </div>
 
@@ -59,8 +72,8 @@
         {%- if card_product.price_varies -%}From {% endif -%}
         {{ card_product.price | money_with_currency }}
       </span>
-      {%- if card_product.compare_at_price_max > card_product.price -%}
-        <span class="price--compare">{{ card_product.compare_at_price_max | money }}</span>
+      {%- if compare_price -%}
+        <span class="price--compare">{{ compare_price | money }}</span>
       {%- endif -%}
     </div>
     {%- if show_vendor and card_product.vendor != blank -%}
