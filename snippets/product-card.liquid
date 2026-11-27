@@ -50,7 +50,7 @@
     {%- endif -%}
 
     {%- unless card_product.available -%}
-      <span class="product-card__badge">Out of stock</span>
+      <span class="product-card__badge">{{ 'products.product.sold_out' | t }}</span>
     {%- endunless -%}
     {%- if on_sale -%}
       {% render 'sale-badge' %}

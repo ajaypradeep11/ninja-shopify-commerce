@@ -1,4 +1,6 @@
 {%- liquid
+  assign sold_label = 'products.product.sold_out' | t
+  assign stock_label = 'products.product.in_stock' | t
   assign current_variant = product.selected_or_first_available_variant
   assign product_form_id = 'ProductForm-' | append: section.id
 -%}
@@ -153,8 +155,8 @@
                   <div class="product-info__tax">Taxes included where applicable. Shipping calculated at checkout.</div>
                 {%- endif -%}
               {%- when 'inventory' -%}
-                <div class="stock-line{% unless current_variant.available %} stock-line--out{% endunless %}">
-                  {%- if current_variant.available -%}In stock{%- else -%}Out of stock{%- endif -%}
+                <div class="stock-line{% unless current_variant.available %} stock-line--out{% endunless %}" data-stock-line data-in-stock="{{ stock_label | escape }}" data-sold-out="{{ sold_label | escape }}" aria-live="polite">
+                  {%- if current_variant.available -%}{{ stock_label }}{%- else -%}{{ sold_label }}{%- endif -%}
                 </div>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
@@ -214,8 +216,8 @@
                       disabled
                     {% endunless %}
                   >
-                    <span data-submit-text data-available-text="Add to cart" data-sold-text="Out of stock">
-                      {%- if current_variant.available %}Add to cart{% else %}Out of stock{% endif -%}
+                    <span data-submit-text data-available-text="Add to cart" data-sold-text="{{ sold_label | escape }}">
+                      {%- if current_variant.available %}Add to cart{% else %}{{ sold_label }}{% endif -%}
                     </span>
                   </button>
                 </div>

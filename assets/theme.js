@@ -315,6 +315,7 @@ document.documentElement.classList.add('js');
       const submitButton = form.querySelector('[type="submit"]');
       const submitText = form.querySelector('[data-submit-text]');
       const optionLabel = form.querySelector('[data-option-label]');
+      const stockLine = form.querySelector('[data-stock-line]');
 
       const selectedVariant = () => {
         const select = form.querySelector('select[name="id"]');
@@ -328,10 +329,14 @@ document.documentElement.classList.add('js');
 
       const syncVariant = () => {
         const option = selectedVariant();
-        if (!option || !submitButton) return;
+        if (!option) return;
 
         const available = option.dataset.available === 'true';
-        submitButton.disabled = !available;
+        if (submitButton) submitButton.disabled = !available;
+        if (stockLine) {
+          stockLine.classList.toggle('stock-line--out', !available);
+          stockLine.textContent = available ? stockLine.dataset.inStock : stockLine.dataset.soldOut;
+        }
 
         if (submitText) {
           submitText.textContent = available

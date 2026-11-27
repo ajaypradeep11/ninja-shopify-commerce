@@ -23,6 +23,7 @@
 }
 
 :root {
+  --sold-out-color: #40568a;
   --font-display: "Sora", Arial, sans-serif;
   --font-sans: "Inter", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
@@ -915,13 +916,13 @@ h1 {
   left: 10px;
   border-radius: 999px;
   padding: 6px 10px;
-  background: rgb(0 0 0 / 82%);
+  background: var(--sold-out-color);
   color: #fff;
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  backdrop-filter: blur(4px);
+  font-weight: 700;
 }
 
 .sale-badge {
@@ -1901,8 +1902,19 @@ body.image-viewer-open { overflow: hidden; }
   content: "";
 }
 
+.stock-line--out {
+  color: var(--sold-out-color);
+}
+
+.product-form:not([aria-busy="true"]) .product-form__row .button:disabled {
+  background: var(--sold-out-color);
+  color: #fff;
+  opacity: 1;
+  cursor: not-allowed;
+}
+
 .stock-line--out::before {
-  background: #d15e4d;
+  background: currentColor;
 }
 
 .product-info__description {

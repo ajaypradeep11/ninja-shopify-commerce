@@ -9,7 +9,8 @@
   "products": {
     "product": {
       "add_to_cart": "Add to cart",
-      "sold_out": "Out of stock",
+      "sold_out": "Sold out",
+      "in_stock": "In stock",
       "quantity": "Quantity"
     }
   }
