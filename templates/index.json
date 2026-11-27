@@ -380,7 +380,7 @@
     "featured_product_rail_HkJagM": {
       "type": "featured-product-rail",
       "custom_css": [
-        ".product-rail {--price-ink: #fff; --sale-price-color: #e34436;}"
+        ".section-pad {background: #fff; color: var(--light-ink); --surface: #fff; --ink: var(--light-ink); --subtle: var(--light-subtle);}"
       ],
       "name": "Product rail",
       "settings": {
