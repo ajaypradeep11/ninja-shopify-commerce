@@ -170,7 +170,7 @@
         "grid_border_thickness": 0,
         "grid_shadow": false,
         "grid_mt": 24,
-        "collection_padding_vertical": 32,
+        "collection_padding_vertical": 12,
         "collection_padding_vertical_mobile": 32,
         "collection_padding_horizontal": 24,
         "collection_padding_horizontal_mobile": 24,
