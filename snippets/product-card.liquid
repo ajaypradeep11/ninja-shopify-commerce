@@ -5,9 +5,13 @@
   if card_product.compare_at_price_max > card_product.price
     for variant in card_product.variants
       if variant.compare_at_price > variant.price
-        assign on_sale = true
+        if variant.available
+          assign on_sale = true
+        endif
         if variant.price == card_product.price
           assign compare_price = variant.compare_at_price
+        endif
+        if compare_price and on_sale
           break
         endif
       endif
@@ -49,10 +53,9 @@
       <div class="product-card__placeholder">{{ 'product-1' | placeholder_svg_tag }}</div>
     {%- endif -%}
 
-    {%- unless card_product.available -%}
-      <span class="product-card__badge">{{ 'products.product.sold_out' | t }}</span>
-    {%- endunless -%}
-    {%- if on_sale -%}
+    {%- if card_product.available == false -%}
+      {% render 'sold-out-badge' %}
+    {%- elsif on_sale -%}
       {% render 'sale-badge' %}
     {%- endif -%}
   </div>

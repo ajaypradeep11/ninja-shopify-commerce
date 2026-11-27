@@ -16,7 +16,7 @@
   }
 {% endstyle %}
 {% assign badge_variant = product.selected_or_first_available_variant %}
-{% if badge_variant.compare_at_price > badge_variant.price %}
+{% if badge_variant.available and badge_variant.compare_at_price > badge_variant.price %}
   <div class="ai-sale-badge-wrap-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
     {% render 'sale-badge', label: block.settings.badge_text %}
   </div>

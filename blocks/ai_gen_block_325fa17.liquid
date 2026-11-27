@@ -30,7 +30,7 @@
     {% else %}
       <div class="ai-sale-badge-block-{{ ai_gen_id }}__image-placeholder">{{ 'product-apparel-1' | placeholder_svg_tag }}</div>
     {% endif %}
-    {% if compare_price != blank and compare_price > sale_price %}{% render 'sale-badge', label: block.settings.badge_text %}{% endif %}
+    {% if product.selected_or_first_available_variant.available and compare_price != blank and compare_price > sale_price %}{% render 'sale-badge', label: block.settings.badge_text %}{% endif %}
   </div>
 </div>
 {% schema %}

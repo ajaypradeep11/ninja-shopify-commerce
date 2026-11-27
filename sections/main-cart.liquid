@@ -23,7 +23,9 @@
               <div class="cart-item__top">
                 <div>
                   <a class="cart-item__title" href="{{ item.url }}">{{ item.product.title }}</a>
-                  {% if item.variant.compare_at_price > item.variant.price or item.final_price < item.original_price %}
+                  {% if item.variant.available == false %}
+                    {% render 'sold-out-badge' %}
+                  {% elsif item.variant.compare_at_price > item.variant.price or item.final_price < item.original_price %}
                     {% render 'sale-badge' %}
                   {% endif %}
                   {%- unless item.product.has_only_default_variant -%}<p class="cart-item__variant">{{ item.variant.title }}</p>{%- endunless -%}
