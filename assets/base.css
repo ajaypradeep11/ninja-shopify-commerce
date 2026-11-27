@@ -985,11 +985,14 @@ h1 {
   text-transform: uppercase;
 }
 
+.product-rail-section {
+  padding-inline: 1rem;
+}
+
 .product-rail {
   --product-rail-gap: 16px;
   display: flex;
   gap: var(--product-rail-gap);
-  padding-right: 16px;
   scroll-behavior: smooth;
   scrollbar-width: none;
 }

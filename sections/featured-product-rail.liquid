@@ -5,8 +5,8 @@
   endif
 -%}
 
-<section class="section-pad" data-scroll-nav>
-  <div class="container-wide section-heading section-heading--rail{% if section.settings.heading == blank %} section-heading--compact{% endif %}">
+<section class="section-pad product-rail-section" data-scroll-nav>
+  <div class="section-heading section-heading--rail{% if section.settings.heading == blank %} section-heading--compact{% endif %}">
     <h2>{{ section.settings.heading }}</h2>
     <div class="anime-nav">
       {%- if section.settings.link_label != blank -%}
@@ -24,7 +24,7 @@
       {%- endfor -%}
     </div>
   {%- else -%}
-    <div class="container-wide section-empty">
+    <div class="section-empty">
       <p>Add products to the selected collection to populate this rail.</p>
     </div>
   {%- endif -%}
