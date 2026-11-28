@@ -1002,6 +1002,20 @@ h1 {
   .card-quick-add__size { min-width: 44px; min-height: 44px; }
 }
 
+@media (max-width: 767px) {
+  .card-quick-add__toggle {
+    width: 44px;
+    height: 44px;
+    box-sizing: border-box;
+    border: 7px solid transparent;
+    background-clip: padding-box;
+    box-shadow: none;
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 20%));
+  }
+
+  .card-quick-add__toggle svg { width: 15px; height: 15px; }
+}
+
 .product-card__placeholder {
   display: grid;
   place-items: center;
